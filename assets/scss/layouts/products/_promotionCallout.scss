@@ -1,0 +1,66 @@
+// =============================================================================
+// PROMOTION CALLOUT (Featured Promotions)
+// =============================================================================
+//
+// Renders the merchant's promotion sentence as a chip under the price, on both
+// product cards (`--compact`, top promotion only) and the product page
+// (`--full`, every promotion the product takes part in).
+//
+// -----------------------------------------------------------------------------
+
+.promotionCallout {
+    list-style: none;
+    margin: 0 0 spacing("quarter");
+    padding: 0;
+}
+
+// A chip left as `display: block` stretches the whole column, so a three-word
+// promotion reads as an empty band. Shrink-wrap it instead.
+.promotionCallout-item {
+    background-color: stencilColor("color_bg_featured_promotions");
+    border-radius: remCalc(3px);
+    color: stencilColor("color_text_featured_promotions");
+    display: inline-flex;
+    max-width: 100%;
+    padding: spacing("eighth") spacing("quarter");
+}
+
+.promotionCallout-text {
+    display: -webkit-box;
+    font-size: fontSize("smallest");
+    font-weight: fontWeight("semibold");
+    line-height: lineHeight("smallest");
+    overflow: hidden;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 2; // a long sentence must not push the grid row taller
+}
+
+// Outside `.promotionCallout-item` on purpose: inside the chip it competes for
+// width with the merchant's sentence and truncates it on narrow cards.
+.promotionCallout-more {
+    color: stencilColor("color_text_featured_promotions");
+    display: block;
+    font-size: fontSize("smallest");
+    line-height: lineHeight("smallest");
+    margin-top: spacing("eighth");
+}
+
+// Column layout so every chip shrink-wraps its own text instead of being
+// stretched to the width of the longest one.
+.promotionCallout--full {
+    align-items: flex-start;
+    display: flex;
+    flex-direction: column;
+    // A full rhythm unit: the chips sit between the price and the option labels, and half a
+    // unit let the last chip crowd the "COLOR:" heading.
+    margin-bottom: spacing("single");
+
+    .promotionCallout-item + .promotionCallout-item {
+        margin-top: spacing("eighth");
+    }
+
+    .promotionCallout-text {
+        font-size: fontSize("smaller");
+        line-height: lineHeight("smaller");
+    }
+}

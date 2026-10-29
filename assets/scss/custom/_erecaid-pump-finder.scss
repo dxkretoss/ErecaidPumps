@@ -1,0 +1,295 @@
+// =============================================================================
+// ERECAID PUMP FINDER SECTION (Interactive Questionnaire - 100% Reference Match)
+// =============================================================================
+
+.erecaid-finder-section {
+    background-color: #ffffff;
+    padding: 24px 0 32px;
+    width: 100%;
+
+    @media (max-width: 768px) {
+        padding: 18px 0 26px;
+    }
+}
+
+.erecaid-finder-card {
+    background-color: #f0f7fe;
+    border: 1px solid #dce8f4;
+    border-radius: 8px;
+    padding: 16px 22px 18px;
+    width: 100%;
+
+    @media (max-width: 768px) {
+        padding: 16px 14px;
+    }
+
+    &__top {
+        display: flex;
+        align-items: flex-start;
+        justify-content: space-between;
+        gap: 16px;
+        margin-bottom: 14px;
+
+        @media (max-width: 768px) {
+            flex-direction: column;
+            gap: 10px;
+        }
+    }
+
+    &__heading-wrap {
+        flex: 1;
+        min-width: 0;
+    }
+
+    &__title {
+        font-family: 'Roboto', 'Karla', sans-serif;
+        font-size: 19px;
+        line-height: 1.25;
+        font-weight: 800;
+        color: #002d62;
+        margin: 0 0 3px 0;
+        letter-spacing: -0.2px;
+
+        @media (max-width: 600px) {
+            font-size: 17px;
+        }
+    }
+
+    &__sub {
+        font-size: 12.5px;
+        line-height: 1.35;
+        color: #475569;
+        margin: 0;
+    }
+
+    &__support {
+        display: flex;
+        align-items: center;
+        gap: 9px;
+        flex-shrink: 0;
+    }
+
+    &__support-icon {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-shrink: 0;
+        color: #0055ad;
+
+        svg {
+            display: block;
+            width: 24px;
+            height: 24px;
+        }
+    }
+
+    &__support-text {
+        display: flex;
+        flex-direction: column;
+        line-height: 1.25;
+    }
+
+    &__support-label {
+        font-size: 11.5px;
+        color: #64748b;
+        font-weight: 500;
+    }
+
+    &__support-phone {
+        font-size: 13.5px;
+        color: #002d62;
+        text-decoration: none;
+        font-weight: 600;
+
+        strong {
+            font-weight: 800;
+        }
+
+        &:hover {
+            color: #0055ad;
+            text-decoration: underline;
+        }
+    }
+
+    &__form {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        width: 100%;
+
+        @media (max-width: 992px) {
+            flex-direction: column;
+            align-items: stretch;
+            gap: 12px;
+        }
+    }
+
+    &__step-box {
+        flex: 1;
+        min-width: 0;
+        background-color: #f7fbff;
+        border: 1px solid #dce8f4;
+        border-radius: 6px;
+        padding: 9px 12px 10px;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        min-height: 84px;
+        box-shadow: 0 1px 3px rgba(0, 0, 0, 0.02);
+        transition: border-color 0.2s ease, box-shadow 0.2s ease;
+
+        &:hover {
+            border-color: #c4d9ec;
+            box-shadow: 0 2px 6px rgba(0, 45, 98, 0.05);
+        }
+
+        @media (max-width: 992px) {
+            min-height: auto;
+            width: 100%;
+        }
+    }
+
+    &__step-header {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        margin-bottom: 7px;
+        min-height: 32px;
+
+        @media (max-width: 992px) {
+            min-height: auto;
+        }
+    }
+
+    &__step-num {
+        width: 22px;
+        height: 22px;
+        min-width: 22px;
+        border-radius: 50%;
+        background-color: #0055ad;
+        color: #ffffff;
+        font-size: 11.5px;
+        font-weight: 800;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-shrink: 0;
+        line-height: 1;
+    }
+
+    &__step-label {
+        font-size: 12px;
+        font-weight: 700;
+        color: #002d62;
+        line-height: 1.25;
+        margin: 0;
+        cursor: pointer;
+    }
+
+    &__select-wrap {
+        position: relative;
+        width: 100%;
+
+        &::after {
+            content: '';
+            position: absolute;
+            right: 10px;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 8px;
+            height: 5px;
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 10 6' fill='none' stroke='%23002d62' stroke-width='1.8' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M1 1l4 4 4-4'/%3E%3C/svg%3E");
+            background-repeat: no-repeat;
+            background-size: contain;
+            pointer-events: none;
+        }
+    }
+
+    &__select {
+        width: 100%;
+        height: 34px;
+        background-color: #ffffff;
+        border: 1px solid #d0deec;
+        border-radius: 4px;
+        padding: 0 26px 0 10px;
+        font-size: 12px;
+        color: #475569;
+        appearance: none;
+        -webkit-appearance: none;
+        -moz-appearance: none;
+        cursor: pointer;
+        transition: border-color 0.2s, box-shadow 0.2s;
+
+        &:focus {
+            border-color: #0055ad;
+            box-shadow: 0 0 0 2px rgba(0, 85, 173, 0.15);
+            outline: none;
+        }
+    }
+
+    &__separator {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-shrink: 0;
+        width: 14px;
+        height: 84px;
+
+        svg {
+            display: block;
+            width: 7px;
+            height: 12px;
+        }
+
+        @media (max-width: 992px) {
+            display: none;
+        }
+    }
+
+    &__action {
+        flex-shrink: 0;
+        display: flex;
+        align-items: center;
+
+        @media (max-width: 992px) {
+            width: 100%;
+        }
+    }
+
+    &__btn {
+        background-color: #0055ad;
+        color: #ffffff !important;
+        font-size: 13.5px;
+        font-weight: 700;
+        height: 38px;
+        padding: 0 22px;
+        border-radius: 5px;
+        border: none;
+        cursor: pointer;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        gap: 8px;
+        white-space: nowrap;
+        box-shadow: 0 1px 3px rgba(0, 85, 173, 0.2);
+        transition: background-color 0.2s ease, transform 0.15s ease;
+
+        &-arrow {
+            display: inline-block;
+            transition: transform 0.2s ease;
+        }
+
+        &:hover {
+            background-color: #00438c;
+
+            .erecaid-finder-card__btn-arrow {
+                transform: translateX(3px);
+            }
+        }
+
+        @media (max-width: 992px) {
+            width: 100%;
+            height: 42px;
+        }
+    }
+}

@@ -1,0 +1,48 @@
+{
+    "header": {
+        "welcome_back": "Bienvenue, {name}"
+    },
+    "products": {
+        "featured_promotions": {
+            "more_offers": "{count, plural, one {offre supplémentaire} other {offres supplémentaires}}"
+        }
+    },
+    "socialproof": {
+        "urgency": {
+            "viewing_now": "__COUNT__ personnes consultent cet article",
+            "viewing_now_singular": "1 personne consulte cet article",
+            "last_ordered": "Acheté __TIME__",
+            "min_ago": "il y a __COUNT__ min",
+            "hour_ago": "il y a 1 h",
+            "hours_ago": "il y a __COUNT__ h",
+            "day_ago": "il y a 1 j",
+            "days_ago": "il y a __COUNT__ j",
+            "aria_label": "Informations sur la popularité du produit"
+        },
+        "cart_goal": {
+            "message_remaining": "Plus que __AMOUNT__ pour __LABEL__!",
+            "message_all_met": "Vous avez débloqué toutes les récompenses!"
+        },
+        "recent_sales": {
+            "someone_in": "Quelqu'un à",
+            "someone": "Quelqu'un",
+            "just_purchased": "vient d'acheter",
+            "close": "Fermer la notification",
+            "min_ago": "il y a __COUNT__ min",
+            "hour_ago": "il y a 1 heure",
+            "hours_ago": "il y a __COUNT__ heures",
+            "day_ago": "il y a 1 jour",
+            "days_ago": "il y a __COUNT__ jours"
+        },
+        "popup": {
+            "close": "Fermer",
+            "copy_code": "Copier le code",
+            "copied": "Copié!",
+            "no_thanks": "Non merci",
+            "redirecting_in": "Redirection dans __N__...",
+            "email_placeholder": "Entrez votre adresse e-mail",
+            "subscribe": "S'abonner"
+        }
+    }
+}
+

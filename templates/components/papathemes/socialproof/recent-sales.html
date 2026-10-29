@@ -1,0 +1,24 @@
+{{!-- Papathemes Social Proof — Recent Sales mini popup shell.
+      Rendered once globally in base.html before footer.scripts.
+      JS in assets/js/theme/papathemes/socialproof/recentSales.js fills contents
+      after fetching products via Storefront GraphQL.
+
+      Storefront API token is deliberately NOT rendered as a DOM
+      attribute here — base.html already injects it into the JS runtime
+      context as `context.graphQLToken` (see `{{~inject 'graphQLToken'
+      settings.storefront_api.token}}`). Reading it from the JS context
+      avoids duplicating the token into server-rendered markup where
+      it would be easier to scrape. --}}
+<div class="papathemes-socialproof-recent-sales"
+     data-papathemes-recent-sales
+     data-lang-someone-in="{{lang 'socialproof.recent_sales.someone_in'}}"
+     data-lang-someone="{{lang 'socialproof.recent_sales.someone'}}"
+     data-lang-just-purchased="{{lang 'socialproof.recent_sales.just_purchased'}}"
+     data-lang-close="{{lang 'socialproof.recent_sales.close'}}"
+     data-lang-min-ago="{{lang 'socialproof.recent_sales.min_ago'}}"
+     data-lang-hour-ago="{{lang 'socialproof.recent_sales.hour_ago'}}"
+     data-lang-hours-ago="{{lang 'socialproof.recent_sales.hours_ago'}}"
+     data-lang-day-ago="{{lang 'socialproof.recent_sales.day_ago'}}"
+     data-lang-days-ago="{{lang 'socialproof.recent_sales.days_ago'}}"
+     style="display:none;">
+</div>

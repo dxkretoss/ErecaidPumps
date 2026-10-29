@@ -1,0 +1,31 @@
+@include breakpoint("medium") {
+    .navPage-subMenu {
+        &.is-focus-open {
+            display: block;
+        }
+    }
+
+    .navPage-subMenu.is-open {
+        &.is-focus-open {
+            display: block;
+        }
+    }
+
+    .emthemesModez-verticalCategories .navPage-childList-item .navPage-childList.is-open {
+        &.is-focus-open {
+            display: block;
+        }
+    }
+
+    .navPage-subMenu--standard .navPage-childList.is-focus-open {
+        &.is-focus-open {
+            display: block;
+        }
+    }
+
+    .emthemesModez-verticalCategories.is-open:not(.emthemesModez-verticalCategories--open) {
+        &.is-focus-open {
+            display: block;
+        }
+    }
+}

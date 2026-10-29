@@ -1,0 +1,145 @@
+{{!-- 
+    ErecAid Pumps Custom Modern Header Component
+    Adjusted categories: dedicated clean dropdown in the nav bar.
+    Horizontal nav links wrapping naturally across rows.
+--}}
+<header class="erecaid-header" role="banner" data-erecaid-header>
+    {{!-- Top Utility / Brand Section --}}
+    <div class="erecaid-header__top">
+        <div class="container erecaid-header__top-inner">
+            {{!-- Left: Brand Logo & Tagline --}}
+            <div class="erecaid-header__brand">
+                <a href="{{urls.home}}" class="erecaid-header__logo-link">
+                    {{#if settings.store_logo.image}}
+                        <img class="erecaid-header__logo-img" src="{{getImage settings.store_logo.image 'logo_size'}}" alt="{{settings.store_logo.title}}" title="{{settings.store_logo.title}}">
+                    {{else}}
+                        <span class="erecaid-header__logo-text">Erec<span class="erecaid-header__logo-accent">aid</span>Pumps<span class="erecaid-header__logo-domain">.com</span></span>
+                    {{/if}}
+                </a>
+                <p class="erecaid-header__tagline">
+                    {{#if theme_settings.custom_header_tagline}}
+                        {{theme_settings.custom_header_tagline}}
+                    {{else}}
+                        Trusted Products. Real Support. Better Tomorrows.
+                    {{/if}}
+                </p>
+            </div>
+
+            {{!-- Right Actions: Phone Support, Search Bar, Cart --}}
+            <div class="erecaid-header__actions">
+                {{!-- Phone / Specialist Support Box --}}
+                <a href="tel:{{#if theme_settings.custom_header_phone}}{{theme_settings.custom_header_phone}}{{else}}866-496-7359{{/if}}" class="erecaid-header__phone-box">
+                    <div class="erecaid-header__phone-icon" aria-hidden="true">
+                        <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path>
+                        </svg>
+                    </div>
+                    <div class="erecaid-header__phone-content">
+                        <span class="erecaid-header__phone-title">
+                            Call Us <strong>{{#if theme_settings.custom_header_phone}}{{theme_settings.custom_header_phone}}{{else}}866-496-7359{{/if}}</strong>
+                        </span>
+                        <span class="erecaid-header__phone-sub">
+                            {{#if theme_settings.custom_header_sub1}}{{theme_settings.custom_header_sub1}}{{else}}Talk to a Product Specialist{{/if}}
+                        </span>
+                        <span class="erecaid-header__phone-hours">
+                            {{#if theme_settings.custom_header_sub2}}{{theme_settings.custom_header_sub2}}{{else}}Mon - Fri 8am - 5pm CT{{/if}}
+                        </span>
+                    </div>
+                </a>
+
+                {{!-- Pill Search Input --}}
+                <div class="erecaid-header__search-wrap" data-prevent-quick-search-close>
+                    <form class="erecaid-header__search-form" action="{{urls.search}}">
+                        <input class="erecaid-header__search-input" data-search-quick name="search_query" placeholder="{{#if theme_settings.custom_header_search_placeholder}}{{theme_settings.custom_header_search_placeholder}}{{else}}Search products...{{/if}}" autocomplete="off" aria-label="Search products">
+                        <button type="submit" class="erecaid-header__search-btn" aria-label="Submit search">
+                            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+                                <circle cx="11" cy="11" r="8"></circle>
+                                <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+                            </svg>
+                        </button>
+                    </form>
+                </div>
+
+                {{!-- Minimalist Cart Icon with Count Badge --}}
+                <div class="erecaid-header__cart-wrap">
+                    <a class="erecaid-header__cart-link" href="{{urls.cart}}" data-cart-preview data-dropdown="cart-preview-dropdown" data-options="align:right" title="{{lang 'common.cart'}}" aria-label="Cart">
+                        <svg class="erecaid-header__cart-icon" width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <circle cx="9" cy="21" r="1"></circle>
+                            <circle cx="20" cy="21" r="1"></circle>
+                            <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path>
+                        </svg>
+                        <span class="erecaid-header__cart-count cart-quantity">{{cart.num_items}}</span>
+                    </a>
+                    <div class="dropdown-menu" id="cart-preview-dropdown" data-dropdown-content aria-hidden="true"></div>
+                </div>
+
+                {{!-- Mobile Hamburger Toggle --}}
+                <button class="erecaid-header__mobile-toggle" data-mobile-menu-toggle="menu" aria-label="Toggle navigation menu">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+            </div>
+        </div>
+    </div>
+
+    {{!-- Bottom Nav Bar (Rich Royal Blue) --}}
+    <nav class="erecaid-header__nav" id="menu" data-menu role="navigation">
+        <div class="container erecaid-header__nav-inner">
+            {{!-- Adjusted Categories: Clean Dropdown in Navigation Bar --}}
+            {{#if categories}}
+                <div class="erecaid-header__cat-dropdown-wrap has-dropdown">
+                    <a class="erecaid-header__cat-dropdown-btn" href="/categories" aria-label="Browse All Categories">
+                        <svg class="erecaid-header__nav-cats-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                            <line x1="3" y1="12" x2="21" y2="12"></line>
+                            <line x1="3" y1="6" x2="21" y2="6"></line>
+                            <line x1="3" y1="18" x2="21" y2="18"></line>
+                        </svg>
+                        <span>Categories</span>
+                        <span class="erecaid-header__nav-arrow" aria-hidden="true">⌵</span>
+                    </a>
+                    <ul class="erecaid-header__dropdown erecaid-header__dropdown--catalog">
+                        {{#each categories}}
+                            <li class="erecaid-header__dropdown-item {{#if children}}has-sub{{/if}}">
+                                <a class="erecaid-header__dropdown-link" href="{{url}}">
+                                    <span>{{name}}</span>
+                                    {{#if children}}<span class="erecaid-header__dropdown-sub-arrow">&rsaquo;</span>{{/if}}
+                                </a>
+                                {{#if children}}
+                                    <ul class="erecaid-header__dropdown-sub">
+                                        {{#each children}}
+                                            <li class="erecaid-header__dropdown-item">
+                                                <a class="erecaid-header__dropdown-link" href="{{url}}">{{name}}</a>
+                                            </li>
+                                        {{/each}}
+                                    </ul>
+                                {{/if}}
+                            </li>
+                        {{/each}}
+                    </ul>
+                </div>
+            {{/if}}
+
+            {{!-- Live Store Multi-Line Page Nav Links --}}
+            <ul class="erecaid-header__nav-list">
+                {{#if pages}}
+                    {{#each pages}}
+                        <li class="erecaid-header__nav-item">
+                            <a class="erecaid-header__nav-link" href="{{url}}">{{name}}</a>
+                        </li>
+                    {{/each}}
+                {{else}}
+                    {{!-- Exact Live Store Navigation Links --}}
+                    <li class="erecaid-header__nav-item"><a class="erecaid-header__nav-link" href="/ed-treatment-guide/">ED Treatment Guide</a></li>
+                    <li class="erecaid-header__nav-item"><a class="erecaid-header__nav-link" href="/prostate-cancer-ed/">Prostate Cancer ED</a></li>
+                    <li class="erecaid-header__nav-item"><a class="erecaid-header__nav-link" href="/diabetes-ed/">Diabetes ED</a></li>
+                    <li class="erecaid-header__nav-item"><a class="erecaid-header__nav-link" href="/contact-us-privacy-policy/">Contact Us/ Privacy Policy</a></li>
+                    <li class="erecaid-header__nav-item"><a class="erecaid-header__nav-link" href="/video-instructions-on-how-to-use-erection-pumps/">Video Instructions On How To Use Erection Pumps</a></li>
+                    <li class="erecaid-header__nav-item"><a class="erecaid-header__nav-link" href="/ed-assist-faq/">ED Assist FAQ</a></li>
+                    <li class="erecaid-header__nav-item"><a class="erecaid-header__nav-link" href="/blogs-about-ed/">Blog's About ED</a></li>
+                    <li class="erecaid-header__nav-item"><a class="erecaid-header__nav-link" href="/shipping-returns/">Shipping &amp; Returns</a></li>
+                {{/if}}
+            </ul>
+        </div>
+    </nav>
+</header>

@@ -1,0 +1,304 @@
+// =============================================================================
+// ERECAID CUSTOM HERO SECTION STYLES (3-Column Layout Matching Reference Demo)
+// =============================================================================
+
+.erecaid-hero-section {
+    background-color: #f7fbfe;
+    background-image: url('/assets/img/erecaid-hero-bg.jpg');
+    background-repeat: no-repeat;
+    background-position: center top;
+    background-size: cover;
+    border-bottom: 1px solid #e2e8f0;
+    padding: 30px 0 24px;
+    position: relative;
+    overflow: hidden;
+    width: 100%;
+
+    @media (max-width: 768px) {
+        padding: 24px 0 20px;
+    }
+
+    .erecaid-hero {
+        // Banner content row (3-Column balanced layout)
+        &__banner-content {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 20px;
+            min-height: 270px;
+            position: relative;
+            z-index: 2;
+
+            @media (max-width: 991px) {
+                flex-direction: column;
+                align-items: center;
+                text-align: center;
+                gap: 24px;
+                min-height: auto;
+            }
+        }
+
+        // Left Column (Headline, Badges, CTAs, Hotline)
+        &__left {
+            flex: 1 1 450px;
+            max-width: 490px;
+            width: 100%;
+            z-index: 3;
+            position: relative;
+
+            @media (max-width: 991px) {
+                max-width: 100%;
+                text-align: center;
+            }
+        }
+
+        &__title {
+            font-family: 'Roboto', 'Karla', sans-serif;
+            font-size: 32px;
+            line-height: 1.15;
+            font-weight: 800;
+            color: #002d62;
+            margin: 0 0 10px 0;
+            letter-spacing: -0.4px;
+
+            @media (max-width: 1200px) {
+                font-size: 27px;
+            }
+
+            @media (max-width: 600px) {
+                font-size: 22px;
+            }
+        }
+
+        &__subtitle {
+            font-size: 14.5px;
+            line-height: 1.45;
+            color: #1b2f6b;
+            margin: 0 0 18px 0;
+            max-width: 460px;
+
+            @media (max-width: 991px) {
+                max-width: 100%;
+                margin-left: auto;
+                margin-right: auto;
+            }
+        }
+
+        // 4 Trust Badges in a Row (Directly on background, no boxes)
+        &__badges {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            margin-bottom: 20px;
+            flex-wrap: nowrap;
+            max-width: 100%;
+
+            @media (max-width: 1200px) {
+                gap: 10px;
+            }
+
+            @media (max-width: 991px) {
+                justify-content: center;
+                flex-wrap: wrap;
+                gap: 16px;
+            }
+
+            @media (max-width: 600px) {
+                display: grid;
+                grid-template-columns: repeat(2, 1fr);
+                gap: 12px;
+                text-align: left;
+            }
+        }
+
+        &__badge-item {
+            display: flex;
+            align-items: center;
+            gap: 7px;
+            flex-shrink: 0;
+            background: transparent;
+            border: none;
+            box-shadow: none;
+            padding: 0;
+        }
+
+        &__badge-icon {
+            flex-shrink: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            svg {
+                display: block;
+            }
+        }
+
+        &__badge-content {
+            display: flex;
+            flex-direction: column;
+            line-height: 1.15;
+        }
+
+        &__badge-line {
+            font-size: 11px;
+            font-weight: 700;
+            color: #002d62;
+            white-space: nowrap;
+        }
+
+        // Action Buttons
+        &__actions {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 14px;
+            flex-wrap: wrap;
+
+            @media (max-width: 991px) {
+                justify-content: center;
+            }
+        }
+
+        &__btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            padding: 10px 22px;
+            border-radius: 4px;
+            font-size: 13.5px;
+            font-weight: 700;
+            text-decoration: none;
+            transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+            line-height: 1.2;
+            cursor: pointer;
+
+            &-arrow {
+                margin-left: 6px;
+                font-size: 15px;
+                transition: transform 0.2s ease;
+            }
+
+            &:hover &-arrow {
+                transform: translateX(3px);
+            }
+
+            &--primary {
+                background-color: #0157b8;
+                color: #ffffff !important;
+                border: 2px solid #0157b8;
+
+                &:hover {
+                    background-color: #004595;
+                    border-color: #004595;
+                    box-shadow: 0 4px 12px rgba(1, 87, 184, 0.25);
+                }
+            }
+
+            &--outline {
+                background-color: #ffffff;
+                color: #0157b8 !important;
+                border: 2px solid #0157b8;
+
+                &:hover {
+                    background-color: #f0f7ff;
+                    box-shadow: 0 4px 12px rgba(1, 87, 184, 0.1);
+                }
+            }
+
+            &--spotlight {
+                padding: 9px 22px;
+                font-size: 13px;
+                border-radius: 4px;
+            }
+        }
+
+        // Questions Hotline
+        &__questions {
+            font-size: 13px;
+            color: #1b2f6b;
+            font-weight: 500;
+
+            &-phone {
+                color: #002d62;
+                text-decoration: none;
+                font-weight: 800;
+
+                &:hover {
+                    text-decoration: underline;
+                }
+            }
+        }
+
+        // Center Column: Product Kit Image
+        &__center {
+            flex: 0 1 360px;
+            max-width: 370px;
+            display: flex;
+            align-items: flex-end;
+            justify-content: center;
+            z-index: 2;
+
+            @media (max-width: 991px) {
+                max-width: 320px;
+                width: 100%;
+            }
+        }
+
+        &__product-img {
+            width: 100%;
+            height: auto;
+            max-height: 250px;
+            display: block;
+            object-fit: contain;
+            filter: drop-shadow(0 4px 10px rgba(0, 30, 80, 0.06));
+        }
+
+        // Right Column: Product Spotlight Callout (No card box, direct clean typography)
+        &__right {
+            flex: 0 1 250px;
+            max-width: 260px;
+            width: 100%;
+            z-index: 3;
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+
+            @media (max-width: 991px) {
+                max-width: 100%;
+                text-align: center;
+            }
+        }
+
+        &__spotlight {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            background: transparent;
+            border: none;
+            box-shadow: none;
+            padding: 0;
+            border-radius: 0;
+
+            @media (max-width: 991px) {
+                align-items: center;
+            }
+        }
+
+        &__spotlight-title {
+            font-size: 17px;
+            line-height: 1.25;
+            font-weight: 800;
+            color: #002d62;
+            margin: 0 0 8px 0;
+            letter-spacing: -0.2px;
+        }
+
+        &__spotlight-subtitle {
+            font-size: 13px;
+            line-height: 1.4;
+            color: #2b497c;
+            margin: 0 0 16px 0;
+        }
+    }
+}

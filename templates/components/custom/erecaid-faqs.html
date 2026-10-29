@@ -1,0 +1,169 @@
+{{!-- 
+    ErecAid Frequently Asked Questions (FAQs) Section
+    100% matches reference screenshot:
+    - Header: "Frequently Asked Questions" with "View All FAQs →"
+    - 2-Column Accordion Grid: 3 questions on the left, 3 on the right
+    - Interactive accordion disclosure with smooth toggle and rotating chevron
+    - Fully dynamic & editable via BigCommerce Theme Settings
+--}}
+<section class="erecaid-faqs-section" aria-label="Frequently Asked Questions">
+    <div class="container">
+        {{!-- Top Header Row --}}
+        <div class="erecaid-faqs-header">
+            <h2 class="erecaid-faqs-header__title">
+                {{#if theme_settings.custom_faqs_title}}{{theme_settings.custom_faqs_title}}{{else}}Frequently Asked Questions{{/if}}
+            </h2>
+            <a href="{{#if theme_settings.custom_faqs_link_url}}{{theme_settings.custom_faqs_link_url}}{{else}}/categories{{/if}}" class="erecaid-faqs-header__link">
+                {{#if theme_settings.custom_faqs_link_text}}{{theme_settings.custom_faqs_link_text}}{{else}}View All FAQs{{/if}} <span class="erecaid-faqs-header__arrow">&rarr;</span>
+            </a>
+        </div>
+
+        {{!-- 2-Column FAQ Accordion Grid --}}
+        <div class="erecaid-faqs-grid" data-erecaid-faq-accordion>
+            {{!-- Left Column (Questions 1, 2, 3) --}}
+            <div class="erecaid-faqs-col">
+                {{!-- FAQ Item 1 --}}
+                <div class="erecaid-faq-item">
+                    <button type="button" class="erecaid-faq-item__btn" aria-expanded="false" aria-controls="faq-ans-1" id="faq-btn-1">
+                        <span class="erecaid-faq-item__question">
+                            {{#if theme_settings.custom_faq1_q}}{{theme_settings.custom_faq1_q}}{{else}}What is a vacuum erection device?{{/if}}
+                        </span>
+                        <span class="erecaid-faq-item__icon" aria-hidden="true">
+                            <svg width="10" height="6" viewBox="0 0 10 6" fill="none">
+                                <path d="M1 1L5 5L9 1" stroke="#002d62" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+                            </svg>
+                        </span>
+                    </button>
+                    <div class="erecaid-faq-item__panel" id="faq-ans-1" role="region" aria-labelledby="faq-btn-1" hidden>
+                        <p class="erecaid-faq-item__answer">
+                            {{#if theme_settings.custom_faq1_a}}{{theme_settings.custom_faq1_a}}{{else}}A vacuum erection device (VED) is an FDA-cleared, non-invasive medical device that uses gentle negative pressure to draw blood into the penis, creating a firm erection for intercourse or post-surgical penile rehabilitation.{{/if}}
+                        </p>
+                    </div>
+                </div>
+
+                {{!-- FAQ Item 2 --}}
+                <div class="erecaid-faq-item">
+                    <button type="button" class="erecaid-faq-item__btn" aria-expanded="false" aria-controls="faq-ans-2" id="faq-btn-2">
+                        <span class="erecaid-faq-item__question">
+                            {{#if theme_settings.custom_faq2_q}}{{theme_settings.custom_faq2_q}}{{else}}Do I need a prescription?{{/if}}
+                        </span>
+                        <span class="erecaid-faq-item__icon" aria-hidden="true">
+                            <svg width="10" height="6" viewBox="0 0 10 6" fill="none">
+                                <path d="M1 1L5 5L9 1" stroke="#002d62" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+                            </svg>
+                        </span>
+                    </button>
+                    <div class="erecaid-faq-item__panel" id="faq-ans-2" role="region" aria-labelledby="faq-btn-2" hidden>
+                        <p class="erecaid-faq-item__answer">
+                            {{#if theme_settings.custom_faq2_a}}{{theme_settings.custom_faq2_a}}{{else}}No prescription is required to order ErecAid systems or accessories through our online store. All devices are FDA-cleared Class II medical systems approved for safe in-home use.{{/if}}
+                        </p>
+                    </div>
+                </div>
+
+                {{!-- FAQ Item 3 --}}
+                <div class="erecaid-faq-item">
+                    <button type="button" class="erecaid-faq-item__btn" aria-expanded="false" aria-controls="faq-ans-3" id="faq-btn-3">
+                        <span class="erecaid-faq-item__question">
+                            {{#if theme_settings.custom_faq3_q}}{{theme_settings.custom_faq3_q}}{{else}}Should I choose a manual or automatic pump?{{/if}}
+                        </span>
+                        <span class="erecaid-faq-item__icon" aria-hidden="true">
+                            <svg width="10" height="6" viewBox="0 0 10 6" fill="none">
+                                <path d="M1 1L5 5L9 1" stroke="#002d62" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+                            </svg>
+                        </span>
+                    </button>
+                    <div class="erecaid-faq-item__panel" id="faq-ans-3" role="region" aria-labelledby="faq-btn-3" hidden>
+                        <p class="erecaid-faq-item__answer">
+                            {{#if theme_settings.custom_faq3_a}}{{theme_settings.custom_faq3_a}}{{else}}Manual pumps provide direct, tactile control without batteries. Automatic or rechargeable pumps offer effortless one-touch operation, which is ideal if you have arthritis or reduced grip strength.{{/if}}
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            {{!-- Right Column (Questions 4, 5, 6) --}}
+            <div class="erecaid-faqs-col">
+                {{!-- FAQ Item 4 --}}
+                <div class="erecaid-faq-item">
+                    <button type="button" class="erecaid-faq-item__btn" aria-expanded="false" aria-controls="faq-ans-4" id="faq-btn-4">
+                        <span class="erecaid-faq-item__question">
+                            {{#if theme_settings.custom_faq4_q}}{{theme_settings.custom_faq4_q}}{{else}}What size tension ring do I need?{{/if}}
+                        </span>
+                        <span class="erecaid-faq-item__icon" aria-hidden="true">
+                            <svg width="10" height="6" viewBox="0 0 10 6" fill="none">
+                                <path d="M1 1L5 5L9 1" stroke="#002d62" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+                            </svg>
+                        </span>
+                    </button>
+                    <div class="erecaid-faq-item__panel" id="faq-ans-4" role="region" aria-labelledby="faq-btn-4" hidden>
+                        <p class="erecaid-faq-item__answer">
+                            {{#if theme_settings.custom_faq4_a}}{{theme_settings.custom_faq4_a}}{{else}}Complete ErecAid systems include multiple ring sizes (standard, medium, and large) so you can find the ideal balance of comfort and firmness for your anatomy. Replacement rings and sizing guides are also available.{{/if}}
+                        </p>
+                    </div>
+                </div>
+
+                {{!-- FAQ Item 5 --}}
+                <div class="erecaid-faq-item">
+                    <button type="button" class="erecaid-faq-item__btn" aria-expanded="false" aria-controls="faq-ans-5" id="faq-btn-5">
+                        <span class="erecaid-faq-item__question">
+                            {{#if theme_settings.custom_faq5_q}}{{theme_settings.custom_faq5_q}}{{else}}Is my order shipped discreetly?{{/if}}
+                        </span>
+                        <span class="erecaid-faq-item__icon" aria-hidden="true">
+                            <svg width="10" height="6" viewBox="0 0 10 6" fill="none">
+                                <path d="M1 1L5 5L9 1" stroke="#002d62" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+                            </svg>
+                        </span>
+                    </button>
+                    <div class="erecaid-faq-item__panel" id="faq-ans-5" role="region" aria-labelledby="faq-btn-5" hidden>
+                        <p class="erecaid-faq-item__answer">
+                            {{#if theme_settings.custom_faq5_a}}{{theme_settings.custom_faq5_a}}{{else}}Yes, 100% discreetly. All orders arrive in standard unmarked packaging with no indication of the product type, erectile dysfunction, or company name on the external box.{{/if}}
+                        </p>
+                    </div>
+                </div>
+
+                {{!-- FAQ Item 6 --}}
+                <div class="erecaid-faq-item">
+                    <button type="button" class="erecaid-faq-item__btn" aria-expanded="false" aria-controls="faq-ans-6" id="faq-btn-6">
+                        <span class="erecaid-faq-item__question">
+                            {{#if theme_settings.custom_faq6_q}}{{theme_settings.custom_faq6_q}}{{else}}Can someone help me choose a device?{{/if}}
+                        </span>
+                        <span class="erecaid-faq-item__icon" aria-hidden="true">
+                            <svg width="10" height="6" viewBox="0 0 10 6" fill="none">
+                                <path d="M1 1L5 5L9 1" stroke="#002d62" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+                            </svg>
+                        </span>
+                    </button>
+                    <div class="erecaid-faq-item__panel" id="faq-ans-6" role="region" aria-labelledby="faq-btn-6" hidden>
+                        <p class="erecaid-faq-item__answer">
+                            {{#if theme_settings.custom_faq6_a}}{{theme_settings.custom_faq6_a}}{{else}}Yes! Our knowledgeable product support team is available by phone at 866-496-7359 (Mon-Fri 8am-5pm CT) to answer any questions and assist you confidentially.{{/if}}
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<script>
+(function() {
+    var accordion = document.querySelector('[data-erecaid-faq-accordion]');
+    if (!accordion) return;
+
+    var buttons = accordion.querySelectorAll('.erecaid-faq-item__btn');
+    buttons.forEach(function(btn) {
+        btn.addEventListener('click', function() {
+            var isExpanded = btn.getAttribute('aria-expanded') === 'true';
+            var panelId = btn.getAttribute('aria-controls');
+            var panel = document.getElementById(panelId);
+
+            btn.setAttribute('aria-expanded', !isExpanded);
+            if (panel) {
+                if (isExpanded) {
+                    panel.setAttribute('hidden', '');
+                } else {
+                    panel.removeAttribute('hidden');
+                }
+            }
+        });
+    });
+})();
+</script>

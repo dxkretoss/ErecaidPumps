@@ -1,0 +1,159 @@
+// Papathemes Social Proof — Cart goal bar styles.
+// Reference: eShopping _eshopping-cart-goal.scss, adapted for Supermarket.
+// Renders inside cart page summary + mini cart preview.
+
+$pp-goal-bar-height: remCalc(8);
+$pp-goal-marker-size: remCalc(14);
+
+.papathemes-socialproof-cart-goal {
+    padding: spacing("half") spacing("single");
+    margin: 0 0 spacing("half");
+    // Neutral lightest-grey background works across all 5 Supermarket theme
+    // variations (default/yellow/blue/pink/modern) without clashing with any
+    // brand primary. Uses Foundation's color() function (compile-time) rather
+    // than a hardcoded literal so it stays in sync with the theme's grey scale.
+    border-bottom: container("border");
+    color: stencilColor("color-textBase");
+
+    // CLS-safe skeleton shown while JS boots
+    &__skeleton {
+        display: flex;
+        flex-direction: column;
+        gap: spacing("quarter");
+        min-height: remCalc(72);
+
+        &-line,
+        &-bar,
+        &-labels {
+            background: rgba(0, 0, 0, 0.08);
+            border-radius: remCalc(4);
+        }
+
+        &-line {
+            height: remCalc(16);
+            width: 80%;
+        }
+
+        &-bar {
+            height: $pp-goal-bar-height;
+            width: 100%;
+        }
+
+        &-labels {
+            height: remCalc(14);
+            width: 100%;
+        }
+    }
+
+    &__text {
+        font-size: fontSize("smaller");
+        margin: 0 0 spacing("quarter");
+        line-height: 1.4;
+
+        strong {
+            font-weight: 700;
+        }
+    }
+
+    &__bar {
+        position: relative;
+        height: $pp-goal-bar-height;
+        margin: spacing("quarter") 0 spacing("half");
+    }
+
+    &__track {
+        height: 100%;
+        background: color("greys", "lighter");
+        border-radius: remCalc(4);
+        overflow: hidden;
+    }
+
+    &__fill {
+        height: 100%;
+        // Solid primary color — consistent with active markers and labels in
+        // this file, and with button--primary across all 5 theme variations.
+        // A gradient from color-primary to a hardcoded literal creates
+        // cross-color blends (e.g. blue→red) on non-red theme variants.
+        background: stencilColor("color-primary");
+        border-radius: remCalc(4);
+        transition: width 300ms ease-out;
+    }
+
+    &__marker {
+        position: absolute;
+        top: 50%;
+        transform: translate(-50%, -50%);
+        width: $pp-goal-marker-size;
+        height: $pp-goal-marker-size;
+        background: #fff;
+        border: 2px solid rgba(0, 0, 0, 0.2);
+        border-radius: 50%;
+        font-size: remCalc(10);
+        line-height: calc(#{$pp-goal-marker-size} - 4px);
+        text-align: center;
+        color: transparent;
+        box-sizing: border-box;
+        transition: background-color 200ms ease, border-color 200ms ease, color 200ms ease;
+
+        &.is-active {
+            background: stencilColor("color-primary");
+            border-color: stencilColor("color-primary");
+            color: #fff;
+            width: $pp-goal-marker-size * 1.5;
+            height: $pp-goal-marker-size * 1.5;
+            line-height: calc(#{$pp-goal-marker-size * 1.5} - 4px);
+            font-size: remCalc(12);
+        }
+    }
+
+    &__labels {
+        display: flex;
+        justify-content: space-between;
+        margin-top: spacing("quarter");
+        gap: spacing("quarter");
+    }
+
+    &__label {
+        display: inline-flex;
+        align-items: center;
+        gap: remCalc(4);
+        font-size: fontSize("tiny");
+        opacity: 0.6;
+        transition: opacity 200ms ease;
+
+        &.is-active {
+            opacity: 1;
+            font-weight: 600;
+            color: stencilColor("color-primary");
+        }
+    }
+
+    &__icon {
+        width: remCalc(14);
+        height: remCalc(14);
+        fill: currentColor;
+        flex: 0 0 auto;
+    }
+
+    // Respect OS-level "reduce motion" preference. Users who enable this
+    // flag (vestibular disorders, motion sensitivity, battery-saver mode)
+    // expect animations to be neutralized rather than merely shortened.
+    // The bar still snaps to its final width on cart updates — just
+    // without the 300ms slide — and marker/label state changes toggle
+    // instantly. Matches the WCAG 2.3.3 "Animation from Interactions"
+    // guidance and mirrors the reduced-motion overrides in _recentSales
+    // and _popups partials.
+    @media (prefers-reduced-motion: reduce) {
+        &__fill {
+            transition: none;
+        }
+
+        &__marker {
+            transition: none;
+        }
+
+        &__label {
+            transition: none;
+        }
+    }
+}

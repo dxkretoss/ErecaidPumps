@@ -1,0 +1,26 @@
+{{!--
+    Preload hints for the image most likely to be the LCP element on each page type.
+
+    Include this as early in <head> as possible, but always AFTER <meta name="viewport">:
+    the hero's `imagesizes` contains viewport-relative lengths, and the preload scanner
+    resolves them against whatever viewport is known at that moment.
+--}}
+{{#if carousel.slides.[0].stencil_image}}
+    {{!-- `imagesizes` must stay identical to the first slide's `sizes` in carousel.html, or this preload is downloaded and never used.
+          No `href` on purpose: a browser that lacks imagesrcset (Safari < 17.2) would preload it while the <img> still picks from
+          srcset, fetching two files. Without it such a browser simply skips the preload. --}}
+    <link rel="preload" as="image" imagesrcset="{{getImageSrcset carousel.slides.[0].stencil_image use_default_sizes=true}}" imagesizes="{{getVar 'heroImageSizes'}}" fetchpriority="high">
+{{/if}}
+{{#if category.image}}
+    <link rel="preload" as="image" href="{{getImage category.image 'category_size'}}" fetchpriority="high">
+{{/if}}
+{{#if product.main_image}}
+    {{#if theme_settings.product_image_responsive}}
+        {{!-- Every responsive mode ends up picking from this ladder, so preload the ladder rather than the fixed
+              `product_size`. Under 'lazyload+lqip' that file is only the placeholder, and lazysizes replaces the
+              srcset before it ever paints -- preloading it would spend the request on an image nobody sees. --}}
+        <link rel="preload" as="image" imagesrcset="{{getImageSrcset product.main_image use_default_sizes=true}}" imagesizes="{{getVar 'productImageSizes'}}" fetchpriority="high">
+    {{else}}
+        <link rel="preload" as="image" href="{{getImageSrcset product.main_image 'product_size' (cdn theme_settings.default_image_product) 1x=theme_settings.product_size}}" fetchpriority="high">
+    {{/if}}
+{{/if}}

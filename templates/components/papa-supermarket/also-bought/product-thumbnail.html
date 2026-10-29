@@ -1,0 +1,19 @@
+{{#if product.can_purchase}}
+<div class="productView-alsoBought-item-image">
+    <label class="productView-alsoBought-thumbnail-label" for="productView-alsoBought-item-checkbox-{{product.id}}">
+        {{> components/common/responsive-img
+            image=product.main_image
+            fallback_size=theme_settings.productthumb_size
+            lazyload=theme_settings.lazyload_mode
+        }}
+        <a href="{{product.url}}" target="_blank" class="productView-alsoBought-thumbnail-link" title="{{lang 'common.view'}}: {{product.title}}">
+            <i class="icon" aria-hidden="true">
+                <svg>
+                    <use href="#icon-external-link"/>
+                </svg>
+            </i>
+            <span class="is-srOnly">{{lang 'common.view'}}: {{product.title}}</span>
+        </a>
+    </label>
+</div>
+{{/if}}

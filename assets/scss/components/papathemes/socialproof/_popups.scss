@@ -1,0 +1,129 @@
+// Papathemes Social Proof — Modal popup styles (exit-intent + promo).
+//
+// Shared .papathemes-socialproof-popup class with modifiers `--exit` and
+// `--promo` so each variant can diverge later without duplicating base rules.
+
+.papathemes-socialproof-popup {
+    position: fixed;
+    inset: 0;
+    z-index: 950;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: spacing("single");
+
+    &__overlay {
+        position: absolute;
+        inset: 0;
+        background: rgba(0, 0, 0, 0.5);
+    }
+
+    &__modal {
+        position: relative;
+        z-index: 1;
+        background: #fff;
+        border-radius: remCalc(12);
+        padding: spacing("double") spacing("single");
+        max-width: remCalc(400);
+        width: 100%;
+        text-align: center;
+        animation: papathemes-popup-in 300ms ease-out;
+        box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
+    }
+
+    &__close {
+        position: absolute;
+        top: remCalc(8);
+        right: remCalc(8);
+        width: remCalc(32);
+        height: remCalc(32);
+        background: transparent;
+        border: 0;
+        font-size: remCalc(24);
+        line-height: 1;
+        cursor: pointer;
+        color: inherit;
+        opacity: 0.6;
+
+        &:hover {
+            opacity: 1;
+        }
+    }
+
+    &__title {
+        margin: 0 0 spacing("quarter");
+        font-size: fontSize("large");
+    }
+
+    &__description {
+        margin: 0 0 spacing("half");
+    }
+
+    &__code {
+        display: flex;
+        align-items: center;
+        gap: spacing("half");
+        justify-content: center;
+        padding: spacing("half");
+        background: rgba(0, 0, 0, 0.05);
+        border-radius: remCalc(6);
+        margin: spacing("half") 0;
+
+        code {
+            font-family: monospace;
+            font-size: fontSize("large");
+            font-weight: 700;
+            letter-spacing: 2px;
+            flex: 1;
+        }
+    }
+
+    // Override `.button` default bottom margin so buttons sit flush
+    // inside the modal without extra gap below each one.
+    &__copy.button,
+    &__cta.button {
+        margin-bottom: 0;
+        text-decoration: none;
+    }
+
+    &__cta.button {
+        display: block;
+        width: 100%;
+        margin-top: spacing("half");
+    }
+
+    &__no-thanks {
+        display: block;
+        margin: spacing("half") auto 0;
+        background: transparent;
+        border: 0;
+        color: inherit;
+        opacity: 0.6;
+        font-size: fontSize("smaller");
+        cursor: pointer;
+        text-decoration: underline;
+    }
+}
+
+@keyframes papathemes-popup-in {
+    from {
+        transform: scale(0.96);
+        opacity: 0;
+    }
+
+    to {
+        transform: scale(1);
+        opacity: 1;
+    }
+}
+
+// Respect prefers-reduced-motion. The modal still fades in via the
+// `animation` property without this override, which can trigger
+// vestibular symptoms. We also disable any transition on the modal
+// (currently none, but the override is cheap insurance for future edits).
+@media (prefers-reduced-motion: reduce) {
+    .papathemes-socialproof-popup__modal {
+        animation: none;
+        transition: none;
+    }
+}

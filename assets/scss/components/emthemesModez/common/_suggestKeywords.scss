@@ -1,0 +1,115 @@
+// =============================================================================
+// KEYWORD SUGGESTIONS
+// =============================================================================
+
+// Autocomplete overlay - displays inline suggestion in search input
+.emthemesModez-quickSearch .form-field .supermarket__quickSearch-autocomplete {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    pointer-events: none;
+    padding: spacing("half") spacing("base");
+    color: rgba(stencilColor("color-textBase"), 0.35);
+    font-size: remCalc(16);
+    font-family: inherit;
+    line-height: normal;
+    white-space: nowrap;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    background-color: transparent;
+
+    @include breakpoint("medium") {
+        font-size: fontSize("base");
+
+        @if ($input-bg-color != $header-bg) {
+            padding-right: remCalc(fontSize("larger")) + spacing("base") * 3;
+        }
+    }
+}
+
+// Autocomplete overlay for mobile
+.emthemesModez-quickSearch--mobileOnly .form-field .supermarket__quickSearch-autocomplete {
+    border: 2px solid transparent;
+    padding: spacing("quarter") spacing("half");
+    padding-right: remCalc(40) + spacing("half");
+}
+
+// Keyword suggestions container
+.supermarket__quickSearch-keywordSuggest {
+    display: none;
+    margin-bottom: spacing("half");
+    padding: 0 ($container-padding / 2);
+
+    @include breakpoint("medium") {
+        margin-bottom: 0;
+        padding: spacing("half") 0 0;
+    }
+}
+
+.supermarket__quickSearch-suggestions {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: spacing("quarter");
+}
+
+.supermarket__quickSearch-suggestion {
+    display: inline-flex;
+    align-items: center;
+    gap: spacing("eighth");
+    padding: remCalc(4) remCalc(8);
+    color: stencilColor("color-textSecondary");
+    text-decoration: none;
+    border-radius: remCalc(4);
+    transition: all 0.2s ease;
+    font-size: fontSize("smallest");
+    background-color: container("fill", "dark");
+    border: 0;
+    cursor: pointer;
+    white-space: nowrap;
+    max-width: 100%;
+
+    @include breakpoint("medium") {
+        gap: spacing("quarter");
+        font-size: fontSize("smaller");
+        padding: remCalc(4) remCalc(10);
+    }
+
+    &:hover,
+    &:focus,
+    &.is-active {
+        background-color: $buttonStyle-primary-backgroundColor;
+        color: $buttonStyle-primary-color;
+        transform: translateY(-1px);
+        box-shadow: 0 2px 4px rgba($color-black, 0.1);
+
+        svg {
+            fill: $buttonStyle-primary-color;
+        }
+    }
+
+    .icon {
+        flex-shrink: 0;
+        width: fontSize("smallest");
+        height: fontSize("smallest");
+        transition: color 0.2s ease;
+
+        @include breakpoint("medium") {
+            width: fontSize("smaller");
+            height: fontSize("smaller");
+        }
+    }
+
+    svg {
+        color: stencilColor("color-textSecondary");
+    }
+
+    span {
+        overflow: hidden;
+        text-overflow: ellipsis;
+        max-width: 100%;
+    }
+}

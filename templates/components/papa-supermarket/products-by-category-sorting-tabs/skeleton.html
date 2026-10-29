@@ -1,0 +1,76 @@
+{{#if products '>' 0}}
+<div class="emthemesModez-section emthemesModez-section--productsByCategorySortingTabs" data-pbcst-skeleton>
+    <div class="emthemesModez-section-inner">
+        <div class="emthemesModez-productsByCategoryTabs emthemesModez-productsByCategoryTabs--sorting emthemesModez-productsByCategoryTabs--supermarket1 emthemesModez-pbcSkeleton" aria-hidden="true">
+            <ul class="tabs">
+                <li class="li-heading"><h2 class="page-heading">{{#if category}}<a href="{{category.url}}">{{category.name}}</a>{{else}}<a class="emthemesModez-pbcSkeleton-headingLink"><span class="emthemesModez-pbcSkeleton-bar emthemesModez-pbcSkeleton-bar--heading"></span></a>{{/if}}</h2></li>
+                {{#if show_bestselling}}<li class="tab{{#if active '==' 'bestselling'}} is-active{{/if}}"><span class="tab-title">{{lang 'papasupermarket.products_by_category_sorting_tabs.bestselling'}}</span></li>{{/if}}
+                {{#if show_featured}}<li class="tab{{#if active '==' 'featured'}} is-active{{/if}}"><span class="tab-title">{{lang 'papasupermarket.products_by_category_sorting_tabs.featured'}}</span></li>{{/if}}
+                {{#if show_new}}<li class="tab{{#if active '==' 'newest'}} is-active{{/if}}"><span class="tab-title">{{lang 'papasupermarket.products_by_category_sorting_tabs.new'}}</span></li>{{/if}}
+                {{#if show_reviews}}<li class="tab{{#if active '==' 'avgcustomerreview'}} is-active{{/if}}"><span class="tab-title">{{lang 'papasupermarket.products_by_category_sorting_tabs.reviews'}}</span></li>{{/if}}
+            </ul>
+            {{#or showBanner (if subcategories '>' 0)}}
+                <div class="emthemesModez-productsByCategoryTabs-details{{#if showBanner}} emthemesModez-productsByCategoryTabs-details--hasImage{{/if}}">
+                    {{#if showBanner}}
+                        <div class="emthemesModez-productsByCategoryTabs-details-image">
+                            <span class="emthemesModez-pbcSkeleton-figure emthemesModez-pbcSkeleton-figure--banner"></span>
+                        </div>
+                    {{/if}}
+                    {{#if subcategories '>' 0}}
+                        <div class="emthemesModez-productsByCategoryTabs-details-sub">
+                            <h3 class="emthemesModez-productsByCategoryTabs-details-sub-heading">{{lang 'papasupermarket.products_by_category_sorting_tabs.subcategory_title'}}</h3>
+                            <ul class="emthemesModez-productsByCategoryTabs-details-sub-list">
+                                {{#if category}}
+                                    {{#each (limit category.children subcategories)}}
+                                        <li class="emthemesModez-productsByCategoryTabs-details-sub-item"><a href="{{url}}">{{name}}</a></li>
+                                    {{/each}}
+                                {{else}}
+                                    {{#for 1 subcategories}}
+                                        <li class="emthemesModez-productsByCategoryTabs-details-sub-item"><span class="emthemesModez-pbcSkeleton-bar emthemesModez-pbcSkeleton-bar--subitem"></span></li>
+                                    {{/for}}
+                                {{/if}}
+                            </ul>
+                        </div>
+                    {{/if}}
+                </div>
+            {{/or}}
+            <div class="tabs-contents">
+                <section class="tab-content is-active">
+                    <div class="emthemesModez-productsByCategoryTabs-products">
+                        <ul class="productGrid{{#if products '==' 5}} productGrid--maxCol5{{/if}}{{#if products '==' 6}} productGrid--maxCol6{{/if}}{{#if products '==' 10}} productGrid--maxCol5{{/if}}{{#if products '==' 15}} productGrid--maxCol5{{/if}}{{#if products '==' 18}} productGrid--maxCol6{{/if}}{{#if products '==' 12}}{{#unless (if subcategories '>' 0)}} productGrid--maxCol6{{/unless}}{{/if}}">
+                            {{#for 1 products}}
+                                <li class="product">
+                                    <article class="card">
+                                        <figure class="card-figure">
+                                            <span class="emthemesModez-pbcSkeleton-figure"></span>
+                                            <figcaption class="card-figcaption">
+                                                <div class="card-figcaption-body">
+                                                    <div class="card-buttons">
+                                                        <span class="button button--small button--primary card-figcaption-button emthemesModez-pbcSkeleton-button">&nbsp;</span>
+                                                    </div>
+                                                </div>
+                                            </figcaption>
+                                        </figure>
+                                        <div class="card-body">
+                                            <h4 class="card-title">
+                                                <span class="emthemesModez-pbcSkeleton-bar emthemesModez-pbcSkeleton-bar--line"></span>
+                                                <span class="emthemesModez-pbcSkeleton-bar emthemesModez-pbcSkeleton-bar--line emthemesModez-pbcSkeleton-bar--short"></span>
+                                            </h4>
+                                            <p class="card-text card-text--brand"><span class="emthemesModez-pbcSkeleton-bar emthemesModez-pbcSkeleton-bar--brand"></span></p>
+                                            <p class="card-text card-text--rating"><span class="emthemesModez-pbcSkeleton-bar emthemesModez-pbcSkeleton-bar--rating"></span></p>
+                                            <div class="card-text card-text--price"><span class="emthemesModez-pbcSkeleton-bar emthemesModez-pbcSkeleton-bar--price"></span></div>
+                                        </div>
+                                    </article>
+                                </li>
+                            {{/for}}
+                        </ul>
+                    </div>
+                </section>
+            </div>
+            <div class="emthemesModez-productsByCategoryTabs-actionGroup">
+                <span class="button button--small emthemesModez-pbcSkeleton-button">&nbsp;</span>
+            </div>
+        </div>
+    </div>
+</div>
+{{/if}}

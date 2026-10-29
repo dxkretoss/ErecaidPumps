@@ -1,0 +1,100 @@
+{{!-- 
+    ErecAid Category Feature Cards Section
+    4-Column Feature Grid matching reference design (Screenshot 1)
+    - Heading and subtitle via code
+    - Middle extracted product kit image
+    - Bottom action button via code
+--}}
+<section class="erecaid-cat-section" aria-label="Product Categories">
+    <div class="container">
+        <div class="erecaid-cat-grid">
+            {{!-- Card 1: Manual Pumps --}}
+            <div class="erecaid-cat-card">
+                <div class="erecaid-cat-card__header">
+                    <h3 class="erecaid-cat-card__title">
+                        {{#if theme_settings.custom_cat1_title}}{{theme_settings.custom_cat1_title}}{{else}}Manual Pumps{{/if}}
+                    </h3>
+                    <p class="erecaid-cat-card__sub">
+                        {{#if theme_settings.custom_cat1_sub}}{{theme_settings.custom_cat1_sub}}{{else}}Simple, dependable and easy to control.{{/if}}
+                    </p>
+                </div>
+                <div class="erecaid-cat-card__media">
+                    <img src="{{#if theme_settings.custom_cat1_img}}{{theme_settings.custom_cat1_img}}{{else}}/assets/img/cat-prod-1.png{{/if}}" 
+                         alt="{{#if theme_settings.custom_cat1_title}}{{theme_settings.custom_cat1_title}}{{else}}Manual Pumps{{/if}}" 
+                         loading="lazy">
+                </div>
+                <div class="erecaid-cat-card__footer">
+                    <a href="{{#if theme_settings.custom_cat1_url}}{{theme_settings.custom_cat1_url}}{{else}}/categories{{/if}}" class="erecaid-cat-card__btn">
+                        {{#if theme_settings.custom_cat1_btn}}{{theme_settings.custom_cat1_btn}}{{else}}Shop Manual Pumps{{/if}} <span class="erecaid-cat-card__btn-arrow">&rarr;</span>
+                    </a>
+                </div>
+            </div>
+
+            {{!-- Card 2: Automatic & Rechargeable Pumps --}}
+            <div class="erecaid-cat-card">
+                <div class="erecaid-cat-card__header">
+                    <h3 class="erecaid-cat-card__title">
+                        {{#if theme_settings.custom_cat2_title}}{{theme_settings.custom_cat2_title}}{{else}}Automatic &amp; Rechargeable Pumps{{/if}}
+                    </h3>
+                    <p class="erecaid-cat-card__sub">
+                        {{#if theme_settings.custom_cat2_sub}}{{theme_settings.custom_cat2_sub}}{{else}}Convenient powered operation.{{/if}}
+                    </p>
+                </div>
+                <div class="erecaid-cat-card__media">
+                    <img src="{{#if theme_settings.custom_cat2_img}}{{theme_settings.custom_cat2_img}}{{else}}/assets/img/cat-prod-2.png{{/if}}" 
+                         alt="{{#if theme_settings.custom_cat2_title}}{{theme_settings.custom_cat2_title}}{{else}}Automatic &amp; Rechargeable Pumps{{/if}}" 
+                         loading="lazy">
+                </div>
+                <div class="erecaid-cat-card__footer">
+                    <a href="{{#if theme_settings.custom_cat2_url}}{{theme_settings.custom_cat2_url}}{{else}}/categories{{/if}}" class="erecaid-cat-card__btn">
+                        {{#if theme_settings.custom_cat2_btn}}{{theme_settings.custom_cat2_btn}}{{else}}Shop Automatic Pumps{{/if}} <span class="erecaid-cat-card__btn-arrow">&rarr;</span>
+                    </a>
+                </div>
+            </div>
+
+            {{!-- Card 3: After Prostate Surgery --}}
+            <div class="erecaid-cat-card">
+                <div class="erecaid-cat-card__header">
+                    <h3 class="erecaid-cat-card__title">
+                        {{#if theme_settings.custom_cat3_title}}{{theme_settings.custom_cat3_title}}{{else}}After Prostate Surgery{{/if}}
+                    </h3>
+                    <p class="erecaid-cat-card__sub">
+                        {{#if theme_settings.custom_cat3_sub}}{{theme_settings.custom_cat3_sub}}{{else}}Support your recovery with a trusted vacuum therapy option.{{/if}}
+                    </p>
+                </div>
+                <div class="erecaid-cat-card__media">
+                    <img src="{{#if theme_settings.custom_cat3_img}}{{theme_settings.custom_cat3_img}}{{else}}/assets/img/cat-prod-3.png{{/if}}" 
+                         alt="{{#if theme_settings.custom_cat3_title}}{{theme_settings.custom_cat3_title}}{{else}}After Prostate Surgery{{/if}}" 
+                         loading="lazy">
+                </div>
+                <div class="erecaid-cat-card__footer">
+                    <a href="{{#if theme_settings.custom_cat3_url}}{{theme_settings.custom_cat3_url}}{{else}}/categories{{/if}}" class="erecaid-cat-card__btn">
+                        {{#if theme_settings.custom_cat3_btn}}{{theme_settings.custom_cat3_btn}}{{else}}Learn More{{/if}} <span class="erecaid-cat-card__btn-arrow">&rarr;</span>
+                    </a>
+                </div>
+            </div>
+
+            {{!-- Card 4: Tension Rings & Accessories --}}
+            <div class="erecaid-cat-card">
+                <div class="erecaid-cat-card__header">
+                    <h3 class="erecaid-cat-card__title">
+                        {{#if theme_settings.custom_cat4_title}}{{theme_settings.custom_cat4_title}}{{else}}Tension Rings &amp; Accessories{{/if}}
+                    </h3>
+                    <p class="erecaid-cat-card__sub">
+                        {{#if theme_settings.custom_cat4_sub}}{{theme_settings.custom_cat4_sub}}{{else}}Replacement rings, cylinders, seals and more.{{/if}}
+                    </p>
+                </div>
+                <div class="erecaid-cat-card__media">
+                    <img src="{{#if theme_settings.custom_cat4_img}}{{theme_settings.custom_cat4_img}}{{else}}/assets/img/cat-prod-4.png{{/if}}" 
+                         alt="{{#if theme_settings.custom_cat4_title}}{{theme_settings.custom_cat4_title}}{{else}}Tension Rings &amp; Accessories{{/if}}" 
+                         loading="lazy">
+                </div>
+                <div class="erecaid-cat-card__footer">
+                    <a href="{{#if theme_settings.custom_cat4_url}}{{theme_settings.custom_cat4_url}}{{else}}/categories{{/if}}" class="erecaid-cat-card__btn">
+                        {{#if theme_settings.custom_cat4_btn}}{{theme_settings.custom_cat4_btn}}{{else}}Shop Accessories{{/if}} <span class="erecaid-cat-card__btn-arrow">&rarr;</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

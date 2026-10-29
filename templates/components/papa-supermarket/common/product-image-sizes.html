@@ -1,0 +1,19 @@
+{{!--
+    Assigns `productImageSizes`: the `sizes` for the PDP main gallery image, shared by
+    product-view's `sizes` and theme-preload's `imagesizes`. Those two MUST stay identical,
+    or the preloaded file is downloaded and never used.
+
+    `productpage_layout` is read as well as `layout` because product-page-no-sidebar forces
+    `layout` to 'default' via {{merge}}, and that runs after global-vars.
+
+    Each px value is the widest the slot gets across the four variations, tracking the
+    801/1261/1681 breakpoints and the 50%-of-row column in layouts/products/_productView.scss.
+    Narrower styles and vertical thumbnails then over-declare by under one srcset step, which
+    only costs bytes -- under-declaring is what makes images blurry.
+--}}
+{{~assignVar 'productImageSizes' '(min-width: 1681px) 736px, (min-width: 1261px) 571px, (min-width: 801px) calc(50vw - 51px), 100vw'~}}
+{{#if theme_settings.layout '===' 'left-sidebar'}}
+    {{#unless theme_settings.productpage_layout '===' 'no-sidebar'}}
+        {{~assignVar 'productImageSizes' '(min-width: 1681px) 583px, (min-width: 1261px) 451px, (min-width: 801px) calc(40vw - 47px), 100vw'~}}
+    {{/unless}}
+{{/if}}

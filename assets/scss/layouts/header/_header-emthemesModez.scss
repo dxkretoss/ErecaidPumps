@@ -1,0 +1,394 @@
+// =============================================================================
+// HEADER (CSS)
+//
+// Custom header for theme emthemes-modez. Inherits css from the base theme.
+//
+// -----------------------------------------------------------------------------
+
+
+.header {
+    min-height: $header-height;
+    box-shadow: 0 2px 5px rgba(color("blacks"), 0.2);
+    border-bottom: 0;
+    z-index: zIndex("high");
+
+    @include breakpoint("medium") {
+        border-bottom: 0;
+        box-shadow: none;
+        z-index: auto;
+
+        &.is-sticky {
+            position: fixed;
+            z-index: zIndex("high");
+            box-shadow: 0 2px 5px rgba(color("blacks"), 0.2);
+        }
+    }
+}
+
+.header-logo {
+    > a {
+        padding: 0;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        min-height: $header-height;
+        width: 100%;
+
+        &:hover {
+            color: $storeName-color;
+        }
+
+        &:active {
+            color: $storeName-color;
+        }
+    }
+
+    @include breakpoint("medium") {
+        margin-top: 0;
+        margin-bottom: 0;
+
+        > a {
+            display: inline-block;
+            min-height: auto;
+            width: auto;
+        }
+    }
+
+    .header-logo-image {
+        @media (max-width: (screenSize("medium") - 1px)) {
+            left: 0;
+            right: 0;
+        }
+    }
+}
+
+.header-logo-text {
+    letter-spacing: letterSpacing("base");
+    font-weight: fontWeight("normal");
+    margin: 0;
+}
+
+.header-logo-image-container {
+    @if stencilString("logo_size") == "original" {
+        width: 100%;
+    }
+    @else {
+        width: get-width(stencilString("logo_size"));
+    }
+    max-width: 100%;
+
+    .header-logo-image {
+        @include breakpoint("medium") {
+            max-height: 100%;
+        }
+    }
+
+}
+
+// .is-sticky {
+//     @include breakpoint("medium") {
+//         .header-logo-image-container:after {
+//             padding-bottom: calc(#{unquote(get-height(stencilString('logo_size')))} / 2);
+//         }
+//         .header-logo-image {
+//             max-height: 100%;
+//         }
+//     }
+// }
+
+
+.mobileMenu-toggle {
+    .mobileMenu-toggleIcon,
+    .mobileMenu-toggleIcon::before,
+    .mobileMenu-toggleIcon::after {
+        background: stencilColor("navUser-color");
+    }
+
+    &.is-open .mobileMenu-toggleIcon {
+        // scss-lint:disable NestingDepth
+        &::before,
+        &::after {
+            background-color: stencilColor("navUser-color");
+        }
+    }
+}
+
+
+.emthemesModez-header-userSection .emthemesModez-quickSearch {
+    display: none;
+    
+    @include breakpoint("medium") {
+        display: block;
+    }
+}
+
+// ============================================================================
+// Top bar on the header
+// ============================================================================
+
+.emthemesModez-header-topSection {
+    background-color: stencilColor("topHeader-bgColor");
+    color: stencilColor("topHeader-color");
+
+    @if $theme-style == "compact" {
+        border-bottom: 0;
+    }
+    @else {
+        border-bottom: 1px solid stencilColor("topHeader-borderColor");
+    }
+
+    .container {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+    }
+
+    &::before,
+    &::after {
+        display: none;
+    }
+
+    .navUser {
+        width: auto;
+        padding: 0;
+        z-index: auto;
+    }
+
+    .navUser-section {
+        column-gap: 0;
+
+        + .navUser-section {
+            margin-left: 0;
+
+            .navUser-item {
+                @if $theme-style == "modern" {
+                    border-left: 1px solid rgba(stencilColor("topHeader-color"), 0.2);
+                }
+            }
+        }
+
+        &:last-of-type {
+            .navUser-item:last-of-type {
+                .navUser-action:last-of-type {
+                    padding-right: 0;
+                }
+            }
+        }
+    }
+
+    .navUser--storeInfo .navUser-item {
+        color: stencilColor("topHeader-color");
+    }
+
+    .navUser-or {
+        color: stencilColor("topHeader-color");
+    }
+
+    .navUser-welcome {
+        display: inline-block;
+    }
+    
+    .navUser-action {
+        color: stencilColor("topHeader-color");
+        display: inline-flex;
+        align-items: center;
+
+        @if $theme-style == "compact" {
+            font-weight: $header-font-weight;
+        }
+        @else {
+            font-weight: inherit;
+        }
+
+        @if $theme-style == "modern" {
+            font-size: fontSize("smaller");
+            padding: spacing("third") spacing("half");
+        }
+        @else {
+            font-size: fontSize("base");
+            padding: spacing("half");
+        }
+
+        .icon {
+            width: remCalc(12);
+            height: remCalc(12);
+            margin: 0 spacing("third") 0 0;
+            position: relative;
+        }
+
+        svg {
+            fill: stencilColor("topHeader-icon-color");
+        }
+
+        &:hover,
+        &:focus,
+        &:active {
+            color: stencilColor("topHeader-color-hover");
+        }
+    }
+
+    .navUser-action--currencySelector {
+        .icon {
+            margin-left: spacing("quarter");
+            margin-right: 0;
+        }
+    }
+
+    .navUser-item-icon {
+        font-size: fontSize("base");
+        color: stencilColor("topHeader-icon-color");
+    }
+
+    .navUser-item + .navUser-item {
+        @if $theme-style == "modern" {
+            border-left: 1px solid rgba(stencilColor("topHeader-color"), 0.2);
+        }
+    }
+
+    .navUser-item--account {
+        @include breakpoint("medium") {
+            align-items: center;
+        }
+        
+        .navUser-action {
+            vertical-align: middle;
+        }
+
+        .navUser-or {
+            vertical-align: middle;
+        }
+    }
+}
+
+
+// ============================================================================
+// Header variations (left, center, right)
+// ============================================================================
+
+.emthemesModez-header-userSection > .container {
+    @include breakpoint("medium") {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        transition: all 0.2s ease-in;
+
+        @if $theme-style == "compact" {
+            padding-top: spacing("half");
+            padding-bottom: spacing("half");
+        }
+        @else if $theme-style == "modern" {
+            padding-top: spacing("half");
+            padding-bottom: spacing("quarter");
+        }
+        @else {
+            padding-top: spacing("single") + spacing("half");
+            padding-bottom: spacing("single") + spacing("half");
+        }
+
+        .is-sticky & {
+            padding-top: spacing("quarter");
+            padding-bottom: spacing("quarter");
+        }
+
+        .navUser {
+            width: auto;
+        }
+
+        .header-logo {
+            min-width: 20%;
+            margin-left: 0;
+            margin-right: 0;
+        }
+
+        .emthemesModez-quickSearch {
+            order: 2;
+            flex: 1;
+        }
+    }
+}
+
+.emthemesModez-header-userSection.is-sticky > .container {
+    @include breakpoint("medium") {
+        transition: all 0.2s ease-in;
+
+        @if $theme-style == "default" {
+            padding-top: spacing("half");
+            padding-bottom: spacing("half");
+        }
+        @else {
+            padding-top: spacing("quarter");
+            padding-bottom: spacing("quarter");
+        }
+    }
+}
+
+.emthemesModez-header-userSection--logo-left > .container {
+    @include breakpoint("medium") {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+
+        .navUser {
+            order: 3;
+            padding-right: 0;
+        }
+
+        .header-logo {
+            order: 1;
+            padding-right: spacing("single");
+        }
+    }
+}
+
+.emthemesModez-header-userSection--logo-right > .container {
+    @include breakpoint("medium") {
+        .navUser {
+            order: 1;
+            padding-left: 0;
+        }
+
+        .header-logo {
+            order: 3;
+            padding-left: spacing("single");
+        }
+    }
+}
+
+
+.emthemesModez-header-userSection--logo-center > .container {
+    @include breakpoint("medium") {
+        .navUser {
+            order: 3;
+            flex: 1 0 width("3/12");
+            width: width("3/12");
+            padding-right: 0;
+            justify-content: flex-end;
+        }
+
+        .header-logo {
+            order: 2;
+            flex: 1 0 width("6/12");
+            width: width("6/12");
+            padding-left: spacing("single");
+            padding-right: spacing("single");
+        }
+
+        .emthemesModez-quickSearch {
+            order: 1;
+            flex: 1 0 width("3/12");
+            width: width("3/12");
+        }
+    }    
+}
+
+// ----------------------------------------------------------------------------
+// navPages Main Navigation - Modern Style
+// ----------------------------------------------------------------------------
+.papaSupermarket-style--modern {
+    @include breakpoint("medium") {
+        .navPages-action {
+            padding-top: spacing("third");
+            padding-bottom: spacing("third");
+        }
+    }
+}

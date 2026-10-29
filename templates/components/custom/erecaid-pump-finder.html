@@ -1,0 +1,137 @@
+{{!-- 
+    ErecAid Interactive Pump Finder Section
+    100% matches reference screenshot:
+    - Left: Headline & Subtitle
+    - Right: Call phone support with double chat bubble icon
+    - 3-step dropdown questionnaire in individual boxed cards with chevron separators
+    - Action button "Find My Pump →" vertically centered
+--}}
+<section class="erecaid-finder-section" aria-label="Pump Finder Questionnaire">
+    <div class="container">
+        <div class="erecaid-finder-card">
+            {{!-- Top Row: Headline + Call Support --}}
+            <div class="erecaid-finder-card__top">
+                <div class="erecaid-finder-card__heading-wrap">
+                    <h2 class="erecaid-finder-card__title">{{#if theme_settings.custom_finder_title}}{{theme_settings.custom_finder_title}}{{else}}Find the Right Pump for You{{/if}}</h2>
+                    <p class="erecaid-finder-card__sub">{{#if theme_settings.custom_finder_sub}}{{theme_settings.custom_finder_sub}}{{else}}Answer a few simple questions and we'll help you find the best options.{{/if}}</p>
+                </div>
+
+                <div class="erecaid-finder-card__support">
+                    <div class="erecaid-finder-card__support-icon" aria-hidden="true">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#0055ad" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M14 9a2 2 0 0 1-2 2H6l-4 4V4c0-1.1.9-2 2-2h8a2 2 0 0 1 2 2v5Z"/>
+                            <path d="M18 9h2a2 2 0 0 1 2 2v11l-4-4h-6a2 2 0 0 1-2-2v-1"/>
+                        </svg>
+                    </div>
+                    <div class="erecaid-finder-card__support-text">
+                        <span class="erecaid-finder-card__support-label">{{#if theme_settings.custom_finder_support_label}}{{theme_settings.custom_finder_support_label}}{{else}}Prefer to talk to someone?{{/if}}</span>
+                        <a href="tel:{{#if theme_settings.custom_header_phone}}{{theme_settings.custom_header_phone}}{{else}}866-496-7359{{/if}}" class="erecaid-finder-card__support-phone">
+                            Call <strong>{{#if theme_settings.custom_header_phone}}{{theme_settings.custom_header_phone}}{{else}}866-496-7359{{/if}}</strong>
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            {{!-- Bottom Row: 3 Step Boxes + Chevrons + Submit Button --}}
+            <form class="erecaid-finder-card__form" action="/categories" method="GET" data-erecaid-finder-form>
+                {{!-- Step 1 Box --}}
+                <div class="erecaid-finder-card__step-box">
+                    <div class="erecaid-finder-card__step-header">
+                        <span class="erecaid-finder-card__step-num">1</span>
+                        <label class="erecaid-finder-card__step-label" for="finder-step-1">
+                            What will you primarily use the device for?
+                        </label>
+                    </div>
+                    <div class="erecaid-finder-card__select-wrap">
+                        <select id="finder-step-1" name="purpose" class="erecaid-finder-card__select" aria-label="Device Purpose">
+                            <option value="" selected disabled>Select an option</option>
+                            <option value="ed">Erectile Dysfunction (ED) Treatment</option>
+                            <option value="prostate">Post-Prostatectomy Recovery / Rehabilitation</option>
+                            <option value="peyronie">Peyronie's Disease Therapy</option>
+                            <option value="general">General Penile Health &amp; Wellness</option>
+                        </select>
+                    </div>
+                </div>
+
+                {{!-- Step Separator Chevron --}}
+                <div class="erecaid-finder-card__separator" aria-hidden="true">
+                    <svg width="7" height="12" viewBox="0 0 7 12" fill="none">
+                        <path d="M1 1L6 6L1 11" stroke="#002d62" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
+                </div>
+
+                {{!-- Step 2 Box --}}
+                <div class="erecaid-finder-card__step-box">
+                    <div class="erecaid-finder-card__step-header">
+                        <span class="erecaid-finder-card__step-num">2</span>
+                        <label class="erecaid-finder-card__step-label" for="finder-step-2">
+                            Which type of pump do you prefer?
+                        </label>
+                    </div>
+                    <div class="erecaid-finder-card__select-wrap">
+                        <select id="finder-step-2" name="pump_type" class="erecaid-finder-card__select" aria-label="Pump Type">
+                            <option value="" selected disabled>Select an option</option>
+                            <option value="manual">Manual (Hand / Lever Operation)</option>
+                            <option value="automatic">Automatic / Battery Powered</option>
+                            <option value="rechargeable">Rechargeable Electronic System</option>
+                            <option value="all">No Preference / Show All</option>
+                        </select>
+                    </div>
+                </div>
+
+                {{!-- Step Separator Chevron --}}
+                <div class="erecaid-finder-card__separator" aria-hidden="true">
+                    <svg width="7" height="12" viewBox="0 0 7 12" fill="none">
+                        <path d="M1 1L6 6L1 11" stroke="#002d62" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
+                </div>
+
+                {{!-- Step 3 Box --}}
+                <div class="erecaid-finder-card__step-box">
+                    <div class="erecaid-finder-card__step-header">
+                        <span class="erecaid-finder-card__step-num">3</span>
+                        <label class="erecaid-finder-card__step-label" for="finder-step-3">
+                            Is easy operation important to you?
+                        </label>
+                    </div>
+                    <div class="erecaid-finder-card__select-wrap">
+                        <select id="finder-step-3" name="easy_operation" class="erecaid-finder-card__select" aria-label="Easy Operation Preference">
+                            <option value="" selected disabled>Select an option</option>
+                            <option value="one-touch">Yes - Need One-Touch / Effortless Operation</option>
+                            <option value="standard">Somewhat - Standard Operation is Fine</option>
+                            <option value="full-manual">No - Prefer Full Manual Control</option>
+                        </select>
+                    </div>
+                </div>
+
+                {{!-- Submit Button --}}
+                <div class="erecaid-finder-card__action">
+                    <button type="submit" class="erecaid-finder-card__btn">
+                        {{#if theme_settings.custom_finder_btn_text}}{{theme_settings.custom_finder_btn_text}}{{else}}Find My Pump{{/if}} <span class="erecaid-finder-card__btn-arrow">&rarr;</span>
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+</section>
+
+<script>
+(function() {
+    var form = document.querySelector('[data-erecaid-finder-form]');
+    if (!form) return;
+    form.addEventListener('submit', function(e) {
+        var purpose = form.elements['purpose'] ? form.elements['purpose'].value : '';
+        var pumpType = form.elements['pump_type'] ? form.elements['pump_type'].value : '';
+        
+        if (purpose === 'prostate') {
+            form.action = '/categories';
+        } else if (pumpType === 'manual') {
+            form.action = '/categories';
+        } else if (pumpType === 'automatic' || pumpType === 'rechargeable') {
+            form.action = '/categories';
+        } else {
+            form.action = '/categories';
+        }
+    });
+})();
+</script>

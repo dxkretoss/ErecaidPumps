@@ -1,0 +1,46 @@
+{{#if items}}
+<div class="accordion-block">
+    <div
+        class="accordion-navigation toggleLink {{#unless start_collapsed }} is-open {{/unless}}"
+        role="button"
+        tabindex="0"
+        data-collapsible="#facetedSearch-content--{{dashcase facet }}">
+        <h4 class="accordion-title">
+            {{ title }} <span class="_clear-placeholder" aria-hidden="true">{{lang 'search.faceted.clear'}}</span>
+        </h4>
+
+        <div class="accordion-navigation-actions">
+            {{#if selected}}
+                <a href="{{ remove_url }}" class="facetedSearch-clearLink" data-faceted-search-facet>{{lang 'search.faceted.clear'}}</a>
+            {{/if}}
+            <svg class="icon accordion-indicator toggleLink-text toggleLink-text--off">
+                <use href="#icon-add" />
+            </svg>
+            <svg class="icon accordion-indicator toggleLink-text toggleLink-text--on">
+                <use href="#icon-remove" />
+            </svg>
+        </div>
+    </div>
+
+    <div id="facetedSearch-content--{{dashcase facet }}" class="accordion-content facetedSearch-content--{{dashcase facet}} {{#unless start_collapsed }} is-open {{/unless}}">
+        <ul class="navList">
+            {{#each items}}
+                <li class="navList-item">
+                    <a href="{{ url }}"
+                       class="navList-action {{#if selected }} is-selected {{/if}}"
+                       rel="nofollow"
+                       data-faceted-search-facet>
+                        <span class="rating--small">
+                            {{> components/products/ratings rating=title}}
+                        </span>
+                        {{lang 'search.faceted.rating.and-up'}}
+                        {{#if ../show_product_counts}}
+                            <span>({{ count }})</span>
+                        {{/if}}
+                    </a>
+                </li>
+            {{/each}}
+        </ul>
+    </div>
+</div>
+{{/if}}

@@ -1,0 +1,124 @@
+{{#partial "page"}}
+<div class="login">
+    {{> components/common/breadcrumbs breadcrumbs=breadcrumbs}}
+    <h1 class="page-heading">{{lang 'login.heading' }}</h1>
+    {{#if forms.login.error}}
+        {{> components/common/alert-error forms.login.error}}
+    {{/if}}
+    {{#if forms.login.success}}
+        {{> components/common/alert-success forms.login.success}}
+    {{/if}}
+
+    <!-- Passwordless Success Message -->
+    <div class="supermarket__passwordless-success" style="display: none;">
+        <div class="alertBox alertBox--success">
+            <div class="alertBox-column alertBox-icon">
+                <icon glyph="ic-success" class="icon" aria-hidden="true">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
+                        <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/>
+                    </svg>
+                </icon>
+            </div>
+            <div class="alertBox-column alertBox-message">
+                <h4 class="supermarket__passwordless-success-heading">{{lang 'login.passwordless.success_heading'}}</h4>
+                <p class="supermarket__passwordless-success-message">{{lang 'login.passwordless.success_message'}}</p>
+                <p class="supermarket__passwordless-expiry-note"></p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Passwordless Error Message -->
+    <div class="supermarket__passwordless-error" style="display: none;">
+        <div class="alertBox alertBox--error">
+            <div class="alertBox-column alertBox-icon">
+                <icon glyph="ic-error" class="icon" aria-hidden="true">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
+                        <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-2h2v2zm0-4h-2V7h2v6z"/>
+                    </svg>
+                </icon>
+            </div>
+            <div class="alertBox-column alertBox-message">
+                <p class="supermarket__passwordless-error-message"></p>
+            </div>
+        </div>
+    </div>
+
+    <div class="login-row">
+        <form class="login-form form" action="{{urls.auth.check_login}}" method="post">
+            {{inject 'useValidEmail' (lang 'forms.validate.common.email_address')}}
+            {{inject 'enterPass' (lang 'forms.validate.common.password')}}
+            {{! Inject passwordless login messages }}
+            {{inject 'passwordlessNotSupported' (lang 'login.passwordless.errors.not_supported')}}
+            {{inject 'passwordlessInvalidEmail' (lang 'login.passwordless.errors.invalid_email')}}
+            {{inject 'passwordlessTooManyRequests' (lang 'login.passwordless.errors.too_many_requests')}}
+            {{inject 'passwordlessServerError' (lang 'login.passwordless.errors.server_error')}}
+            {{inject 'passwordlessGeneralError' (lang 'login.passwordless.errors.general_error')}}
+            {{inject 'passwordlessNetworkError' (lang 'login.passwordless.errors.network_error')}}
+            {{inject 'passwordlessEnterEmail' (lang 'forms.validate.common.email_address')}}
+            {{inject 'passwordlessSuccessExpiry' (lang 'login.passwordless.success_note' expiry='{expiry}')}}
+            {{inject 'passwordlessSendLink' (lang 'login.passwordless.send_link')}}
+            {{inject 'passwordlessSending' 'Sending...'}}
+
+            <!-- Passwordless Login Description -->
+            <div class="supermarket__passwordless-description" style="display: none;">
+                <h3>{{lang 'login.passwordless.heading'}}</h3>
+                <p>{{lang 'login.passwordless.description'}}</p>
+            </div>
+
+            <!-- Email Field -->
+            <div class="form-field">
+                <label class="form-label" for="login_email">{{lang 'login.field_email'}}</label>
+                <input class="form-input" name="login_email" id="login_email" type="email">
+            </div>
+
+            <!-- Password Field (hidden during passwordless) -->
+            <div class="form-field supermarket__password-field" data-test="password">
+                <label class="form-label" for="login_pass">{{lang 'login.field_password'}}</label>
+                <input class="form-input" id="login_pass" type="password" name="login_pass" autocomplete="off">
+            </div>
+
+            <!-- Standard Login Actions -->
+            <div class="form-actions supermarket__standard-actions" data-test="standard-actions">
+                <input type="submit" class="button button--primary" value="{{lang 'login.submit_value' }}">
+                <a class="forgot-password" href="{{urls.auth.forgot_password}}">{{lang 'login.forgot_password' }}</a>
+                <div class="supermarket__passwordless-toggle">
+                    <button type="button" class="button button--secondary" id="supermarket__passwordless-open">
+                        {{lang 'login.passwordless.button_text'}}
+                    </button>
+                </div>
+            </div>
+
+            <!-- Passwordless Login Actions -->
+            <div class="form-actions supermarket__passwordless-actions" data-test="passwordless-actions" style="display: none;">
+                <button type="button" class="button button--primary" id="supermarket__passwordless-send">
+                    {{lang 'login.passwordless.send_link'}}
+                </button>
+                <button type="button" class="button button--secondary" id="supermarket__passwordless-cancel">
+                    {{lang 'login.passwordless.cancel'}}
+                </button>
+            </div>
+        </form>
+        {{#if settings.account_creation_enabled}}
+            <div class="new-customer">
+                <div class="panel">
+                    <div class="panel-header">
+                        <h2 class="panel-title">{{lang 'login.new_customer.heading' }}</h2>
+                    </div>
+                    <div class="panel-body">
+                        <p class="new-customer-intro">{{lang 'login.new_customer.intro' }}</p>
+                        <ul class="new-customer-fact-list">
+                            <li class="new-customer-fact">{{lang 'login.new_customer.fact1' }}</li>
+                            <li class="new-customer-fact">{{lang 'login.new_customer.fact2' }}</li>
+                            <li class="new-customer-fact">{{lang 'login.new_customer.fact3' }}</li>
+                            <li class="new-customer-fact">{{lang 'login.new_customer.fact4' }}</li>
+                            <li class="new-customer-fact">{{lang 'login.new_customer.fact5' }}</li>
+                        </ul>
+                        <a href="{{urls.auth.create_account}}"><button class="button button--primary">{{lang 'login.new_customer.create_account' }}</button></a>
+                    </div>
+                </div>
+            </div>
+        {{/if}}
+    </div>
+</div>
+{{/partial}}
+{{> layout/base}}

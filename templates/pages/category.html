@@ -1,0 +1,122 @@
+---
+category:
+    shop_by_price: true
+    products:
+        limit: {{theme_settings.categorypage_products_per_page}}
+shop_by_brand:
+    limit: {{theme_settings.max_shop_by_brand}}
+---
+{{inject "categoryProductsPerPage" theme_settings.categorypage_products_per_page}}
+{{#partial "head"}}
+    {{#if pagination.category.previous}}
+        <link rel="prev" href="{{pagination.category.previous}}">
+    {{/if}}
+    {{#if pagination.category.next}}
+        <link rel="next" href="{{pagination.category.next}}">
+    {{/if}}
+{{/partial}}
+
+{{#partial "page"}}
+
+<h1 class="page-heading page-heading--mobileOnly">{{category.name}}</h1>
+
+<div class="page">
+    <aside class="page-sidebar page-sidebar--top" id="faceted-search-container">
+        {{> components/category/sidebar}}
+    </aside>
+
+    <main class="page-content">
+        {{> components/common/breadcrumbs breadcrumbs=breadcrumbs}}
+
+        {{#if theme_settings.bannerBeforeCategory '===' 'all'}}
+            <div data-emthemesmodez-remote-banner="emthemesModezBannersBlockBeforeCategory"></div>
+        {{/if}}
+
+        {{#if category.image}}
+            <div class="emthemesModez-categoryPage-mainImage">
+                <img alt="{{category.name}}" title="{{category.name}}"
+                    src="{{getImage category.image 'category_size'}}"
+                    {{multiConcat 'width=' (join (split theme_settings.category_size 'x') ' height=')}}
+                    fetchpriority="high"
+                />
+            </div>
+        {{/if}}
+        <p class="h1 page-heading page-heading--desktopOnly">{{category.name}}</p>
+        {{{region name="category_below_header--global"}}}
+        {{{region name="category_below_header"}}}
+        
+        
+        {{#if category.description}}
+            <div class="papaSupermarket-categoryPage-description">
+                {{{category.description}}}
+                {{{snippet 'categories'}}}
+            </div>
+        {{/if}}
+
+        {{#if theme_settings.show_subcategories_grid}}
+            {{#if category.subcategories}}
+            <ul class="papaSupermarket-subcategories-grid">
+                {{#each category.subcategories}}
+                    <li class="papaSupermarket-subcategories-grid-item">
+                        {{#if image}}
+                            <a href="{{url}}" class="papaSupermarket-subcategories-image" data-instantload>
+                                {{> components/common/responsive-img
+                                    image=image
+                                    fallback_size=theme_settings.category_card_size
+                                    lazyload=theme_settings.lazyload_mode
+                                }}
+                            </a>
+                        {{/if}}
+                        <a href="{{url}}" class="papaSupermarket-subcategories-name" data-instantload>{{name}}</a>
+                    </li>
+                {{/each}}
+            </ul>
+            {{/if}}
+        {{/if}}
+
+        {{#if theme_settings.categorypage_search '===' 'show'}}
+            <form class="categoryPage-searchInCategory-form {{#unless category.faceted_search_enabled}}noFaceted{{/unless}} {{#unless category.description}}noDesc{{/unless}}">
+                <fieldset class="form-fieldset">
+                    <div class="form-field">
+                        <input class="form-input" type="text" name="q" placeholder="{{lang 'search.actionbar.input_placeholder'}}" value="{{forms.search.query}}" data-search-in-category>
+                        <button class="button button--small" type="button" data-clear>{{lang 'search.actionbar.clear_all'}}</button>
+                    </div>
+                </fieldset>
+            </form>
+        {{/if}}
+
+        <div id="product-listing-container" class="
+            {{#if theme_settings.product_list_display_mode '===' 'grid2'}}mode-2
+            {{else if theme_settings.product_list_display_mode '===' 'grid3'}}mode-3
+            {{else if theme_settings.product_list_display_mode '===' 'grid6'}}mode-6
+            {{else if theme_settings.product_list_display_mode '===' 'list'}}mode-1
+            {{else if theme_settings.product_list_display_mode '===' 'listbo'}}mode-bo{{/if}}
+        ">
+            {{#if category.products}}
+                {{> components/category/product-listing}}
+            {{else}}
+                <p>{{lang 'categories.no_products'}}</p>
+            {{/if}}
+        </div>
+        {{{region name="category_below_content"}}}
+        {{{region name="category_below_content--global"}}}
+    </main>
+
+    <aside class="page-sidebar page-sidebar--bottom">
+        {{{region name="category_sidebar2_top--global"}}}
+        {{{region name="category_sidebar2_top"}}}
+        <div data-emthemesmodez-remote-banner="emthemesModezBannersBlockSidebar01"></div>
+        {{> components/papa-supermarket/sidebar/recently-viewed-products}}
+        {{> components/papa-supermarket/sidebar/facebook}}
+        <div data-emthemesmodez-remote-banner="emthemesModezBannersBlockSidebar02"></div>
+        {{{region name="category_sidebar2_bottom"}}}
+        {{{region name="category_sidebar2_bottom--global"}}}
+    </aside>
+</div>
+
+{{/partial}}
+{{#and theme_settings.instantload is_ajax}}
+    {{> layout/instantload-base}}
+{{else}}
+    {{> layout/base}}
+{{/and}}

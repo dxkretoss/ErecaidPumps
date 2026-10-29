@@ -1,0 +1,10 @@
+// Papathemes Social Proof — SCSS import hub.
+//
+// Each feature's SCSS lives in its own partial; this file controls which
+// ones are active and the import order. Partials are uncommented as
+// they are added in the corresponding implementation tasks.
+
+@import "urgency";
+@import "cartGoalBar";
+@import "recentSales";
+@import "popups";

@@ -1,0 +1,137 @@
+.emthemesModez-quickSearch {
+    .form {
+        margin-bottom: 0;
+        @include breakpoint("medium") {
+            position: relative;
+            z-index: zIndex("high") + 5;
+        }
+
+        &._loading {
+            position: relative;
+
+            &::after {
+                $padding: spacing("third");
+                content: "";
+                display: block;
+                height: $input-height - $padding * 2;
+                width: $input-height - $padding * 2;
+                position: absolute;
+                top: $padding;
+                right: $input-height + $padding;
+                background-image: url("../img/loading2.gif");
+                background-size: 100%;
+            }
+        }
+    }
+
+    .form-field {
+        margin-bottom: 0;
+        position: relative;
+
+        &::before {
+            content: $emthemesModez-icon-linear-magnifier;
+            font-family: emthemesmodezicons;
+            font-weight: fontWeight("bold");
+            display: block;
+            position: absolute;
+            top: 0;
+            right: 0;
+            height: $input-height;
+            line-height: $input-height;
+            padding: 0 spacing("base");
+            text-align: center;
+            border: 0;
+            color: stencilColor("quickSearch-color");
+            background-color: stencilColor("quickSearch-borderColor");
+            background: linear-gradient(90deg, stencilColor("quickSearch-borderColor") 0%, rgba(stencilColor("quickSearch-borderColor"), 0.7) 100%);
+            border-radius: 0 $input-border-radius $input-border-radius 0;
+
+            @if ($theme-style == "modern") {
+                font-size: fontSize("large");
+            }
+            @else {
+                font-size: fontSize("larger");
+            }
+        }
+    }
+
+    .form-input {
+        border: 2px solid stencilColor("quickSearch-borderColor");
+
+        @include breakpoint("medium") {
+            @if ($input-bg-color != $header-bg) {
+                border: 0;
+            }
+        }
+    }
+
+    // Search button
+    .form .button {
+        position: absolute;
+        top: 0;
+        right: 0;
+        height: $input-height;
+        padding: 0 spacing("base");
+        margin: 0;
+        background: transparent;
+        color: transparent;
+        border: 0;
+        width: remCalc(fontSize("larger")) + spacing("base") * 2;
+    }
+}
+
+.emthemesModez-quickSearch--mobileOnly {
+    z-index: zIndex("high") - 5; // same search results popup
+    position: relative;
+    background: container("fill");
+    padding: spacing("half") $container-padding / 2;
+
+    @include breakpoint("medium") {
+        display: none;
+    }
+
+    $input-height: remCalc(40);
+
+    .form._loading {
+        &::after {
+            $padding: spacing("quarter");
+            height: $input-height - $padding * 2;
+            width: $input-height - $padding * 2;
+            top: $padding;
+            right: $input-height + $padding;
+        }
+    }
+
+    .form-field {
+        &::before {
+            font-size: fontSize("small");
+            height: $input-height;
+            line-height: $input-height;
+            text-align: center;
+            padding: 0;
+            width: $input-height;
+            background-color: transparent;
+            color: stencilColor("quickSearch-color");
+        }
+    }
+
+    .form-input {
+        padding: spacing("quarter") spacing("half");
+        height: $input-height;
+    }
+
+    .form .button {
+        width: $input-height;
+        height: $input-height;
+        padding: 0;
+    }
+}
+
+.quickSearchResults-more {
+    margin: spacing("half") 0 0;
+    text-align: center;
+
+    .button {
+        margin-bottom: 0;
+    }
+}

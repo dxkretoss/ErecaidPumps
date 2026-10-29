@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html class="no-js" lang="{{ locale_name }}">
+    {{> components/papa-supermarket/common/global-vars}}
+    <head>
+        <title>{{ head.title }}</title>
+        {{{ resourceHints }}}
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        {{> components/papa-supermarket/common/theme-preload}}
+        {{{ head.meta_tags }}}
+        {{{ head.config }}}
+        {{#if theme_settings.page_transition}}
+            {{!-- Loading overlay (instant paint via pseudo-elements on <html>). --}}
+            <style nonce="{{nonce}}">
+                html{--supermarket-splash-fade-ms:300}
+                @keyframes supermarket-splash-spin{to{transform:rotate(360deg)}}
+                @keyframes supermarket-splash-fade-in{from{opacity:0}to{opacity:1}}
+                html.supermarket-splash::before{content:'';position:fixed;inset:0;z-index:99999;background:{{theme_settings.body-bg}};opacity:1;pointer-events:auto;transition:opacity calc(var(--supermarket-splash-fade-ms) * 1ms)}
+                html.supermarket-splash::after{content:'';position:fixed;top:50%;left:50%;width:32px;height:32px;margin:-16px 0 0 -16px;z-index:100000;border:3px solid {{theme_settings.container-border-global-color-base}};border-top-color:{{theme_settings.color-primary}};border-radius:50%;opacity:1;pointer-events:none;animation:supermarket-splash-spin .7s linear infinite;transition:opacity calc(var(--supermarket-splash-fade-ms) * 1ms)}
+                html.supermarket-splash-in::before{animation:supermarket-splash-fade-in .2s ease-out both}
+                html.supermarket-splash-in::after{animation:supermarket-splash-spin .7s linear infinite,supermarket-splash-fade-in .2s ease-out both}
+                html.supermarket-splash-out::before,html.supermarket-splash-out::after{opacity:0;pointer-events:none}
+                @media(prefers-reduced-motion:reduce){html.supermarket-splash::before,html.supermarket-splash::after{transition:none}html.supermarket-splash::after,html.supermarket-splash-in::after{animation:none}html.supermarket-splash-in::before{animation:none}}
+            </style>
+            <script nonce="{{nonce}}">
+                (function(){
+                    var root=document.documentElement,done=false,t0=Date.now(),MIN=300,timers=[];
+                    var FADE=parseFloat(getComputedStyle(root).getPropertyValue('--supermarket-splash-fade-ms'))||300;
+                    function later(fn,ms){var id=setTimeout(fn,ms);timers.push(id);return id;}
+                    root.classList.add('supermarket-splash');
+                    root.setAttribute('aria-busy','true');
+                    function dismiss(){
+                        if(done||!root.classList.contains('supermarket-splash'))return;
+                        done=true;
+                        var reduce=window.matchMedia&&window.matchMedia('(prefers-reduced-motion:reduce)').matches;
+                        root.classList.add('supermarket-splash-out');
+                        later(function(){
+                            root.classList.remove('supermarket-splash','supermarket-splash-out');
+                            root.removeAttribute('aria-busy');
+                        },reduce?0:FADE);
+                    }
+                    function ready(){var wait=MIN-(Date.now()-t0);wait>0?later(dismiss,wait):dismiss();}
+                    if(document.readyState==='loading'){document.addEventListener('DOMContentLoaded',ready,{once:true});}else{ready();}
+                    later(dismiss,1500);
+                    window.__supermarketSplashCancelDismissal=function(){
+                        for(var i=0;i<timers.length;i++)clearTimeout(timers[i]);
+                        timers.length=0;done=true;
+                        root.classList.remove('supermarket-splash-out');
+                    };
+                })();
+            </script>
+        {{/if}}
+        {{#block "head"}} {{/block}}
+
+        <link href="{{ head.favicon }}" rel="shortcut icon">
+
+        <script nonce="{{nonce}}">
+            {{!-- Change document class from no-js to js so we can detect this in css --}}
+            document.documentElement.className = document.documentElement.className.replace('no-js', 'js');
+        </script>
+
+        {{> components/common/polyfill-script }}
+        <script nonce="{{nonce}}">window.consentManagerTranslations = `{{{langJson 'consent_manager'}}}`;</script>
+
+        {{!-- Load Lazysizes script ASAP so images will appear --}}
+        <script nonce="{{nonce}}">
+            {{!-- Only load visible elements until the onload event fires, after which preload nearby elements. --}}
+            window.lazySizesConfig = window.lazySizesConfig || {};
+            window.lazySizesConfig.loadMode = 1;
+        </script>
+        <script async src="{{cdn 'assets/dist/theme-bundle.head_async.js' resourceHint='preload' as='script'}}" nonce="{{nonce}}"></script>
+
+        {{#if theme_settings.csspreload '===' 'performance'}}
+            <script nonce="{{nonce}}">document.write('{{{ getFontsCollection }}}'.replace('rel="stylesheet"', 'rel="preload" as="style" onload="this.onload=null;this.rel=\'stylesheet\'"'));</script>
+            <noscript>{{ getFontsCollection }}</noscript>
+
+            {{{stylesheet '/assets/css/theme.css'}}}
+
+            <script nonce="{{nonce}}">
+                window.lazySizesConfig.loadHidden = false;
+                window.lazySizesConfig.expand = 0;
+            </script>
+            {{> components/papa-supermarket/common/cssrelpreload}}
+            {{{head.scripts}}}
+        {{else if theme_settings.csspreload '===' 'speedtest'}}
+            <script nonce="{{nonce}}">
+                (function() {
+                    var el = document.createElement('head');
+                    el.innerHTML = '{{{getFontsCollection}}}'.replace('rel="stylesheet"', 'rel="preload" as="style" onload="this.onload=null;this.rel=\'stylesheet\'"');
+                    el.children && el.children[0] && document.head.appendChild(el.children[0]);
+                })();
+            </script>
+            <noscript>{{ getFontsCollection }}</noscript>
+
+            {{{stylesheet '/assets/css/theme.css'}}}
+
+            <script nonce="{{nonce}}">
+                window.lazySizesConfig.loadHidden = false;
+                window.lazySizesConfig.expand = 0;
+            </script>
+            {{> components/papa-supermarket/common/cssrelpreload}}
+            {{> components/papa-supermarket/common/load-scripts scripts=head.scripts}}
+        {{else}}
+            {{getFontsCollection font-display='block'}}
+            <script async src="{{cdn 'assets/dist/theme-bundle.font.js' resourceHint='preload' as='script'}}" nonce="{{nonce}}"></script>
+            {{{stylesheet '/assets/css/theme.css'}}}
+            {{{head.scripts}}}
+        {{/if}}
+
+        {{~inject 'themeSettings' theme_settings}}
+        {{~inject 'genericError' (lang 'common.generic_error')}}
+        {{~inject 'urls' urls}}
+        {{~inject 'secureBaseUrl' settings.secure_base_url}}
+        {{~inject 'cartId' cart_id}}
+        {{~inject 'template' template}}
+        {{~inject 'pageType' page_type}}
+        {{~inject 'validationDictionaryJSON' (langJson 'validation_messages')}}
+        {{~inject 'validationFallbackDictionaryJSON' (langJson 'validation_fallback_messages')}}
+        {{~inject 'validationDefaultDictionaryJSON' (langJson 'validation_default_messages')}}
+        {{~inject 'ajaxAddToCartEnterQty' (lang 'bulk_order.validate.enter_qty')}}
+        {{~inject 'bulkOrderEnterQty' (lang 'bulk_order.validate.enter_qty')}}
+        {{~inject 'bulkOrderChooseOptions' (lang 'bulk_order.validate.choose_options')}}
+        {{~inject 'txtMinQty' (lang 'products.quantity_min' quantity='%qty%')}}
+        {{~inject 'txtMaxQty' (lang 'products.quantity_max' quantity='%qty%')}}
+        {{~inject 'compareAddonLang_compare' (lang 'common.compare')}}
+        {{~inject 'compareAddonLang_quick_view' (lang 'products.quick_view')}}
+        {{~inject 'compareAddonLang_remove' (lang 'compare.remove')}}
+        {{~inject 'compareAddonLang_clear_all' (lang 'compare.clear_all')}}
+        {{~inject 'categoryId' category.id}}
+        {{#if theme_settings.navPages_autoFit}}
+            {{~inject 'txtNavMore' (lang 'common.nav_more')}}
+        {{/if}}
+        {{~inject 'customerRecentlyViewedProductIds' (pluck customer.recently_viewed_products.items 'id')}}
+        {{~inject 'customerId' customer.id}}
+        {{~inject 'graphQLToken' settings.storefront_api.token}}
+        {{~inject 'currencyCode' currency_selector.active_currency_code}}
+        {{~inject 'hidePriceFromGuests' settings.hide_price_from_guests}}
+        {{~inject 'showProductRating' settings.show_product_rating}}
+        {{~inject 'defaultProductImage' (cdn theme_settings.default_image_product)}}
+        {{~inject 'card_show_sku' theme_settings.show_sku}}
+        {{~inject 'card_show_hover_image' theme_settings.card_showHoverImage}}
+        {{~inject 'show_product_quick_view' theme_settings.show_product_quick_view}}
+        {{~inject 'ajax_add_to_cart' theme_settings.ajax_add_to_cart}}
+        {{~inject 'product_outstock_badge' theme_settings.product_outstock_badge}}
+        {{~inject 'product_sale_badges' theme_settings.product_sale_badges}}
+        {{~inject 'product_sale_label' (lang 'emthemesmodez.on_sale')}}
+        {{~inject 'product_custom_badges' theme_settings.product_custom_badges}}
+        {{~inject 'show_featured_promotions' theme_settings.show_featured_promotions}}
+        {{~inject 'pdp_price_label' theme_settings.pdp-price-label}}
+        {{~inject 'pdp_sale_price_label' theme_settings.pdp-sale-price-label}}
+        {{~inject 'pdp_non_sale_price_label' theme_settings.pdp-non-sale-price-label}}
+        {{~inject 'pdp_retail_price_label' theme_settings.pdp-retail-price-label}}
+        {{~inject 'price_ranges' theme_settings.price_ranges}}
+        {{~inject 'pbcst_show_bestselling' theme_settings.productsByCategorySortingTabs_show_bestselling}}
+        {{~inject 'pbcst_show_featured' theme_settings.productsByCategorySortingTabs_show_featured}}
+        {{~inject 'pbcst_show_new' theme_settings.productsByCategorySortingTabs_show_new}}
+        {{~inject 'pbcst_show_reviews' theme_settings.productsByCategorySortingTabs_show_reviews}}
+        {{~inject 'pbcst_show_banner' theme_settings.productsByCategorySortingTabs_showBanner}}
+        {{~inject 'pbcst_subcategories' theme_settings.productsByCategorySortingTabs_subcategories}}
+        {{~inject 'pbcst_products' theme_settings.productsByCategorySortingTabs_products}}
+        {{~inject 'loadingImage' (cdn 'img/loading.svg')}}
+        {{~inject 'productLoadingImage' (cdn theme_settings.image_product_loading)}}
+        {{~inject 'txtPriceWithTax' (lang 'products.price_with_tax' tax_label=settings.tax_label)}}
+        {{~inject 'txtPriceWithoutTax' (lang 'products.price_without_tax' tax_label=settings.tax_label)}}
+        {{~inject 'txtLoginForPricing' (lang 'common.login_for_pricing')}}
+        {{~inject 'txtQuickView' (lang 'products.quick_view')}}
+        {{~inject 'txtCompare' (lang 'products.compare')}}
+        {{~inject 'txtAddToCompare' (lang 'products.add_to_compare')}}
+        {{~inject 'txtChooseOptions' (lang 'products.choose_options')}}
+        {{~inject 'txtPreOrder' (lang 'products.pre_order')}}
+        {{~inject 'txtAddToCart' (lang 'products.add_to_cart')}}
+        {{~inject 'txtQuantity' (lang 'products.quantity')}}
+        {{~inject 'txtQuantityDecrease' (lang 'products.quantity_decrease')}}
+        {{~inject 'txtQuantityIncrease' (lang 'products.quantity_increase')}}
+        {{!-- The JS-built cards have no `lang` helper, so both plural branches are resolved here. --}}
+        {{~inject 'txtMoreOfferOne' (lang 'products.featured_promotions.more_offers' count=1)}}
+        {{~inject 'txtMoreOffersOther' (lang 'products.featured_promotions.more_offers' count=2)}}
+        {{~inject 'txtBestsellingTab' (lang 'papasupermarket.products_by_category_sorting_tabs.bestselling')}}
+        {{~inject 'txtFeaturedTab' (lang 'papasupermarket.products_by_category_sorting_tabs.featured')}}
+        {{~inject 'txtNewTab' (lang 'papasupermarket.products_by_category_sorting_tabs.new')}}
+        {{~inject 'txtReviewsTab' (lang 'papasupermarket.products_by_category_sorting_tabs.reviews')}}
+        {{~inject 'txtSubcategoryHeading' (lang 'papasupermarket.products_by_category_sorting_tabs.subcategory_title')}}
+        {{~inject 'txtLoadMore' (lang 'papasupermarket.products_by_category_sorting_tabs.load_more')}}
+        {{~inject 'txtCollapse' (lang 'papasupermarket.products_by_category_sorting_tabs.collapse')}}
+        {{~inject 'outOfStockDefaultMessage' (lang 'products.out_of_stock_default_message')}}
+        {{!-- Backorder GLOBALs only: locale-fixed strings and the store's message list, identical for every
+             product. A per-product value injected here leaks one product's stock into every quick-view and
+             Also Bought instance; those live on the product's own data-* attributes instead. --}}
+        {{~inject 'quantityBackorderedMessage' (lang 'products.quantity_backordered' quantity='__QTY__')}}
+        {{~inject 'quantityMaxMessage' (lang 'products.quantity_max' quantity='__QTY__')}}
+        {{~inject 'quantityMaxPicklistMessage' (lang 'products.quantity_max_picklist' name='__NAME__' quantity='__QTY__')}}
+        {{~inject 'backorderMessages' backorder_messages}}
+        {{~inject 'configurationId' configuration_id}}
+        {{{snippet 'htmlhead'}}}
+
+        {{#block "head-last"}} {{/block}}
+    </head>
+    <body class="csscolumns papaSupermarket-layout--{{theme_settings.layout}}
+        papaSupermarket-style--{{theme_settings.style}}
+        papaSupermarket-pageType--{{dashcase page_type}}
+        papaSupermarket-page--{{dashcase template}}
+        {{#if theme_settings.product_uniform}}emthemesModez-productUniform{{/if}}
+        {{#if theme_settings.hide_content_navigation}}papaSupermarket--hideContentNav{{/if}}
+        {{#if theme_settings.show_allcategories_menu}}papaSupermarket--showAllCategoriesMenu{{/if}}
+        {{#if theme_settings.show_subcategories_menu}}papaSupermarket--showSubcategoriesMenu{{/if}}
+        {{#if product_results.faceted_search_enabled}}has-faceted{{/if}}
+        {{#if category.faceted_search_enabled}}has-faceted{{/if}}
+        {{#if brands.faceted_search_enabled}}has-faceted{{/if}}
+        {{#if brand.faceted_search_enabled}}has-faceted{{/if}}
+        {{#if result_count '>' 0}}has-result{{/if}}
+        " id="topOfPage">
+
+        {{#if theme_settings.fb_page '!==' ''}}
+        <!-- Facebook SDK -->
+        <div id="fb-root"></div>
+        <script async defer crossorigin="anonymous" src="https://connect.facebook.net/en_US/sdk.js#xfbml=1&version=v22.0&appId=378187145615477" nonce="{{nonce}}"></script>
+        {{/if}}
+
+        {{{snippet 'header'}}}
+        <svg data-src="{{cdn 'img/icon-sprite.svg'}}" class="icons-svg-sprite"></svg>
+
+        {{> components/common/header }}
+        {{> components/common/body }}
+        {{> components/common/footer }}
+
+        <script nonce="{{nonce}}">window.__webpack_public_path__ = "{{cdn 'assets/dist/'}}";</script>
+        <script nonce="{{nonce}}">window.__webpack_nonce__ = "{{nonce}}";</script>
+        <script src="{{cdn 'assets/dist/theme-bundle.main.js' resourceHint='preload' as='script'}}" nonce="{{nonce}}"></script>
+        <script nonce="{{nonce}}">
+            {{!-- Exported in app.js --}}
+            window.stencilBootstrap("{{page_type}}", {{jsContext}}).load();
+        </script>
+
+        {{> components/papathemes/socialproof/recent-sales}}
+        {{> components/papathemes/socialproof/popup-shell}}
+        {{#if theme_settings.csspreload '===' 'speedtest'}}
+            {{> components/papa-supermarket/common/load-scripts scripts=footer.scripts}}
+        {{else}}
+            {{{footer.scripts}}}
+        {{/if}}
+        {{{snippet 'footer'}}}
+    </body>
+</html>

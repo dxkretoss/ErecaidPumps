@@ -1,0 +1,145 @@
+// =============================================================================
+// ERECAID CATEGORY CARDS SECTION (4-Column Feature Grid - 100% Reference Match)
+// =============================================================================
+
+.erecaid-cat-section {
+    background-color: #ffffff;
+    padding: 30px 0 36px;
+    width: 100%;
+    position: relative;
+    border-bottom: 1px solid #eef2f6;
+
+    @media (max-width: 768px) {
+        padding: 22px 0 28px;
+    }
+}
+
+.erecaid-cat-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 16px;
+    width: 100%;
+
+    @media (max-width: 1100px) {
+        gap: 14px;
+    }
+
+    @media (max-width: 900px) {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 16px;
+    }
+
+    @media (max-width: 520px) {
+        grid-template-columns: 1fr;
+        gap: 14px;
+    }
+}
+
+.erecaid-cat-card {
+    background-color: #f3f8fd;
+    border: 1px solid #d9e7f4;
+    border-radius: 8px;
+    padding: 16px 14px 12px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    min-height: 240px;
+    position: relative;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.03);
+    transition: transform 0.2s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.2s ease, border-color 0.2s ease;
+
+    &:hover {
+        transform: translateY(-3px);
+        box-shadow: 0 8px 20px rgba(1, 87, 184, 0.12);
+        border-color: #bcd9f3;
+    }
+
+    &__header {
+        position: relative;
+        z-index: 2;
+    }
+
+    &__title {
+        font-family: 'Roboto', 'Karla', sans-serif;
+        font-size: 16.5px;
+        line-height: 1.2;
+        font-weight: 800;
+        color: #002d62;
+        margin: 0 0 5px 0;
+        letter-spacing: -0.2px;
+    }
+
+    &__sub {
+        font-size: 12.5px;
+        line-height: 1.35;
+        color: #1e3a6c;
+        margin: 0;
+        max-width: 62%;
+
+        @media (max-width: 520px) {
+            max-width: 100%;
+        }
+    }
+
+    &__media {
+        display: flex;
+        align-items: flex-end;
+        justify-content: center;
+        height: 130px;
+        margin: 4px 0 10px;
+        position: relative;
+        z-index: 1;
+
+        img {
+            max-height: 100%;
+            width: 100%;
+            object-fit: contain;
+            object-position: center bottom;
+            display: block;
+            transition: transform 0.2s ease;
+        }
+    }
+
+    &:hover &__media img {
+        transform: scale(1.02);
+    }
+
+    &__footer {
+        position: relative;
+        z-index: 2;
+        width: 100%;
+    }
+
+    &__btn {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 6px;
+        width: 100%;
+        background-color: #0157b8;
+        color: #ffffff !important;
+        font-size: 13px;
+        font-weight: 700;
+        text-decoration: none !important;
+        padding: 9px 12px;
+        border-radius: 4px;
+        line-height: 1.2;
+        transition: background-color 0.2s ease;
+        text-align: center;
+
+        &-arrow {
+            margin-left: 4px;
+            font-size: 14px;
+            transition: transform 0.2s ease;
+        }
+
+        &:hover {
+            background-color: #004595;
+            color: #ffffff !important;
+
+            .erecaid-cat-card__btn-arrow {
+                transform: translateX(3px);
+            }
+        }
+    }
+}

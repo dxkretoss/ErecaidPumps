@@ -1,0 +1,21 @@
+{{!-- Papathemes Social Proof — Cart shipping goal bar.
+      Renders inside cart page summary and mini cart summary.
+      JS (cartGoalBar.js) replaces the skeleton with actual bar + markers + labels.
+      Config lives in window.supermarketThemeSettings.cartGoal (Script Manager). --}}
+{{#or customer (unless settings.hide_price_from_guests)}}
+    <div class="papathemes-socialproof-cart-goal"
+         data-papathemes-cart-goal
+         data-subtotal="{{cart.sub_total.value}}"
+         data-currency-code="{{cart.sub_total.currency}}"
+         data-customer-logged-in="{{#if customer}}true{{else}}false{{/if}}"
+         data-lang-remaining="{{lang 'socialproof.cart_goal.message_remaining'}}"
+         data-lang-all-met="{{lang 'socialproof.cart_goal.message_all_met'}}"
+         aria-live="polite"
+         aria-busy="true">
+        <div class="papathemes-socialproof-cart-goal__skeleton" aria-hidden="true">
+            <div class="papathemes-socialproof-cart-goal__skeleton-line"></div>
+            <div class="papathemes-socialproof-cart-goal__skeleton-bar"></div>
+            <div class="papathemes-socialproof-cart-goal__skeleton-labels"></div>
+        </div>
+    </div>
+{{/or}}

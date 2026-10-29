@@ -1,0 +1,41 @@
+{{!--
+    Assigns `heroImageSizes`: the `sizes` value for the hero carousel's first slide, which
+    is rendered eagerly so lazysizes never measures it.
+
+    Consumed by base.html (`imagesizes` on the preload) and carousel.html (`sizes` on the
+    <img>). The two MUST stay identical: if they resolve to different srcset candidates the
+    preloaded file is downloaded and never used, which no visual QA will catch.
+
+    The px values track these SCSS rules -- change one and this list goes stale silently,
+    since a wrong `sizes` still renders a correct-looking page:
+      - breakpoints 801 / 1261 / 1681 -- settings/global/screensizes/_screensizes.scss
+      - container inner 100vw-64px / 1170 / 1500 -- layouts/container/_container-emthemesModez.scss
+      - x 80% from medium up (grid-calc(8, 10)) -- layouts/body/_body-emthemesModez.scss
+      - x 2/3 with side banners (min-width: 66.6666%) -- stencil/heroCarousel/_heroCarousel-emthemesModez.scss
+    The calc() constants also absorb the scrollbar, which `vw` counts but layout width does not.
+
+    Below `medium` every branch declares plain 100vw deliberately: candidates are 2x apart
+    down there so precision changes nothing, and a hardcoded constant would under-declare on
+    variations that drop the container padding -- under-declaring is what makes images blurry.
+--}}
+{{#if theme_settings.layout '===' 'left-sidebar'}}
+    {{#if theme_settings.carousel_banners}}
+        {{assignVar 'heroImageSizes' '(min-width: 1681px) 800px, (min-width: 1261px) 624px, (min-width: 801px) calc(53.3vw - 43px), 100vw'}}
+    {{else}}
+        {{assignVar 'heroImageSizes' '(min-width: 1681px) 1200px, (min-width: 1261px) 936px, (min-width: 801px) calc(80vw - 65px), 100vw'}}
+    {{/if}}
+{{else}}
+    {{#if theme_settings.homepage_carousel_style '===' 'fullwidth'}}
+        {{#if theme_settings.carousel_banners}}
+            {{assignVar 'heroImageSizes' '(min-width: 801px) 66.7vw, 100vw'}}
+        {{else}}
+            {{assignVar 'heroImageSizes' '100vw'}}
+        {{/if}}
+    {{else}}
+        {{#if theme_settings.carousel_banners}}
+            {{assignVar 'heroImageSizes' '(min-width: 1681px) 1000px, (min-width: 1261px) 780px, (min-width: 801px) calc(66.7vw - 53px), 100vw'}}
+        {{else}}
+            {{assignVar 'heroImageSizes' '(min-width: 1681px) 1500px, (min-width: 1261px) 1170px, (min-width: 801px) calc(100vw - 80px), 100vw'}}
+        {{/if}}
+    {{/if}}
+{{/if}}

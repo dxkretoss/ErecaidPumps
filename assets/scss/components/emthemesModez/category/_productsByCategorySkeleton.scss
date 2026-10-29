@@ -1,0 +1,162 @@
+// Skeleton for Products By Category Sorting Tabs — reuses the real
+// card/grid/details classes so the reserved layout matches loaded content (no CLS).
+
+.emthemesModez-pbcSkeleton {
+    pointer-events: none;
+}
+
+.emthemesModez-pbcSkeleton-figure {
+    display: block;
+    width: 100%;
+    padding-top: 100%; // square, matches product image
+}
+
+// Banner ratio (recommended upload 1448x525), reserved on real banner + skeleton (no CLS).
+$pbc-banner-ratio: percentage(525 / 1448);
+
+.emthemesModez-productsByCategoryTabs-details-image {
+    position: relative;
+
+    &::before {
+        content: "";
+        display: block;
+        padding-top: $pbc-banner-ratio;
+    }
+
+    > a,
+    > .emthemesModez-pbcSkeleton-figure--banner {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+    }
+
+    img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+    }
+}
+
+.emthemesModez-pbcSkeleton-figure--banner {
+    padding-top: 0;
+}
+
+// inline-block: the wrapper's line-height drives row height, matching loaded text rows (no CLS).
+.emthemesModez-pbcSkeleton-bar {
+    display: inline-block;
+    width: 100%;
+    height: 0.85em;
+    vertical-align: middle;
+    border-radius: $container-border-radius;
+}
+
+.emthemesModez-pbcSkeleton-bar--heading {
+    width: remCalc(180px);
+    max-width: 50%;
+}
+
+.emthemesModez-pbcSkeleton-bar--subheading {
+    width: 60%;
+}
+
+.emthemesModez-pbcSkeleton-bar--subitem {
+    width: 80%;
+}
+
+.emthemesModez-pbcSkeleton-bar--brand {
+    width: 50%;
+}
+
+.emthemesModez-pbcSkeleton-bar--rating {
+    width: remCalc(80px);
+    max-width: 60%;
+}
+
+.emthemesModez-pbcSkeleton-bar--price {
+    width: 40%;
+}
+
+.emthemesModez-pbcSkeleton .card-title {
+    .emthemesModez-pbcSkeleton-bar--line {
+        display: block;
+        height: $card-title-fontSize * 0.8;
+        margin-bottom: spacing("quarter");
+    }
+
+    .emthemesModez-pbcSkeleton-bar--short {
+        width: 60%;
+    }
+}
+
+// Match the loaded price line-height (.price--main = base font x line-height), not body text.
+.emthemesModez-pbcSkeleton .card-text--price {
+    line-height: fontSize("base") * lineHeight("base");
+}
+
+.emthemesModez-pbcSkeleton-button {
+    display: inline-block;
+    width: remCalc(120px);
+    border-color: transparent;
+}
+
+.emthemesModez-pbcSkeleton-figure,
+.emthemesModez-pbcSkeleton-bar,
+.emthemesModez-pbcSkeleton-button {
+    background-color: container("fill", "dark");
+    background-image: linear-gradient(90deg, rgba($body-bg, 0) 0, rgba($body-bg, 0.65) 50%, rgba($body-bg, 0) 100%);
+    background-repeat: no-repeat;
+    background-size: 200% 100%;
+    animation: emthemesModez-pbcSkeleton-shimmer 1.4s ease-in-out infinite;
+}
+
+@keyframes emthemesModez-pbcSkeleton-shimmer {
+    0% {
+        background-position: 150% 0;
+    }
+
+    100% {
+        background-position: -150% 0;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .emthemesModez-pbcSkeleton-figure,
+    .emthemesModez-pbcSkeleton-bar,
+    .emthemesModez-pbcSkeleton-button {
+        background-image: none;
+        animation: none;
+    }
+}
+
+// Reserved slot left behind by a failed lazy fetch: reads as empty, not as still loading.
+.emthemesModez-pbcSkeleton--inert {
+    .emthemesModez-pbcSkeleton-figure,
+    .emthemesModez-pbcSkeleton-bar,
+    .emthemesModez-pbcSkeleton-button {
+        background-color: transparent;
+        background-image: none;
+        animation: none;
+    }
+}
+
+// Clamp product names to 2 lines (loaded cards too) for uniform card height.
+.emthemesModez-productsByCategoryTabs {
+    .card-title {
+        min-height: $card-title-fontSize * lineHeight("base") * 2;
+
+        > a {
+            display: -webkit-box;
+            overflow: hidden;
+            -webkit-box-orient: vertical;
+            -webkit-line-clamp: 2;
+        }
+    }
+
+    // Reserve the rating-row height when a product has none, so cards stay aligned (no CLS).
+    // Double margin: this margin-top collapses with the brand row's margin-bottom.
+    .card-text--brand + .card-text--price {
+        margin-top: fontSize("base") * lineHeight("base") + $card-text-marginBottom * 2;
+    }
+}

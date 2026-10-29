@@ -1,0 +1,208 @@
+{{> components/papa-supermarket/common/global-vars}}
+<div id='instantload-html-element'>
+    <div id="instantload-head-element">
+        <title>
+            {{#if head.title}}
+                {{ head.title }}
+            {{else}}
+                {{#if page_type '===' 'product'}}
+                    {{#if product.page_title}}
+                        {{product.page_title}}
+                    {{else}}
+                        {{product.title}} - {{settings.store_name}}
+                    {{/if}}
+                {{else if page_type '===' 'category'}}
+                    {{category.name}} - {{settings.store_name}}
+                {{else if page_type '===' 'brands'}}
+                    {{settings.store_name}} {{lang 'brand.label'}}
+                {{else if page_type '===' 'brand'}}
+                    {{brand.name}} - {{settings.store_name}}
+                {{else if page}}
+                    {{page.title}} - {{settings.store_name}}
+                {{else}}
+                    {{settings.store_name}}
+                {{/if}}
+            {{/if}}
+        </title>
+
+        {{{ resourceHints }}}
+        {{{ head.meta_tags }}}
+        {{{ head.config }}}
+        {{#block "head"}} {{/block}}
+
+        {{! Include Captcha because BC doesn't include it from Ajax requests }}
+        {{#if product.reviews.captcha}}
+            <script src="https://www.google.com/recaptcha/api.js" async defer nonce="{{nonce}}"></script>
+        {{/if}}
+
+        {{{head.scripts}}}
+
+        {{~inject 'themeSettings' theme_settings}}
+        {{~inject 'genericError' (lang 'common.generic_error')}}
+        {{~inject 'urls' urls}}
+        {{~inject 'secureBaseUrl' settings.secure_base_url}}
+        {{~inject 'cartId' cart_id}}
+        {{~inject 'template' template}}
+        {{~inject 'pageType' page_type}}
+        {{~inject 'validationDictionaryJSON' (langJson 'validation_messages')}}
+        {{~inject 'validationFallbackDictionaryJSON' (langJson 'validation_fallback_messages')}}
+        {{~inject 'validationDefaultDictionaryJSON' (langJson 'validation_default_messages')}}
+        {{~inject 'ajaxAddToCartEnterQty' (lang 'bulk_order.validate.enter_qty')}}
+        {{~inject 'bulkOrderEnterQty' (lang 'bulk_order.validate.enter_qty')}}
+        {{~inject 'bulkOrderChooseOptions' (lang 'bulk_order.validate.choose_options')}}
+        {{~inject 'txtMinQty' (lang 'products.quantity_min' quantity='%qty%')}}
+        {{~inject 'txtMaxQty' (lang 'products.quantity_max' quantity='%qty%')}}
+        {{~inject 'compareAddonLang_compare' (lang 'common.compare')}}
+        {{~inject 'compareAddonLang_quick_view' (lang 'products.quick_view')}}
+        {{~inject 'compareAddonLang_remove' (lang 'compare.remove')}}
+        {{~inject 'compareAddonLang_clear_all' (lang 'compare.clear_all')}}
+        {{~inject 'categoryId' category.id}}
+        {{#if theme_settings.navPages_autoFit}}
+            {{~inject 'txtNavMore' (lang 'common.nav_more')}}
+        {{/if}}
+        {{~inject 'customerRecentlyViewedProductIds' (pluck customer.recently_viewed_products.items 'id')}}
+        {{~inject 'customerId' customer.id}}
+        {{~inject 'graphQLToken' settings.storefront_api.token}}
+        {{~inject 'currencyCode' currency_selector.active_currency_code}}
+        {{~inject 'hidePriceFromGuests' settings.hide_price_from_guests}}
+        {{~inject 'showProductRating' settings.show_product_rating}}
+        {{~inject 'defaultProductImage' (cdn theme_settings.default_image_product)}}
+        {{~inject 'card_show_sku' theme_settings.show_sku}}
+        {{~inject 'card_show_hover_image' theme_settings.card_showHoverImage}}
+        {{~inject 'show_product_quick_view' theme_settings.show_product_quick_view}}
+        {{~inject 'ajax_add_to_cart' theme_settings.ajax_add_to_cart}}
+        {{~inject 'product_outstock_badge' theme_settings.product_outstock_badge}}
+        {{~inject 'product_sale_badges' theme_settings.product_sale_badges}}
+        {{~inject 'product_sale_label' (lang 'emthemesmodez.on_sale')}}
+        {{~inject 'product_custom_badges' theme_settings.product_custom_badges}}
+        {{~inject 'show_featured_promotions' theme_settings.show_featured_promotions}}
+        {{~inject 'pdp_price_label' theme_settings.pdp-price-label}}
+        {{~inject 'pdp_sale_price_label' theme_settings.pdp-sale-price-label}}
+        {{~inject 'pdp_non_sale_price_label' theme_settings.pdp-non-sale-price-label}}
+        {{~inject 'pdp_retail_price_label' theme_settings.pdp-retail-price-label}}
+        {{~inject 'price_ranges' theme_settings.price_ranges}}
+        {{~inject 'pbcst_show_bestselling' theme_settings.productsByCategorySortingTabs_show_bestselling}}
+        {{~inject 'pbcst_show_featured' theme_settings.productsByCategorySortingTabs_show_featured}}
+        {{~inject 'pbcst_show_new' theme_settings.productsByCategorySortingTabs_show_new}}
+        {{~inject 'pbcst_show_reviews' theme_settings.productsByCategorySortingTabs_show_reviews}}
+        {{~inject 'pbcst_show_banner' theme_settings.productsByCategorySortingTabs_showBanner}}
+        {{~inject 'pbcst_subcategories' theme_settings.productsByCategorySortingTabs_subcategories}}
+        {{~inject 'pbcst_products' theme_settings.productsByCategorySortingTabs_products}}
+        {{~inject 'loadingImage' (cdn 'img/loading.svg')}}
+        {{~inject 'productLoadingImage' (cdn theme_settings.image_product_loading)}}
+        {{~inject 'txtPriceWithTax' (lang 'products.price_with_tax' tax_label=settings.tax_label)}}
+        {{~inject 'txtPriceWithoutTax' (lang 'products.price_without_tax' tax_label=settings.tax_label)}}
+        {{~inject 'txtQuickView' (lang 'products.quick_view')}}
+        {{~inject 'txtCompare' (lang 'products.compare')}}
+        {{~inject 'txtAddToCompare' (lang 'products.add_to_compare')}}
+        {{~inject 'txtChooseOptions' (lang 'products.choose_options')}}
+        {{~inject 'txtPreOrder' (lang 'products.pre_order')}}
+        {{~inject 'txtAddToCart' (lang 'products.add_to_cart')}}
+        {{~inject 'txtQuantity' (lang 'products.quantity')}}
+        {{~inject 'txtQuantityDecrease' (lang 'products.quantity_decrease')}}
+        {{~inject 'txtQuantityIncrease' (lang 'products.quantity_increase')}}
+        {{!-- The JS-built cards have no `lang` helper, so both plural branches are resolved here. --}}
+        {{~inject 'txtMoreOfferOne' (lang 'products.featured_promotions.more_offers' count=1)}}
+        {{~inject 'txtMoreOffersOther' (lang 'products.featured_promotions.more_offers' count=2)}}
+        {{~inject 'txtBestsellingTab' (lang 'papasupermarket.products_by_category_sorting_tabs.bestselling')}}
+        {{~inject 'txtFeaturedTab' (lang 'papasupermarket.products_by_category_sorting_tabs.featured')}}
+        {{~inject 'txtNewTab' (lang 'papasupermarket.products_by_category_sorting_tabs.new')}}
+        {{~inject 'txtReviewsTab' (lang 'papasupermarket.products_by_category_sorting_tabs.reviews')}}
+        {{~inject 'txtSubcategoryHeading' (lang 'papasupermarket.products_by_category_sorting_tabs.subcategory_title')}}
+        {{~inject 'txtLoadMore' (lang 'papasupermarket.products_by_category_sorting_tabs.load_more')}}
+        {{~inject 'txtCollapse' (lang 'papasupermarket.products_by_category_sorting_tabs.collapse')}}
+        {{~inject 'outOfStockDefaultMessage' (lang 'products.out_of_stock_default_message')}}
+        {{!-- Backorder GLOBALs only — see layout/base.html for why per-product values never go here. --}}
+        {{~inject 'quantityBackorderedMessage' (lang 'products.quantity_backordered' quantity='__QTY__')}}
+        {{~inject 'quantityMaxMessage' (lang 'products.quantity_max' quantity='__QTY__')}}
+        {{~inject 'quantityMaxPicklistMessage' (lang 'products.quantity_max_picklist' name='__NAME__' quantity='__QTY__')}}
+        {{~inject 'backorderMessages' backorder_messages}}
+        {{{snippet 'htmlhead'}}}
+    </div>
+    <div id="instantload-body-element" class="csscolumns papaSupermarket-layout--{{theme_settings.layout}}
+        papaSupermarket-style--{{theme_settings.style}}
+        papaSupermarket-pageType--{{dashcase page_type}}
+        papaSupermarket-page--{{dashcase template}}
+        {{#if theme_settings.product_uniform}}emthemesModez-productUniform{{/if}}
+        {{#if theme_settings.hide_content_navigation}}papaSupermarket--hideContentNav{{/if}}
+        {{#if theme_settings.show_allcategories_menu}}papaSupermarket--showAllCategoriesMenu{{/if}}
+        {{#if theme_settings.show_subcategories_menu}}papaSupermarket--showSubcategoriesMenu{{/if}}
+        {{#if product_results.faceted_search_enabled}}has-faceted{{/if}}
+        {{#if category.faceted_search_enabled}}has-faceted{{/if}}
+        {{#if brands.faceted_search_enabled}}has-faceted{{/if}}
+        {{#if brand.faceted_search_enabled}}has-faceted{{/if}}
+        {{#if result_count '>' 0}}has-result{{/if}}
+        " id="topOfPage">
+
+        {{#if banners.top_metadata}}
+        <div class="banners" data-banner-location="top" id="instantload-banners-top">
+            {{#if settings.data_tag_enabled}}
+                {{#each banners.top_metadata}}
+                    {{#if (occurrences this.content 'emthemesModezBannersBlock') '===' 0}}
+                        <div class="banner">
+                            {{{this.content}}}
+                        </div>
+                    {{/if}}
+                {{/each}}
+            {{else}}
+                {{#each banners.top_metadata}}
+                    {{#if (occurrences this.content 'emthemesModezBannersBlock') '===' 0}}
+                        <div class="banner" data-event-type="promotion" data-entity-id="{{this.id}}" data-name="{{this.banner-name}}" data-position="{{this.location}}" data-banner-id="{{this.banner-name}}">
+                            <div data-event-type="promotion-click">
+                                {{{this.content}}}
+                            </div>
+                        </div>
+                    {{/if}}
+                {{/each}}
+            {{/if}}
+        </div>
+        {{/if}}
+
+        <div class="body" data-currency-code="{{currency_selector.active_currency_code}}" id="instantload-page-body">
+            {{#block "hero"}} {{/block}}
+            <div class="container">
+                {{#block "page"}} {{/block}}
+            </div>
+            {{> components/common/modal}}
+            {{> components/common/alert-modal}}
+        </div>
+
+
+        {{#if banners.bottom}}
+            {{#if settings.data_tag_enabled}}
+                <div class="banners banners--bottom" data-banner-location="bottom" id="instantload-banners-bottom">
+                    {{#each (limit banners.bottom_metadata 1)}}
+                        <div class="banner" data-event-type="promotion" data-entity-id="{{this.id}}" data-name="{{this.banner-name}}" data-position="{{this.location}}" data-name="{{this.banner-name}}">
+                            <div data-event-type="promotion-click">
+                                {{{this.content}}}
+                            </div>
+                        </div>
+                    {{/each}}
+                </div>
+            {{else}}
+                <div class="banners banners--bottom" data-banner-location="bottom" id="instantload-banners-bottom">
+                    <div class="banner">
+                        {{{limit banners.bottom 1}}}
+                    </div>
+                </div>
+            {{/if}}
+        {{/if}}
+
+        <script id="instantload-script" nonce="{{nonce}}">
+            (function() {
+                var parentContext = window.themeInstantLoad_jsContext || {};
+                var context = JSON.parse({{jsContext}} || '{}');
+                // Iterate the parent: keys BigCommerce omits from an ajax render (e.g. graphQLToken) are absent, so iterating `context` never visits them.
+                Object.keys(parentContext).forEach(function(key) {
+                    if (parentContext[key] !== undefined && (context[key] === null || context[key] === undefined)) {
+                        context[key] = parentContext[key];
+                    }
+                });
+                window.stencilBootstrap("{{page_type}}", JSON.stringify(context), false).load();
+            })();
+        </script>
+
+        {{{footer.scripts}}}
+        {{{snippet 'footer'}}}
+    </div>
+</div>

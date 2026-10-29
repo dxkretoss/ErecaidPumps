@@ -1,0 +1,151 @@
+{{!-- 
+    ErecAid Pumps Custom Hero Section Component
+    3-column presentation matching reference design:
+    - Left Column: Headline, Subtitle, 4 Badges, 2 CTAs, Questions hotline
+    - Center Column: Featured Osbon ErecAid Esteem Kit Image
+    - Right Column: Spotlight Callout (Product Title, Subtitle, Learn More CTA)
+--}}
+<section class="erecaid-hero-section" aria-label="Featured Hero Presentation">
+    {{{region name="home_hero_top"}}}
+
+    <div class="container">
+        <div class="erecaid-hero__banner-content">
+            {{!-- Left Side: Headline, Badges, CTAs --}}
+            <div class="erecaid-hero__left">
+                <h1 class="erecaid-hero__title">
+                    {{#if theme_settings.custom_hero_title}}
+                        {{{theme_settings.custom_hero_title}}}
+                    {{else}}
+                        Medical-Grade Vacuum<br>Erection Devices for ED
+                    {{/if}}
+                </h1>
+
+                <p class="erecaid-hero__subtitle">
+                    {{#if theme_settings.custom_hero_subtitle}}
+                        {{theme_settings.custom_hero_subtitle}}
+                    {{else}}
+                        Trusted vacuum therapy solutions for erectile dysfunction and recovery after prostate surgery.
+                    {{/if}}
+                </p>
+
+                {{!-- 4 Trust Badges in a Row --}}
+                <div class="erecaid-hero__badges">
+                    <div class="erecaid-hero__badge-item">
+                        <span class="erecaid-hero__badge-icon">
+                            <svg width="26" height="26" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                                <path d="M12 2L3 6V11.5C3 16.7 6.9 21.5 12 22.8C17.1 21.5 21 16.7 21 11.5V6L12 2Z" fill="#0157b8"/>
+                                <path d="M8.5 11.8L10.8 14.1L15.5 9.4" stroke="#ffffff" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/>
+                            </svg>
+                        </span>
+                        <div class="erecaid-hero__badge-content">
+                            <span class="erecaid-hero__badge-line">More Than</span>
+                            <span class="erecaid-hero__badge-line">20 Years Experience</span>
+                        </div>
+                    </div>
+
+                    <div class="erecaid-hero__badge-item">
+                        <span class="erecaid-hero__badge-icon">
+                            <svg width="28" height="24" viewBox="0 0 28 24" fill="none" aria-hidden="true">
+                                <path d="M1 4C1 2.9 1.9 2 3 2H17C18.1 2 19 2.9 19 4V16H1V4Z" fill="#0157b8"/>
+                                <path d="M19 8H23.5L27 12.5V16H19V8Z" fill="#0157b8"/>
+                                <circle cx="6.5" cy="18.5" r="3.5" fill="#0157b8"/>
+                                <circle cx="6.5" cy="18.5" r="1.5" fill="#ffffff"/>
+                                <circle cx="21.5" cy="18.5" r="3.5" fill="#0157b8"/>
+                                <circle cx="21.5" cy="18.5" r="1.5" fill="#ffffff"/>
+                            </svg>
+                        </span>
+                        <div class="erecaid-hero__badge-content">
+                            <span class="erecaid-hero__badge-line">Discreet</span>
+                            <span class="erecaid-hero__badge-line">Shipping</span>
+                        </div>
+                    </div>
+
+                    <div class="erecaid-hero__badge-item">
+                        <span class="erecaid-hero__badge-icon">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                                <path d="M3 12C3 7 7 3 12 3C17 3 21 7 21 12" stroke="#0157b8" stroke-width="2.5" stroke-linecap="round"/>
+                                <rect x="2" y="11" width="4" height="7" rx="2" fill="#0157b8"/>
+                                <rect x="18" y="11" width="4" height="7" rx="2" fill="#0157b8"/>
+                                <path d="M20 18V19C20 20.1 19.1 21 18 21H14" stroke="#0157b8" stroke-width="2.2" stroke-linecap="round"/>
+                                <circle cx="13" cy="21" r="1.5" fill="#0157b8"/>
+                            </svg>
+                        </span>
+                        <div class="erecaid-hero__badge-content">
+                            <span class="erecaid-hero__badge-line">Expert</span>
+                            <span class="erecaid-hero__badge-line">Product Support</span>
+                        </div>
+                    </div>
+
+                    <div class="erecaid-hero__badge-item">
+                        <span class="erecaid-hero__badge-icon">
+                            <svg width="26" height="26" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                                <path d="M12 2L2 7L12 12L22 7L12 2Z" fill="#0157b8"/>
+                                <path d="M2 8.5V16.5L12 21.5V13.5L2 8.5Z" fill="#004694"/>
+                                <path d="M22 8.5L12 13.5V21.5L22 16.5V8.5Z" fill="#0157b8"/>
+                                <path d="M12 2L12 12" stroke="#ffffff" stroke-width="1.5"/>
+                                <path d="M7 4.5L17 9.5" stroke="#ffffff" stroke-width="1.5"/>
+                            </svg>
+                        </span>
+                        <div class="erecaid-hero__badge-content">
+                            <span class="erecaid-hero__badge-line">Free Shipping</span>
+                            <span class="erecaid-hero__badge-line">on Pump Systems</span>
+                        </div>
+                    </div>
+                </div>
+
+                {{!-- CTA Buttons --}}
+                <div class="erecaid-hero__actions">
+                    <a href="{{#if theme_settings.custom_hero_btn1_url}}{{theme_settings.custom_hero_btn1_url}}{{else}}/categories{{/if}}" class="erecaid-hero__btn erecaid-hero__btn--primary">
+                        {{#if theme_settings.custom_hero_btn1_text}}{{theme_settings.custom_hero_btn1_text}}{{else}}Shop ED Pumps{{/if}} <span class="erecaid-hero__btn-arrow">&rarr;</span>
+                    </a>
+                    <a href="{{#if theme_settings.custom_hero_btn2_url}}{{theme_settings.custom_hero_btn2_url}}{{else}}/contact-us{{/if}}" class="erecaid-hero__btn erecaid-hero__btn--outline">
+                        {{#if theme_settings.custom_hero_btn2_text}}{{theme_settings.custom_hero_btn2_text}}{{else}}Help Me Choose a Pump{{/if}} <span class="erecaid-hero__btn-arrow">&rarr;</span>
+                    </a>
+                </div>
+
+                {{!-- Support Callout Prompt --}}
+                <div class="erecaid-hero__questions">
+                    <span>Have questions? Call us at </span>
+                    <a href="tel:{{#if theme_settings.custom_header_phone}}{{theme_settings.custom_header_phone}}{{else}}866-496-7359{{/if}}" class="erecaid-hero__questions-phone">
+                        <strong>{{#if theme_settings.custom_header_phone}}{{theme_settings.custom_header_phone}}{{else}}866-496-7359{{/if}}</strong>
+                    </a>
+                </div>
+            </div>
+
+            {{!-- Center: Featured Product Image --}}
+            <div class="erecaid-hero__center">
+                <img class="erecaid-hero__product-img" 
+                     src="{{#if theme_settings.custom_hero_img}}{{theme_settings.custom_hero_img}}{{else}}/assets/img/erecaid-esteem-kit-hero.png{{/if}}" 
+                     alt="Osbon ErecAid Esteem Manual Vacuum Erection Pump Kit" 
+                     loading="eager">
+            </div>
+
+            {{!-- Right Side: Product Spotlight Callout (Direct typography matching demo) --}}
+            <div class="erecaid-hero__right">
+                <div class="erecaid-hero__spotlight">
+                    <h2 class="erecaid-hero__spotlight-title">
+                        {{#if theme_settings.custom_hero_spotlight_title}}
+                            {{{theme_settings.custom_hero_spotlight_title}}}
+                        {{else}}
+                            Osbon ErecAid Esteem<br>Manual Vacuum Erection Pump
+                        {{/if}}
+                    </h2>
+                    <p class="erecaid-hero__spotlight-subtitle">
+                        {{#if theme_settings.custom_hero_spotlight_sub}}
+                            {{theme_settings.custom_hero_spotlight_sub}}
+                        {{else}}
+                            A trusted choice for ED and<br>penile rehabilitation.
+                        {{/if}}
+                    </p>
+                    <a href="{{#if theme_settings.custom_hero_spotlight_url}}{{theme_settings.custom_hero_spotlight_url}}{{else}}/categories{{/if}}" class="erecaid-hero__btn erecaid-hero__btn--primary erecaid-hero__btn--spotlight">
+                        {{#if theme_settings.custom_hero_spotlight_btn}}{{theme_settings.custom_hero_spotlight_btn}}{{else}}Learn More{{/if}} <span class="erecaid-hero__btn-arrow">&rarr;</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        {{{region name="home_hero_custom"}}}
+    </div>
+
+    {{{region name="home_hero_bottom"}}}
+</section>

@@ -1,0 +1,59 @@
+# Dependencies
+node_modules/
+
+# Environment variables and secrets
+.env
+.env.*
+!.env.example
+
+# Build output
+dist/
+build/
+.cache/
+.tmp/
+temp/
+
+# BigCommerce Stencil generated files
+config.stencil.json
+stencil-cli.log
+*.zip
+
+# Logs
+logs/
+*.log
+npm-debug.log*
+yarn-debug.log*
+pnpm-debug.log*
+
+# Testing and coverage
+coverage/
+.nyc_output/
+
+# IDE and editors
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# Operating system files
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Package manager files - keep lockfiles tracked
+# package-lock.json
+# yarn.lock
+# pnpm-lock.yaml
+
+# Temporary files
+tmp/
+*.tmp
+*.bak
+
+# Deployment and hosting
+.vercel/
+.netlify/
+
+# Debugging
+*.pid
+*.seed

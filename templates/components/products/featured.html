@@ -1,0 +1,36 @@
+{{#unless hide_heading}}
+<h3 class="page-heading">{{lang 'products.featured' }}</h3>
+{{/unless}}
+
+{{#if display_type '==' 'carousel'}}
+    {{> components/products/carousel products=products}}
+{{else if display_type '==' 'grid'}}
+    <ul class="productGrid productGrid--maxCol{{ columns }}" data-product-type="featured">
+        {{#each products}}
+            <li class="product" data-product-id="{{id}}">
+                {{>components/products/card 
+                    show_compare=../show_compare 
+                    show_rating=../settings.show_product_rating
+                    show_info=(if ../theme_settings.card_info '==' 'all')
+                    theme_settings=../theme_settings 
+                    settings=../settings 
+                    customer=../customer}}
+            </li>
+        {{/each}}
+        {{#if lazyPlaceholders '>' 0}}{{#for 1 lazyPlaceholders}}<li class="product" data-skeleton-placeholder aria-hidden="true">{{> components/papa-supermarket/common/product-card-skeleton}}</li>{{/for}}{{/if}}
+    </ul>
+{{else}}
+    <ul class="productList productList--maxCol{{ columns }}" data-product-type="featured">
+        {{#each products}}
+            <li class="product" data-product-id="{{id}}">
+                {{>components/products/list-item 
+                	summary=false
+                	show_compare=../show_compare 
+                    show_rating=../settings.show_product_rating 
+                    theme_settings=../theme_settings 
+                    settings=../settings 
+                    customer=../customer}}
+            </li>
+        {{/each}}
+    </ul>	
+{{/if}}

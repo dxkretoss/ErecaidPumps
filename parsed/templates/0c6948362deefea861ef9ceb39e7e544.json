@@ -1,0 +1,3 @@
+{
+  "components/papathemes/socialproof/popup-shell": "{{!-- Papathemes Social Proof — Popup Manager shell.\n      Exit-intent and promo popups attach their modal DOM dynamically.\n      This empty div only carries the localized strings so that the popup\n      builders can read them via dataset without re-fetching language files. --}}\n<div class=\"papathemes-socialproof-popup-host\"\n     data-papathemes-popup-host\n     data-lang-close=\"{{lang 'socialproof.popup.close'}}\"\n     data-lang-copy-code=\"{{lang 'socialproof.popup.copy_code'}}\"\n     data-lang-copied=\"{{lang 'socialproof.popup.copied'}}\"\n     data-lang-no-thanks=\"{{lang 'socialproof.popup.no_thanks'}}\"\n     data-lang-redirecting-in=\"{{lang 'socialproof.popup.redirecting_in'}}\">\n</div>\n"
+}

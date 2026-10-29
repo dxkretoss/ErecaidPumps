@@ -1,0 +1,169 @@
+// Papathemes Social Proof — PDP stock pill + urgency widget.
+//
+// Composition: stock pill + urgency fragments sit on a single flex row.
+// All text on this row shares one typographic baseline so the fragments
+// look like parts of the same signal strip, not three disparate widgets.
+//
+// Why a single container declares all typography:
+//   The three visible fragments come from different HTML shapes — the
+//   stock pill uses our own <span>s, the urgency uses <span>s via JS.
+//   Declaring font-size/weight/line-height ONCE on the row guarantees
+//   uniform rendering regardless of markup shape.
+//
+// Dot palette (all 10px circles aligned on the text baseline):
+//   - Green pulsing: viewers (live activity).
+//   - Green static : stock, in stock (default).
+//   - Orange static: stock, low stock (.is-low-stock — stockPill.js).
+//   - Muted grey   : last-order (historical).
+
+$pp-sp-dot-size: remCalc(10);
+$pp-sp-color-live: #2ecc71;
+$pp-sp-color-low:  #f39c12;
+$pp-sp-color-muted: rgba(0, 0, 0, 0.3);
+
+.papathemes-socialproof-stock-row {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    column-gap: spacing("single");
+    row-gap: remCalc(8);
+    margin: spacing("half") 0 spacing("single");
+    color: stencilColor("color-textBase");
+    font-size: fontSize("base");
+    font-weight: 500;
+    line-height: 1;
+
+    // ------- Stock pill (visible UI) -------
+
+    &__pill {
+        display: inline-flex;
+        align-items: center;
+        gap: remCalc(8);
+    }
+
+    &__dot {
+        flex: 0 0 auto;
+        width: $pp-sp-dot-size;
+        height: $pp-sp-dot-size;
+        border-radius: 50%;
+        background: $pp-sp-color-live;
+        transition: background-color 200ms ease;
+    }
+
+    &__pill.is-low-stock &__dot {
+        background: $pp-sp-color-low;
+    }
+
+    &__label {
+        display: inline;
+    }
+
+    &__value {
+        display: inline;
+        font-weight: 700;
+    }
+
+    // ------- BC JS machinery (permanently hidden) -------
+    //
+    // This element carries `.form-field--stock` + `[data-product-stock]`
+    // so product-details.js keeps updating it on variant changes. We
+    // force it visually hidden here regardless of the class-toggling
+    // that BC JS does, so the visible UI above is never obscured.
+    // !important is intentional: it must defeat the u-hiddenVisually
+    // class BC JS may remove at runtime.
+    &__machinery {
+        // stylelint-disable declaration-no-important
+        position: absolute !important;
+        width: 1px !important;
+        height: 1px !important;
+        margin: -1px !important;
+        padding: 0 !important;
+        overflow: hidden !important;
+        clip: rect(0, 0, 0, 0) !important;
+        white-space: nowrap !important;
+        border: 0 !important;
+        // stylelint-enable declaration-no-important
+    }
+
+    // ------- Urgency wrapper (for _addToCartVisibility toggle) -------
+
+    &__urgency {
+        display: inline-flex;
+        align-items: center;
+    }
+}
+
+// Urgency fragments inherit typography from the parent stock-row so stock,
+// viewers, and last-order all read at the same weight/size/color.
+.papathemes-socialproof-urgency {
+    display: inline-block;
+
+    &[data-out-of-stock="true"] {
+        display: none;
+    }
+
+    &__inner {
+        display: inline-flex;
+        flex-wrap: wrap;
+        align-items: center;
+        column-gap: spacing("single");
+        row-gap: remCalc(8);
+    }
+
+    &__view,
+    &__order {
+        display: inline-flex;
+        align-items: center;
+        gap: remCalc(8);
+        margin: 0;
+    }
+
+    &__view::before,
+    &__order::before {
+        content: "";
+        flex: 0 0 auto;
+        width: $pp-sp-dot-size;
+        height: $pp-sp-dot-size;
+        border-radius: 50%;
+    }
+
+    // "X viewing now" — primary live signal. Per feedback we use only the
+    // pulsing green dot to distinguish it (no bold weight), so the
+    // typography stays uniform across the whole row.
+    &__view {
+        &::before {
+            background: $pp-sp-color-live;
+            box-shadow: 0 0 0 0 rgba(46, 204, 113, 0.5);
+            animation: papathemes-socialproof-urgency-pulse 2s infinite;
+        }
+    }
+
+    // "Bought Xm/h/d ago" — supporting copy; muted dot + muted opacity.
+    &__order {
+        opacity: 0.7;
+
+        &::before {
+            background: $pp-sp-color-muted;
+        }
+    }
+}
+
+@keyframes papathemes-socialproof-urgency-pulse {
+    0% {
+        box-shadow: 0 0 0 0 rgba(46, 204, 113, 0.5);
+    }
+
+    70% {
+        box-shadow: 0 0 0 6px rgba(46, 204, 113, 0);
+    }
+
+    100% {
+        box-shadow: 0 0 0 0 rgba(46, 204, 113, 0);
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .papathemes-socialproof-urgency__view::before {
+        animation: none;
+    }
+}

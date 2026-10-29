@@ -1,0 +1,136 @@
+<ul class="cart-totals">
+    <li class="cart-total cart-total--subtotal">
+        <div class="cart-total-label">
+            <strong>{{lang 'cart.checkout.subtotal'}}:</strong>
+        </div>
+        <div class="cart-total-value">
+            {{#or customer (unless settings.hide_price_from_guests)}}
+                <span>{{cart.sub_total.formatted}}</span>
+            {{else}}
+                {{> components/common/login-for-pricing}}
+            {{/or}}
+        </div>
+    </li>
+    {{#if cart.gift_wrapping_cost.value}}
+        <li class="cart-total cart-total--giftWrapping">
+            <div class="cart-total-label">
+                <strong>{{lang 'cart.checkout.gift_wrapping'}}:</strong>
+            </div>
+            <div class="cart-total-value">
+                <span>{{cart.gift_wrapping_cost.formatted}}</span>
+            </div>
+        </li>
+    {{/if}}
+    {{#if cart.fees}}
+        {{#each cart.fees}}
+            <li class="cart-total cart-total--fees">
+                <div class="cart-total-label">
+                    <strong>{{display_name}}:</strong>
+                </div>
+                <div class="cart-total-value">
+                    <span>{{cost.formatted}}</span>
+                </div>
+            </li>
+        {{/each}}
+    {{/if}}
+    {{#if cart.shipping_handling.show_estimator}}
+        {{!-- The shipping expectation only applies to a cart that actually holds a backordered line. --}}
+        {{assignVar "hasBackorderedItem" 0}}
+        {{#each cart.items}}
+            {{#if stock_position.quantity_backordered}}
+                {{assignVar "hasBackorderedItem" 1}}
+            {{/if}}
+            {{#each options}}
+                {{#if linked_bundled_item.stock_position.quantity_backordered}}
+                    {{assignVar "hasBackorderedItem" 1}}
+                {{/if}}
+            {{/each}}
+        {{/each}}
+        <li class="cart-total cart-total--shippingEstimator">
+            <div class="cart-total-label">
+                <strong>{{lang 'cart.checkout.shipping'}}:</strong>
+            </div>
+            {{> components/cart/shipping-estimator cart.shipping_handling}}
+            {{!-- Outside .cart-total-label: in there the note is trapped in the label column,
+                 which is under half the width and right-aligned on narrow screens. --}}
+            {{#all cart.inventory_settings.show_default_shipping_expectation_prompt cart.inventory_settings.default_shipping_expectation_prompt (getVar "hasBackorderedItem")}}
+                <p class="cart-shipping-expectation-message">{{cart.inventory_settings.default_shipping_expectation_prompt}}</p>
+            {{/all}}
+        </li>
+    {{/if}}
+    {{#each cart.taxes}}
+        <li class="cart-total cart-total--taxes">
+            <div class="cart-total-label">
+                <strong>{{name}}:</strong>
+            </div>
+            <div class="cart-total-value">
+                <span>{{cost.formatted}}</span>
+            </div>
+        </li>
+    {{/each}}
+    {{#if cart.discount }}
+        <li class="cart-total cart-total--discount">
+            <div class="cart-total-label">
+                <strong>{{lang 'cart.discount'}}:</strong>
+            </div>
+            <div class="cart-total-value">
+                {{cart.discount.formatted}}
+            </div>
+        </li>
+    {{/if}}
+    {{#if cart.coupons}}
+        {{#each cart.coupons}}
+            <li class="cart-total cart-total--coupons">
+                <div class="cart-total-label">
+                    <strong>{{lang 'cart.coupons.code_label' code=code}}</strong>
+                    <div>
+                        <a href="{{remove_url}}">{{lang 'cart.coupons.remove'}}</a>
+                    </div>
+                </div>
+                <div class="cart-total-value">
+                    <span>{{discount.formatted}}</span>
+                </div>
+            </li>
+        {{/each}}
+    {{else}}
+        <li class="cart-total cart-total--couponCode">
+            <div class="cart-total-label">
+                <strong>{{lang 'cart.coupon_code'}}:</strong>
+            </div>
+            {{> components/cart/coupon-input}}
+        </li>
+    {{/if}}
+    {{#if settings.gift_certificates_enabled}}
+        {{#each cart.gift_certificates}}
+            <li class="cart-total cart-total--giftCertificates">
+                <div class="cart-total-label">
+                    <strong>{{lang 'cart.gift_certificates.code_label' code=code}}</strong>
+                    <span>
+                        {{remaining.formatted}} | <a href="{{remove_url}}">{{lang 'cart.gift_certificates.remove'}}</a>
+                    </span>
+                </div>
+                <div class="cart-total-value">
+                    {{used.formatted}}
+                </div>
+            </li>
+        {{/each}}
+        <li class="cart-total cart-total--giftCertificates">
+            <div class="cart-total-label">
+                <strong>{{lang 'cart.gift_certificates.gift_certificate'}}:</strong>
+            </div>
+            {{> components/cart/gift-certificate-input}}
+        </li>
+    {{/if}}
+    <li class="cart-total cart-total--grandTotal">
+        <div class="cart-total-label">
+            <strong>{{lang 'cart.checkout.grand_total'}}:</strong>
+        </div>
+        <div class="cart-total-value cart-total-grandTotal">
+            {{#or customer (unless settings.hide_price_from_guests)}}
+                <span>{{cart.grand_total.formatted}}</span>
+            {{else}}
+                {{> components/common/login-for-pricing}}
+            {{/or}}
+        </div>
+    </li>
+</ul>

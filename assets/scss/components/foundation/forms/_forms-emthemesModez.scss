@@ -1,0 +1,8 @@
+.form-label--inlineSmall {
+    small {
+        font-size: fontSize("smallest");
+        letter-spacing: letterSpacing("large");
+        text-transform: uppercase;
+        vertical-align: middle;
+    }
+}

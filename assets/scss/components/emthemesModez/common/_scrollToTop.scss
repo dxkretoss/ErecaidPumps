@@ -1,0 +1,10 @@
+#scrollToTopFloatingButton {
+    position: fixed;
+    bottom: 100px;
+    right: 35px;
+    z-index: 1;
+    padding: spacing("half");
+    font-size: fontSize("larger");
+    background-color: container("fill");
+    margin: 0;
+}

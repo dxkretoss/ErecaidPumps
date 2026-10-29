@@ -1,0 +1,13 @@
+<div class="sidebarBlock sidebarBlock--navList sidebarBlock--brands sidebarBlock--mobileCollapsible">
+    <h3 class="sidebarBlock-heading"
+        data-collapsible="#brands-navList"
+        data-collapsible-disabled-breakpoint="medium"
+        data-collapsible-disabled-state="open"
+        data-collapsible-enabled-state="closed">{{lang 'footer.brands'}}</h3>
+    <ul id="brands-navList" class="navList">
+        {{#each (limit shop_by_brand theme_settings.max_shop_by_brand)}}
+        <li class="navList-item"><a class="navList-action" data-instantload href="{{url}}" title="{{name}}">{{name}}</a></li>
+        {{/each}}
+        <li class="navList-item"><a class="navList-action" data-instantload href="{{urls.brands}}">{{lang 'common.view_all'}}</a></li>
+    </ul>
+</div> 

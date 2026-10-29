@@ -1,0 +1,21 @@
+{{!-- Papathemes Social Proof — PDP urgency widget (viewers-now + last-purchased).
+      Rendered inside product-view.html. JS (urgency.js) fills content via data-* attrs.
+      Markup is intentionally empty initially; JS populates children.
+      Config lives in window.supermarketThemeSettings.urgency (Script Manager). --}}
+<div class="papathemes-socialproof-urgency"
+     data-papathemes-urgency
+     data-product-id="{{product.id}}"
+     data-out-of-stock="{{product.out_of_stock}}"
+     data-lang-viewing-now="{{lang 'socialproof.urgency.viewing_now'}}"
+     data-lang-viewing-now-singular="{{lang 'socialproof.urgency.viewing_now_singular'}}"
+     data-lang-last-ordered="{{lang 'socialproof.urgency.last_ordered'}}"
+     data-lang-min-ago="{{lang 'socialproof.urgency.min_ago'}}"
+     data-lang-hour-ago="{{lang 'socialproof.urgency.hour_ago'}}"
+     data-lang-hours-ago="{{lang 'socialproof.urgency.hours_ago'}}"
+     data-lang-day-ago="{{lang 'socialproof.urgency.day_ago'}}"
+     data-lang-days-ago="{{lang 'socialproof.urgency.days_ago'}}"
+     aria-label="{{lang 'socialproof.urgency.aria_label'}}"
+     role="status"
+     aria-live="polite"
+     aria-atomic="true">
+</div>

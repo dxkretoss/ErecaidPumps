@@ -1,0 +1,545 @@
+// =============================================================================
+// ERECAID CUSTOM HEADER STYLES (Identical to Live Store Nav Links)
+// =============================================================================
+
+.erecaid-header {
+    background-color: #ffffff;
+    width: 100%;
+    position: relative;
+    z-index: 50;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+
+    // Top Utility / Brand Row
+    &__top {
+        padding: 16px 0;
+        background: #ffffff;
+        border-bottom: 1px solid #f1f5f9;
+
+        &-inner {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 24px;
+
+            @media (max-width: 900px) {
+                flex-wrap: wrap;
+            }
+        }
+    }
+
+    // Brand Logo & Tagline
+    &__brand {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        flex-shrink: 0;
+    }
+
+    &__logo-link {
+        text-decoration: none;
+        display: inline-block;
+        line-height: 1.1;
+    }
+
+    &__logo-img {
+        max-height: 48px;
+        width: auto;
+        object-fit: contain;
+    }
+
+    &__logo-text {
+        font-family: 'Roboto', 'Karla', sans-serif;
+        font-size: 28px;
+        font-weight: 800;
+        color: #0b4a8b;
+        letter-spacing: -0.5px;
+    }
+
+    &__logo-accent {
+        color: #1976d2;
+    }
+
+    &__logo-domain {
+        color: #0b4a8b;
+        font-weight: 700;
+    }
+
+    &__tagline {
+        margin: 4px 0 0 0;
+        font-size: 12.5px;
+        color: #64748b;
+        font-weight: 500;
+        letter-spacing: -0.1px;
+    }
+
+    // Right Actions
+    &__actions {
+        display: flex;
+        align-items: center;
+        gap: 26px;
+        margin-left: auto;
+
+        @media (max-width: 900px) {
+            width: 100%;
+            justify-content: space-between;
+            gap: 16px;
+        }
+    }
+
+    // Phone Support Box
+    &__phone-box {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        text-decoration: none;
+        color: inherit;
+        transition: opacity 0.2s ease;
+
+        &:hover {
+            opacity: 0.88;
+        }
+
+        @media (max-width: 768px) {
+            display: none;
+        }
+    }
+
+    &__phone-icon {
+        color: #0b4a8b;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 36px;
+        height: 36px;
+    }
+
+    &__phone-content {
+        display: flex;
+        flex-direction: column;
+        line-height: 1.25;
+    }
+
+    &__phone-title {
+        font-size: 16px;
+        color: #0d2b45;
+        font-weight: 600;
+
+        strong {
+            font-size: 18px;
+            font-weight: 800;
+            color: #0b4a8b;
+            letter-spacing: -0.3px;
+        }
+    }
+
+    &__phone-sub {
+        font-size: 11.5px;
+        color: #475569;
+        font-weight: 600;
+    }
+
+    &__phone-hours {
+        font-size: 11px;
+        color: #64748b;
+    }
+
+    // Search Wrap (Pill)
+    &__search-wrap {
+        position: relative;
+        min-width: 240px;
+        max-width: 290px;
+        flex: 1;
+
+        @media (max-width: 600px) {
+            min-width: 160px;
+        }
+    }
+
+    &__search-form {
+        position: relative;
+        width: 100%;
+        margin: 0;
+    }
+
+    &__search-input {
+        width: 100%;
+        height: 40px;
+        border-radius: 9999px !important;
+        border: 1.5px solid #cbd5e1 !important;
+        padding: 0 42px 0 16px !important;
+        font-size: 13.5px !important;
+        color: #1e293b !important;
+        background: #ffffff !important;
+        transition: border-color 0.2s, box-shadow 0.2s;
+
+        &:focus {
+            border-color: #0b4a8b !important;
+            box-shadow: 0 0 0 3px rgba(11, 74, 139, 0.12) !important;
+            outline: none;
+        }
+
+        &::placeholder {
+            color: #94a3b8;
+            font-size: 13.5px;
+        }
+    }
+
+    &__search-btn {
+        position: absolute;
+        right: 4px;
+        top: 50%;
+        transform: translateY(-50%);
+        background: transparent;
+        border: none;
+        color: #0b4a8b;
+        width: 32px;
+        height: 32px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        cursor: pointer;
+        padding: 0;
+
+        &:hover {
+            color: #1976d2;
+        }
+    }
+
+    // Cart Icon
+    &__cart-wrap {
+        position: relative;
+        display: flex;
+        align-items: center;
+    }
+
+    &__cart-link {
+        display: flex;
+        align-items: center;
+        text-decoration: none;
+        color: #0b4a8b;
+        position: relative;
+        padding: 4px;
+        transition: transform 0.15s ease;
+
+        &:hover {
+            transform: scale(1.05);
+        }
+    }
+
+    &__cart-icon {
+        stroke: #0b4a8b;
+    }
+
+    &__cart-count {
+        position: absolute;
+        top: -6px;
+        right: -8px;
+        background-color: #0b4a8b;
+        color: #ffffff;
+        font-size: 11px;
+        font-weight: 700;
+        min-width: 18px;
+        height: 18px;
+        border-radius: 9999px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 0 4px;
+        line-height: 1;
+    }
+
+    // Mobile Menu Toggle
+    &__mobile-toggle {
+        display: none;
+        flex-direction: column;
+        justify-content: space-around;
+        width: 30px;
+        height: 24px;
+        background: transparent;
+        border: none;
+        cursor: pointer;
+        padding: 0;
+
+        span {
+            width: 100%;
+            height: 2.5px;
+            background-color: #0b4a8b;
+            border-radius: 2px;
+            transition: all 0.3s;
+        }
+
+        @media (max-width: 800px) {
+            display: flex;
+        }
+    }
+
+    // Navigation Bar (Solid Royal Blue - Matches Live Site Multi-Line Wrapping)
+    &__nav {
+        background-color: #2b4cb5;
+        width: 100%;
+        padding: 12px 0;
+
+        @media (max-width: 800px) {
+            display: none;
+            padding: 8px 0;
+
+            &.is-open {
+                display: block;
+            }
+        }
+
+        &-inner {
+            display: flex;
+            align-items: center;
+            width: 100%;
+            position: relative;
+        }
+
+        &-list {
+            display: flex;
+            align-items: center;
+            list-style: none;
+            margin: 0;
+            padding: 0;
+            flex-wrap: wrap; // Allows natural multi-line wrapping just like live site!
+            row-gap: 8px;
+            column-gap: 22px;
+            width: 100%;
+
+            @media (max-width: 800px) {
+                flex-direction: column;
+                align-items: flex-start;
+                row-gap: 4px;
+            }
+        }
+
+        &-item {
+            position: relative;
+            flex-shrink: 0;
+
+            @media (max-width: 800px) {
+                width: 100%;
+                border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            }
+        }
+
+        &-link {
+            display: inline-block;
+            color: #ffffff !important;
+            font-size: 13px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.25px;
+            text-decoration: none;
+            padding: 3px 0;
+            transition: opacity 0.2s ease;
+
+            &:hover,
+            &:focus {
+                opacity: 0.85;
+                text-decoration: underline;
+                color: #ffffff !important;
+            }
+
+            @media (max-width: 1200px) {
+                font-size: 12px;
+            }
+
+            @media (max-width: 800px) {
+                width: 100%;
+                padding: 10px 14px;
+            }
+        }
+    }
+
+    // Categories Dropdown Button (Clean Modern Pill in Nav Bar)
+    &__cat-dropdown-wrap {
+        position: relative;
+        flex-shrink: 0;
+        margin-right: 24px;
+        z-index: 100;
+
+        @media (max-width: 800px) {
+            width: 100%;
+            margin-right: 0;
+            margin-bottom: 8px;
+        }
+
+        &:hover {
+            .erecaid-header__dropdown {
+                display: block !important;
+                visibility: visible !important;
+                opacity: 1 !important;
+                transform: translateY(0) !important;
+            }
+
+            .erecaid-header__cat-dropdown-btn {
+                background-color: rgba(255, 255, 255, 0.28);
+            }
+        }
+    }
+
+    &__cat-dropdown-btn {
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        background-color: rgba(255, 255, 255, 0.18);
+        color: #ffffff !important;
+        font-size: 13px;
+        font-weight: 700;
+        text-transform: uppercase;
+        letter-spacing: 0.5px;
+        text-decoration: none !important;
+        padding: 7px 15px;
+        border-radius: 6px;
+        border: 1px solid rgba(255, 255, 255, 0.35);
+        transition: all 0.2s ease;
+        cursor: pointer;
+
+        &:hover {
+            background-color: rgba(255, 255, 255, 0.28);
+            color: #ffffff !important;
+        }
+
+        @media (max-width: 800px) {
+            width: 100%;
+            justify-content: space-between;
+        }
+    }
+
+    &__nav-cats-icon {
+        stroke: #ffffff;
+        display: block;
+    }
+
+    &__nav-arrow {
+        font-size: 11px;
+        margin-left: 2px;
+        transition: transform 0.2s ease;
+    }
+
+    // Floating Dropdown Card
+    &__dropdown {
+        display: none !important;
+        position: absolute;
+        top: 100%;
+        left: 0;
+        margin: 6px 0 0 0;
+        min-width: 320px;
+        max-width: 360px;
+        background: #ffffff;
+        border-radius: 8px;
+        box-shadow: 0 16px 36px rgba(0, 0, 0, 0.2), 0 3px 8px rgba(0, 0, 0, 0.08);
+        border: 1px solid #cbd5e1;
+        list-style: none !important;
+        padding: 8px 0 !important;
+        z-index: 999;
+        text-align: left;
+
+        // Hover bridge
+        &::before {
+            content: '';
+            position: absolute;
+            top: -10px;
+            left: 0;
+            width: 100%;
+            height: 10px;
+        }
+
+        &--catalog {
+            max-height: 480px;
+            overflow-y: auto;
+        }
+
+        @media (max-width: 800px) {
+            position: static;
+            width: 100%;
+            max-width: 100%;
+            box-shadow: none;
+            border: none;
+            background: #1e3a8a;
+            border-radius: 4px;
+            margin-top: 4px;
+        }
+    }
+
+    &__dropdown-item {
+        position: relative;
+        list-style: none !important;
+        margin: 0 !important;
+        padding: 0 !important;
+
+        &::before {
+            display: none !important;
+        }
+
+        &.has-sub:hover > .erecaid-header__dropdown-sub {
+            display: block !important;
+            visibility: visible !important;
+            opacity: 1 !important;
+        }
+    }
+
+    &__dropdown-link {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 9px 18px;
+        color: #1e293b !important;
+        font-size: 13px;
+        font-weight: 600;
+        line-height: 1.35;
+        text-decoration: none !important;
+        transition: background-color 0.15s ease, color 0.15s ease;
+
+        &:hover {
+            background-color: #f1f5f9;
+            color: #0b4a8b !important;
+        }
+
+        @media (max-width: 800px) {
+            color: #ffffff !important;
+            padding: 10px 14px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+
+            &:hover {
+                background-color: rgba(255, 255, 255, 0.1);
+                color: #ffffff !important;
+            }
+        }
+    }
+
+    &__dropdown-sub-arrow {
+        color: #94a3b8;
+        font-size: 15px;
+        font-weight: bold;
+        margin-left: 8px;
+    }
+
+    // Subcategory Flyout
+    &__dropdown-sub {
+        display: none !important;
+        position: absolute;
+        top: -8px;
+        left: 100%;
+        min-width: 260px;
+        background: #ffffff;
+        border-radius: 8px;
+        box-shadow: 0 16px 36px rgba(0, 0, 0, 0.2), 0 3px 8px rgba(0, 0, 0, 0.08);
+        border: 1px solid #cbd5e1;
+        list-style: none !important;
+        padding: 8px 0 !important;
+        margin: 0 !important;
+        z-index: 1000;
+        text-align: left;
+
+        @media (max-width: 800px) {
+            position: static;
+            width: 100%;
+            box-shadow: none;
+            border: none;
+            background: #172554;
+            padding-left: 14px !important;
+        }
+    }
+}

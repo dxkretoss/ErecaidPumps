@@ -1,0 +1,12 @@
+<div class="emthemesModez-productsFilter {{#or category.faceted_search_enabled brand.faceted_search_enabled product_results.faceted_search_enabled}}emthemesModez-productsFilter--faceted{{/or}}">
+    <a href="#emthemesModez-productsFilter-form{{id_prefix}}" role="button" class="button emthemesModez-productsFilter-toggle" aria-label="Options" data-collapsible
+        data-collapsible-disabled-breakpoint="medium"
+        data-collapsible-disabled-state="open"
+        data-collapsible-enabled-state="closed"
+    ><i class="fa fa-cog" aria-hidden="true"></i></a>
+    <form class="actionBar" id="emthemesModez-productsFilter-form{{id_prefix}}" method="get" data-sort-by>
+        {{> components/category/sort-box sort=sort id_prefix=id_prefix}}
+        {{> components/category/products-per-page products_per_page=products_per_page id_prefix=id_prefix}}
+        {{> components/category/grid-list}}
+    </form>
+</div>

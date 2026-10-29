@@ -1,0 +1,156 @@
+// =============================================================================
+// ERECAID FAQS ACCORDION SECTION (100% Reference Match)
+// =============================================================================
+
+.erecaid-faqs-section {
+    background-color: #ffffff;
+    padding: 20px 0 28px;
+    width: 100%;
+
+    @media (max-width: 768px) {
+        padding: 14px 0 22px;
+    }
+}
+
+.erecaid-faqs-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+    margin-bottom: 14px;
+    width: 100%;
+
+    &__title {
+        font-family: 'Roboto', 'Karla', sans-serif;
+        font-size: 19px;
+        line-height: 1.25;
+        font-weight: 800;
+        color: #002d62;
+        margin: 0;
+        letter-spacing: -0.2px;
+
+        @media (max-width: 600px) {
+            font-size: 17px;
+        }
+    }
+
+    &__link {
+        font-size: 12.5px;
+        font-weight: 700;
+        color: #0055ad;
+        text-decoration: none;
+        display: inline-flex;
+        align-items: center;
+        gap: 4px;
+        white-space: nowrap;
+        transition: color 0.15s ease;
+
+        &:hover {
+            color: #003770;
+            text-decoration: underline;
+
+            .erecaid-faqs-header__arrow {
+                transform: translateX(3px);
+            }
+        }
+    }
+
+    &__arrow {
+        display: inline-block;
+        transition: transform 0.2s ease;
+    }
+}
+
+.erecaid-faqs-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+    width: 100%;
+
+    @media (max-width: 800px) {
+        grid-template-columns: 1fr;
+        gap: 14px;
+    }
+}
+
+.erecaid-faqs-col {
+    background-color: #ffffff;
+    border: 1px solid #dce8f4;
+    border-radius: 6px;
+    overflow: hidden;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.02);
+}
+
+.erecaid-faq-item {
+    border-bottom: 1px solid #eef2f6;
+
+    &:last-child {
+        border-bottom: none;
+    }
+
+    &__btn {
+        width: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 12px;
+        padding: 10px 14px;
+        background: transparent;
+        border: none;
+        cursor: pointer;
+        text-align: left;
+        transition: background-color 0.15s ease;
+
+        &:hover {
+            background-color: #f8fbfe;
+        }
+
+        &[aria-expanded="true"] {
+            background-color: #f8fbfe;
+
+            .erecaid-faq-item__icon {
+                transform: rotate(180deg);
+            }
+        }
+    }
+
+    &__question {
+        font-size: 12.5px;
+        font-weight: 600;
+        color: #002d62;
+        line-height: 1.3;
+        margin: 0;
+        flex: 1;
+    }
+
+    &__icon {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-shrink: 0;
+        transition: transform 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+
+        svg {
+            display: block;
+            width: 10px;
+            height: 6px;
+        }
+    }
+
+    &__panel {
+        background-color: #f8fbfe;
+        padding: 6px 14px 12px;
+        border-top: 1px dashed #e2edf6;
+
+        &[hidden] {
+            display: none;
+        }
+    }
+
+    &__answer {
+        font-size: 12px;
+        line-height: 1.45;
+        color: #475569;
+        margin: 0;
+    }
+}

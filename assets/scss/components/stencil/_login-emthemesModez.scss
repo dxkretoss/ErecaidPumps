@@ -1,0 +1,187 @@
+// =============================================================================
+// LOGIN (CSS)
+// =============================================================================
+
+.login {
+    @if $theme-style == "compact" {
+        margin-top: spacing("half");
+
+        @include breakpoint("medium") {
+            margin-top: spacing("single");
+        }
+    }
+}
+
+.login-row {
+    @if $theme-style == "compact" {
+        @include breakpoint("medium") {
+            margin-top: spacing("single");
+        }
+    }
+}
+
+.login-form {
+    .form-actions {
+        text-align: left;
+
+        input,
+        a {
+            vertical-align: middle;
+        }
+    }
+}
+
+.papaSupermarket-style--modern {
+    .login {
+        margin-top: spacing("half");
+    }
+
+    .login-row {
+        @include breakpoint("medium") {
+            margin-top: spacing("double");
+        }
+    }
+
+    .login-form {
+        @include u-modern-container-box;
+        padding: spacing("single") spacing("base");
+
+        @include breakpoint("medium") {
+            margin-top: 0;
+            padding: spacing("single");
+        }
+    }
+
+    .new-customer {
+        @include u-modern-container-box;
+        padding: spacing("half");
+
+        @include breakpoint("medium") {
+            width: 45%;
+            margin-left: 5%;
+        }
+
+        .panel-header,
+        .panel-body {
+            background-color: transparent;
+        }
+
+        .panel-body {
+            margin-bottom: 0;
+        }
+    }
+}
+
+// =============================================================================
+// PASSWORDLESS LOGIN (CSS)
+// =============================================================================
+
+// Passwordless login success message
+.supermarket__passwordless-success {
+    margin-bottom: spacing("half");
+
+    .supermarket__passwordless-success-heading {
+        margin: 0 0 spacing("quarter") 0;
+        font-size: inherit;
+    }
+
+    .supermarket__passwordless-success-message {
+        margin: 0;
+    }
+
+    .supermarket__passwordless-expiry-note {
+        margin: 0;
+        opacity: 0.8;
+    }
+}
+
+// Passwordless login error message
+.supermarket__passwordless-error {
+    margin-bottom: spacing("half");
+
+    .supermarket__passwordless-error-message {
+        margin: 0;
+    }
+}
+
+// Passwordless login description
+.supermarket__passwordless-description {
+    margin-bottom: spacing("half");
+
+    h3 {
+        margin: 0 0 spacing("half") 0;
+        font-size: fontSize("small");
+    }
+
+    p {
+        margin: 0;
+        color: $color-textSecondary;
+    }
+}
+
+// Passwordless toggle button container
+.supermarket__passwordless-toggle {
+    margin: spacing("base") 0 0;
+    width: 100%;
+
+    .button {
+        width: 100%;
+    }
+}
+
+// Passwordless actions container
+.supermarket__passwordless-actions {
+    display: flex;
+    gap: spacing("half");
+    flex-direction: column;
+
+    @include breakpoint("medium") {
+        flex-direction: row;
+        align-items: center;
+    }
+
+    &::before,
+    &::after {
+        display: none;
+    }
+
+    .button {
+        flex: 1;
+        margin: 0;
+
+        + .button {
+            margin: 0;
+        }
+
+        @include breakpoint("medium") {
+            flex: none;
+        }
+    }
+}
+
+// Loading state for passwordless login
+.supermarket__passwordless-loading {
+    .supermarket__passwordless-actions .button {
+        opacity: 0.6;
+        cursor: not-allowed;
+    }
+}
+
+// Hide elements during passwordless mode
+.supermarket__passwordless-mode {
+    .supermarket__password-field {
+        display: none !important;
+    }
+
+    .supermarket__standard-actions {
+        display: none !important;
+    }
+
+    .supermarket__passwordless-actions {
+        display: flex !important;
+    }
+
+    .supermarket__passwordless-description {
+        display: block !important;
+    }
+}

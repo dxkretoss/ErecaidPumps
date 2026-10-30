@@ -6,7 +6,7 @@
     - Right Column: Spotlight Callout (Product Title, Subtitle, Learn More CTA)
 --}}
 <section class="erecaid-hero-section" aria-label="Featured Hero Presentation">
-    {{{region name="home_hero_top"}}}
+    {{!-- Temporarily hidden: {{{region name="home_hero_top"}}} --}}
 
     <div class="container">
         <div class="erecaid-hero__banner-content">
@@ -149,3 +149,26 @@
 
     {{{region name="home_hero_bottom"}}}
 </section>
+
+{{!-- Temporarily hide "Official Website for Erecaidpumps Over 20 Years" line --}}
+<script>
+(function() {
+    function hideOfficialLine() {
+        var all = document.querySelectorAll('p, div, span, h1, h2, h3, h4, a');
+        for (var i = 0; i < all.length; i++) {
+            var el = all[i];
+            if (el.childNodes.length <= 3 && el.textContent && el.textContent.indexOf('Official Website for Erecaidpumps') !== -1) {
+                var container = el.closest('[data-sub-layout]') || el.closest('[data-layout-name]') || el.closest('.banner') || el.parentElement || el;
+                container.style.display = 'none';
+            }
+        }
+    }
+    if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', hideOfficialLine);
+    } else {
+        hideOfficialLine();
+    }
+    setTimeout(hideOfficialLine, 300);
+    setTimeout(hideOfficialLine, 1000);
+})();
+</script>

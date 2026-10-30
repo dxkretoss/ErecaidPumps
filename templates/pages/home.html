@@ -24,14 +24,14 @@ shop_by_brand:
     {{#if theme_settings.custom_hero_enable}}
         {{> components/custom/erecaid-hero}}
         {{> components/custom/erecaid-category-cards}}
+        {{#if theme_settings.custom_finder_enable}}
+            {{> components/custom/erecaid-pump-finder}}
+        {{/if}}
         {{#if theme_settings.custom_reviews_enable}}
             {{> components/custom/erecaid-customer-reviews}}
         {{/if}}
         {{#if theme_settings.custom_faqs_enable}}
             {{> components/custom/erecaid-faqs}}
-        {{/if}}
-        {{#if theme_settings.custom_finder_enable}}
-            {{> components/custom/erecaid-pump-finder}}
         {{/if}}
     {{else}}
         {{> components/papa-supermarket/home/hero}}

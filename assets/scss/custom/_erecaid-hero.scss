@@ -19,7 +19,8 @@
     }
 
     .erecaid-hero {
-        // Banner content row (3-Column balanced layout)
+
+        // Banner content row (3-Section desktop, 2-Section tablet 768px-1024px, 1-Column mobile)
         &__banner-content {
             display: flex;
             align-items: center;
@@ -29,24 +30,39 @@
             position: relative;
             z-index: 2;
 
-            @media (max-width: 991px) {
+            @media (max-width: 1024px) {
+                gap: 20px;
+                min-height: 240px;
+            }
+
+            @media (max-width: 680px) {
                 flex-direction: column;
                 align-items: center;
+                justify-content: flex-start;
                 text-align: center;
-                gap: 24px;
+                gap: 18px;
                 min-height: auto;
             }
         }
 
         // Left Column (Headline, Badges, CTAs, Hotline)
         &__left {
-            flex: 1 1 450px;
-            max-width: 490px;
+            flex: 1 1 420px;
+            max-width: 480px;
             width: 100%;
             z-index: 3;
             position: relative;
 
-            @media (max-width: 991px) {
+            @media (max-width: 1024px) {
+                flex: 1 1 auto;
+                max-width: 630px;
+            }
+
+            @media (max-width: 768px) {
+                max-width: 490px;
+            }
+
+            @media (max-width: 680px) {
                 max-width: 100%;
                 text-align: center;
             }
@@ -65,8 +81,13 @@
                 font-size: 27px;
             }
 
-            @media (max-width: 600px) {
-                font-size: 22px;
+            @media (max-width: 768px) {
+                font-size: 24px;
+                margin-bottom: 8px;
+            }
+
+            @media (max-width: 480px) {
+                font-size: 21px;
             }
         }
 
@@ -77,7 +98,19 @@
             margin: 0 0 18px 0;
             max-width: 460px;
 
-            @media (max-width: 991px) {
+            @media (max-width: 1024px) {
+                max-width: 600px;
+                font-size: 14px;
+                margin-bottom: 14px;
+            }
+
+            @media (max-width: 768px) {
+                font-size: 13px;
+                line-height: 1.4;
+                margin-bottom: 14px;
+            }
+
+            @media (max-width: 680px) {
                 max-width: 100%;
                 margin-left: auto;
                 margin-right: auto;
@@ -88,26 +121,39 @@
         &__badges {
             display: flex;
             align-items: center;
-            gap: 15px;
+            gap: 12px;
             margin-bottom: 20px;
             flex-wrap: nowrap;
             max-width: 100%;
 
             @media (max-width: 1200px) {
-                gap: 10px;
+                gap: 8px;
             }
 
-            @media (max-width: 991px) {
+            @media (max-width: 1024px) {
+                flex-wrap: nowrap;
+                gap: 12px;
+            }
+
+            @media (max-width: 768px) {
+                gap: 6px;
+                margin-bottom: 16px;
+            }
+
+            @media (max-width: 680px) {
                 justify-content: center;
                 flex-wrap: wrap;
-                gap: 16px;
+                gap: 12px;
             }
 
-            @media (max-width: 600px) {
+            @media (max-width: 540px) {
                 display: grid;
                 grid-template-columns: repeat(2, 1fr);
-                gap: 12px;
+                gap: 10px;
                 text-align: left;
+                max-width: 320px;
+                margin-left: auto;
+                margin-right: auto;
             }
         }
 
@@ -144,6 +190,10 @@
             font-weight: 700;
             color: #002d62;
             white-space: nowrap;
+
+            @media (max-width: 768px) {
+                font-size: 10px;
+            }
         }
 
         // Action Buttons
@@ -154,7 +204,12 @@
             margin-bottom: 14px;
             flex-wrap: wrap;
 
-            @media (max-width: 991px) {
+            @media (max-width: 768px) {
+                gap: 10px;
+                margin-bottom: 12px;
+            }
+
+            @media (max-width: 680px) {
                 justify-content: center;
             }
         }
@@ -171,6 +226,11 @@
             transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
             line-height: 1.2;
             cursor: pointer;
+
+            @media (max-width: 768px) {
+                padding: 9px 18px;
+                font-size: 12.5px;
+            }
 
             &-arrow {
                 margin-left: 6px;
@@ -233,30 +293,32 @@
         &__center {
             flex: 0 1 360px;
             max-width: 370px;
+            width: 100%;
             display: flex;
-            align-items: flex-end;
+            align-items: center;
             justify-content: center;
             z-index: 2;
+            text-align: center;
 
-            @media (max-width: 991px) {
-                max-width: 320px;
-                width: 100%;
+            @media (max-width: 1024px) {
+                display: none !important;
             }
         }
 
         &__product-img {
             width: 100%;
+            max-width: 370px;
             height: auto;
             max-height: 250px;
             display: block;
             object-fit: contain;
-            filter: drop-shadow(0 4px 10px rgba(0, 30, 80, 0.06));
+            filter: drop-shadow(0 6px 14px rgba(0, 30, 80, 0.08));
         }
 
         // Right Column: Product Spotlight Callout (No card box, direct clean typography)
         &__right {
-            flex: 0 1 250px;
-            max-width: 260px;
+            flex: 0 1 240px;
+            max-width: 250px;
             width: 100%;
             z-index: 3;
             position: relative;
@@ -264,9 +326,24 @@
             flex-direction: column;
             justify-content: center;
 
-            @media (max-width: 991px) {
-                max-width: 100%;
+            @media (max-width: 1024px) {
+                flex: 0 0 280px;
+                max-width: 280px;
+            }
+
+            @media (max-width: 768px) {
+                flex: 0 0 220px;
+                max-width: 230px;
+            }
+
+            @media (max-width: 680px) {
+                flex: 1 1 auto;
+                max-width: 380px;
+                width: 100%;
                 text-align: center;
+                margin-top: 6px;
+                padding-top: 14px;
+                border-top: 1px solid rgba(0, 45, 98, 0.1);
             }
         }
 
@@ -280,7 +357,7 @@
             padding: 0;
             border-radius: 0;
 
-            @media (max-width: 991px) {
+            @media (max-width: 680px) {
                 align-items: center;
             }
         }
@@ -292,6 +369,15 @@
             color: #002d62;
             margin: 0 0 8px 0;
             letter-spacing: -0.2px;
+
+            @media (max-width: 1024px) {
+                font-size: 16px;
+            }
+
+            @media (max-width: 768px) {
+                font-size: 14.5px;
+                margin-bottom: 6px;
+            }
         }
 
         &__spotlight-subtitle {
@@ -299,6 +385,11 @@
             line-height: 1.4;
             color: #2b497c;
             margin: 0 0 16px 0;
+
+            @media (max-width: 768px) {
+                font-size: 12px;
+                margin-bottom: 12px;
+            }
         }
     }
 }

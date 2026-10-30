@@ -573,3 +573,8 @@
         }
     }
 }
+
+// Hide default theme mobileOnly quick search bar under custom header
+.emthemesModez-quickSearch--mobileOnly {
+    display: none !important;
+}

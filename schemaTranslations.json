@@ -34,20 +34,6 @@
     "uk": "Показати \"&copy;\", рік та назву магазину",
     "zh": "显示\"&copy;\", 当前年份和店铺名称"
   },
-  "i18n.Medium": {
-    "default": "Medium",
-    "fr": "Moyen",
-    "it": "Medio",
-    "uk": "Середній",
-    "zh": "中"
-  },
-  "i18n.Small": {
-    "default": "Small",
-    "fr": "Petit",
-    "it": "Piccolo",
-    "uk": "Маленький",
-    "zh": "小"
-  },
   "i18n.TheProductPriceLabel": {
     "default": "* the 'Product price label' is displayed when there is not a sale price.",
     "fr": "* l’étiquette de prix du produit s’affiche lorsqu’il n’y a pas de prix de vente.",
@@ -62,198 +48,6 @@
     "uk": "Укажіть максимальний розмір зображення для відображення на робочому столі. Ми зменшимо масштаб зображення для менших пристроїв.",
     "zh": "请为电脑端指定最大图片尺寸。我们将自动缩小适应小屏幕设备。"
   },
-  "i18n.ButtonContainer": {
-    "default": "Button Container"
-  },
-  "i18n.ButtonColor": {
-    "default": "Button color",
-    "fr": "Couleur du bouton",
-    "it": "Colore bottone",
-    "uk": "Колір кнопки",
-    "zh": "按钮颜色"
-  },
-  "i18n.Gold": {
-    "default": "Gold",
-    "fr": "Or",
-    "it": "Oro",
-    "uk": "Золотий",
-    "zh": "金"
-  },
-  "i18n.Blue": {
-    "default": "Blue",
-    "fr": "Bleu",
-    "it": "Blu",
-    "uk": "Синій",
-    "zh": "蓝"
-  },
-  "i18n.Silver": {
-    "default": "Silver",
-    "fr": "Argent",
-    "it": "Argento",
-    "uk": "Срібний",
-    "zh": "银"
-  },
-  "i18n.White": {
-    "default": "White"
-  },
-  "i18n.Black": {
-    "default": "Black",
-    "fr": "Noir",
-    "it": "Nero",
-    "uk": "Чорний",
-    "zh": "黑"
-  },
-  "i18n.ButtonShape": {
-    "default": "Button shape",
-    "fr": "Forme du bouton",
-    "it": "Forma bottone",
-    "uk": "Форма кнопки",
-    "zh": "按钮形状"
-  },
-  "i18n.Pill": {
-    "default": "Pill",
-    "fr": "Cylindre",
-    "it": "Cerchio",
-    "uk": "Таблетки",
-    "zh": "Pill"
-  },
-  "i18n.Rectangle": {
-    "default": "Rectangle",
-    "fr": "Rectangle",
-    "it": "Rettangolo",
-    "uk": "Прямокутник",
-    "zh": "长方形"
-  },
-  "i18n.ButtonSize": {
-    "default": "Button size",
-    "fr": "Taille du bouton",
-    "it": "Dimensioni bottone",
-    "uk": "Розмір кнопки",
-    "zh": "按钮尺寸"
-  },
-  "i18n.Large": {
-    "default": "Large",
-    "fr": "Large",
-    "it": "Largo",
-    "uk": "Великий",
-    "zh": "大"
-  },
-  "i18n.ButtonContent": {
-    "default": "Button content",
-    "fr": "Contenu du bouton",
-    "it": "Contenuto bottone",
-    "uk": "Зміст кнопки",
-    "zh": "按钮内容"
-  },
-  "i18n.SmartPaypalButton": {
-    "default": "Paypal Button"
-  },
-  "i18n.PayPalCheckout": {
-    "default": "PayPal Checkout",
-    "fr": "Checkout de PayPal",
-    "it": "Checkout PayPal",
-    "uk": "Замовлення PayPal",
-    "zh": "PayPal 结算"
-  },
-  "i18n.PayWithPayPal": {
-    "default": "Pay with PayPal",
-    "fr": "Payer avec PayPal",
-    "it": "Paga con PayPal",
-    "uk": "Оплачуйте через PayPal",
-    "zh": "PayPal支付"
-  },
-  "i18n.BuyNow": {
-    "default": "Buy Now",
-    "fr": "Acheter maintenant",
-    "it": "Acquista Ora",
-    "uk": "Купити зараз",
-    "zh": "立即购买"
-  },
-  "i18n.PayPal": {
-    "default": "PayPal",
-    "fr": "PayPal",
-    "it": "PayPal",
-    "uk": "PayPal",
-    "zh": "PayPal"
-  },
-  "i18n.CheckoutPayPalButton": {
-    "default": "PayPal Button on checkout page"
-  },
-  "i18n.SmartBoltButton": {
-    "default": "Bolt button"
-  },
-  "i18n.ProductPageBanner": {
-    "default": "Product page banner"
-  },
-  "i18n.BannerStyleColor": {
-    "default": "Banner style color"
-  },
-  "i18n.White-no-border": {
-    "default": "White no border"
-  },
-  "i18n.gray": {
-    "default": "Gray"
-  },
-  "i18n.monochrome": {
-    "default": "Monochrome"
-  },
-  "i18n.grayscale": {
-    "default": "Grayscale"
-  },
-  "i18n.BannerStyleRatio": {
-    "default": "Banner style ratio"
-  },
-  "i18n.8x1": {
-    "default": "8x1"
-  },
-  "i18n.20x1": {
-    "default": "20x1"
-  },
-  "i18n.HomePageBanner": {
-    "default": "Home page banner"
-  },
-  "i18n.BannerTextStyleColor": {
-    "default": "Banner text style color"
-  },
-  "i18n.BannerStyleLogoPosition": {
-    "default": "Banner style logo position"
-  },
-  "i18n.left": {
-    "default": "Left"
-  },
-  "i18n.right": {
-    "default": "Right"
-  },
-  "i18n.top": {
-    "default": "Top"
-  },
-  "i18n.BannerStyleLogoType": {
-    "default": "Banner style logo type"
-  },
-  "i18n.inline": {
-    "default": "Inline"
-  },
-  "i18n.alternative": {
-    "default": "Alternative"
-  },
-  "i18n.none": {
-    "default": "None"
-  },
-  "i18n.PaymentBanners": {
-    "default": "Payment Banners"
-  },
-  "i18n.CartPageBanner": {
-    "default": "Cart page banner"
-  },
-  "i18n.primary": {
-    "default": "Primary"
-  },
-  "i18n.BannersMessaging": {
-    "default": "Please note that in order for the changes to apply, you need navigate to the PayPal Settings in BC Control Panel, disable an appropriate messaging banner(s), click \"Save\" button, enable the banner again and click \"Save\" button again"
-  },
-  "i18n.PaymentButtonsContainer": {
-    "default": "Buttons Container Size"
-  },
   "i18n.NewsletterPopupDesc": {
     "default": "Create newsletter popup image and content in Banner Manager. Use the tool in User Guide to generate HTML content quickly."
   },
@@ -266,80 +60,17 @@
   "i18n.NLPopupHideDesc": {
     "default": "Leave empty to show whenever page reloaded."
   },
-  "i18n.CategoryListUploadThumbnailDesc": {
-    "default": "Upload banner in Image Manager named categories-list-thumbnail-{i}.jpg where {i} is the category order starting from 1."
-  },
-  "i18n.ProductByCategoryUploadBannerDesc": {
-    "default": "Upload banner in Image Manager named products-by-category-{i}.jpg where {i} is the category order starting from 1. Recommended size: 1448 x 525 px (images are cropped to fit)."
-  },
   "i18n.ResponsiveMainProductImage": {
     "default": "Responsive main product images (Disable to load faster for large size images or PNG format)"
   },
   "i18n.FacebookPageDesc": {
     "default": "Input 'papathemes' if your page url is https://www.facebook.com /papathemes/. Leave empty to hide."
   },
-  "i18n.CarouselAddYouTubeDesc": {
-    "default": "Add Youtube video for slides. For example, input suSS6v8GgrM if your video URL is https://youtu.be/suSS6v8GgrM"
-  },
   "i18n.InstantLoadDesc": {
     "default": "Enable Instant-Load for faster browsing pages (experiment). Doesn't work if ecommerce tracking enabled."
   },
-  "i18n.AfterPaySettings": {
-    "default": "After Pay Button"
-  },
-  "i18n.ApplePaySettings": {
-    "default": "Apple Pay Button"
-  },
-  "i18n.AmazonSettings": {
-    "default": "Amazon Button"
-  },
-  "i18n.GooglePaySettings": {
-    "default": "Google Pay Button"
-  },
-  "i18n.MasterpassSettings": {
-    "default": "Masterpass Button"
-  },
   "i18n.ShowQuickPaymentButtons": {
     "default": "Show quick payment buttons"
-  },
-  "i18n.QuickPaymentButtons": {
-    "default": "Quick payment buttons on product page"
-  },
-  "i18n.NumberOfButtonsAlwaysVisible": {
-    "default": "Number of buttons always visible"
-  },
-  "i18n.ProviderSortingOrderLabel": {
-    "default": "Sort Order"
-  },
-  "i18n.PayPalProviderSortingLabel": {
-    "default": "PayPal"
-  },
-  "i18n.PayPalCreditProviderSortingLabel": {
-    "default": "Pay Later"
-  },
-  "i18n.PayPalVenmoProviderSortingLabel": {
-    "default": "Venmo"
-  },
-  "i18n.PayPalSepaProviderSortingLabel": {
-    "default": "SEPA"
-  },
-  "i18n.GooglepayProviderSortingLabel": {
-    "default": "Google Pay"
-  },
-  "i18n.ApplepayProviderSortingLabel": {
-    "default": "Apple Pay"
-  },
-  "i18n.AfterpayProviderSortingLabel": {
-    "default": "After Pay"
-  },
-  "i18n.AmazonProviderSortingLabel": {
-    "default": "Amazon Pay"
-  },
-  "i18n.MasterpassProviderSortingLabel": {
-    "default": "Masterpass"
-  },
-  "i18n.BoltProviderSortingLabel": {
-    "default": "Bolt"
   },
   "i18n.ajaxAtc": {
     "default": "Don't redirect to product page when click Add To Cart button on product cards"
@@ -366,19 +97,5 @@
     "it": "Mostra i callout delle promozioni sulle schede prodotto e sulle pagine prodotto",
     "uk": "Показувати банери акцій на картках товарів і сторінках товару",
     "zh": "在产品卡片和产品详情页显示促销标注"
-  },
-  "i18n.FeaturedPromotionBackgroundColor": {
-    "default": "Callout background",
-    "fr": "Arrière-plan de l'encart",
-    "it": "Sfondo del callout",
-    "uk": "Тло банера",
-    "zh": "标注背景色"
-  },
-  "i18n.FeaturedPromotionTextColor": {
-    "default": "Callout text",
-    "fr": "Texte de l'encart",
-    "it": "Testo del callout",
-    "uk": "Текст банера",
-    "zh": "标注文字颜色"
   }
 }

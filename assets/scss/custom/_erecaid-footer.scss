@@ -62,10 +62,12 @@
     }
 
     &__logo-img {
-        height: 22px;
-        width: auto;
+        width: 225px;
+        height: auto;
+        max-height: 42px;
         max-width: 100%;
         display: block;
+        object-fit: contain;
 
         @media (max-width: 768px) {
             margin: 0 auto;

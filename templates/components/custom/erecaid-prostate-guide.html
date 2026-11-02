@@ -20,7 +20,7 @@
             <div class="erecaid-prostate-main-card">
                 <div class="erecaid-prostate-main-card__media">
                     <img class="erecaid-prostate-main-card__image" 
-                         src="{{#if theme_settings.custom_prostate_img}}{{theme_settings.custom_prostate_img}}{{else}}{{cdn 'assets/img/cat-prod-3.png'}}{{/if}}" 
+                         src="{{#if theme_settings.custom_prostate_img}}{{#startsWith 'http' theme_settings.custom_prostate_img}}{{theme_settings.custom_prostate_img}}{{else}}{{#startsWith '/' theme_settings.custom_prostate_img}}{{theme_settings.custom_prostate_img}}{{else}}/images/stencil/original/image-manager/{{theme_settings.custom_prostate_img}}{{/startsWith}}{{/startsWith}}{{else}}{{cdn 'assets/img/cat-prod-3.png'}}{{/if}}" 
                          alt="{{#if theme_settings.custom_prostate_title}}{{theme_settings.custom_prostate_title}}{{else}}Vacuum Erection Devices After Prostate Surgery{{/if}}" 
                          loading="lazy">
                 </div>

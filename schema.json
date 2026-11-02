@@ -220,7 +220,7 @@
       {
         "type": "text",
         "id": "custom_hero_img",
-        "label": "Hero Product Image (e.g. erecaid-hero-product.png, or blank for default)",
+        "label": "Hero Product Image",
         "default": ""
       },
       {
@@ -328,7 +328,7 @@
       {
         "type": "text",
         "id": "custom_cat1_img",
-        "label": "Card 1 Image (Filename e.g. cat-prod-1.png, or blank for default)",
+        "label": "Card 1 Image",
         "default": ""
       },
       {
@@ -358,7 +358,7 @@
       {
         "type": "text",
         "id": "custom_cat2_img",
-        "label": "Card 2 Image (Filename e.g. cat-prod-2.png, or blank for default)",
+        "label": "Card 2 Image",
         "default": ""
       },
       {
@@ -388,7 +388,7 @@
       {
         "type": "text",
         "id": "custom_cat3_img",
-        "label": "Card 3 Image (Filename e.g. cat-prod-3.png, or blank for default)",
+        "label": "Card 3 Image",
         "default": ""
       },
       {
@@ -418,7 +418,7 @@
       {
         "type": "text",
         "id": "custom_cat4_img",
-        "label": "Card 4 Image (Filename e.g. cat-prod-4.png, or blank for default)",
+        "label": "Card 4 Image",
         "default": ""
       },
       {

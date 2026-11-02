@@ -6,7 +6,6 @@
         "type": "select",
         "label": "Layout",
         "id": "layout",
-        "force_reload": true,
         "options": [
           {
             "label": "Default",
@@ -22,7 +21,6 @@
         "type": "select",
         "label": "Style",
         "id": "style",
-        "force_reload": true,
         "options": [
           {
             "label": "Default",
@@ -55,18 +53,8 @@
       },
       {
         "type": "color",
-        "label": "Common dark border",
-        "id": "container-border-global-color-dark"
-      },
-      {
-        "type": "color",
         "label": "Common light background",
         "id": "container-fill-base"
-      },
-      {
-        "type": "color",
-        "label": "Common dark background",
-        "id": "container-fill-dark"
       },
       {
         "type": "text",
@@ -113,7 +101,6 @@
       {
         "type": "select",
         "id": "lazyload_mode",
-        "force_reload": true,
         "label": "Lazyloading Mode",
         "options": [
           {
@@ -138,7 +125,6 @@
         "type": "select",
         "label": "PageSpeed optimize (experiment)",
         "id": "csspreload",
-        "force_reload": true,
         "options": [
           {
             "value": "none",
@@ -157,14 +143,12 @@
       {
         "type": "checkbox",
         "id": "instantload",
-        "label": "i18n.InstantLoadDesc",
-        "force_reload": true
+        "label": "i18n.InstantLoadDesc"
       },
       {
         "type": "checkbox",
         "id": "page_transition",
-        "label": "Enable page transition overlay",
-        "force_reload": true
+        "label": "Enable page transition overlay"
       }
     ]
   },
@@ -330,10 +314,6 @@
         "default": true
       },
       {
-        "type": "heading",
-        "content": "Category Card 1"
-      },
-      {
         "type": "text",
         "id": "custom_cat1_title",
         "label": "Card 1 Title",
@@ -362,10 +342,6 @@
         "id": "custom_cat1_url",
         "label": "Card 1 Button Link",
         "default": "/categories"
-      },
-      {
-        "type": "heading",
-        "content": "Category Card 2"
       },
       {
         "type": "text",
@@ -398,10 +374,6 @@
         "default": "/categories"
       },
       {
-        "type": "heading",
-        "content": "Category Card 3"
-      },
-      {
         "type": "text",
         "id": "custom_cat3_title",
         "label": "Card 3 Title",
@@ -430,10 +402,6 @@
         "id": "custom_cat3_url",
         "label": "Card 3 Button Link",
         "default": "/categories"
-      },
-      {
-        "type": "heading",
-        "content": "Category Card 4"
       },
       {
         "type": "text",
@@ -552,10 +520,6 @@
         "default": "/categories"
       },
       {
-        "type": "heading",
-        "content": "Customer Review 1"
-      },
-      {
         "type": "text",
         "id": "custom_review1_quote",
         "label": "Review 1 Quote",
@@ -574,10 +538,6 @@
         "default": "Verified Purchase"
       },
       {
-        "type": "heading",
-        "content": "Customer Review 2"
-      },
-      {
         "type": "text",
         "id": "custom_review2_quote",
         "label": "Review 2 Quote",
@@ -594,10 +554,6 @@
         "id": "custom_review2_badge",
         "label": "Review 2 Badge",
         "default": "Verified Purchase"
-      },
-      {
-        "type": "heading",
-        "content": "Customer Review 3"
       },
       {
         "type": "text",
@@ -646,10 +602,6 @@
         "default": "/categories"
       },
       {
-        "type": "heading",
-        "content": "FAQ 1"
-      },
-      {
         "type": "text",
         "id": "custom_faq1_q",
         "label": "FAQ 1 Question",
@@ -660,10 +612,6 @@
         "id": "custom_faq1_a",
         "label": "FAQ 1 Answer (Leave blank for default)",
         "default": ""
-      },
-      {
-        "type": "heading",
-        "content": "FAQ 2"
       },
       {
         "type": "text",
@@ -678,10 +626,6 @@
         "default": ""
       },
       {
-        "type": "heading",
-        "content": "FAQ 3"
-      },
-      {
         "type": "text",
         "id": "custom_faq3_q",
         "label": "FAQ 3 Question",
@@ -692,10 +636,6 @@
         "id": "custom_faq3_a",
         "label": "FAQ 3 Answer (Leave blank for default)",
         "default": ""
-      },
-      {
-        "type": "heading",
-        "content": "FAQ 4"
       },
       {
         "type": "text",
@@ -710,10 +650,6 @@
         "default": ""
       },
       {
-        "type": "heading",
-        "content": "FAQ 5"
-      },
-      {
         "type": "text",
         "id": "custom_faq5_q",
         "label": "FAQ 5 Question",
@@ -726,10 +662,6 @@
         "default": ""
       },
       {
-        "type": "heading",
-        "content": "FAQ 6"
-      },
-      {
         "type": "text",
         "id": "custom_faq6_q",
         "label": "FAQ 6 Question",
@@ -740,6 +672,355 @@
         "id": "custom_faq6_a",
         "label": "FAQ 6 Answer (Leave blank for default)",
         "default": ""
+      },
+      {
+        "type": "heading",
+        "content": "Featured Products Section"
+      },
+      {
+        "type": "checkbox",
+        "label": "Show Featured Products Section",
+        "id": "custom_products_enable"
+      },
+      {
+        "type": "text",
+        "label": "Section Heading",
+        "id": "custom_products_title"
+      },
+      {
+        "type": "text",
+        "label": "View All Link Text",
+        "id": "custom_products_link_text"
+      },
+      {
+        "type": "text",
+        "label": "View All Link URL",
+        "id": "custom_products_link_url"
+      },
+      {
+        "type": "text",
+        "label": "Card Button Text",
+        "id": "custom_products_btn_text"
+      },
+      {
+        "type": "text",
+        "label": "Checklist Item 1 (Default)",
+        "id": "custom_products_check1"
+      },
+      {
+        "type": "text",
+        "label": "Checklist Item 2 (Default)",
+        "id": "custom_products_check2"
+      },
+      {
+        "type": "text",
+        "label": "Checklist Item 3 (Default)",
+        "id": "custom_products_check3"
+      },
+      {
+        "type": "text",
+        "label": "Checklist Item 4 (Default)",
+        "id": "custom_products_check4"
+      },
+      {
+        "type": "heading",
+        "content": "Why Choose Section"
+      },
+      {
+        "type": "checkbox",
+        "label": "Show Why Choose Section",
+        "id": "custom_why_enable"
+      },
+      {
+        "type": "text",
+        "label": "Section Title",
+        "id": "custom_why_title"
+      },
+      {
+        "type": "text",
+        "label": "Feature 1 Title",
+        "id": "custom_why1_title"
+      },
+      {
+        "type": "text",
+        "label": "Feature 1 Description",
+        "id": "custom_why1_desc"
+      },
+      {
+        "type": "text",
+        "label": "Feature 2 Title",
+        "id": "custom_why2_title"
+      },
+      {
+        "type": "text",
+        "label": "Feature 2 Description",
+        "id": "custom_why2_desc"
+      },
+      {
+        "type": "text",
+        "label": "Feature 3 Title",
+        "id": "custom_why3_title"
+      },
+      {
+        "type": "text",
+        "label": "Feature 3 Description",
+        "id": "custom_why3_desc"
+      },
+      {
+        "type": "text",
+        "label": "Feature 4 Title",
+        "id": "custom_why4_title"
+      },
+      {
+        "type": "text",
+        "label": "Feature 4 Description",
+        "id": "custom_why4_desc"
+      },
+      {
+        "type": "text",
+        "label": "Feature 4 Phone Number",
+        "id": "custom_why4_phone"
+      },
+      {
+        "type": "heading",
+        "content": "Prostate Surgery & Helpful Articles Section"
+      },
+      {
+        "type": "checkbox",
+        "label": "Show Prostate Surgery Section",
+        "id": "custom_prostate_enable"
+      },
+      {
+        "type": "text",
+        "label": "Main Card Title",
+        "id": "custom_prostate_title"
+      },
+      {
+        "type": "text",
+        "label": "Main Card Description",
+        "id": "custom_prostate_desc"
+      },
+      {
+        "type": "text",
+        "label": "Main Card Image URL",
+        "id": "custom_prostate_img"
+      },
+      {
+        "type": "text",
+        "label": "Main Card Button Text",
+        "id": "custom_prostate_btn_text"
+      },
+      {
+        "type": "text",
+        "label": "Main Card Button URL",
+        "id": "custom_prostate_btn_url"
+      },
+      {
+        "type": "heading",
+        "content": "Helpful Articles Card"
+      },
+      {
+        "type": "text",
+        "label": "Articles Card Heading",
+        "id": "custom_articles_title"
+      },
+      {
+        "type": "color",
+        "label": "Articles Box Background Color",
+        "id": "custom_articles_bg"
+      },
+      {
+        "type": "text",
+        "label": "Article 1 Text",
+        "id": "custom_article1_text"
+      },
+      {
+        "type": "text",
+        "label": "Article 1 URL",
+        "id": "custom_article1_url"
+      },
+      {
+        "type": "text",
+        "label": "Article 2 Text",
+        "id": "custom_article2_text"
+      },
+      {
+        "type": "text",
+        "label": "Article 2 URL",
+        "id": "custom_article2_url"
+      },
+      {
+        "type": "text",
+        "label": "Article 3 Text",
+        "id": "custom_article3_text"
+      },
+      {
+        "type": "text",
+        "label": "Article 3 URL",
+        "id": "custom_article3_url"
+      },
+      {
+        "type": "text",
+        "label": "Article 4 Text",
+        "id": "custom_article4_text"
+      },
+      {
+        "type": "text",
+        "label": "Article 4 URL",
+        "id": "custom_article4_url"
+      },
+      {
+        "type": "text",
+        "label": "View All Articles Text",
+        "id": "custom_articles_all_text"
+      },
+      {
+        "type": "text",
+        "label": "View All Articles URL",
+        "id": "custom_articles_all_url"
+      },
+      {
+        "type": "heading",
+        "content": "ErecAid - Bottom Call to Action Banner"
+      },
+      {
+        "type": "checkbox",
+        "label": "Show Bottom Call to Action Banner",
+        "id": "custom_cta_enable"
+      },
+      {
+        "type": "text",
+        "label": "CTA Headline",
+        "id": "custom_cta_title"
+      },
+      {
+        "type": "text",
+        "label": "CTA Description",
+        "id": "custom_cta_desc"
+      },
+      {
+        "type": "text",
+        "label": "Primary Button Text",
+        "id": "custom_cta_btn1_text"
+      },
+      {
+        "type": "text",
+        "label": "Primary Button Link",
+        "id": "custom_cta_btn1_url"
+      },
+      {
+        "type": "text",
+        "label": "Secondary Button Text",
+        "id": "custom_cta_btn2_text"
+      },
+      {
+        "type": "text",
+        "label": "Secondary Button Link",
+        "id": "custom_cta_btn2_url"
+      },
+      {
+        "type": "text",
+        "label": "Support Phone Number",
+        "id": "custom_cta_phone"
+      },
+      {
+        "type": "text",
+        "label": "Support Phone Subtitle",
+        "id": "custom_cta_phone_sub1"
+      },
+      {
+        "type": "text",
+        "label": "Support Phone Hours",
+        "id": "custom_cta_phone_sub2"
+      },
+      {
+        "type": "heading",
+        "content": "ErecAid - Custom Footer"
+      },
+      {
+        "type": "checkbox",
+        "label": "Enable Custom ErecAid Footer",
+        "id": "custom_footer_enable"
+      },
+      {
+        "type": "text",
+        "label": "Brand Tagline",
+        "id": "custom_footer_tagline"
+      },
+      {
+        "type": "text",
+        "label": "Address - Company Name",
+        "id": "custom_footer_address_name"
+      },
+      {
+        "type": "text",
+        "label": "Address - Street / Suite",
+        "id": "custom_footer_address_line1"
+      },
+      {
+        "type": "text",
+        "label": "Address - City, State ZIP",
+        "id": "custom_footer_address_line2"
+      },
+      {
+        "type": "text",
+        "label": "Link 1 Text",
+        "id": "custom_footer_link1_text"
+      },
+      {
+        "type": "text",
+        "label": "Link 1 URL",
+        "id": "custom_footer_link1_url"
+      },
+      {
+        "type": "text",
+        "label": "Link 2 Text",
+        "id": "custom_footer_link2_text"
+      },
+      {
+        "type": "text",
+        "label": "Link 2 URL",
+        "id": "custom_footer_link2_url"
+      },
+      {
+        "type": "text",
+        "label": "Link 3 Text",
+        "id": "custom_footer_link3_text"
+      },
+      {
+        "type": "text",
+        "label": "Link 3 URL",
+        "id": "custom_footer_link3_url"
+      },
+      {
+        "type": "text",
+        "label": "Link 4 Text",
+        "id": "custom_footer_link4_text"
+      },
+      {
+        "type": "text",
+        "label": "Link 4 URL",
+        "id": "custom_footer_link4_url"
+      },
+      {
+        "type": "text",
+        "label": "Link 5 Text",
+        "id": "custom_footer_link5_text"
+      },
+      {
+        "type": "text",
+        "label": "Link 5 URL",
+        "id": "custom_footer_link5_url"
+      },
+      {
+        "type": "text",
+        "label": "Medical Disclaimer",
+        "id": "custom_footer_disclaimer"
+      },
+      {
+        "type": "text",
+        "label": "Copyright Text",
+        "id": "custom_footer_copyright"
       }
     ]
   },
@@ -774,33 +1055,8 @@
             "group": "Roboto",
             "label": "Roboto All",
             "value": "Google_Roboto_400,400i,500,500i,700,700i"
-          },
-          {
-            "group": "Poppins",
-            "label": "Poppins",
-            "value": "Google_Poppins_400"
-          },
-          {
-            "group": "Poppins",
-            "label": "Poppins All",
-            "value": "Google_Poppins_400,300,500,600,700"
-          },
-          {
-            "group": "Montserrat",
-            "label": "Montserrat",
-            "value": "Google_Montserrat_400,400i,700,700i"
-          },
-          {
-            "group": "Montserrat",
-            "label": "Montserrat Light",
-            "value": "Google_Montserrat_300,300i,600,600i"
           }
         ]
-      },
-      {
-        "type": "text",
-        "label": "Font size",
-        "id": "fontSizeRoot"
       },
       {
         "type": "heading",
@@ -825,21 +1081,6 @@
             "group": "Roboto",
             "label": "Roboto",
             "value": "Google_Roboto_700"
-          },
-          {
-            "group": "Poppins",
-            "label": "Poppins",
-            "value": "Google_Poppins_700"
-          },
-          {
-            "group": "Montserrat",
-            "label": "Montserrat",
-            "value": "Google_Montserrat_500"
-          },
-          {
-            "group": "Montserrat",
-            "label": "Montserrat Bold",
-            "value": "Google_Montserrat_700"
           }
         ]
       },
@@ -859,36 +1100,6 @@
         "id": "fontSizeH3"
       },
       {
-        "type": "text",
-        "label": "Font size <h4>",
-        "id": "fontSizeH4"
-      },
-      {
-        "type": "text",
-        "label": "Font size <h5>",
-        "id": "fontSizeH5"
-      },
-      {
-        "type": "text",
-        "label": "Font size <h6>",
-        "id": "fontSizeH6"
-      },
-      {
-        "type": "select",
-        "label": "Font smoothing",
-        "id": "font-smoothing",
-        "options": [
-          {
-            "value": "antialiased",
-            "label": "Antialiased"
-          },
-          {
-            "value": "initial",
-            "label": "No"
-          }
-        ]
-      },
-      {
         "type": "heading",
         "content": "Text colors"
       },
@@ -901,11 +1112,6 @@
         "type": "color",
         "label": "Secondary text color",
         "id": "color-textSecondary"
-      },
-      {
-        "type": "color",
-        "label": "Secondary text hover color",
-        "id": "color-textSecondary--hover"
       },
       {
         "type": "color",
@@ -922,11 +1128,6 @@
         "id": "color-textLink"
       },
       {
-        "type": "color",
-        "label": "Link hover color",
-        "id": "color-textLink--hover"
-      },
-      {
         "type": "heading",
         "content": "Icon colors"
       },
@@ -934,26 +1135,6 @@
         "type": "color",
         "label": "Color",
         "id": "icon-color"
-      },
-      {
-        "type": "color",
-        "label": "Background",
-        "id": "icon-backgroundColor"
-      },
-      {
-        "type": "color",
-        "label": "Background hover",
-        "id": "icon-backgroundColor-hover"
-      },
-      {
-        "type": "color",
-        "label": "Alt color",
-        "id": "icon--alt-color"
-      },
-      {
-        "type": "color",
-        "label": "Alt color hover",
-        "id": "icon--alt-color-hover"
       },
       {
         "type": "color",
@@ -975,11 +1156,6 @@
   {
     "name": "Buttons",
     "settings": [
-      {
-        "type": "text",
-        "label": "Border radius (px)",
-        "id": "button-radius2"
-      },
       {
         "type": "heading",
         "content": "Primary button"
@@ -1024,28 +1200,8 @@
         "id": "button--default-borderColor"
       },
       {
-        "type": "color",
-        "label": "Border hover color",
-        "id": "button--default-borderColorHover"
-      },
-      {
         "type": "heading",
         "content": "Disabled button"
-      },
-      {
-        "type": "color",
-        "label": "Text color",
-        "id": "button--disabled-color"
-      },
-      {
-        "type": "color",
-        "label": "Background color",
-        "id": "button--disabled-backgroundColor"
-      },
-      {
-        "type": "color",
-        "label": "Border color",
-        "id": "button--disabled-borderColor"
       }
     ]
   },
@@ -1081,21 +1237,6 @@
         "id": "input-border-color"
       },
       {
-        "type": "color",
-        "label": "Border active color",
-        "id": "input-border-color-active"
-      },
-      {
-        "type": "color",
-        "label": "Disabled background color",
-        "id": "input-disabled-bg"
-      },
-      {
-        "type": "text",
-        "label": "Radius (px)",
-        "id": "input-radius2"
-      },
-      {
         "type": "heading",
         "content": "Select boxes"
       },
@@ -1105,11 +1246,6 @@
         "id": "select-bg-color"
       },
       {
-        "type": "color",
-        "label": "Arrow icon color",
-        "id": "select-arrow-color"
-      },
-      {
         "type": "heading",
         "content": "Checkbox & Radio button"
       },
@@ -1117,16 +1253,6 @@
         "type": "color",
         "label": "Icon color",
         "id": "checkRadio-color"
-      },
-      {
-        "type": "color",
-        "label": "Background color",
-        "id": "checkRadio-backgroundColor"
-      },
-      {
-        "type": "color",
-        "label": "Border color",
-        "id": "checkRadio-borderColor"
       }
     ]
   },
@@ -1160,7 +1286,6 @@
         "type": "select",
         "label": "Above header",
         "id": "bannerAdvTopHeader",
-        "force_reload": true,
         "options": [
           {
             "value": "disable",
@@ -1180,7 +1305,6 @@
         "type": "select",
         "label": "Below header",
         "id": "bannerAfterHeader",
-        "force_reload": true,
         "options": [
           {
             "value": "disable",
@@ -1193,10 +1317,6 @@
           {
             "value": "nothome",
             "label": "Except homepage"
-          },
-          {
-            "value": "onlyhome",
-            "label": "Only homepage"
           }
         ]
       }
@@ -1209,7 +1329,6 @@
         "type": "select",
         "label": "Sticky header",
         "id": "header_sticky",
-        "force_reload": true,
         "options": [
           {
             "value": "disable",
@@ -1227,11 +1346,6 @@
       },
       {
         "type": "color",
-        "label": "Store name text color",
-        "id": "storeName-color"
-      },
-      {
-        "type": "color",
         "label": "Background color",
         "id": "header-backgroundColor"
       },
@@ -1245,20 +1359,9 @@
         "id": "navUser-color"
       },
       {
-        "type": "color",
-        "label": "Text hover color",
-        "id": "navUser-color-hover"
-      },
-      {
-        "type": "color",
-        "label": "Cart counter background color",
-        "id": "navUser-indicator-backgroundColor"
-      },
-      {
         "type": "checkbox",
         "label": "Show Wishlist icon",
-        "id": "navUser_wishlist",
-        "force_reload": true
+        "id": "navUser_wishlist"
       },
       {
         "type": "heading",
@@ -1267,8 +1370,7 @@
       {
         "type": "checkbox",
         "label": "Show welcome text",
-        "id": "show_welcome_text",
-        "force_reload": true
+        "id": "show_welcome_text"
       },
       {
         "type": "heading",
@@ -1278,7 +1380,6 @@
         "type": "select",
         "label": "Show categories",
         "id": "navPages_categoriesMenu",
-        "force_reload": true,
         "options": [
           {
             "value": "group",
@@ -1294,7 +1395,6 @@
         "type": "select",
         "label": "Animation",
         "id": "navPages_animation",
-        "force_reload": true,
         "options": [
           {
             "value": "no",
@@ -1309,50 +1409,12 @@
       {
         "type": "checkbox",
         "label": "Expand categories on homepage",
-        "force_reload": true,
         "id": "homepage_expand_categories_menu"
       },
       {
         "type": "checkbox",
-        "label": "Use flyout menu instead of mega menu",
-        "force_reload": true,
-        "id": "navPages_standard"
-      },
-      {
-        "type": "checkbox",
-        "label": "Showing sub-categories vertical",
-        "force_reload": true,
-        "id": "subcategories_menu_vertical"
-      },
-      {
-        "type": "checkbox",
         "label": "Hide webpage links",
-        "force_reload": true,
         "id": "hide_content_navigation"
-      },
-      {
-        "type": "checkbox",
-        "label": "Use manual links in Main Menu",
-        "force_reload": true,
-        "id": "manual_content_nav"
-      },
-      {
-        "type": "checkbox",
-        "label": "Show banners on Mega Menu",
-        "force_reload": true,
-        "id": "navPages_banners"
-      },
-      {
-        "type": "checkbox",
-        "label": "Fit to 1 line",
-        "force_reload": true,
-        "id": "navPages_autoFit"
-      },
-      {
-        "type": "checkbox",
-        "label": "Full width background color",
-        "force_reload": true,
-        "id": "navPages_bg_stretch"
       },
       {
         "type": "color",
@@ -1365,20 +1427,9 @@
         "id": "navPages-color-hover"
       },
       {
-        "type": "color",
-        "label": "Border color",
-        "id": "navPages-borderColor"
-      },
-      {
-        "type": "color",
-        "label": "Root menu background color",
-        "id": "navPages-rootMenu-backgroundColor"
-      },
-      {
         "type": "text",
         "label": "Categories button text",
-        "id": "navPages_categoriesItem_text",
-        "force_reload": true
+        "id": "navPages_categoriesItem_text"
       },
       {
         "type": "heading",
@@ -1398,12 +1449,6 @@
         "type": "color",
         "label": "Dropdown background color",
         "id": "dropdown--quickSearch-backgroundColor"
-      },
-      {
-        "type": "checkbox",
-        "label": "Enable keyword suggestions",
-        "id": "suggest_keywords",
-        "force_reload": true
       }
     ]
   },
@@ -1415,7 +1460,6 @@
         "label": "Logo size",
         "id": "logo_size",
         "description": "i18n.PleaseSpecifyAMaximumImage",
-        "force_reload": true,
         "options": [
           {
             "value": "original",
@@ -1424,14 +1468,6 @@
           {
             "value": "250x50",
             "label": "250x50"
-          },
-          {
-            "value": "250x100",
-            "label": "250x100"
-          },
-          {
-            "value": "custom",
-            "label": "Specify dimensions"
           }
         ]
       },
@@ -1439,7 +1475,6 @@
         "type": "select",
         "label": "Logo position",
         "id": "logo-position",
-        "force_reload": true,
         "options": [
           {
             "value": "right",
@@ -1471,38 +1506,6 @@
           {
             "value": 24,
             "label": "24px"
-          },
-          {
-            "value": 28,
-            "label": "28px"
-          },
-          {
-            "value": 32,
-            "label": "32px"
-          },
-          {
-            "value": 36,
-            "label": "36px"
-          },
-          {
-            "value": 40,
-            "label": "40px"
-          },
-          {
-            "value": 48,
-            "label": "48px"
-          },
-          {
-            "value": 56,
-            "label": "56px"
-          },
-          {
-            "value": 64,
-            "label": "64px"
-          },
-          {
-            "value": 74,
-            "label": "74px"
           }
         ]
       }
@@ -1514,14 +1517,12 @@
       {
         "type": "checkbox",
         "label": "Show carousel",
-        "force_reload": true,
         "id": "homepage_show_carousel"
       },
       {
         "type": "select",
         "label": "Style",
         "id": "homepage_carousel_style",
-        "force_reload": true,
         "options": [
           {
             "value": "boxed",
@@ -1545,7 +1546,6 @@
       {
         "type": "select",
         "label": "Style",
-        "force_reload": true,
         "id": "payment_icons_style",
         "options": [
           {
@@ -1561,56 +1561,17 @@
       {
         "type": "checkbox",
         "label": "American Express",
-        "force_reload": true,
         "id": "show_accept_amex"
       },
       {
         "type": "checkbox",
         "label": "Discover",
-        "force_reload": true,
         "id": "show_accept_discover"
       },
       {
         "type": "checkbox",
         "label": "Mastercard",
-        "force_reload": true,
         "id": "show_accept_mastercard"
-      },
-      {
-        "type": "checkbox",
-        "label": "Paypal",
-        "force_reload": true,
-        "id": "show_accept_paypal"
-      },
-      {
-        "type": "checkbox",
-        "label": "Visa",
-        "force_reload": true,
-        "id": "show_accept_visa"
-      },
-      {
-        "type": "checkbox",
-        "label": "Apple Pay",
-        "force_reload": true,
-        "id": "show_accept_applepay"
-      },
-      {
-        "type": "checkbox",
-        "label": "Amazon Pay",
-        "force_reload": true,
-        "id": "show_accept_amazon"
-      },
-      {
-        "type": "checkbox",
-        "label": "Google Pay",
-        "force_reload": true,
-        "id": "show_accept_googlepay"
-      },
-      {
-        "type": "checkbox",
-        "label": "Klarna",
-        "force_reload": true,
-        "id": "show_accept_klarna"
       }
     ]
   },
@@ -1628,20 +1589,17 @@
       {
         "type": "checkbox",
         "label": "Top Right (Toggle On/Off)",
-        "force_reload": true,
         "id": "social_icon_placement_top"
       },
       {
         "type": "checkbox",
         "label": "Bottom Placement",
-        "id": "social_icon_placement_bottom",
-        "force_reload": true
+        "id": "social_icon_placement_bottom"
       },
       {
         "type": "text",
         "label": "Facebook page",
-        "id": "fb_page",
-        "force_reload": true
+        "id": "fb_page"
       },
       {
         "type": "paragraph",
@@ -1655,19 +1613,16 @@
       {
         "type": "checkbox",
         "label": "Show Quickview",
-        "force_reload": true,
         "id": "show_product_quick_view"
       },
       {
         "type": "checkbox",
         "label": "i18n.ajaxAtc",
-        "force_reload": true,
         "id": "ajax_add_to_cart"
       },
       {
         "type": "select",
         "label": "Add to Cart popup",
-        "force_reload": true,
         "id": "add_to_cart_popup",
         "options": [
           {
@@ -1692,7 +1647,6 @@
         "type": "select",
         "label": "Layout",
         "id": "productpage_layout",
-        "force_reload": true,
         "options": [
           {
             "value": "default",
@@ -1706,33 +1660,13 @@
       },
       {
         "type": "checkbox",
-        "label": "i18n.ResponsiveMainProductImage",
-        "id": "product_image_responsive",
-        "force_reload": true
-      },
-      {
-        "type": "checkbox",
         "label": "Show reviews in tabs",
-        "force_reload": true,
         "id": "show_product_reviews_tabs"
-      },
-      {
-        "type": "checkbox",
-        "label": "Show weight",
-        "force_reload": true,
-        "id": "show_product_weight"
-      },
-      {
-        "type": "checkbox",
-        "label": "Show dimensions",
-        "force_reload": true,
-        "id": "show_product_dimensions"
       },
       {
         "type": "select",
         "label": "Reviews count",
         "id": "productpage_reviews_count",
-        "force_reload": true,
         "options": [
           {
             "value": 0,
@@ -1745,14 +1679,6 @@
           {
             "value": 5,
             "label": "5"
-          },
-          {
-            "value": 10,
-            "label": "10"
-          },
-          {
-            "value": 20,
-            "label": "20"
           }
         ]
       },
@@ -1760,7 +1686,6 @@
         "type": "select",
         "label": "Related count",
         "id": "productpage_related_products_count",
-        "force_reload": true,
         "options": [
           {
             "value": 0,
@@ -1784,7 +1709,6 @@
         "type": "select",
         "label": "Also viewed count",
         "id": "productpage_similar_by_views_count",
-        "force_reload": true,
         "options": [
           {
             "value": 0,
@@ -1807,14 +1731,12 @@
       {
         "type": "checkbox",
         "label": "Vertical thumbnails",
-        "id": "productpage_vertical_thumbnails",
-        "force_reload": true
+        "id": "productpage_vertical_thumbnails"
       },
       {
         "type": "select",
         "label": "Thumbnails visible",
         "id": "productpage_thumbnails_count",
-        "force_reload": true,
         "options": [
           {
             "value": 4,
@@ -1827,80 +1749,28 @@
           {
             "value": 6,
             "label": "6"
-          },
-          {
-            "value": 8,
-            "label": "8"
-          },
-          {
-            "value": 10,
-            "label": "10"
-          }
-        ]
-      },
-      {
-        "type": "select",
-        "label": "Show videos",
-        "id": "productpage_videos_position",
-        "force_reload": true,
-        "options": [
-          {
-            "value": "tab",
-            "label": "Tab"
-          },
-          {
-            "value": "inline",
-            "label": "Below description"
-          },
-          {
-            "value": "images",
-            "label": "Images gallery"
           }
         ]
       },
       {
         "type": "checkbox",
         "label": "Show bulk price table",
-        "id": "productpage_bulk_price_table",
-        "force_reload": true
+        "id": "productpage_bulk_price_table"
       },
       {
         "type": "checkbox",
         "label": "Show custom fields tab",
-        "id": "productpage_custom_fields_tab",
-        "force_reload": true
+        "id": "productpage_custom_fields_tab"
       },
       {
         "type": "checkbox",
         "label": "+ Hide start with '__'",
-        "id": "productpage_custom_fields_hide_special",
-        "force_reload": true
-      },
-      {
-        "type": "select",
-        "label": "Options column",
-        "id": "product_options_column",
-        "force_reload": true,
-        "options": [
-          {
-            "value": 1,
-            "label": "1"
-          },
-          {
-            "value": 2,
-            "label": "2"
-          },
-          {
-            "value": 3,
-            "label": "3"
-          }
-        ]
+        "id": "productpage_custom_fields_hide_special"
       },
       {
         "type": "select",
         "label": "Description layout",
         "id": "productpage_description_type",
-        "force_reload": true,
         "options": [
           {
             "value": "half",
@@ -1920,7 +1790,6 @@
         "label": "Swatch size",
         "type": "imageDimension",
         "id": "swatch_option_size",
-        "force_reload": true,
         "options": [
           {
             "value": "22x22",
@@ -1935,7 +1804,6 @@
       {
         "type": "checkbox",
         "label": "i18n.ShowQuickPaymentButtons",
-        "force_reload": true,
         "id": "show_quick_payment_buttons"
       },
       {
@@ -1946,7 +1814,6 @@
         "type": "select",
         "label": "Products display type",
         "id": "product_list_display_mode",
-        "force_reload": true,
         "options": [
           {
             "value": "grid2",
@@ -1959,18 +1826,6 @@
           {
             "value": "grid",
             "label": "4 columns"
-          },
-          {
-            "value": "grid6",
-            "label": "6 columns"
-          },
-          {
-            "value": "list",
-            "label": "List"
-          },
-          {
-            "value": "listbo",
-            "label": "Bulk Order"
           }
         ]
       },
@@ -1978,7 +1833,6 @@
         "type": "select",
         "label": "Contextual search",
         "id": "categorypage_search",
-        "force_reload": true,
         "options": [
           {
             "value": "show",
@@ -1992,39 +1846,13 @@
       },
       {
         "type": "checkbox",
-        "label": "- Search products in subcategories",
-        "id": "categorypage_search_subs",
-        "force_reload": true
-      },
-      {
-        "type": "checkbox",
-        "label": "Show bulk order mode",
-        "id": "show_bulk_order_mode",
-        "force_reload": true
-      },
-      {
-        "type": "checkbox",
         "label": "Show subcategory thumbnails",
-        "id": "show_subcategories_grid",
-        "force_reload": true
-      },
-      {
-        "type": "checkbox",
-        "label": "Show all categories on sidebar",
-        "id": "show_allcategories_menu",
-        "force_reload": true
-      },
-      {
-        "type": "checkbox",
-        "label": "Show subcategories menu on sidebar",
-        "id": "show_subcategories_menu",
-        "force_reload": true
+        "id": "show_subcategories_grid"
       },
       {
         "type": "select",
         "label": "Shop by Brand on sidebar",
         "id": "max_shop_by_brand",
-        "force_reload": true,
         "options": [
           {
             "value": 9,
@@ -2037,28 +1865,18 @@
           {
             "value": 25,
             "label": "25"
-          },
-          {
-            "value": 50,
-            "label": "50"
-          },
-          {
-            "value": 100,
-            "label": "100"
           }
         ]
       },
       {
         "type": "checkbox",
         "label": "Show Shop by Price",
-        "id": "show_shop_by_price",
-        "force_reload": true
+        "id": "show_shop_by_price"
       },
       {
         "type": "select",
         "label": "Products per page",
         "id": "categorypage_products_per_page",
-        "force_reload": true,
         "options": [
           {
             "value": 0,
@@ -2082,7 +1900,6 @@
         "type": "imageDimension",
         "label": "Category image size",
         "id": "category_size",
-        "force_reload": true,
         "options": [
           {
             "value": "original",
@@ -2106,7 +1923,6 @@
         "type": "select",
         "label": "Layout",
         "id": "brandspage_layout",
-        "force_reload": true,
         "options": [
           {
             "value": "default",
@@ -2126,7 +1942,6 @@
         "type": "select",
         "label": "Products per page",
         "id": "brandpage_products_per_page",
-        "force_reload": true,
         "options": [
           {
             "value": 6,
@@ -2150,30 +1965,9 @@
         "type": "imageDimension",
         "label": "Brand list image",
         "id": "brand_size",
-        "force_reload": true,
         "options": [
           {
             "value": "300x150",
-            "label": "Optimized for theme"
-          },
-          {
-            "value": "custom",
-            "label": "Specify dimensions"
-          }
-        ]
-      },
-      {
-        "type": "imageDimension",
-        "label": "Brand main image",
-        "id": "brand_main_size",
-        "force_reload": true,
-        "options": [
-          {
-            "value": "original",
-            "label": "Original as uploaded"
-          },
-          {
-            "value": "500x250",
             "label": "Optimized for theme"
           },
           {
@@ -2190,7 +1984,6 @@
         "type": "select",
         "label": "Products per page",
         "id": "searchpage_products_per_page",
-        "force_reload": true,
         "options": [
           {
             "value": 6,
@@ -2230,46 +2023,9 @@
         ]
       },
       {
-        "type": "color",
-        "label": "Title",
-        "id": "card-title-color"
-      },
-      {
-        "type": "color",
-        "label": "+ Hover",
-        "id": "card-title-color-hover"
-      },
-      {
         "type": "checkbox",
         "label": "Show second image on hover",
-        "id": "card_showHoverImage",
-        "force_reload": true
-      },
-      {
-        "type": "checkbox",
-        "label": "Show SKU",
-        "id": "show_sku",
-        "force_reload": true
-      },
-      {
-        "type": "select",
-        "label": "Show product info",
-        "id": "card_info",
-        "force_reload": true,
-        "options": [
-          {
-            "value": "hide",
-            "label": "Hide"
-          },
-          {
-            "value": "list",
-            "label": "List"
-          },
-          {
-            "value": "all",
-            "label": "Card & List"
-          }
-        ]
+        "id": "card_showHoverImage"
       },
       {
         "type": "heading",
@@ -2279,7 +2035,6 @@
         "type": "select",
         "label": "Visibility",
         "id": "product_sale_badges",
-        "force_reload": true,
         "options": [
           {
             "value": "none",
@@ -2300,25 +2055,12 @@
         ]
       },
       {
-        "type": "checkbox",
-        "label": "Load custom field '__badge'",
-        "id": "product_custom_badges",
-        "force_reload": true
-      },
-      {
-        "type": "checkbox",
-        "label": "Out stock badge",
-        "id": "product_outstock_badge",
-        "force_reload": true
-      },
-      {
         "type": "heading",
         "content": "i18n.FeaturedPromotions"
       },
       {
         "type": "checkbox",
         "label": "i18n.ShowFeaturedPromotions",
-        "force_reload": true,
         "id": "show_featured_promotions"
       },
       {
@@ -2333,7 +2075,6 @@
         "type": "imageDimension",
         "label": "Main product image",
         "id": "product_size",
-        "force_reload": true,
         "options": [
           {
             "value": "500x659",
@@ -2353,7 +2094,6 @@
         "type": "imageDimension",
         "label": "Thumbnail",
         "id": "productthumb_size",
-        "force_reload": true,
         "options": [
           {
             "value": "100x100",
@@ -2369,7 +2109,6 @@
         "type": "imageDimension",
         "label": "Zoomed",
         "id": "zoom_size",
-        "force_reload": true,
         "options": [
           {
             "value": "1280x1280",
@@ -2385,7 +2124,6 @@
         "type": "imageDimension",
         "label": "Product card image",
         "id": "productgallery_size",
-        "force_reload": true,
         "options": [
           {
             "value": "350x350",
@@ -2427,8 +2165,7 @@
             "value": "2col",
             "label": "2 Columns"
           }
-        ],
-        "force_reload": true
+        ]
       },
       {
         "type": "select",
@@ -2447,14 +2184,12 @@
             "value": 15,
             "label": "15"
           }
-        ],
-        "force_reload": true
+        ]
       },
       {
         "type": "imageDimension",
         "label": "Image size",
         "id": "blog_size",
-        "force_reload": true,
         "options": [
           {
             "value": "1193x795",
@@ -2478,8 +2213,7 @@
       {
         "type": "checkbox",
         "label": "Show newsletter form",
-        "id": "footer_show_newsletter",
-        "force_reload": true
+        "id": "footer_show_newsletter"
       },
       {
         "type": "heading",
@@ -2497,11 +2231,6 @@
       },
       {
         "type": "color",
-        "label": "+ Hover",
-        "id": "footer-color-hover"
-      },
-      {
-        "type": "color",
         "label": "Heading",
         "id": "footer-headingColor"
       },
@@ -2511,27 +2240,19 @@
         "id": "footer-linkColor"
       },
       {
-        "type": "color",
-        "label": "+ Hover",
-        "id": "footer-linkColor-hover"
-      },
-      {
         "type": "checkbox",
         "label": "Show about us",
-        "id": "footer_show_aboutus",
-        "force_reload": true
+        "id": "footer_show_aboutus"
       },
       {
         "type": "checkbox",
         "label": "Show contact",
-        "id": "footer_show_contact",
-        "force_reload": true
+        "id": "footer_show_contact"
       },
       {
         "type": "select",
         "label": "Pages",
         "id": "footer_show_pages",
-        "force_reload": true,
         "options": [
           {
             "value": -2,
@@ -2544,14 +2265,6 @@
           {
             "value": 5,
             "label": "6"
-          },
-          {
-            "value": 9,
-            "label": "10"
-          },
-          {
-            "value": -1,
-            "label": "All"
           }
         ]
       },
@@ -2559,7 +2272,6 @@
         "type": "select",
         "label": "Categories",
         "id": "footer_show_categories",
-        "force_reload": true,
         "options": [
           {
             "value": -1,
@@ -2572,14 +2284,6 @@
           {
             "value": 6,
             "label": "6"
-          },
-          {
-            "value": 10,
-            "label": "10"
-          },
-          {
-            "value": 0,
-            "label": "All"
           }
         ]
       },
@@ -2587,7 +2291,6 @@
         "type": "select",
         "label": "Brands",
         "id": "show_shop_by_brand",
-        "force_reload": true,
         "options": [
           {
             "value": 0,
@@ -2600,10 +2303,6 @@
           {
             "value": 7,
             "label": "7"
-          },
-          {
-            "value": 9,
-            "label": "9"
           }
         ]
       },
@@ -2612,25 +2311,13 @@
         "content": "Copyright"
       },
       {
-        "type": "color",
-        "label": "Text",
-        "id": "copyright-color"
-      },
-      {
-        "type": "color",
-        "label": "Background",
-        "id": "copyright-backgroundColor"
-      },
-      {
         "type": "checkbox",
         "label": "i18n.ShowPoweredByBigCommerce",
-        "force_reload": true,
         "id": "show_powered_by"
       },
       {
         "type": "checkbox",
         "label": "i18n.ShowCurrentYearAnd",
-        "force_reload": true,
         "id": "show_copyright_footer"
       }
     ]
@@ -2641,7 +2328,6 @@
       {
         "type": "checkbox",
         "label": "Price Ranges",
-        "force_reload": true,
         "id": "price_ranges"
       },
       {
@@ -2651,8 +2337,7 @@
       {
         "type": "checkbox",
         "label": "i18n.redirectCart",
-        "id": "redirect_cart",
-        "force_reload": true
+        "id": "redirect_cart"
       }
     ]
   },
@@ -2666,56 +2351,22 @@
       {
         "type": "text",
         "label": "1.",
-        "force_reload": true,
         "id": "section1"
       },
       {
         "type": "text",
         "label": "2.",
-        "force_reload": true,
         "id": "section2"
       },
       {
         "type": "text",
         "label": "3.",
-        "force_reload": true,
         "id": "section3"
       },
       {
         "type": "text",
         "label": "4.",
-        "force_reload": true,
         "id": "section4"
-      },
-      {
-        "type": "text",
-        "label": "5.",
-        "force_reload": true,
-        "id": "section5"
-      },
-      {
-        "type": "text",
-        "label": "6.",
-        "force_reload": true,
-        "id": "section6"
-      },
-      {
-        "type": "text",
-        "label": "7.",
-        "force_reload": true,
-        "id": "section7"
-      },
-      {
-        "type": "text",
-        "label": "8.",
-        "force_reload": true,
-        "id": "section8"
-      },
-      {
-        "type": "text",
-        "label": "9.",
-        "force_reload": true,
-        "id": "section9"
       },
       {
         "type": "heading",
@@ -2725,7 +2376,6 @@
         "type": "select",
         "label": "i18n.sptInitCount",
         "id": "specialProductsTab_init_count",
-        "force_reload": true,
         "options": [
           {
             "value": 0,
@@ -2738,22 +2388,6 @@
           {
             "value": 8,
             "label": "8"
-          },
-          {
-            "value": 12,
-            "label": "12"
-          },
-          {
-            "value": 16,
-            "label": "16"
-          },
-          {
-            "value": 24,
-            "label": "24"
-          },
-          {
-            "value": 100,
-            "label": "100"
           }
         ]
       },
@@ -2761,7 +2395,6 @@
         "type": "select",
         "label": "i18n.sptLazyCount",
         "id": "specialProductsTab_lazy_count",
-        "force_reload": true,
         "options": [
           {
             "value": 0,
@@ -2774,50 +2407,33 @@
           {
             "value": 8,
             "label": "8"
-          },
-          {
-            "value": 16,
-            "label": "16"
-          },
-          {
-            "value": 24,
-            "label": "24"
-          },
-          {
-            "value": 100,
-            "label": "100"
           }
         ]
       },
       {
         "type": "checkbox",
         "label": "Show Load More button",
-        "id": "specialProductsTab_more",
-        "force_reload": true
+        "id": "specialProductsTab_more"
       },
       {
         "type": "checkbox",
         "label": "Show featured",
-        "id": "specialProductsTab_show_featured",
-        "force_reload": true
+        "id": "specialProductsTab_show_featured"
       },
       {
         "type": "checkbox",
         "label": "Show bestselling",
-        "id": "specialProductsTab_show_top",
-        "force_reload": true
+        "id": "specialProductsTab_show_top"
       },
       {
         "type": "checkbox",
         "label": "Show new products",
-        "id": "specialProductsTab_show_new",
-        "force_reload": true
+        "id": "specialProductsTab_show_new"
       },
       {
         "type": "select",
         "label": "Active Tab",
         "id": "specialProductsTab_active_tab",
-        "force_reload": true,
         "options": [
           {
             "value": "featured",
@@ -2839,11 +2455,6 @@
         "id": "specialProductsTab-heading-color"
       },
       {
-        "type": "color",
-        "label": "Inactive tab",
-        "id": "specialProductsTab-heading-color-inactive"
-      },
-      {
         "type": "heading",
         "content": "Products by Category with Sorting Tabs"
       },
@@ -2859,7 +2470,6 @@
         "type": "select",
         "label": "Recent blog posts",
         "id": "homepage_blog_posts_count",
-        "force_reload": true,
         "options": [
           {
             "value": 0,
@@ -2872,18 +2482,6 @@
           {
             "value": 2,
             "label": "2"
-          },
-          {
-            "value": 3,
-            "label": "3"
-          },
-          {
-            "value": 4,
-            "label": "4"
-          },
-          {
-            "value": 6,
-            "label": "6"
           }
         ]
       },
@@ -2891,7 +2489,6 @@
         "type": "select",
         "label": "Recent blog position",
         "id": "homepage_blog_posts_position",
-        "force_reload": true,
         "options": [
           {
             "value": "content",
@@ -2916,7 +2513,6 @@
         "type": "select",
         "label": "Show on page",
         "id": "nl_popup_show",
-        "force_reload": true,
         "options": [
           {
             "value": "hide",
@@ -2935,14 +2531,12 @@
       {
         "type": "text",
         "label": "i18n.NLPopupStart",
-        "id": "nl_popup_start",
-        "force_reload": true
+        "id": "nl_popup_start"
       },
       {
         "type": "text",
         "label": "i18n.NLPopupHide",
-        "id": "nl_popup_hide",
-        "force_reload": true
+        "id": "nl_popup_hide"
       },
       {
         "type": "paragraph",

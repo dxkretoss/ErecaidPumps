@@ -1,0 +1,43 @@
+{{!-- 
+    ErecAid Featured Vacuum Erection Devices Section
+    100% matches reference Screenshot 2:
+    - Header: "Featured Vacuum Erection Devices" (left) + "View All Products →" (right)
+    - 4-Column Full-Width Responsive Grid showing up to 8 products
+    - Custom Card Architecture via components/custom/erecaid-featured-product-card
+    - Fully editable via BigCommerce Theme Settings (schema.json & config.json)
+--}}
+<section class="erecaid-products-section" aria-label="Featured Products">
+    <div class="container">
+        {{!-- Top Header Row --}}
+        <div class="erecaid-products-header">
+            <h2 class="erecaid-products-header__title">
+                {{#if theme_settings.custom_products_title}}
+                    {{theme_settings.custom_products_title}}
+                {{else}}
+                    Featured Vacuum Erection Devices
+                {{/if}}
+            </h2>
+
+            <a href="{{#if theme_settings.custom_products_link_url}}{{theme_settings.custom_products_link_url}}{{else}}/categories{{/if}}" class="erecaid-products-header__link">
+                {{#if theme_settings.custom_products_link_text}}{{theme_settings.custom_products_link_text}}{{else}}View All Products{{/if}} <span class="erecaid-products-header__arrow">&rarr;</span>
+            </a>
+        </div>
+
+        {{!-- 4-Column Grid: Show 4 Products --}}
+        <div class="erecaid-products-grid">
+            {{#if products.featured}}
+                {{#each (limit products.featured 4)}}
+                    {{> components/custom/erecaid-featured-product-card theme_settings=../theme_settings customer=../customer}}
+                {{/each}}
+            {{else if products.new}}
+                {{#each (limit products.new 4)}}
+                    {{> components/custom/erecaid-featured-product-card theme_settings=../theme_settings customer=../customer}}
+                {{/each}}
+            {{else if products.top_sellers}}
+                {{#each (limit products.top_sellers 4)}}
+                    {{> components/custom/erecaid-featured-product-card theme_settings=../theme_settings customer=../customer}}
+                {{/each}}
+            {{/if}}
+        </div>
+    </div>
+</section>

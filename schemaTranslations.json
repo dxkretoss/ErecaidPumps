@@ -60,9 +60,6 @@
   "i18n.NLPopupHideDesc": {
     "default": "Leave empty to show whenever page reloaded."
   },
-  "i18n.ResponsiveMainProductImage": {
-    "default": "Responsive main product images (Disable to load faster for large size images or PNG format)"
-  },
   "i18n.FacebookPageDesc": {
     "default": "Input 'papathemes' if your page url is https://www.facebook.com /papathemes/. Leave empty to hide."
   },

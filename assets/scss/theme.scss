@@ -94,6 +94,24 @@
 @import "custom/erecaid-header";
 @import "custom/erecaid-hero";
 @import "custom/erecaid-category-cards";
+@import "custom/erecaid-featured-products";
+@import "custom/erecaid-why-choose";
+@import "custom/erecaid-prostate-guide";
 @import "custom/erecaid-customer-reviews";
 @import "custom/erecaid-faqs";
 @import "custom/erecaid-pump-finder";
+@import "custom/erecaid-cta-banner";
+@import "custom/erecaid-footer";
+
+// Remove default 3rem body bottom margin/padding and unused container on ErecAid homepage
+.papaSupermarket-page--pages-home,
+.papaSupermarket-pageType--default {
+    .body {
+        margin-bottom: 0 !important;
+        padding-bottom: 0 !important;
+
+        > .container {
+            display: none !important;
+        }
+    }
+}

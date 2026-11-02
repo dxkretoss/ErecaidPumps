@@ -6,15 +6,17 @@
     {{/if}}
 
 {{else if section '===' 'special_products_tabs'}}
-    {{#or theme_settings.specialProductsTab_show_featured theme_settings.specialProductsTab_show_top theme_settings.specialProductsTab_show_new}}
-        {{#or theme_settings.specialProductsTab_init_count theme_settings.specialProductsTab_lazy_count}}
-            <div class="emthemesModez-section {{#if index}}emthemesModez-section--index{{index}}{{/if}} emthemesModez-section--specialProductsTabs">
-            <div class="emthemesModez-section-inner">
-                {{> components/papa-supermarket/special-products-tabs/section}}
-            </div>
-            </div>
+    {{#unless theme_settings.custom_products_enable}}
+        {{#or theme_settings.specialProductsTab_show_featured theme_settings.specialProductsTab_show_top theme_settings.specialProductsTab_show_new}}
+            {{#or theme_settings.specialProductsTab_init_count theme_settings.specialProductsTab_lazy_count}}
+                <div class="emthemesModez-section {{#if index}}emthemesModez-section--index{{index}}{{/if}} emthemesModez-section--specialProductsTabs">
+                <div class="emthemesModez-section-inner">
+                    {{> components/papa-supermarket/special-products-tabs/section}}
+                </div>
+                </div>
+            {{/or}}
         {{/or}}
-    {{/or}}
+    {{/unless}}
 
 {{else if section '===' 'special_products_columns'}}
     {{#or theme_settings.specialProductsColumns_show_featured theme_settings.specialProductsColumns_show_top theme_settings.specialProductsColumns_show_new}}

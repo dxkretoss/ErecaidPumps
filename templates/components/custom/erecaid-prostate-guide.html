@@ -1,0 +1,128 @@
+{{!-- 
+    ErecAid "Vacuum Erection Devices After Prostate Surgery" & "Helpful Articles" Section
+    100% matches Screenshot Reference:
+    - Left Card:
+        1. ErecAid kit product image on clean white background
+        2. Title: "Vacuum Erection Devices After Prostate Surgery"
+        3. Explanatory paragraph about physician-directed penile rehabilitation
+        4. Blue action button: "Read Our Prostate Surgery Guide →"
+    - Right Card:
+        1. Heading: "Helpful Articles"
+        2. 4 Articles list with blue chevrons (›)
+        3. Bottom link: "View All Articles →"
+    - Fully editable via BigCommerce Theme Settings (schema.json & config.json)
+    - Fully responsive across desktop, tablet, and mobile
+--}}
+<section class="erecaid-prostate-section" aria-label="Prostate Surgery Guide & Helpful Articles">
+    <div class="container">
+        <div class="erecaid-prostate-row">
+            {{!-- Left: Main Prostate Surgery Feature Card --}}
+            <div class="erecaid-prostate-main-card">
+                <div class="erecaid-prostate-main-card__media">
+                    <img class="erecaid-prostate-main-card__image" 
+                         src="{{#if theme_settings.custom_prostate_img}}{{theme_settings.custom_prostate_img}}{{else}}{{cdn 'assets/img/cat-prod-3.png'}}{{/if}}" 
+                         alt="{{#if theme_settings.custom_prostate_title}}{{theme_settings.custom_prostate_title}}{{else}}Vacuum Erection Devices After Prostate Surgery{{/if}}" 
+                         loading="lazy">
+                </div>
+                <div class="erecaid-prostate-main-card__content">
+                    <h2 class="erecaid-prostate-main-card__title">
+                        {{#if theme_settings.custom_prostate_title}}
+                            {{theme_settings.custom_prostate_title}}
+                        {{else}}
+                            Vacuum Erection Devices After Prostate Surgery
+                        {{/if}}
+                    </h2>
+                    <p class="erecaid-prostate-main-card__desc">
+                        {{#if theme_settings.custom_prostate_desc}}
+                            {{theme_settings.custom_prostate_desc}}
+                        {{else}}
+                            A vacuum erection device may be used as part of a physician-directed penile rehabilitation program following prostate surgery. Learn how it works, when to start, and which features may be right for you.
+                        {{/if}}
+                    </p>
+                    <div class="erecaid-prostate-main-card__action">
+                        <a href="{{#if theme_settings.custom_prostate_btn_url}}{{theme_settings.custom_prostate_btn_url}}{{else}}/after-prostate-surgery/{{/if}}" class="erecaid-prostate-main-card__btn">
+                            {{#if theme_settings.custom_prostate_btn_text}}
+                                {{theme_settings.custom_prostate_btn_text}}
+                            {{else}}
+                                Read Our Prostate Surgery Guide
+                            {{/if}} 
+                            <span class="erecaid-prostate-main-card__btn-arrow">&rarr;</span>
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            {{!-- Right: Helpful Articles Card --}}
+            <div class="erecaid-prostate-articles-card"{{#if theme_settings.custom_articles_bg}} style="background-color: {{theme_settings.custom_articles_bg}};"{{/if}}>
+                <h3 class="erecaid-prostate-articles-card__title">
+                    {{#if theme_settings.custom_articles_title}}
+                        {{theme_settings.custom_articles_title}}
+                    {{else}}
+                        Helpful Articles
+                    {{/if}}
+                </h3>
+                <ul class="erecaid-prostate-articles-list">
+                    <li class="erecaid-prostate-articles-list__item">
+                        <a href="{{#if theme_settings.custom_article1_url}}{{theme_settings.custom_article1_url}}{{else}}/blog/{{/if}}" class="erecaid-prostate-articles-list__link">
+                            <span class="erecaid-prostate-articles-list__chevron" aria-hidden="true">&rsaquo;</span>
+                            <span class="erecaid-prostate-articles-list__text">
+                                {{#if theme_settings.custom_article1_text}}
+                                    {{theme_settings.custom_article1_text}}
+                                {{else}}
+                                    Vacuum Pump Routine After Prostate Surgery
+                                {{/if}}
+                            </span>
+                        </a>
+                    </li>
+                    <li class="erecaid-prostate-articles-list__item">
+                        <a href="{{#if theme_settings.custom_article2_url}}{{theme_settings.custom_article2_url}}{{else}}/blog/{{/if}}" class="erecaid-prostate-articles-list__link">
+                            <span class="erecaid-prostate-articles-list__chevron" aria-hidden="true">&rsaquo;</span>
+                            <span class="erecaid-prostate-articles-list__text">
+                                {{#if theme_settings.custom_article2_text}}
+                                    {{theme_settings.custom_article2_text}}
+                                {{else}}
+                                    How a VED Works
+                                {{/if}}
+                            </span>
+                        </a>
+                    </li>
+                    <li class="erecaid-prostate-articles-list__item">
+                        <a href="{{#if theme_settings.custom_article3_url}}{{theme_settings.custom_article3_url}}{{else}}/blog/{{/if}}" class="erecaid-prostate-articles-list__link">
+                            <span class="erecaid-prostate-articles-list__chevron" aria-hidden="true">&rsaquo;</span>
+                            <span class="erecaid-prostate-articles-list__text">
+                                {{#if theme_settings.custom_article3_text}}
+                                    {{theme_settings.custom_article3_text}}
+                                {{else}}
+                                    How Often Should I Use a VED?
+                                {{/if}}
+                            </span>
+                        </a>
+                    </li>
+                    <li class="erecaid-prostate-articles-list__item">
+                        <a href="{{#if theme_settings.custom_article4_url}}{{theme_settings.custom_article4_url}}{{else}}/blog/{{/if}}" class="erecaid-prostate-articles-list__link">
+                            <span class="erecaid-prostate-articles-list__chevron" aria-hidden="true">&rsaquo;</span>
+                            <span class="erecaid-prostate-articles-list__text">
+                                {{#if theme_settings.custom_article4_text}}
+                                    {{theme_settings.custom_article4_text}}
+                                {{else}}
+                                    Manual vs. Automatic After Surgery
+                                {{/if}}
+                            </span>
+                        </a>
+                    </li>
+                </ul>
+                <div class="erecaid-prostate-articles-card__footer">
+                    <a href="{{#if theme_settings.custom_articles_all_url}}{{theme_settings.custom_articles_all_url}}{{else}}/blog/{{/if}}" class="erecaid-prostate-articles-card__all-link">
+                        {{#if theme_settings.custom_articles_all_text}}
+                            {{theme_settings.custom_articles_all_text}}
+                        {{else}}
+                            View All Articles
+                        {{/if}} 
+                        <span class="erecaid-prostate-articles-card__arrow">&rarr;</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+

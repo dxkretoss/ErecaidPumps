@@ -1,0 +1,143 @@
+{{!-- 
+    ErecAid "Why Choose ErecaidPumps.com?" Trust Section
+    100% matches Screenshot Reference:
+    - Top Banner Bar: Light blue background with bold title
+    - 4-Column Row with subtle vertical dividers:
+        1. More Than 20 Years of Experience (Medal / Ribbon Checkmark Icon)
+        2. Discreet Shipping (Delivery Truck Icon)
+        3. Free Shipping on Pump Systems (3D Parcel Box Icon)
+        4. Real People to Help You (Customer Service Headset Icon + Phone)
+    - Fully editable via BigCommerce Theme Settings (schema.json & config.json)
+    - Fully responsive across desktop, tablet, and mobile
+--}}
+<section class="erecaid-why-section" aria-label="Why Choose Us">
+    <div class="container">
+        <div class="erecaid-why-card">
+            {{!-- Top Header Bar --}}
+            <div class="erecaid-why-header">
+                <h2 class="erecaid-why-header__title">
+                    {{#if theme_settings.custom_why_title}}
+                        {{theme_settings.custom_why_title}}
+                    {{else}}
+                        Why Choose ErecaidPumps.com?
+                    {{/if}}
+                </h2>
+            </div>
+
+            {{!-- 4 Columns with Vertical Dividers --}}
+            <div class="erecaid-why-grid">
+                {{!-- Item 1: Experience --}}
+                <div class="erecaid-why-item">
+                    <div class="erecaid-why-item__icon-wrap">
+                        <svg class="erecaid-why-icon" viewBox="0 0 24 24" fill="none" stroke="#002d62" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                            <circle cx="12" cy="8" r="6"></circle>
+                            <path d="M15.477 12.89 17 22l-5-3-5 3 1.523-9.11"></path>
+                            <polyline points="9 8 11 10 15 6"></polyline>
+                        </svg>
+                    </div>
+                    <div class="erecaid-why-item__content">
+                        <h3 class="erecaid-why-item__title">
+                            {{#if theme_settings.custom_why1_title}}
+                                {{theme_settings.custom_why1_title}}
+                            {{else}}
+                                More Than 20 Years of Experience
+                            {{/if}}
+                        </h3>
+                        <p class="erecaid-why-item__desc">
+                            {{#if theme_settings.custom_why1_desc}}
+                                {{theme_settings.custom_why1_desc}}
+                            {{else}}
+                                We've specialized in vacuum erection devices for over two decades.
+                            {{/if}}
+                        </p>
+                    </div>
+                </div>
+
+                {{!-- Item 2: Discreet Shipping --}}
+                <div class="erecaid-why-item">
+                    <div class="erecaid-why-item__icon-wrap">
+                        <svg class="erecaid-why-icon" viewBox="0 0 24 24" fill="none" stroke="#002d62" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                            <path d="M10 17h4V5H2v12h3"></path>
+                            <path d="M14 8h4.5l3.5 4.5V17h-3"></path>
+                            <circle cx="7" cy="17" r="2"></circle>
+                            <circle cx="19" cy="17" r="2"></circle>
+                        </svg>
+                    </div>
+                    <div class="erecaid-why-item__content">
+                        <h3 class="erecaid-why-item__title">
+                            {{#if theme_settings.custom_why2_title}}
+                                {{theme_settings.custom_why2_title}}
+                            {{else}}
+                                Discreet Shipping
+                            {{/if}}
+                        </h3>
+                        <p class="erecaid-why-item__desc">
+                            {{#if theme_settings.custom_why2_desc}}
+                                {{theme_settings.custom_why2_desc}}
+                            {{else}}
+                                Shipping labels are discreetly marked from Reach Medical.
+                            {{/if}}
+                        </p>
+                    </div>
+                </div>
+
+                {{!-- Item 3: Free Shipping on Pump Systems --}}
+                <div class="erecaid-why-item">
+                    <div class="erecaid-why-item__icon-wrap">
+                        <svg class="erecaid-why-icon" viewBox="0 0 24 24" fill="none" stroke="#002d62" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                            <path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"></path>
+                            <polyline points="3.27 6.96 12 12.01 20.73 6.96"></polyline>
+                            <line x1="12" y1="22.08" x2="12" y2="12"></line>
+                        </svg>
+                    </div>
+                    <div class="erecaid-why-item__content">
+                        <h3 class="erecaid-why-item__title">
+                            {{#if theme_settings.custom_why3_title}}
+                                {{theme_settings.custom_why3_title}}
+                            {{else}}
+                                Free Shipping on Pump Systems
+                            {{/if}}
+                        </h3>
+                        <p class="erecaid-why-item__desc">
+                            {{#if theme_settings.custom_why3_desc}}
+                                {{theme_settings.custom_why3_desc}}
+                            {{else}}
+                                Pump systems qualify for free shipping as indicated on our website.
+                            {{/if}}
+                        </p>
+                    </div>
+                </div>
+
+                {{!-- Item 4: Real People to Help You --}}
+                <div class="erecaid-why-item">
+                    <div class="erecaid-why-item__icon-wrap">
+                        <svg class="erecaid-why-icon" viewBox="0 0 24 24" fill="none" stroke="#002d62" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                            <path d="M3 18v-6a9 9 0 0 1 18 0v6"></path>
+                            <path d="M21 19a2 2 0 0 1-2 2h-1a2 2 0 0 1-2-2v-3a2 2 0 0 1 2-2h3zM3 19a2 2 0 0 0 2 2h1a2 2 0 0 0 2-2v-3a2 2 0 0 0-2-2H3z"></path>
+                            <path d="M19 19v1a2 2 0 0 1-2 2H12"></path>
+                        </svg>
+                    </div>
+                    <div class="erecaid-why-item__content">
+                        <h3 class="erecaid-why-item__title">
+                            {{#if theme_settings.custom_why4_title}}
+                                {{theme_settings.custom_why4_title}}
+                            {{else}}
+                                Real People to Help You
+                            {{/if}}
+                        </h3>
+                        <p class="erecaid-why-item__desc">
+                            {{#if theme_settings.custom_why4_desc}}
+                                {{theme_settings.custom_why4_desc}}
+                            {{else}}
+                                Questions about pumps, rings or accessories? Call 
+                                <a href="tel:{{#if theme_settings.custom_why4_phone}}{{theme_settings.custom_why4_phone}}{{else}}866-496-7359{{/if}}" class="erecaid-why-phone">
+                                    {{#if theme_settings.custom_why4_phone}}{{theme_settings.custom_why4_phone}}{{else}}866-496-7359{{/if}}</a>.
+                            {{/if}}
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+

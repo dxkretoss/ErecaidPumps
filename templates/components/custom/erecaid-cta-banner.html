@@ -1,0 +1,95 @@
+{{!-- 
+    ErecAid "Ready to Find the Right Vacuum Erection Device?" Bottom CTA Banner
+    100% matches Screenshot Reference:
+    - Deep royal blue full-width banner (#004b8d)
+    - Left text:
+        - Headline: "Ready to Find the Right Vacuum Erection Device?"
+        - Subtitle: "Shop medical-grade vacuum devices, tension rings and accessories from a trusted source."
+    - Center buttons:
+        - Button 1: "Shop ED Pumps →" (Solid white background, brand blue text)
+        - Button 2: "Help Me Choose →" (Transparent background, white outline, white text)
+    - Right phone section:
+        - Vertical divider line
+        - White phone icon
+        - Phone number: "866-496-7359"
+        - Subtitles: "Talk to a Product Specialist" & "Mon – Fri 8am – 5pm CT"
+    - Fully editable via BigCommerce Theme Settings (schema.json & config.json)
+    - Fully responsive across desktop, tablet, and mobile
+--}}
+<section class="erecaid-cta-banner" aria-label="Find the Right Vacuum Erection Device">
+    <div class="container erecaid-cta-banner__container">
+        {{!-- Left: Headline & Description --}}
+        <div class="erecaid-cta-banner__text">
+            <h2 class="erecaid-cta-banner__title">
+                {{#if theme_settings.custom_cta_title}}
+                    {{theme_settings.custom_cta_title}}
+                {{else}}
+                    Ready to Find the Right Vacuum Erection Device?
+                {{/if}}
+            </h2>
+            <p class="erecaid-cta-banner__desc">
+                {{#if theme_settings.custom_cta_desc}}
+                    {{theme_settings.custom_cta_desc}}
+                {{else}}
+                    Shop medical-grade vacuum devices, tension rings and accessories from a trusted source.
+                {{/if}}
+            </p>
+        </div>
+
+        {{!-- Middle: Action Buttons --}}
+        <div class="erecaid-cta-banner__actions">
+            <a href="{{#if theme_settings.custom_cta_btn1_url}}{{theme_settings.custom_cta_btn1_url}}{{else}}/ed-pumps/{{/if}}" class="erecaid-cta-banner__btn erecaid-cta-banner__btn--primary">
+                {{#if theme_settings.custom_cta_btn1_text}}
+                    {{theme_settings.custom_cta_btn1_text}}
+                {{else}}
+                    Shop ED Pumps
+                {{/if}}
+                <span class="erecaid-cta-banner__btn-arrow" aria-hidden="true">&rarr;</span>
+            </a>
+            <a href="{{#if theme_settings.custom_cta_btn2_url}}{{theme_settings.custom_cta_btn2_url}}{{else}}/pump-finder/{{/if}}" class="erecaid-cta-banner__btn erecaid-cta-banner__btn--secondary">
+                {{#if theme_settings.custom_cta_btn2_text}}
+                    {{theme_settings.custom_cta_btn2_text}}
+                {{else}}
+                    Help Me Choose
+                {{/if}}
+                <span class="erecaid-cta-banner__btn-arrow" aria-hidden="true">&rarr;</span>
+            </a>
+        </div>
+
+        {{!-- Vertical Divider --}}
+        <div class="erecaid-cta-banner__divider" aria-hidden="true"></div>
+
+        {{!-- Right: Phone Support Box --}}
+        <a href="tel:{{#if theme_settings.custom_cta_phone}}{{theme_settings.custom_cta_phone}}{{else}}866-496-7359{{/if}}" class="erecaid-cta-banner__phone">
+            <div class="erecaid-cta-banner__phone-icon" aria-hidden="true">
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="#ffffff">
+                    <path d="M6.62 10.79a15.053 15.053 0 006.59 6.59l2.2-2.2a1 1 0 011.01-.24c1.12.37 2.33.57 3.58.57a1 1 0 011 1V20a1 1 0 01-1 1A17 17 0 013 4a1 1 0 011-1h3.5a1 1 0 011 1c0 1.25.2 2.45.57 3.58a1 1 0 01-.25 1.01l-2.2 2.2z"/>
+                </svg>
+            </div>
+            <div class="erecaid-cta-banner__phone-info">
+                <span class="erecaid-cta-banner__phone-number">
+                    {{#if theme_settings.custom_cta_phone}}
+                        {{theme_settings.custom_cta_phone}}
+                    {{else}}
+                        866-496-7359
+                    {{/if}}
+                </span>
+                <span class="erecaid-cta-banner__phone-sub">
+                    {{#if theme_settings.custom_cta_phone_sub1}}
+                        {{theme_settings.custom_cta_phone_sub1}}
+                    {{else}}
+                        Talk to a Product Specialist
+                    {{/if}}
+                </span>
+                <span class="erecaid-cta-banner__phone-hours">
+                    {{#if theme_settings.custom_cta_phone_sub2}}
+                        {{theme_settings.custom_cta_phone_sub2}}
+                    {{else}}
+                        Mon – Fri 8am – 5pm CT
+                    {{/if}}
+                </span>
+            </div>
+        </a>
+    </div>
+</section>
+

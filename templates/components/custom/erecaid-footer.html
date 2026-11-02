@@ -1,0 +1,119 @@
+{{!-- 
+    ErecAid Pumps Custom Footer Component
+    100% matches Screenshot Reference:
+    - Clean white background (#ffffff) with subtle top border
+    - Top Row (3 Columns on Desktop):
+        1. Left: Brand Wordmark (ErecaidPumps.com) + Tagline ("A division of Reach Medical, Inc.")
+        2. Center: Horizontal Nav Links ("About Us | Shipping & Returns | Privacy Policy | Terms | Contact Us")
+        3. Right: Address ("Reach Medical, Inc. / 356 New Byhalia Rd., Suite 1B / Collierville, TN 38017")
+    - Bottom Block (Centered):
+        1. Medical Disclaimer ("The information on this website is provided for general educational purposes...")
+        2. Copyright ("© 2024 ErecaidPumps.com. All rights reserved.")
+    - Fully editable via BigCommerce Theme Settings (schema.json & config.json)
+    - Fully responsive across desktop, tablet, and mobile
+--}}
+<footer class="erecaid-footer" role="contentinfo">
+    <div class="container erecaid-footer__container">
+        {{!-- Top Row: 3 Columns --}}
+        <div class="erecaid-footer__top">
+            {{!-- Left: Brand Wordmark & Tagline --}}
+            <div class="erecaid-footer__brand">
+                <a href="{{urls.home}}" class="erecaid-footer__logo-link" aria-label="ErecAidPumps.com Home">
+                    <img class="erecaid-footer__logo-img" 
+                         src="/assets/img/erecaid-wordmark.png" 
+                         alt="ErecAidPumps.com" 
+                         width="225" 
+                         height="26" 
+                         loading="lazy">
+                </a>
+                <p class="erecaid-footer__tagline">
+                    {{#if theme_settings.custom_footer_tagline}}
+                        {{theme_settings.custom_footer_tagline}}
+                    {{else}}
+                        A division of Reach Medical, Inc.
+                    {{/if}}
+                </p>
+            </div>
+
+            {{!-- Center: Navigation Links --}}
+            <nav class="erecaid-footer__nav" aria-label="Footer Navigation">
+                <ul class="erecaid-footer__links">
+                    <li class="erecaid-footer__link-item">
+                        <a href="{{#if theme_settings.custom_footer_link1_url}}{{theme_settings.custom_footer_link1_url}}{{else}}/about-us/{{/if}}" class="erecaid-footer__link">
+                            {{#if theme_settings.custom_footer_link1_text}}{{theme_settings.custom_footer_link1_text}}{{else}}About Us{{/if}}
+                        </a>
+                    </li>
+                    <li class="erecaid-footer__divider" aria-hidden="true">|</li>
+                    <li class="erecaid-footer__link-item">
+                        <a href="{{#if theme_settings.custom_footer_link2_url}}{{theme_settings.custom_footer_link2_url}}{{else}}/shipping-returns/{{/if}}" class="erecaid-footer__link">
+                            {{#if theme_settings.custom_footer_link2_text}}{{theme_settings.custom_footer_link2_text}}{{else}}Shipping & Returns{{/if}}
+                        </a>
+                    </li>
+                    <li class="erecaid-footer__divider" aria-hidden="true">|</li>
+                    <li class="erecaid-footer__link-item">
+                        <a href="{{#if theme_settings.custom_footer_link3_url}}{{theme_settings.custom_footer_link3_url}}{{else}}/privacy-policy/{{/if}}" class="erecaid-footer__link">
+                            {{#if theme_settings.custom_footer_link3_text}}{{theme_settings.custom_footer_link3_text}}{{else}}Privacy Policy{{/if}}
+                        </a>
+                    </li>
+                    <li class="erecaid-footer__divider" aria-hidden="true">|</li>
+                    <li class="erecaid-footer__link-item">
+                        <a href="{{#if theme_settings.custom_footer_link4_url}}{{theme_settings.custom_footer_link4_url}}{{else}}/terms-conditions/{{/if}}" class="erecaid-footer__link">
+                            {{#if theme_settings.custom_footer_link4_text}}{{theme_settings.custom_footer_link4_text}}{{else}}Terms{{/if}}
+                        </a>
+                    </li>
+                    <li class="erecaid-footer__divider" aria-hidden="true">|</li>
+                    <li class="erecaid-footer__link-item">
+                        <a href="{{#if theme_settings.custom_footer_link5_url}}{{theme_settings.custom_footer_link5_url}}{{else}}/contact-us/{{/if}}" class="erecaid-footer__link">
+                            {{#if theme_settings.custom_footer_link5_text}}{{theme_settings.custom_footer_link5_text}}{{else}}Contact Us{{/if}}
+                        </a>
+                    </li>
+                </ul>
+            </nav>
+
+            {{!-- Right: Company Address --}}
+            <div class="erecaid-footer__address">
+                <p class="erecaid-footer__company">
+                    {{#if theme_settings.custom_footer_address_name}}
+                        {{theme_settings.custom_footer_address_name}}
+                    {{else}}
+                        Reach Medical, Inc.
+                    {{/if}}
+                </p>
+                <p class="erecaid-footer__street">
+                    {{#if theme_settings.custom_footer_address_line1}}
+                        {{theme_settings.custom_footer_address_line1}}
+                    {{else}}
+                        356 New Byhalia Rd., Suite 1B
+                    {{/if}}
+                </p>
+                <p class="erecaid-footer__city">
+                    {{#if theme_settings.custom_footer_address_line2}}
+                        {{theme_settings.custom_footer_address_line2}}
+                    {{else}}
+                        Collierville, TN 38017
+                    {{/if}}
+                </p>
+            </div>
+        </div>
+
+        {{!-- Bottom Block: Centered Medical Disclaimer & Copyright --}}
+        <div class="erecaid-footer__bottom">
+            <p class="erecaid-footer__disclaimer">
+                {{#if theme_settings.custom_footer_disclaimer}}
+                    {{theme_settings.custom_footer_disclaimer}}
+                {{else}}
+                    The information on this website is provided for general educational purposes and is not a substitute for medical advice, diagnosis or treatment.<br>
+                    Talk with your physician or other qualified healthcare professional about erectile dysfunction and whether a vacuum erection device is appropriate for you.
+                {{/if}}
+            </p>
+            <p class="erecaid-footer__copyright">
+                {{#if theme_settings.custom_footer_copyright}}
+                    {{theme_settings.custom_footer_copyright}}
+                {{else}}
+                    &copy; 2024 ErecaidPumps.com. All rights reserved.
+                {{/if}}
+            </p>
+        </div>
+    </div>
+</footer>
+

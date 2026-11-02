@@ -1,0 +1,288 @@
+// =============================================================================
+// ERECAID FEATURED PRODUCTS GRID (100% Matches Screenshot 2 Reference Layout)
+// =============================================================================
+
+.erecaid-products-section {
+    padding: 38px 0 46px;
+    background-color: #ffffff;
+    width: 100%;
+    position: relative;
+
+    @media (max-width: 768px) {
+        padding: 28px 0 36px;
+    }
+
+    // Section Header (Title + View All Link)
+    .erecaid-products-header {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        margin-bottom: 22px;
+        gap: 16px;
+        flex-wrap: wrap;
+
+        &__title {
+            font-family: 'Roboto', 'Karla', sans-serif;
+            font-size: 24px;
+            font-weight: 800;
+            color: #002d62;
+            margin: 0;
+            letter-spacing: -0.3px;
+            line-height: 1.2;
+
+            @media (max-width: 768px) {
+                font-size: 20px;
+            }
+        }
+
+        &__link {
+            font-size: 14px;
+            font-weight: 600;
+            color: #0157b8;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 4px;
+            transition: color 0.15s ease, text-decoration 0.15s ease;
+
+            &:hover {
+                color: #004085;
+                text-decoration: underline;
+
+                .erecaid-products-header__arrow {
+                    transform: translateX(3px);
+                }
+            }
+        }
+
+        &__arrow {
+            display: inline-block;
+            transition: transform 0.15s ease;
+        }
+    }
+
+    // 4-Column Responsive Grid (Displays up to 8 products)
+    .erecaid-products-grid {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        gap: 20px;
+        width: 100%;
+
+        @media (max-width: 1024px) {
+            grid-template-columns: repeat(2, 1fr);
+            gap: 16px;
+        }
+
+        @media (max-width: 580px) {
+            grid-template-columns: 1fr;
+            gap: 16px;
+        }
+    }
+
+    // Individual Product Card (Matching Screenshot 2 Structure)
+    .erecaid-prod-card {
+        background: #ffffff;
+        border: 1px solid #dbeafe;
+        border-radius: 8px;
+        padding: 20px 18px 20px;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        box-shadow: 0 1px 3px rgba(0, 45, 98, 0.03);
+        transition: transform 0.2s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.2s cubic-bezier(0.16, 1, 0.3, 1), border-color 0.2s ease;
+        position: relative;
+
+        &:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 10px 24px rgba(0, 45, 98, 0.08);
+            border-color: #bfdbfe;
+        }
+
+        // Title at the TOP (above image)
+        &__top {
+            min-height: 42px;
+            margin-bottom: 12px;
+            display: flex;
+            align-items: flex-start;
+
+            @media (max-width: 580px) {
+                min-height: auto;
+            }
+        }
+
+        &__title {
+            font-family: 'Roboto', 'Karla', sans-serif;
+            font-size: 15px;
+            font-weight: 700;
+            line-height: 1.3;
+            color: #002d62;
+            margin: 0;
+
+            &-link {
+                color: #002d62;
+                text-decoration: none;
+                transition: color 0.15s ease;
+
+                &:hover {
+                    color: #0157b8;
+                }
+            }
+        }
+
+        // Middle Image Area
+        &__media {
+            height: 190px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 14px;
+            overflow: hidden;
+            background: #ffffff;
+        }
+
+        &__image-link {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 100%;
+            height: 100%;
+        }
+
+        &__image {
+            max-height: 180px;
+            max-width: 100%;
+            object-fit: contain;
+            display: block;
+            margin: 0 auto;
+            transition: transform 0.25s ease;
+
+            .erecaid-prod-card:hover & {
+                transform: scale(1.03);
+            }
+        }
+
+        // Bottom Body
+        &__body {
+            display: flex;
+            flex-direction: column;
+            flex-grow: 1;
+            justify-content: flex-end;
+        }
+
+        // Rating Stars + Review Count
+        &__rating {
+            display: flex;
+            align-items: center;
+            gap: 7px;
+            margin-bottom: 8px;
+        }
+
+        &__stars {
+            display: flex;
+            align-items: center;
+            gap: 2px;
+            color: #f59e0b;
+        }
+
+        &__star {
+            width: 14px;
+            height: 14px;
+            display: block;
+            fill: currentColor;
+        }
+
+        &__review-count {
+            font-size: 12px;
+            font-weight: 600;
+            color: #0157b8;
+            letter-spacing: -0.1px;
+        }
+
+        // Price in Bold Navy
+        &__price {
+            font-size: 22px;
+            font-weight: 800;
+            color: #002d62;
+            margin-bottom: 12px;
+            line-height: 1.1;
+            letter-spacing: -0.2px;
+
+            .price {
+                color: #002d62 !important;
+                font-weight: 800 !important;
+            }
+
+            .price-section {
+                color: #002d62 !important;
+            }
+        }
+
+        // 4 Feature Checklist with Green Checkmarks (✓)
+        &__checklist {
+            list-style: none !important;
+            padding: 0 !important;
+            margin: 0 0 16px 0 !important;
+            display: flex;
+            flex-direction: column;
+            gap: 5px;
+        }
+
+        &__check-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 7px;
+            font-size: 12.5px;
+            color: #334155;
+            line-height: 1.35;
+            font-weight: 500;
+        }
+
+        &__check-icon {
+            width: 13px;
+            height: 13px;
+            flex-shrink: 0;
+            margin-top: 2px;
+            color: #059669;
+            stroke: #059669;
+        }
+
+        // Full-Width Action Button
+        &__action {
+            margin-top: auto;
+            width: 100%;
+        }
+
+        &__btn {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 100%;
+            padding: 10px 16px;
+            background-color: #0157b8;
+            color: #ffffff !important;
+            font-size: 13.5px;
+            font-weight: 700;
+            border-radius: 4px;
+            text-decoration: none;
+            transition: background-color 0.2s ease, box-shadow 0.2s ease;
+            box-shadow: 0 1px 3px rgba(1, 87, 184, 0.15);
+
+            &:hover {
+                background-color: #004595;
+                box-shadow: 0 4px 12px rgba(1, 87, 184, 0.28);
+                text-decoration: none;
+
+                .erecaid-prod-card__btn-arrow {
+                    transform: translateX(3px);
+                }
+            }
+
+            &-arrow {
+                margin-left: 6px;
+                display: inline-block;
+                transition: transform 0.2s ease;
+            }
+        }
+    }
+}
+

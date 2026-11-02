@@ -33,13 +33,13 @@
             </div>
 
             {{!-- Bottom Row: 3 Step Boxes + Chevrons + Submit Button --}}
-            <form class="erecaid-finder-card__form" action="/categories" method="GET" data-erecaid-finder-form>
+            <form class="erecaid-finder-card__form" action="{{#if theme_settings.custom_finder_btn_url}}{{theme_settings.custom_finder_btn_url}}{{else}}/categories{{/if}}" method="GET" data-erecaid-finder-form>
                 {{!-- Step 1 Box --}}
                 <div class="erecaid-finder-card__step-box">
                     <div class="erecaid-finder-card__step-header">
                         <span class="erecaid-finder-card__step-num">1</span>
                         <label class="erecaid-finder-card__step-label" for="finder-step-1">
-                            What will you primarily use the device for?
+                            {{#if theme_settings.custom_finder_step1_label}}{{theme_settings.custom_finder_step1_label}}{{else}}What will you primarily use the device for?{{/if}}
                         </label>
                     </div>
                     <div class="erecaid-finder-card__select-wrap">
@@ -65,7 +65,7 @@
                     <div class="erecaid-finder-card__step-header">
                         <span class="erecaid-finder-card__step-num">2</span>
                         <label class="erecaid-finder-card__step-label" for="finder-step-2">
-                            Which type of pump do you prefer?
+                            {{#if theme_settings.custom_finder_step2_label}}{{theme_settings.custom_finder_step2_label}}{{else}}Which type of pump do you prefer?{{/if}}
                         </label>
                     </div>
                     <div class="erecaid-finder-card__select-wrap">
@@ -91,7 +91,7 @@
                     <div class="erecaid-finder-card__step-header">
                         <span class="erecaid-finder-card__step-num">3</span>
                         <label class="erecaid-finder-card__step-label" for="finder-step-3">
-                            Is easy operation important to you?
+                            {{#if theme_settings.custom_finder_step3_label}}{{theme_settings.custom_finder_step3_label}}{{else}}Is easy operation important to you?{{/if}}
                         </label>
                     </div>
                     <div class="erecaid-finder-card__select-wrap">
@@ -119,18 +119,19 @@
 (function() {
     var form = document.querySelector('[data-erecaid-finder-form]');
     if (!form) return;
+    var defaultUrl = form.getAttribute('action') || '/categories';
     form.addEventListener('submit', function(e) {
         var purpose = form.elements['purpose'] ? form.elements['purpose'].value : '';
         var pumpType = form.elements['pump_type'] ? form.elements['pump_type'].value : '';
         
         if (purpose === 'prostate') {
-            form.action = '/categories';
+            form.action = defaultUrl;
         } else if (pumpType === 'manual') {
-            form.action = '/categories';
+            form.action = defaultUrl;
         } else if (pumpType === 'automatic' || pumpType === 'rechargeable') {
-            form.action = '/categories';
+            form.action = defaultUrl;
         } else {
-            form.action = '/categories';
+            form.action = defaultUrl;
         }
     });
 })();

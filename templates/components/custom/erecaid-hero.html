@@ -38,8 +38,12 @@
                             </svg>
                         </span>
                         <div class="erecaid-hero__badge-content">
-                            <span class="erecaid-hero__badge-line">More Than</span>
-                            <span class="erecaid-hero__badge-line">25 Years Experience</span>
+                            {{#if theme_settings.custom_hero_badge1}}
+                                <span class="erecaid-hero__badge-line">{{{theme_settings.custom_hero_badge1}}}</span>
+                            {{else}}
+                                <span class="erecaid-hero__badge-line">More Than</span>
+                                <span class="erecaid-hero__badge-line">25 Years Experience</span>
+                            {{/if}}
                         </div>
                     </div>
 
@@ -55,8 +59,12 @@
                             </svg>
                         </span>
                         <div class="erecaid-hero__badge-content">
-                            <span class="erecaid-hero__badge-line">Discreet</span>
-                            <span class="erecaid-hero__badge-line">Shipping</span>
+                            {{#if theme_settings.custom_hero_badge2}}
+                                <span class="erecaid-hero__badge-line">{{{theme_settings.custom_hero_badge2}}}</span>
+                            {{else}}
+                                <span class="erecaid-hero__badge-line">Discreet</span>
+                                <span class="erecaid-hero__badge-line">Shipping</span>
+                            {{/if}}
                         </div>
                     </div>
 
@@ -71,8 +79,12 @@
                             </svg>
                         </span>
                         <div class="erecaid-hero__badge-content">
-                            <span class="erecaid-hero__badge-line">Expert</span>
-                            <span class="erecaid-hero__badge-line">Product Support</span>
+                            {{#if theme_settings.custom_hero_badge3}}
+                                <span class="erecaid-hero__badge-line">{{{theme_settings.custom_hero_badge3}}}</span>
+                            {{else}}
+                                <span class="erecaid-hero__badge-line">Expert</span>
+                                <span class="erecaid-hero__badge-line">Product Support</span>
+                            {{/if}}
                         </div>
                     </div>
 
@@ -87,8 +99,12 @@
                             </svg>
                         </span>
                         <div class="erecaid-hero__badge-content">
-                            <span class="erecaid-hero__badge-line">Free Shipping</span>
-                            <span class="erecaid-hero__badge-line">on Pump Systems</span>
+                            {{#if theme_settings.custom_hero_badge4}}
+                                <span class="erecaid-hero__badge-line">{{{theme_settings.custom_hero_badge4}}}</span>
+                            {{else}}
+                                <span class="erecaid-hero__badge-line">Free Shipping</span>
+                                <span class="erecaid-hero__badge-line">on Pump Systems</span>
+                            {{/if}}
                         </div>
                     </div>
                 </div>
@@ -115,7 +131,7 @@
             {{!-- Center: Featured Product Kit Image --}}
             <div class="erecaid-hero__center">
                 <img class="erecaid-hero__product-img" 
-                     src="{{#if theme_settings.custom_hero_img}}{{theme_settings.custom_hero_img}}{{else}}/assets/img/erecaid-esteem-kit-hero.png{{/if}}" 
+                     src="{{#if theme_settings.custom_hero_img}}{{#startsWith 'http' theme_settings.custom_hero_img}}{{theme_settings.custom_hero_img}}{{else}}{{#startsWith '/' theme_settings.custom_hero_img}}{{theme_settings.custom_hero_img}}{{else}}/images/stencil/original/image-manager/{{theme_settings.custom_hero_img}}{{/startsWith}}{{/startsWith}}{{else}}{{cdn 'assets/img/erecaid-esteem-kit-hero.png'}}{{/if}}" 
                      alt="Osbon ErecAid Esteem Manual Vacuum Erection Pump Kit" 
                      loading="eager">
             </div>

@@ -19,7 +19,7 @@
                     </p>
                 </div>
                 <div class="erecaid-cat-card__media">
-                    <img src="{{#if theme_settings.custom_cat1_img}}{{theme_settings.custom_cat1_img}}{{else}}/assets/img/cat-prod-1.png{{/if}}" 
+                    <img src="{{#if theme_settings.custom_cat1_img}}{{#startsWith 'http' theme_settings.custom_cat1_img}}{{theme_settings.custom_cat1_img}}{{else}}{{#startsWith '/' theme_settings.custom_cat1_img}}{{theme_settings.custom_cat1_img}}{{else}}/images/stencil/original/image-manager/{{theme_settings.custom_cat1_img}}{{/startsWith}}{{/startsWith}}{{else}}{{cdn 'assets/img/cat-prod-1.png'}}{{/if}}" 
                          alt="{{#if theme_settings.custom_cat1_title}}{{theme_settings.custom_cat1_title}}{{else}}Manual Pumps{{/if}}" 
                          loading="lazy">
                 </div>
@@ -41,7 +41,7 @@
                     </p>
                 </div>
                 <div class="erecaid-cat-card__media">
-                    <img src="{{#if theme_settings.custom_cat2_img}}{{theme_settings.custom_cat2_img}}{{else}}/assets/img/cat-prod-2.png{{/if}}" 
+                    <img src="{{#if theme_settings.custom_cat2_img}}{{#startsWith 'http' theme_settings.custom_cat2_img}}{{theme_settings.custom_cat2_img}}{{else}}{{#startsWith '/' theme_settings.custom_cat2_img}}{{theme_settings.custom_cat2_img}}{{else}}/images/stencil/original/image-manager/{{theme_settings.custom_cat2_img}}{{/startsWith}}{{/startsWith}}{{else}}{{cdn 'assets/img/cat-prod-2.png'}}{{/if}}" 
                          alt="{{#if theme_settings.custom_cat2_title}}{{theme_settings.custom_cat2_title}}{{else}}Automatic &amp; Rechargeable Pumps{{/if}}" 
                          loading="lazy">
                 </div>
@@ -63,7 +63,7 @@
                     </p>
                 </div>
                 <div class="erecaid-cat-card__media">
-                    <img src="{{#if theme_settings.custom_cat3_img}}{{theme_settings.custom_cat3_img}}{{else}}/assets/img/cat-prod-3.png{{/if}}" 
+                    <img src="{{#if theme_settings.custom_cat3_img}}{{#startsWith 'http' theme_settings.custom_cat3_img}}{{theme_settings.custom_cat3_img}}{{else}}{{#startsWith '/' theme_settings.custom_cat3_img}}{{theme_settings.custom_cat3_img}}{{else}}/images/stencil/original/image-manager/{{theme_settings.custom_cat3_img}}{{/startsWith}}{{/startsWith}}{{else}}{{cdn 'assets/img/cat-prod-3.png'}}{{/if}}" 
                          alt="{{#if theme_settings.custom_cat3_title}}{{theme_settings.custom_cat3_title}}{{else}}After Prostate Surgery{{/if}}" 
                          loading="lazy">
                 </div>
@@ -85,7 +85,7 @@
                     </p>
                 </div>
                 <div class="erecaid-cat-card__media">
-                    <img src="{{#if theme_settings.custom_cat4_img}}{{theme_settings.custom_cat4_img}}{{else}}/assets/img/cat-prod-4.png{{/if}}" 
+                    <img src="{{#if theme_settings.custom_cat4_img}}{{#startsWith 'http' theme_settings.custom_cat4_img}}{{theme_settings.custom_cat4_img}}{{else}}{{#startsWith '/' theme_settings.custom_cat4_img}}{{theme_settings.custom_cat4_img}}{{else}}/images/stencil/original/image-manager/{{theme_settings.custom_cat4_img}}{{/startsWith}}{{/startsWith}}{{else}}{{cdn 'assets/img/cat-prod-4.png'}}{{/if}}" 
                          alt="{{#if theme_settings.custom_cat4_title}}{{theme_settings.custom_cat4_title}}{{else}}Tension Rings &amp; Accessories{{/if}}" 
                          loading="lazy">
                 </div>

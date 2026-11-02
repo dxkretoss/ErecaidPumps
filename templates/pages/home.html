@@ -14,18 +14,36 @@ shop_by_brand:
   limit: { { theme_settings.max_shop_by_brand } }
 ---
 
-{{!-- Full-Width Hero Section (No sidebar cramping the hero) --}} {{#partial
-"hero"}} {{!-- Temporarily hidden: "Official Website for Erecaidpumps Over 25
-Years" {{{region name="home_above_hero"}}} {{{region name="home_below_menu"}}}
---}} {{#if theme_settings.custom_hero_enable}} {{>
-components/custom/erecaid-hero}} {{> components/custom/erecaid-category-cards}}
-{{#if theme_settings.custom_finder_enable}} {{>
-components/custom/erecaid-pump-finder}} {{/if}} {{#if
-theme_settings.custom_reviews_enable}} {{>
-components/custom/erecaid-customer-reviews}} {{/if}} {{#if
-theme_settings.custom_faqs_enable}} {{> components/custom/erecaid-faqs}} {{/if}}
-{{else}} {{> components/papa-supermarket/home/hero}} {{/if}} {{{region
-name="home_below_hero"}}} {{{region name="home_below_carousel"}}} {{/partial}}
+{{!-- Full-Width Hero Section & ErecAid Custom Sections (Independent toggles & widget regions) --}}
+{{#partial "hero"}}
+    {{#if theme_settings.custom_hero_enable}}
+        {{> components/custom/erecaid-hero}}
+    {{else}}
+        {{> components/papa-supermarket/home/hero}}
+    {{/if}}
+    {{{region name="home_below_hero"}}}
+    {{{region name="home_below_carousel"}}}
+
+    {{#if theme_settings.custom_categories_enable}}
+        {{> components/custom/erecaid-category-cards}}
+        {{{region name="home_below_categories"}}}
+    {{/if}}
+
+    {{#if theme_settings.custom_finder_enable}}
+        {{> components/custom/erecaid-pump-finder}}
+        {{{region name="home_below_pump_finder"}}}
+    {{/if}}
+
+    {{#if theme_settings.custom_reviews_enable}}
+        {{> components/custom/erecaid-customer-reviews}}
+        {{{region name="home_below_customer_reviews"}}}
+    {{/if}}
+
+    {{#if theme_settings.custom_faqs_enable}}
+        {{> components/custom/erecaid-faqs}}
+        {{{region name="home_below_faqs"}}}
+    {{/if}}
+{{/partial}}
 {{!-- Main Page Content (Hero is full width above this; sidebar sits neatly
 below the hero if left-sidebar layout is enabled) --}} {{#partial "page"}} {{#if
 theme_settings.layout '===' 'left-sidebar'}}

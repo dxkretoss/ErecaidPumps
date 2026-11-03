@@ -15,7 +15,8 @@
             "label": "Left Sidebar",
             "value": "left-sidebar"
           }
-        ]
+        ],
+        "force_reload": true
       },
       {
         "type": "select",
@@ -34,7 +35,8 @@
             "label": "Modern",
             "value": "modern"
           }
-        ]
+        ],
+        "force_reload": true
       },
       {
         "type": "color",
@@ -115,7 +117,8 @@
             "value": "disabled",
             "label": "Disabled"
           }
-        ]
+        ],
+        "force_reload": true
       },
       {
         "type": "heading",
@@ -138,17 +141,20 @@
             "value": "speedtest",
             "label": "Prioritize PageSpeed score"
           }
-        ]
+        ],
+        "force_reload": true
       },
       {
         "type": "checkbox",
         "id": "instantload",
-        "label": "i18n.InstantLoadDesc"
+        "label": "i18n.InstantLoadDesc",
+        "force_reload": true
       },
       {
         "type": "checkbox",
         "id": "page_transition",
-        "label": "Enable page transition overlay"
+        "label": "Enable page transition overlay",
+        "force_reload": true
       }
     ]
   },
@@ -163,37 +169,43 @@
         "type": "checkbox",
         "id": "custom_header_enable",
         "label": "Enable Custom ErecAid Header",
-        "default": true
+        "default": true,
+        "force_reload": true
       },
       {
         "type": "text",
         "id": "custom_header_tagline",
         "label": "Header Tagline / Slogan",
-        "default": "Trusted Products. Real Support. Better Tomorrows."
+        "default": "Trusted Products. Real Support. Better Tomorrows.",
+        "force_reload": true
       },
       {
         "type": "text",
         "id": "custom_header_phone",
         "label": "Support Phone Number",
-        "default": "866-496-7359"
+        "default": "866-496-7359",
+        "force_reload": true
       },
       {
         "type": "text",
         "id": "custom_header_sub1",
         "label": "Support Line 1 (Subtitle)",
-        "default": "Talk to a Product Specialist"
+        "default": "Talk to a Product Specialist",
+        "force_reload": true
       },
       {
         "type": "text",
         "id": "custom_header_sub2",
         "label": "Support Line 2 (Hours)",
-        "default": "Mon - Fri 8am - 5pm CT"
+        "default": "Mon - Fri 8am - 5pm CT",
+        "force_reload": true
       },
       {
         "type": "text",
         "id": "custom_header_search_placeholder",
         "label": "Search Box Placeholder Text",
-        "default": "Search products..."
+        "default": "Search products...",
+        "force_reload": true
       },
       {
         "type": "heading",
@@ -203,49 +215,57 @@
         "type": "checkbox",
         "id": "custom_hero_enable",
         "label": "Enable Custom Medical Hero Banner",
-        "default": true
+        "default": true,
+        "force_reload": true
       },
       {
         "type": "text",
         "id": "custom_hero_title",
         "label": "Hero Main Headline",
-        "default": "Medical-Grade Vacuum Erection Devices for ED"
+        "default": "Medical-Grade Vacuum Erection Devices for ED",
+        "force_reload": true
       },
       {
         "type": "text",
         "id": "custom_hero_subtitle",
         "label": "Hero Subtitle Description",
-        "default": "Vacuum therapy for ED and recovery after prostate surgery."
+        "default": "Vacuum therapy for ED and recovery after prostate surgery.",
+        "force_reload": true
       },
       {
         "type": "text",
         "id": "custom_hero_img",
         "label": "Hero Product Image",
-        "default": ""
+        "default": "",
+        "force_reload": true
       },
       {
         "type": "text",
         "id": "custom_hero_btn1_text",
         "label": "Primary Button Text",
-        "default": "Shop ED Pumps"
+        "default": "Shop ED Pumps",
+        "force_reload": true
       },
       {
         "type": "text",
         "id": "custom_hero_btn1_url",
         "label": "Primary Button Link",
-        "default": "/categories"
+        "default": "/categories",
+        "force_reload": true
       },
       {
         "type": "text",
         "id": "custom_hero_btn2_text",
         "label": "Secondary Button Text",
-        "default": "Help Me Choose a Pump"
+        "default": "Help Me Choose a Pump",
+        "force_reload": true
       },
       {
         "type": "text",
         "id": "custom_hero_btn2_url",
         "label": "Secondary Button Link",
-        "default": "/contact-us"
+        "default": "/contact-us",
+        "force_reload": true
       },
       {
         "type": "heading",
@@ -255,25 +275,29 @@
         "type": "text",
         "id": "custom_hero_badge1",
         "label": "Badge 1 Text",
-        "default": "More Than<br>25 Years Experience"
+        "default": "More Than<br>25 Years Experience",
+        "force_reload": true
       },
       {
         "type": "text",
         "id": "custom_hero_badge2",
         "label": "Badge 2 Text",
-        "default": "Discreet<br>Shipping"
+        "default": "Discreet<br>Shipping",
+        "force_reload": true
       },
       {
         "type": "text",
         "id": "custom_hero_badge3",
         "label": "Badge 3 Text",
-        "default": "Expert<br>Product Support"
+        "default": "Expert<br>Product Support",
+        "force_reload": true
       },
       {
         "type": "text",
         "id": "custom_hero_badge4",
         "label": "Badge 4 Text",
-        "default": "Free Shipping<br>on Pump Systems"
+        "default": "Free Shipping<br>on Pump Systems",
+        "force_reload": true
       },
       {
         "type": "heading",
@@ -283,25 +307,29 @@
         "type": "text",
         "id": "custom_hero_spotlight_title",
         "label": "Spotlight Title",
-        "default": "Osbon ErecAid Esteem Manual Vacuum Erection Pump"
+        "default": "Osbon ErecAid Esteem Manual Vacuum Erection Pump",
+        "force_reload": true
       },
       {
         "type": "text",
         "id": "custom_hero_spotlight_sub",
         "label": "Spotlight Subtitle",
-        "default": "A trusted choice for ED and penile rehabilitation."
+        "default": "A trusted choice for ED and penile rehabilitation.",
+        "force_reload": true
       },
       {
         "type": "text",
         "id": "custom_hero_spotlight_btn",
         "label": "Spotlight Button Text",
-        "default": "Learn More"
+        "default": "Learn More",
+        "force_reload": true
       },
       {
         "type": "text",
         "id": "custom_hero_spotlight_url",
         "label": "Spotlight Button Link",
-        "default": "/categories"
+        "default": "/categories",
+        "force_reload": true
       },
       {
         "type": "heading",
@@ -311,127 +339,148 @@
         "type": "checkbox",
         "id": "custom_categories_enable",
         "label": "Enable Category Feature Cards Section",
-        "default": true
+        "default": true,
+        "force_reload": true
       },
       {
         "type": "text",
         "id": "custom_cat1_title",
         "label": "Card 1 Title",
-        "default": "Manual Pumps"
+        "default": "Manual Pumps",
+        "force_reload": true
       },
       {
         "type": "text",
         "id": "custom_cat1_sub",
         "label": "Card 1 Subtitle",
-        "default": "Simple, dependable and easy to control."
+        "default": "Simple, dependable and easy to control.",
+        "force_reload": true
       },
       {
         "type": "text",
         "id": "custom_cat1_img",
         "label": "Card 1 Image",
-        "default": ""
+        "default": "",
+        "force_reload": true
       },
       {
         "type": "text",
         "id": "custom_cat1_btn",
         "label": "Card 1 Button Text",
-        "default": "Shop Manual Pumps"
+        "default": "Shop Manual Pumps",
+        "force_reload": true
       },
       {
         "type": "text",
         "id": "custom_cat1_url",
         "label": "Card 1 Button Link",
-        "default": "/categories"
+        "default": "/categories",
+        "force_reload": true
       },
       {
         "type": "text",
         "id": "custom_cat2_title",
         "label": "Card 2 Title",
-        "default": "Automatic & Rechargeable Pumps"
+        "default": "Automatic & Rechargeable Pumps",
+        "force_reload": true
       },
       {
         "type": "text",
         "id": "custom_cat2_sub",
         "label": "Card 2 Subtitle",
-        "default": "Convenient powered operation."
+        "default": "Convenient powered operation.",
+        "force_reload": true
       },
       {
         "type": "text",
         "id": "custom_cat2_img",
         "label": "Card 2 Image",
-        "default": ""
+        "default": "",
+        "force_reload": true
       },
       {
         "type": "text",
         "id": "custom_cat2_btn",
         "label": "Card 2 Button Text",
-        "default": "Shop Automatic Pumps"
+        "default": "Shop Automatic Pumps",
+        "force_reload": true
       },
       {
         "type": "text",
         "id": "custom_cat2_url",
         "label": "Card 2 Button Link",
-        "default": "/categories"
+        "default": "/categories",
+        "force_reload": true
       },
       {
         "type": "text",
         "id": "custom_cat3_title",
         "label": "Card 3 Title",
-        "default": "After Prostate Surgery"
+        "default": "After Prostate Surgery",
+        "force_reload": true
       },
       {
         "type": "text",
         "id": "custom_cat3_sub",
         "label": "Card 3 Subtitle",
-        "default": "Support your recovery with a trusted vacuum therapy option."
+        "default": "Support your recovery with a trusted vacuum therapy option.",
+        "force_reload": true
       },
       {
         "type": "text",
         "id": "custom_cat3_img",
         "label": "Card 3 Image",
-        "default": ""
+        "default": "",
+        "force_reload": true
       },
       {
         "type": "text",
         "id": "custom_cat3_btn",
         "label": "Card 3 Button Text",
-        "default": "Learn More"
+        "default": "Learn More",
+        "force_reload": true
       },
       {
         "type": "text",
         "id": "custom_cat3_url",
         "label": "Card 3 Button Link",
-        "default": "/categories"
+        "default": "/categories",
+        "force_reload": true
       },
       {
         "type": "text",
         "id": "custom_cat4_title",
         "label": "Card 4 Title",
-        "default": "Tension Rings & Accessories"
+        "default": "Tension Rings & Accessories",
+        "force_reload": true
       },
       {
         "type": "text",
         "id": "custom_cat4_sub",
         "label": "Card 4 Subtitle",
-        "default": "Replacement rings, cylinders, seals and more."
+        "default": "Replacement rings, cylinders, seals and more.",
+        "force_reload": true
       },
       {
         "type": "text",
         "id": "custom_cat4_img",
         "label": "Card 4 Image",
-        "default": ""
+        "default": "",
+        "force_reload": true
       },
       {
         "type": "text",
         "id": "custom_cat4_btn",
         "label": "Card 4 Button Text",
-        "default": "Shop Accessories"
+        "default": "Shop Accessories",
+        "force_reload": true
       },
       {
         "type": "text",
         "id": "custom_cat4_url",
         "label": "Card 4 Button Link",
-        "default": "/categories"
+        "default": "/categories",
+        "force_reload": true
       },
       {
         "type": "heading",
@@ -441,55 +490,64 @@
         "type": "checkbox",
         "id": "custom_finder_enable",
         "label": "Enable Pump Finder Section",
-        "default": true
+        "default": true,
+        "force_reload": true
       },
       {
         "type": "text",
         "id": "custom_finder_title",
         "label": "Finder Headline",
-        "default": "Find the Right Pump for You"
+        "default": "Find the Right Pump for You",
+        "force_reload": true
       },
       {
         "type": "text",
         "id": "custom_finder_sub",
         "label": "Finder Subtitle",
-        "default": "Answer simple questions to find the best options."
+        "default": "Answer simple questions to find the best options.",
+        "force_reload": true
       },
       {
         "type": "text",
         "id": "custom_finder_support_label",
         "label": "Support Hotline Label",
-        "default": "Prefer to talk to someone?"
+        "default": "Prefer to talk to someone?",
+        "force_reload": true
       },
       {
         "type": "text",
         "id": "custom_finder_btn_text",
         "label": "Submit Button Text",
-        "default": "Find My Pump"
+        "default": "Find My Pump",
+        "force_reload": true
       },
       {
         "type": "text",
         "id": "custom_finder_btn_url",
         "label": "Submit Action Link",
-        "default": "/categories"
+        "default": "/categories",
+        "force_reload": true
       },
       {
         "type": "text",
         "id": "custom_finder_step1_label",
         "label": "Step 1 Question Label",
-        "default": "What will you primarily use the device for?"
+        "default": "What will you primarily use the device for?",
+        "force_reload": true
       },
       {
         "type": "text",
         "id": "custom_finder_step2_label",
         "label": "Step 2 Question Label",
-        "default": "Which type of pump do you prefer?"
+        "default": "Which type of pump do you prefer?",
+        "force_reload": true
       },
       {
         "type": "text",
         "id": "custom_finder_step3_label",
         "label": "Step 3 Question Label",
-        "default": "Is easy operation important to you?"
+        "default": "Is easy operation important to you?",
+        "force_reload": true
       },
       {
         "type": "heading",
@@ -499,79 +557,92 @@
         "type": "checkbox",
         "id": "custom_reviews_enable",
         "label": "Enable Customer Reviews Section",
-        "default": true
+        "default": true,
+        "force_reload": true
       },
       {
         "type": "text",
         "id": "custom_reviews_title",
         "label": "Reviews Headline",
-        "default": "What Our Customers Say"
+        "default": "What Our Customers Say",
+        "force_reload": true
       },
       {
         "type": "text",
         "id": "custom_reviews_link_text",
         "label": "View All Link Text",
-        "default": "View All Reviews"
+        "default": "View All Reviews",
+        "force_reload": true
       },
       {
         "type": "text",
         "id": "custom_reviews_link_url",
         "label": "View All Link URL",
-        "default": "/categories"
+        "default": "/categories",
+        "force_reload": true
       },
       {
         "type": "text",
         "id": "custom_review1_quote",
         "label": "Review 1 Quote",
-        "default": "Well made and easy to use. Discreet shipping."
+        "default": "Well made and easy to use. Discreet shipping.",
+        "force_reload": true
       },
       {
         "type": "text",
         "id": "custom_review1_author",
         "label": "Review 1 Author",
-        "default": "Mark T."
+        "default": "Mark T.",
+        "force_reload": true
       },
       {
         "type": "text",
         "id": "custom_review1_badge",
         "label": "Review 1 Badge",
-        "default": "Verified Purchase"
+        "default": "Verified Purchase",
+        "force_reload": true
       },
       {
         "type": "text",
         "id": "custom_review2_quote",
         "label": "Review 2 Quote",
-        "default": "Using my ErecAid for several years. Highly recommended."
+        "default": "Using my ErecAid for several years. Highly recommended.",
+        "force_reload": true
       },
       {
         "type": "text",
         "id": "custom_review2_author",
         "label": "Review 2 Author",
-        "default": "Robert L."
+        "default": "Robert L.",
+        "force_reload": true
       },
       {
         "type": "text",
         "id": "custom_review2_badge",
         "label": "Review 2 Badge",
-        "default": "Verified Purchase"
+        "default": "Verified Purchase",
+        "force_reload": true
       },
       {
         "type": "text",
         "id": "custom_review3_quote",
         "label": "Review 3 Quote",
-        "default": "After prostate surgery, an important part of my recovery."
+        "default": "After prostate surgery, an important part of my recovery.",
+        "force_reload": true
       },
       {
         "type": "text",
         "id": "custom_review3_author",
         "label": "Review 3 Author",
-        "default": "James P."
+        "default": "James P.",
+        "force_reload": true
       },
       {
         "type": "text",
         "id": "custom_review3_badge",
         "label": "Review 3 Badge",
-        "default": "Verified Purchase"
+        "default": "Verified Purchase",
+        "force_reload": true
       },
       {
         "type": "heading",
@@ -581,97 +652,113 @@
         "type": "checkbox",
         "id": "custom_faqs_enable",
         "label": "Enable FAQs Section",
-        "default": true
+        "default": true,
+        "force_reload": true
       },
       {
         "type": "text",
         "id": "custom_faqs_title",
         "label": "FAQs Headline",
-        "default": "Frequently Asked Questions"
+        "default": "Frequently Asked Questions",
+        "force_reload": true
       },
       {
         "type": "text",
         "id": "custom_faqs_link_text",
         "label": "View All FAQs Link Text",
-        "default": "View All FAQs"
+        "default": "View All FAQs",
+        "force_reload": true
       },
       {
         "type": "text",
         "id": "custom_faqs_link_url",
         "label": "View All FAQs Link URL",
-        "default": "/categories"
+        "default": "/categories",
+        "force_reload": true
       },
       {
         "type": "text",
         "id": "custom_faq1_q",
         "label": "FAQ 1 Question",
-        "default": "What is a vacuum erection device?"
+        "default": "What is a vacuum erection device?",
+        "force_reload": true
       },
       {
         "type": "text",
         "id": "custom_faq1_a",
         "label": "FAQ 1 Answer (Leave blank for default)",
-        "default": ""
+        "default": "",
+        "force_reload": true
       },
       {
         "type": "text",
         "id": "custom_faq2_q",
         "label": "FAQ 2 Question",
-        "default": "Do I need a prescription?"
+        "default": "Do I need a prescription?",
+        "force_reload": true
       },
       {
         "type": "text",
         "id": "custom_faq2_a",
         "label": "FAQ 2 Answer (Leave blank for default)",
-        "default": ""
+        "default": "",
+        "force_reload": true
       },
       {
         "type": "text",
         "id": "custom_faq3_q",
         "label": "FAQ 3 Question",
-        "default": "Should I choose a manual or automatic pump?"
+        "default": "Should I choose a manual or automatic pump?",
+        "force_reload": true
       },
       {
         "type": "text",
         "id": "custom_faq3_a",
         "label": "FAQ 3 Answer (Leave blank for default)",
-        "default": ""
+        "default": "",
+        "force_reload": true
       },
       {
         "type": "text",
         "id": "custom_faq4_q",
         "label": "FAQ 4 Question",
-        "default": "What size tension ring do I need?"
+        "default": "What size tension ring do I need?",
+        "force_reload": true
       },
       {
         "type": "text",
         "id": "custom_faq4_a",
         "label": "FAQ 4 Answer (Leave blank for default)",
-        "default": ""
+        "default": "",
+        "force_reload": true
       },
       {
         "type": "text",
         "id": "custom_faq5_q",
         "label": "FAQ 5 Question",
-        "default": "Is my order shipped discreetly?"
+        "default": "Is my order shipped discreetly?",
+        "force_reload": true
       },
       {
         "type": "text",
         "id": "custom_faq5_a",
         "label": "FAQ 5 Answer (Leave blank for default)",
-        "default": ""
+        "default": "",
+        "force_reload": true
       },
       {
         "type": "text",
         "id": "custom_faq6_q",
         "label": "FAQ 6 Question",
-        "default": "Can someone help me choose a device?"
+        "default": "Can someone help me choose a device?",
+        "force_reload": true
       },
       {
         "type": "text",
         "id": "custom_faq6_a",
         "label": "FAQ 6 Answer (Leave blank for default)",
-        "default": ""
+        "default": "",
+        "force_reload": true
       },
       {
         "type": "heading",
@@ -680,47 +767,56 @@
       {
         "type": "checkbox",
         "label": "Show Featured Products Section",
-        "id": "custom_products_enable"
+        "id": "custom_products_enable",
+        "force_reload": true
       },
       {
         "type": "text",
         "label": "Section Heading",
-        "id": "custom_products_title"
+        "id": "custom_products_title",
+        "force_reload": true
       },
       {
         "type": "text",
         "label": "View All Link Text",
-        "id": "custom_products_link_text"
+        "id": "custom_products_link_text",
+        "force_reload": true
       },
       {
         "type": "text",
         "label": "View All Link URL",
-        "id": "custom_products_link_url"
+        "id": "custom_products_link_url",
+        "force_reload": true
       },
       {
         "type": "text",
         "label": "Card Button Text",
-        "id": "custom_products_btn_text"
+        "id": "custom_products_btn_text",
+        "force_reload": true
       },
       {
         "type": "text",
         "label": "Checklist Item 1 (Default)",
-        "id": "custom_products_check1"
+        "id": "custom_products_check1",
+        "force_reload": true
       },
       {
         "type": "text",
         "label": "Checklist Item 2 (Default)",
-        "id": "custom_products_check2"
+        "id": "custom_products_check2",
+        "force_reload": true
       },
       {
         "type": "text",
         "label": "Checklist Item 3 (Default)",
-        "id": "custom_products_check3"
+        "id": "custom_products_check3",
+        "force_reload": true
       },
       {
         "type": "text",
         "label": "Checklist Item 4 (Default)",
-        "id": "custom_products_check4"
+        "id": "custom_products_check4",
+        "force_reload": true
       },
       {
         "type": "heading",
@@ -729,57 +825,68 @@
       {
         "type": "checkbox",
         "label": "Show Why Choose Section",
-        "id": "custom_why_enable"
+        "id": "custom_why_enable",
+        "force_reload": true
       },
       {
         "type": "text",
         "label": "Section Title",
-        "id": "custom_why_title"
+        "id": "custom_why_title",
+        "force_reload": true
       },
       {
         "type": "text",
         "label": "Feature 1 Title",
-        "id": "custom_why1_title"
+        "id": "custom_why1_title",
+        "force_reload": true
       },
       {
         "type": "text",
         "label": "Feature 1 Description",
-        "id": "custom_why1_desc"
+        "id": "custom_why1_desc",
+        "force_reload": true
       },
       {
         "type": "text",
         "label": "Feature 2 Title",
-        "id": "custom_why2_title"
+        "id": "custom_why2_title",
+        "force_reload": true
       },
       {
         "type": "text",
         "label": "Feature 2 Description",
-        "id": "custom_why2_desc"
+        "id": "custom_why2_desc",
+        "force_reload": true
       },
       {
         "type": "text",
         "label": "Feature 3 Title",
-        "id": "custom_why3_title"
+        "id": "custom_why3_title",
+        "force_reload": true
       },
       {
         "type": "text",
         "label": "Feature 3 Description",
-        "id": "custom_why3_desc"
+        "id": "custom_why3_desc",
+        "force_reload": true
       },
       {
         "type": "text",
         "label": "Feature 4 Title",
-        "id": "custom_why4_title"
+        "id": "custom_why4_title",
+        "force_reload": true
       },
       {
         "type": "text",
         "label": "Feature 4 Description",
-        "id": "custom_why4_desc"
+        "id": "custom_why4_desc",
+        "force_reload": true
       },
       {
         "type": "text",
         "label": "Feature 4 Phone Number",
-        "id": "custom_why4_phone"
+        "id": "custom_why4_phone",
+        "force_reload": true
       },
       {
         "type": "heading",
@@ -788,32 +895,38 @@
       {
         "type": "checkbox",
         "label": "Show Prostate Surgery Section",
-        "id": "custom_prostate_enable"
+        "id": "custom_prostate_enable",
+        "force_reload": true
       },
       {
         "type": "text",
         "label": "Main Card Title",
-        "id": "custom_prostate_title"
+        "id": "custom_prostate_title",
+        "force_reload": true
       },
       {
         "type": "text",
         "label": "Main Card Description",
-        "id": "custom_prostate_desc"
+        "id": "custom_prostate_desc",
+        "force_reload": true
       },
       {
         "type": "text",
         "label": "Main Card Image URL",
-        "id": "custom_prostate_img"
+        "id": "custom_prostate_img",
+        "force_reload": true
       },
       {
         "type": "text",
         "label": "Main Card Button Text",
-        "id": "custom_prostate_btn_text"
+        "id": "custom_prostate_btn_text",
+        "force_reload": true
       },
       {
         "type": "text",
         "label": "Main Card Button URL",
-        "id": "custom_prostate_btn_url"
+        "id": "custom_prostate_btn_url",
+        "force_reload": true
       },
       {
         "type": "heading",
@@ -822,62 +935,74 @@
       {
         "type": "text",
         "label": "Articles Card Heading",
-        "id": "custom_articles_title"
+        "id": "custom_articles_title",
+        "force_reload": true
       },
       {
         "type": "color",
         "label": "Articles Box Background Color",
-        "id": "custom_articles_bg"
+        "id": "custom_articles_bg",
+        "force_reload": true
       },
       {
         "type": "text",
         "label": "Article 1 Text",
-        "id": "custom_article1_text"
+        "id": "custom_article1_text",
+        "force_reload": true
       },
       {
         "type": "text",
         "label": "Article 1 URL",
-        "id": "custom_article1_url"
+        "id": "custom_article1_url",
+        "force_reload": true
       },
       {
         "type": "text",
         "label": "Article 2 Text",
-        "id": "custom_article2_text"
+        "id": "custom_article2_text",
+        "force_reload": true
       },
       {
         "type": "text",
         "label": "Article 2 URL",
-        "id": "custom_article2_url"
+        "id": "custom_article2_url",
+        "force_reload": true
       },
       {
         "type": "text",
         "label": "Article 3 Text",
-        "id": "custom_article3_text"
+        "id": "custom_article3_text",
+        "force_reload": true
       },
       {
         "type": "text",
         "label": "Article 3 URL",
-        "id": "custom_article3_url"
+        "id": "custom_article3_url",
+        "force_reload": true
       },
       {
         "type": "text",
         "label": "Article 4 Text",
-        "id": "custom_article4_text"
+        "id": "custom_article4_text",
+        "force_reload": true
       },
       {
         "type": "text",
         "label": "Article 4 URL",
-        "id": "custom_article4_url"
+        "id": "custom_article4_url",
+        "force_reload": true
       },
       {
         "type": "text",
         "label": "View All Articles Text",
-        "id": "custom_articles_all_text"
+        "id": "custom_articles_all_text",
+        "force_reload": true
       },
       {
         "type": "text",
         "label": "View All Articles URL",
-        "id": "custom_articles_all_url"
+        "id": "custom_articles_all_url",
+        "force_reload": true
       },
       {
         "type": "heading",
@@ -886,52 +1011,62 @@
       {
         "type": "checkbox",
         "label": "Show Bottom Call to Action Banner",
-        "id": "custom_cta_enable"
+        "id": "custom_cta_enable",
+        "force_reload": true
       },
       {
         "type": "text",
         "label": "CTA Headline",
-        "id": "custom_cta_title"
+        "id": "custom_cta_title",
+        "force_reload": true
       },
       {
         "type": "text",
         "label": "CTA Description",
-        "id": "custom_cta_desc"
+        "id": "custom_cta_desc",
+        "force_reload": true
       },
       {
         "type": "text",
         "label": "Primary Button Text",
-        "id": "custom_cta_btn1_text"
+        "id": "custom_cta_btn1_text",
+        "force_reload": true
       },
       {
         "type": "text",
         "label": "Primary Button Link",
-        "id": "custom_cta_btn1_url"
+        "id": "custom_cta_btn1_url",
+        "force_reload": true
       },
       {
         "type": "text",
         "label": "Secondary Button Text",
-        "id": "custom_cta_btn2_text"
+        "id": "custom_cta_btn2_text",
+        "force_reload": true
       },
       {
         "type": "text",
         "label": "Secondary Button Link",
-        "id": "custom_cta_btn2_url"
+        "id": "custom_cta_btn2_url",
+        "force_reload": true
       },
       {
         "type": "text",
         "label": "Support Phone Number",
-        "id": "custom_cta_phone"
+        "id": "custom_cta_phone",
+        "force_reload": true
       },
       {
         "type": "text",
         "label": "Support Phone Subtitle",
-        "id": "custom_cta_phone_sub1"
+        "id": "custom_cta_phone_sub1",
+        "force_reload": true
       },
       {
         "type": "text",
         "label": "Support Phone Hours",
-        "id": "custom_cta_phone_sub2"
+        "id": "custom_cta_phone_sub2",
+        "force_reload": true
       },
       {
         "type": "heading",
@@ -940,87 +1075,104 @@
       {
         "type": "checkbox",
         "label": "Enable Custom ErecAid Footer",
-        "id": "custom_footer_enable"
+        "id": "custom_footer_enable",
+        "force_reload": true
       },
       {
         "type": "text",
         "label": "Brand Tagline",
-        "id": "custom_footer_tagline"
+        "id": "custom_footer_tagline",
+        "force_reload": true
       },
       {
         "type": "text",
         "label": "Address - Company Name",
-        "id": "custom_footer_address_name"
+        "id": "custom_footer_address_name",
+        "force_reload": true
       },
       {
         "type": "text",
         "label": "Address - Street / Suite",
-        "id": "custom_footer_address_line1"
+        "id": "custom_footer_address_line1",
+        "force_reload": true
       },
       {
         "type": "text",
         "label": "Address - City, State ZIP",
-        "id": "custom_footer_address_line2"
+        "id": "custom_footer_address_line2",
+        "force_reload": true
       },
       {
         "type": "text",
         "label": "Link 1 Text",
-        "id": "custom_footer_link1_text"
+        "id": "custom_footer_link1_text",
+        "force_reload": true
       },
       {
         "type": "text",
         "label": "Link 1 URL",
-        "id": "custom_footer_link1_url"
+        "id": "custom_footer_link1_url",
+        "force_reload": true
       },
       {
         "type": "text",
         "label": "Link 2 Text",
-        "id": "custom_footer_link2_text"
+        "id": "custom_footer_link2_text",
+        "force_reload": true
       },
       {
         "type": "text",
         "label": "Link 2 URL",
-        "id": "custom_footer_link2_url"
+        "id": "custom_footer_link2_url",
+        "force_reload": true
       },
       {
         "type": "text",
         "label": "Link 3 Text",
-        "id": "custom_footer_link3_text"
+        "id": "custom_footer_link3_text",
+        "force_reload": true
       },
       {
         "type": "text",
         "label": "Link 3 URL",
-        "id": "custom_footer_link3_url"
+        "id": "custom_footer_link3_url",
+        "force_reload": true
       },
       {
         "type": "text",
         "label": "Link 4 Text",
-        "id": "custom_footer_link4_text"
+        "id": "custom_footer_link4_text",
+        "force_reload": true
       },
       {
         "type": "text",
         "label": "Link 4 URL",
-        "id": "custom_footer_link4_url"
+        "id": "custom_footer_link4_url",
+        "force_reload": true
       },
       {
         "type": "text",
         "label": "Link 5 Text",
-        "id": "custom_footer_link5_text"
+        "id": "custom_footer_link5_text",
+        "force_reload": true
       },
       {
         "type": "text",
         "label": "Link 5 URL",
-        "id": "custom_footer_link5_url"
+        "id": "custom_footer_link5_url",
+        "force_reload": true
       },
       {
         "type": "text",
         "label": "Medical Disclaimer",
-        "id": "custom_footer_disclaimer"
+        "id": "custom_footer_disclaimer",
+        "force_reload": true
       },
       {
         "type": "text",
         "label": "Copyright Text",
-        "id": "custom_footer_copyright"
+        "id": "custom_footer_copyright",
+        "force_reload": true
       }
     ]
   },
@@ -1299,7 +1451,8 @@
             "value": "nothome",
             "label": "Except homepage"
           }
-        ]
+        ],
+        "force_reload": true
       },
       {
         "type": "select",
@@ -1318,7 +1471,8 @@
             "value": "nothome",
             "label": "Except homepage"
           }
-        ]
+        ],
+        "force_reload": true
       }
     ]
   },
@@ -1342,7 +1496,8 @@
             "value": "all",
             "label": "All"
           }
-        ]
+        ],
+        "force_reload": true
       },
       {
         "type": "color",
@@ -1361,7 +1516,8 @@
       {
         "type": "checkbox",
         "label": "Show Wishlist icon",
-        "id": "navUser_wishlist"
+        "id": "navUser_wishlist",
+        "force_reload": true
       },
       {
         "type": "heading",
@@ -1370,7 +1526,8 @@
       {
         "type": "checkbox",
         "label": "Show welcome text",
-        "id": "show_welcome_text"
+        "id": "show_welcome_text",
+        "force_reload": true
       },
       {
         "type": "heading",
@@ -1389,7 +1546,8 @@
             "value": "horizontal",
             "label": "Horizontal"
           }
-        ]
+        ],
+        "force_reload": true
       },
       {
         "type": "select",
@@ -1409,12 +1567,14 @@
       {
         "type": "checkbox",
         "label": "Expand categories on homepage",
-        "id": "homepage_expand_categories_menu"
+        "id": "homepage_expand_categories_menu",
+        "force_reload": true
       },
       {
         "type": "checkbox",
         "label": "Hide webpage links",
-        "id": "hide_content_navigation"
+        "id": "hide_content_navigation",
+        "force_reload": true
       },
       {
         "type": "color",
@@ -1429,7 +1589,8 @@
       {
         "type": "text",
         "label": "Categories button text",
-        "id": "navPages_categoriesItem_text"
+        "id": "navPages_categoriesItem_text",
+        "force_reload": true
       },
       {
         "type": "heading",
@@ -1469,7 +1630,8 @@
             "value": "250x50",
             "label": "250x50"
           }
-        ]
+        ],
+        "force_reload": true
       },
       {
         "type": "select",
@@ -1517,7 +1679,8 @@
       {
         "type": "checkbox",
         "label": "Show carousel",
-        "id": "homepage_show_carousel"
+        "id": "homepage_show_carousel",
+        "force_reload": true
       },
       {
         "type": "select",
@@ -1536,7 +1699,8 @@
             "value": "stretch",
             "label": "Stretch"
           }
-        ]
+        ],
+        "force_reload": true
       }
     ]
   },
@@ -1589,17 +1753,20 @@
       {
         "type": "checkbox",
         "label": "Top Right (Toggle On/Off)",
-        "id": "social_icon_placement_top"
+        "id": "social_icon_placement_top",
+        "force_reload": true
       },
       {
         "type": "checkbox",
         "label": "Bottom Placement",
-        "id": "social_icon_placement_bottom"
+        "id": "social_icon_placement_bottom",
+        "force_reload": true
       },
       {
         "type": "text",
         "label": "Facebook page",
-        "id": "fb_page"
+        "id": "fb_page",
+        "force_reload": true
       },
       {
         "type": "paragraph",
@@ -1613,12 +1780,14 @@
       {
         "type": "checkbox",
         "label": "Show Quickview",
-        "id": "show_product_quick_view"
+        "id": "show_product_quick_view",
+        "force_reload": true
       },
       {
         "type": "checkbox",
         "label": "i18n.ajaxAtc",
-        "id": "ajax_add_to_cart"
+        "id": "ajax_add_to_cart",
+        "force_reload": true
       },
       {
         "type": "select",
@@ -1637,7 +1806,8 @@
             "label": "Hide",
             "value": "hide"
           }
-        ]
+        ],
+        "force_reload": true
       },
       {
         "type": "heading",
@@ -1656,12 +1826,14 @@
             "value": "no-sidebar",
             "label": "No Sidebar"
           }
-        ]
+        ],
+        "force_reload": true
       },
       {
         "type": "checkbox",
         "label": "Show reviews in tabs",
-        "id": "show_product_reviews_tabs"
+        "id": "show_product_reviews_tabs",
+        "force_reload": true
       },
       {
         "type": "select",
@@ -1680,7 +1852,8 @@
             "value": 5,
             "label": "5"
           }
-        ]
+        ],
+        "force_reload": true
       },
       {
         "type": "select",
@@ -1703,7 +1876,8 @@
             "value": 5,
             "label": "5"
           }
-        ]
+        ],
+        "force_reload": true
       },
       {
         "type": "select",
@@ -1726,12 +1900,14 @@
             "value": 5,
             "label": "5"
           }
-        ]
+        ],
+        "force_reload": true
       },
       {
         "type": "checkbox",
         "label": "Vertical thumbnails",
-        "id": "productpage_vertical_thumbnails"
+        "id": "productpage_vertical_thumbnails",
+        "force_reload": true
       },
       {
         "type": "select",
@@ -1750,22 +1926,26 @@
             "value": 6,
             "label": "6"
           }
-        ]
+        ],
+        "force_reload": true
       },
       {
         "type": "checkbox",
         "label": "Show bulk price table",
-        "id": "productpage_bulk_price_table"
+        "id": "productpage_bulk_price_table",
+        "force_reload": true
       },
       {
         "type": "checkbox",
         "label": "Show custom fields tab",
-        "id": "productpage_custom_fields_tab"
+        "id": "productpage_custom_fields_tab",
+        "force_reload": true
       },
       {
         "type": "checkbox",
         "label": "+ Hide start with '__'",
-        "id": "productpage_custom_fields_hide_special"
+        "id": "productpage_custom_fields_hide_special",
+        "force_reload": true
       },
       {
         "type": "select",
@@ -1780,7 +1960,8 @@
             "value": "full",
             "label": "Full Page"
           }
-        ]
+        ],
+        "force_reload": true
       },
       {
         "type": "paragraph",
@@ -1827,7 +2008,8 @@
             "value": "grid",
             "label": "4 columns"
           }
-        ]
+        ],
+        "force_reload": true
       },
       {
         "type": "select",
@@ -1842,12 +2024,14 @@
             "value": "hide",
             "label": "Hide"
           }
-        ]
+        ],
+        "force_reload": true
       },
       {
         "type": "checkbox",
         "label": "Show subcategory thumbnails",
-        "id": "show_subcategories_grid"
+        "id": "show_subcategories_grid",
+        "force_reload": true
       },
       {
         "type": "select",
@@ -1866,12 +2050,14 @@
             "value": 25,
             "label": "25"
           }
-        ]
+        ],
+        "force_reload": true
       },
       {
         "type": "checkbox",
         "label": "Show Shop by Price",
-        "id": "show_shop_by_price"
+        "id": "show_shop_by_price",
+        "force_reload": true
       },
       {
         "type": "select",
@@ -1894,7 +2080,8 @@
             "value": 8,
             "label": "8"
           }
-        ]
+        ],
+        "force_reload": true
       },
       {
         "type": "imageDimension",
@@ -1913,7 +2100,8 @@
             "value": "custom",
             "label": "Specify dimensions"
           }
-        ]
+        ],
+        "force_reload": true
       },
       {
         "type": "heading",
@@ -1936,7 +2124,8 @@
             "value": "newest",
             "label": "Newest items"
           }
-        ]
+        ],
+        "force_reload": true
       },
       {
         "type": "select",
@@ -1959,7 +2148,8 @@
             "value": 12,
             "label": "12"
           }
-        ]
+        ],
+        "force_reload": true
       },
       {
         "type": "imageDimension",
@@ -1974,7 +2164,8 @@
             "value": "custom",
             "label": "Specify dimensions"
           }
-        ]
+        ],
+        "force_reload": true
       },
       {
         "type": "heading",
@@ -2001,7 +2192,8 @@
             "value": 12,
             "label": "12"
           }
-        ]
+        ],
+        "force_reload": true
       },
       {
         "type": "heading",
@@ -2025,7 +2217,8 @@
       {
         "type": "checkbox",
         "label": "Show second image on hover",
-        "id": "card_showHoverImage"
+        "id": "card_showHoverImage",
+        "force_reload": true
       },
       {
         "type": "heading",
@@ -2052,7 +2245,8 @@
             "value": "burst",
             "label": "Burst"
           }
-        ]
+        ],
+        "force_reload": true
       },
       {
         "type": "heading",
@@ -2061,7 +2255,8 @@
       {
         "type": "checkbox",
         "label": "i18n.ShowFeaturedPromotions",
-        "id": "show_featured_promotions"
+        "id": "show_featured_promotions",
+        "force_reload": true
       },
       {
         "type": "heading",
@@ -2088,7 +2283,8 @@
             "value": "custom",
             "label": "Specify dimensions"
           }
-        ]
+        ],
+        "force_reload": true
       },
       {
         "type": "imageDimension",
@@ -2103,7 +2299,8 @@
             "value": "custom",
             "label": "Specify dimensions"
           }
-        ]
+        ],
+        "force_reload": true
       },
       {
         "type": "imageDimension",
@@ -2118,7 +2315,8 @@
             "value": "custom",
             "label": "Specify dimensions"
           }
-        ]
+        ],
+        "force_reload": true
       },
       {
         "type": "imageDimension",
@@ -2141,7 +2339,8 @@
             "value": "custom",
             "label": "Specify dimensions"
           }
-        ]
+        ],
+        "force_reload": true
       }
     ]
   },
@@ -2165,7 +2364,8 @@
             "value": "2col",
             "label": "2 Columns"
           }
-        ]
+        ],
+        "force_reload": true
       },
       {
         "type": "select",
@@ -2184,7 +2384,8 @@
             "value": 15,
             "label": "15"
           }
-        ]
+        ],
+        "force_reload": true
       },
       {
         "type": "imageDimension",
@@ -2199,7 +2400,8 @@
             "value": "custom",
             "label": "Specify dimensions"
           }
-        ]
+        ],
+        "force_reload": true
       }
     ]
   },
@@ -2213,7 +2415,8 @@
       {
         "type": "checkbox",
         "label": "Show newsletter form",
-        "id": "footer_show_newsletter"
+        "id": "footer_show_newsletter",
+        "force_reload": true
       },
       {
         "type": "heading",
@@ -2242,12 +2445,14 @@
       {
         "type": "checkbox",
         "label": "Show about us",
-        "id": "footer_show_aboutus"
+        "id": "footer_show_aboutus",
+        "force_reload": true
       },
       {
         "type": "checkbox",
         "label": "Show contact",
-        "id": "footer_show_contact"
+        "id": "footer_show_contact",
+        "force_reload": true
       },
       {
         "type": "select",
@@ -2266,7 +2471,8 @@
             "value": 5,
             "label": "6"
           }
-        ]
+        ],
+        "force_reload": true
       },
       {
         "type": "select",
@@ -2285,7 +2491,8 @@
             "value": 6,
             "label": "6"
           }
-        ]
+        ],
+        "force_reload": true
       },
       {
         "type": "select",
@@ -2304,7 +2511,8 @@
             "value": 7,
             "label": "7"
           }
-        ]
+        ],
+        "force_reload": true
       },
       {
         "type": "heading",
@@ -2313,12 +2521,14 @@
       {
         "type": "checkbox",
         "label": "i18n.ShowPoweredByBigCommerce",
-        "id": "show_powered_by"
+        "id": "show_powered_by",
+        "force_reload": true
       },
       {
         "type": "checkbox",
         "label": "i18n.ShowCurrentYearAnd",
-        "id": "show_copyright_footer"
+        "id": "show_copyright_footer",
+        "force_reload": true
       }
     ]
   },
@@ -2328,7 +2538,8 @@
       {
         "type": "checkbox",
         "label": "Price Ranges",
-        "id": "price_ranges"
+        "id": "price_ranges",
+        "force_reload": true
       },
       {
         "type": "paragraph",
@@ -2351,22 +2562,26 @@
       {
         "type": "text",
         "label": "1.",
-        "id": "section1"
+        "id": "section1",
+        "force_reload": true
       },
       {
         "type": "text",
         "label": "2.",
-        "id": "section2"
+        "id": "section2",
+        "force_reload": true
       },
       {
         "type": "text",
         "label": "3.",
-        "id": "section3"
+        "id": "section3",
+        "force_reload": true
       },
       {
         "type": "text",
         "label": "4.",
-        "id": "section4"
+        "id": "section4",
+        "force_reload": true
       },
       {
         "type": "heading",
@@ -2389,7 +2604,8 @@
             "value": 8,
             "label": "8"
           }
-        ]
+        ],
+        "force_reload": true
       },
       {
         "type": "select",
@@ -2408,27 +2624,32 @@
             "value": 8,
             "label": "8"
           }
-        ]
+        ],
+        "force_reload": true
       },
       {
         "type": "checkbox",
         "label": "Show Load More button",
-        "id": "specialProductsTab_more"
+        "id": "specialProductsTab_more",
+        "force_reload": true
       },
       {
         "type": "checkbox",
         "label": "Show featured",
-        "id": "specialProductsTab_show_featured"
+        "id": "specialProductsTab_show_featured",
+        "force_reload": true
       },
       {
         "type": "checkbox",
         "label": "Show bestselling",
-        "id": "specialProductsTab_show_top"
+        "id": "specialProductsTab_show_top",
+        "force_reload": true
       },
       {
         "type": "checkbox",
         "label": "Show new products",
-        "id": "specialProductsTab_show_new"
+        "id": "specialProductsTab_show_new",
+        "force_reload": true
       },
       {
         "type": "select",
@@ -2447,7 +2668,8 @@
             "value": "new",
             "label": "New"
           }
-        ]
+        ],
+        "force_reload": true
       },
       {
         "type": "color",
@@ -2483,7 +2705,8 @@
             "value": 2,
             "label": "2"
           }
-        ]
+        ],
+        "force_reload": true
       },
       {
         "type": "select",
@@ -2498,7 +2721,8 @@
             "value": "sidebar",
             "label": "Sidebar"
           }
-        ]
+        ],
+        "force_reload": true
       }
     ]
   },
@@ -2526,7 +2750,8 @@
             "value": "all",
             "label": "All Pages"
           }
-        ]
+        ],
+        "force_reload": true
       },
       {
         "type": "text",

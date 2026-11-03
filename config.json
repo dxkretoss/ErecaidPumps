@@ -1,5 +1,5 @@
 {
-  "name": "Supermarket",
+  "name": "Supermarket (3)",
   "version": "7.5.0",
   "meta": {
     "price": 19500,
@@ -680,7 +680,7 @@
     "custom_cta_btn2_url": "/pump-finder/",
     "custom_cta_phone": "866-496-7359",
     "custom_cta_phone_sub1": "Talk to a Product Specialist",
-    "custom_cta_phone_sub2": "Mon \u2013 Fri 8am \u2013 5pm CT",
+    "custom_cta_phone_sub2": "Mon – Fri 8am – 5pm CT",
     "custom_footer_enable": true,
     "custom_footer_tagline": "A division of Reach Medical, Inc.",
     "custom_footer_address_name": "Reach Medical, Inc.",
@@ -697,7 +697,7 @@
     "custom_footer_link5_text": "Contact Us",
     "custom_footer_link5_url": "/contact-us/",
     "custom_footer_disclaimer": "",
-    "custom_footer_copyright": "\u00a9 2024 ErecaidPumps.com. All rights reserved."
+    "custom_footer_copyright": "© 2024 ErecaidPumps.com. All rights reserved."
   },
   "read_only_files": [
     "/assets/scss/components/citadel",
@@ -947,7 +947,7 @@
         "custom_cta_btn2_url": "/pump-finder/",
         "custom_cta_phone": "866-496-7359",
         "custom_cta_phone_sub1": "Talk to a Product Specialist",
-        "custom_cta_phone_sub2": "Mon \u2013 Fri 8am \u2013 5pm CT",
+        "custom_cta_phone_sub2": "Mon – Fri 8am – 5pm CT",
         "custom_footer_enable": true,
         "custom_footer_tagline": "A division of Reach Medical, Inc.",
         "custom_footer_address_name": "Reach Medical, Inc.",
@@ -964,7 +964,7 @@
         "custom_footer_link5_text": "Contact Us",
         "custom_footer_link5_url": "/contact-us/",
         "custom_footer_disclaimer": "",
-        "custom_footer_copyright": "\u00a9 2024 ErecaidPumps.com. All rights reserved."
+        "custom_footer_copyright": "© 2024 ErecaidPumps.com. All rights reserved."
       }
     },
     {
@@ -1155,7 +1155,7 @@
         "custom_cta_btn2_url": "/pump-finder/",
         "custom_cta_phone": "866-496-7359",
         "custom_cta_phone_sub1": "Talk to a Product Specialist",
-        "custom_cta_phone_sub2": "Mon \u2013 Fri 8am \u2013 5pm CT",
+        "custom_cta_phone_sub2": "Mon – Fri 8am – 5pm CT",
         "custom_footer_enable": true,
         "custom_footer_tagline": "A division of Reach Medical, Inc.",
         "custom_footer_address_name": "Reach Medical, Inc.",
@@ -1172,7 +1172,7 @@
         "custom_footer_link5_text": "Contact Us",
         "custom_footer_link5_url": "/contact-us/",
         "custom_footer_disclaimer": "",
-        "custom_footer_copyright": "\u00a9 2024 ErecaidPumps.com. All rights reserved."
+        "custom_footer_copyright": "© 2024 ErecaidPumps.com. All rights reserved."
       }
     },
     {
@@ -1367,7 +1367,7 @@
         "custom_cta_btn2_url": "/pump-finder/",
         "custom_cta_phone": "866-496-7359",
         "custom_cta_phone_sub1": "Talk to a Product Specialist",
-        "custom_cta_phone_sub2": "Mon \u2013 Fri 8am \u2013 5pm CT",
+        "custom_cta_phone_sub2": "Mon – Fri 8am – 5pm CT",
         "custom_footer_enable": true,
         "custom_footer_tagline": "A division of Reach Medical, Inc.",
         "custom_footer_address_name": "Reach Medical, Inc.",
@@ -1384,7 +1384,7 @@
         "custom_footer_link5_text": "Contact Us",
         "custom_footer_link5_url": "/contact-us/",
         "custom_footer_disclaimer": "",
-        "custom_footer_copyright": "\u00a9 2024 ErecaidPumps.com. All rights reserved."
+        "custom_footer_copyright": "© 2024 ErecaidPumps.com. All rights reserved."
       }
     },
     {
@@ -1959,8 +1959,8 @@
         "custom_hero_btn1_url": "/categories",
         "custom_hero_btn2_text": "Help Me Choose a Pump",
         "custom_hero_btn2_url": "/contact-us",
-        "custom_hero_img": "",
-        "custom_hero_spotlight_title": "Osbon ErecAid Esteem Manual Vacuum Erection Pump",
+        "custom_hero_img": "reach-medical-device-comparison-banner.png",
+        "custom_hero_spotlight_title": "Battery Esteem Manual Vacuum Erection Pump",
         "custom_hero_spotlight_sub": "A trusted choice for ED and penile rehabilitation.",
         "custom_hero_spotlight_btn": "Learn More",
         "custom_hero_spotlight_url": "/categories",
@@ -1984,16 +1984,6 @@
         "custom_cat4_btn": "Shop Accessories",
         "custom_cat4_url": "/categories",
         "custom_cat4_img": "",
-        "custom_categories_enable": true,
-        "custom_finder_enable": true,
-        "custom_finder_title": "Find the Right Pump for You",
-        "custom_finder_sub": "Answer simple questions to find the best options.",
-        "custom_finder_support_label": "Prefer to talk to someone?",
-        "custom_finder_btn_text": "Find My Pump",
-        "custom_finder_btn_url": "/categories",
-        "custom_finder_step1_label": "What will you primarily use the device for?",
-        "custom_finder_step2_label": "Which type of pump do you prefer?",
-        "custom_finder_step3_label": "Is easy operation important to you?",
         "custom_reviews_enable": true,
         "custom_reviews_title": "What Our Customers Say",
         "custom_reviews_link_text": "View All Reviews",
@@ -2023,6 +2013,16 @@
         "custom_faq5_a": "",
         "custom_faq6_q": "Can someone help me choose a device?",
         "custom_faq6_a": "",
+        "custom_finder_enable": true,
+        "custom_finder_title": "Find the Right Pump for You",
+        "custom_finder_sub": "Answer simple questions to find the best options.",
+        "custom_finder_support_label": "Prefer to talk to someone?",
+        "custom_finder_btn_text": "Find My Pump",
+        "custom_finder_btn_url": "/categories",
+        "custom_categories_enable": true,
+        "custom_finder_step1_label": "What will you primarily use the device for?",
+        "custom_finder_step2_label": "Which type of pump do you prefer?",
+        "custom_finder_step3_label": "Is easy operation important to you?",
         "custom_products_enable": true,
         "custom_products_title": "Featured Vacuum Erection Devices",
         "custom_products_link_text": "View All Products",
@@ -2046,7 +2046,7 @@
         "custom_prostate_enable": true,
         "custom_prostate_title": "Vacuum Erection Devices After Prostate Surgery",
         "custom_prostate_desc": "",
-        "custom_prostate_img": "",
+        "custom_prostate_img": "penile-adjustable-loop-medical-device-banner.png",
         "custom_prostate_btn_text": "Read Our Prostate Surgery Guide",
         "custom_prostate_btn_url": "/after-prostate-surgery/",
         "custom_articles_title": "Helpful Articles",
@@ -2070,7 +2070,7 @@
         "custom_cta_btn2_url": "/pump-finder/",
         "custom_cta_phone": "866-496-7359",
         "custom_cta_phone_sub1": "Talk to a Product Specialist",
-        "custom_cta_phone_sub2": "Mon \u2013 Fri 8am \u2013 5pm CT",
+        "custom_cta_phone_sub2": "Mon – Fri 8am – 5pm CT",
         "custom_footer_enable": true,
         "custom_footer_tagline": "A division of Reach Medical, Inc.",
         "custom_footer_address_name": "Reach Medical, Inc.",
@@ -2087,7 +2087,7 @@
         "custom_footer_link5_text": "Contact Us",
         "custom_footer_link5_url": "/contact-us/",
         "custom_footer_disclaimer": "",
-        "custom_footer_copyright": "\u00a9 2024 ErecaidPumps.com. All rights reserved."
+        "custom_footer_copyright": "© 2024 ErecaidPumps.com. All rights reserved."
       }
     }
   ]

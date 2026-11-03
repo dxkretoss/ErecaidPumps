@@ -531,22 +531,43 @@
       {
         "type": "text",
         "id": "custom_finder_step1_label",
-        "label": "Step 1 Question Label",
-        "default": "What will you primarily use the device for?",
+        "label": "Step 1 Question",
+        "default": "What is your primary reason for using a pump?",
         "force_reload": true
       },
       {
         "type": "text",
         "id": "custom_finder_step2_label",
-        "label": "Step 2 Question Label",
-        "default": "Which type of pump do you prefer?",
+        "label": "Step 2 Question",
+        "default": "What best describes your erectile dysfunction?",
         "force_reload": true
       },
       {
         "type": "text",
         "id": "custom_finder_step3_label",
-        "label": "Step 3 Question Label",
-        "default": "Is easy operation important to you?",
+        "label": "Step 3 Question",
+        "default": "Which type of pump would you prefer?",
+        "force_reload": true
+      },
+      {
+        "type": "text",
+        "id": "custom_finder_step4_label",
+        "label": "Step 4 Question",
+        "default": "Is hand strength or dexterity a concern?",
+        "force_reload": true
+      },
+      {
+        "type": "text",
+        "id": "custom_finder_step5_label",
+        "label": "Step 5 Question",
+        "default": "What is your preferred budget?",
+        "force_reload": true
+      },
+      {
+        "type": "text",
+        "id": "custom_finder_step6_label",
+        "label": "Step 6 Question",
+        "default": "What matters most to you?",
         "force_reload": true
       },
       {

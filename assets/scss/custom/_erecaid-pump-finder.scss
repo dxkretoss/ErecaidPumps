@@ -1,5 +1,6 @@
 // =============================================================================
-// ERECAID PUMP FINDER SECTION (Interactive Questionnaire - 100% Reference Match)
+// ERECAID PUMP FINDER SECTION (6-Question Comprehensive Edition)
+// 100% matches reference screenshot & responsive on all devices
 // =============================================================================
 
 .erecaid-finder-section {
@@ -8,7 +9,7 @@
     width: 100%;
 
     @media (max-width: 768px) {
-        padding: 18px 0 26px;
+        padding: 16px 0 24px;
     }
 }
 
@@ -16,13 +17,16 @@
     background-color: #f0f7fe;
     border: 1px solid #dce8f4;
     border-radius: 8px;
-    padding: 16px 22px 18px;
+    padding: 18px 22px 18px;
     width: 100%;
+    box-sizing: border-box;
 
     @media (max-width: 768px) {
-        padding: 16px 14px;
+        padding: 14px 12px;
+        border-radius: 6px;
     }
 
+    // Top Header: Headline + Support
     &__top {
         display: flex;
         align-items: flex-start;
@@ -33,6 +37,7 @@
         @media (max-width: 768px) {
             flex-direction: column;
             gap: 10px;
+            margin-bottom: 12px;
         }
     }
 
@@ -60,6 +65,10 @@
         line-height: 1.35;
         color: #475569;
         margin: 0;
+
+        @media (max-width: 600px) {
+            font-size: 12px;
+        }
     }
 
     &__support {
@@ -111,79 +120,137 @@
         }
     }
 
+    // Form Container
     &__form {
-        display: flex;
-        align-items: center;
-        gap: 10px;
-        width: 100%;
+        display: flex !important;
+        flex-direction: column !important;
+        gap: 12px !important;
+        width: 100% !important;
+    }
 
-        @media (max-width: 992px) {
-            flex-direction: column;
-            align-items: stretch;
-            gap: 12px;
+    // 2 Balanced Rows on Desktop (Exactly 3 questions + 2 chevrons per row)
+    &__row {
+        display: flex !important;
+        flex-direction: row !important;
+        flex-wrap: nowrap !important;
+        align-items: stretch !important;
+        justify-content: space-between !important;
+        gap: 10px !important;
+        width: 100% !important;
+
+        .erecaid-finder-card__step-box {
+            flex: 1 1 0 !important;
+            min-width: 0 !important;
+        }
+
+        @media (max-width: 991px) and (min-width: 601px) {
+            flex-wrap: wrap !important;
+            gap: 10px !important;
+
+            .erecaid-finder-card__step-box {
+                flex: 1 1 calc(50% - 6px) !important;
+                min-width: 220px !important;
+            }
+
+            .erecaid-finder-card__separator {
+                display: none !important;
+            }
+        }
+
+        @media (max-width: 600px) {
+            flex-direction: column !important;
+            gap: 8px !important;
+
+            .erecaid-finder-card__step-box {
+                width: 100% !important;
+                flex: none !important;
+            }
+
+            .erecaid-finder-card__separator {
+                display: none !important;
+            }
         }
     }
 
+    // Individual Question Box
     &__step-box {
-        flex: 1;
+        flex: 1 1 0;
         min-width: 0;
-        background-color: #f7fbff;
+        background-color: #ffffff;
         border: 1px solid #dce8f4;
         border-radius: 6px;
         padding: 9px 12px 10px;
         display: flex;
         flex-direction: column;
         justify-content: space-between;
-        min-height: 84px;
+        min-height: 86px;
         box-shadow: 0 1px 3px rgba(0, 0, 0, 0.02);
-        transition: border-color 0.2s ease, box-shadow 0.2s ease;
+        box-sizing: border-box;
+        transition: border-color 0.2s ease, box-shadow 0.2s ease, background-color 0.2s ease;
 
         &:hover {
-            border-color: #c4d9ec;
-            box-shadow: 0 2px 6px rgba(0, 45, 98, 0.05);
+            border-color: #b6d4f4;
+            box-shadow: 0 2px 6px rgba(0, 45, 98, 0.06);
         }
 
-        @media (max-width: 992px) {
+        &.is-answered {
+            border-color: #93c5fd;
+            background-color: #fbfdff;
+
+            .erecaid-finder-card__step-num {
+                background-color: #002d62;
+            }
+
+            .erecaid-finder-card__select {
+                border-color: #93c5fd;
+                color: #002d62;
+                font-weight: 600;
+            }
+        }
+
+        @media (max-width: 600px) {
             min-height: auto;
-            width: 100%;
+            padding: 10px 10px 11px;
         }
     }
 
     &__step-header {
         display: flex;
-        align-items: center;
+        align-items: flex-start;
         gap: 8px;
         margin-bottom: 7px;
-        min-height: 32px;
-
-        @media (max-width: 992px) {
-            min-height: auto;
-        }
     }
 
     &__step-num {
-        width: 28px;
-        height: 28px;
-        min-width: 22px;
+        width: 24px;
+        height: 24px;
+        min-width: 24px;
         border-radius: 50%;
         background-color: #0055ad;
         color: #ffffff;
-        font-size: 18px;
+        font-size: 13px;
         font-weight: 800;
         display: flex;
         align-items: center;
         justify-content: center;
         flex-shrink: 0;
         line-height: 1;
+        margin-top: 1px;
+        transition: background-color 0.2s ease;
     }
 
     &__step-label {
-        font-size: 16px;
+        font-size: 13.5px;
         font-weight: 700;
         color: #002d62;
         line-height: 1.25;
         margin: 0;
         cursor: pointer;
+        letter-spacing: -0.15px;
+
+        @media (max-width: 600px) {
+            font-size: 13px;
+        }
     }
 
     &__select-wrap {
@@ -207,33 +274,42 @@
 
     &__select {
         width: 100%;
-        height: 34px;
+        height: 33px;
         background-color: #ffffff;
         border: 1px solid #d0deec;
         border-radius: 4px;
-        padding: 0 26px 0 10px;
+        padding: 0 26px 0 9px;
         font-size: 12px;
         color: #475569;
         appearance: none;
         -webkit-appearance: none;
         -moz-appearance: none;
         cursor: pointer;
-        transition: border-color 0.2s, box-shadow 0.2s;
+        transition: border-color 0.2s, box-shadow 0.2s, color 0.2s;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+        overflow: hidden;
 
         &:focus {
             border-color: #0055ad;
             box-shadow: 0 0 0 2px rgba(0, 85, 173, 0.15);
             outline: none;
         }
+
+        @media (max-width: 600px) {
+            height: 38px;
+            font-size: 15px; // Prevents iOS Safari auto-zoom
+            padding: 0 28px 0 10px;
+        }
     }
 
+    // Step Separator Chevron
     &__separator {
         display: flex;
         align-items: center;
         justify-content: center;
         flex-shrink: 0;
-        width: 14px;
-        height: 84px;
+        width: 12px;
 
         svg {
             display: block;
@@ -241,8 +317,66 @@
             height: 12px;
         }
 
-        @media (max-width: 992px) {
+        @media (max-width: 991px) {
             display: none;
+        }
+    }
+
+    // Bottom Action / Status Bar
+    &__footer {
+        display: flex !important;
+        flex-direction: row !important;
+        align-items: center !important;
+        justify-content: space-between !important;
+        gap: 16px !important;
+        width: 100% !important;
+        margin-top: 4px !important;
+        padding-top: 4px !important;
+
+        @media (max-width: 768px) {
+            flex-direction: column !important;
+            align-items: stretch !important;
+            gap: 10px !important;
+            margin-top: 6px !important;
+        }
+    }
+
+    &__status {
+        display: flex;
+        align-items: center;
+        gap: 7px;
+        font-size: 12.5px;
+        color: #475569;
+        min-width: 0;
+
+        @media (max-width: 768px) {
+            justify-content: center;
+            font-size: 12px;
+        }
+
+        &-dot {
+            width: 7px;
+            height: 7px;
+            border-radius: 50%;
+            background-color: #0055ad;
+            display: inline-block;
+            flex-shrink: 0;
+        }
+
+        &-text {
+            color: #475569;
+            font-weight: 500;
+        }
+
+        &-count {
+            color: #64748b;
+            font-weight: 500;
+            white-space: nowrap;
+
+            strong {
+                color: #002d62;
+                font-weight: 800;
+            }
         }
     }
 
@@ -251,7 +385,7 @@
         display: flex;
         align-items: center;
 
-        @media (max-width: 992px) {
+        @media (max-width: 768px) {
             width: 100%;
         }
     }
@@ -262,7 +396,7 @@
         font-size: 13.5px;
         font-weight: 700;
         height: 38px;
-        padding: 0 22px;
+        padding: 0 24px;
         border-radius: 5px;
         border: none;
         cursor: pointer;
@@ -272,7 +406,7 @@
         gap: 8px;
         white-space: nowrap;
         box-shadow: 0 1px 3px rgba(0, 85, 173, 0.2);
-        transition: background-color 0.2s ease, transform 0.15s ease;
+        transition: background-color 0.2s ease, transform 0.15s ease, box-shadow 0.2s ease;
 
         &-arrow {
             display: inline-block;
@@ -281,15 +415,17 @@
 
         &:hover {
             background-color: #00438c;
+            box-shadow: 0 3px 8px rgba(0, 85, 173, 0.35);
 
             .erecaid-finder-card__btn-arrow {
                 transform: translateX(3px);
             }
         }
 
-        @media (max-width: 992px) {
+        @media (max-width: 768px) {
             width: 100%;
-            height: 42px;
+            height: 44px;
+            font-size: 14.5px;
         }
     }
 }

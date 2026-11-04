@@ -236,7 +236,7 @@
         "type": "text",
         "id": "custom_hero_img",
         "label": "Hero Product Image",
-        "default": "",
+        "default": "reach-medical-device-comparison-banner.png",
         "force_reload": true
       },
       {
@@ -307,7 +307,7 @@
         "type": "text",
         "id": "custom_hero_spotlight_title",
         "label": "Spotlight Title",
-        "default": "Osbon ErecAid Esteem Manual Vacuum Erection Pump",
+        "default": "Battery Esteem Manual Vacuum Erection Pump",
         "force_reload": true
       },
       {
@@ -935,6 +935,7 @@
         "type": "text",
         "label": "Main Card Image URL",
         "id": "custom_prostate_img",
+        "default": "penile-adjustable-loop-medical-device-banner.png",
         "force_reload": true
       },
       {

@@ -14,6 +14,95 @@
     - Fully responsive across desktop, tablet, and mobile
 --}}
 <section class="erecaid-prostate-section" aria-label="Prostate Surgery Guide & Helpful Articles">
+    <style>
+        /* Tablet View (e.g. 768px): Image on Left Side, Text on Right Side */
+        @media (min-width: 601px) and (max-width: 1024px) {
+            .erecaid-prostate-main-card {
+                display: flex !important;
+                flex-direction: row !important;
+                align-items: center !important;
+                text-align: left !important;
+            }
+            .erecaid-prostate-main-card__media {
+                flex: 0 0 260px !important;
+                width: 260px !important;
+                max-width: 260px !important;
+                padding: 14px 10px 14px 18px !important;
+                align-self: center !important;
+            }
+            .erecaid-prostate-main-card__image {
+                max-height: 220px !important;
+                width: 100% !important;
+                height: auto !important;
+                object-fit: contain !important;
+                display: block !important;
+                margin: 0 auto !important;
+            }
+            .erecaid-prostate-main-card__content {
+                flex: 1 1 auto !important;
+                padding: 18px 24px 18px 12px !important;
+                align-items: flex-start !important;
+                text-align: left !important;
+            }
+            .erecaid-prostate-main-card__title {
+                text-align: left !important;
+                font-size: 19px !important;
+                margin: 0 0 8px 0 !important;
+            }
+            .erecaid-prostate-main-card__desc {
+                text-align: left !important;
+                font-size: 13px !important;
+                margin: 0 0 16px 0 !important;
+            }
+            .erecaid-prostate-main-card__action {
+                width: auto !important;
+                display: flex !important;
+                justify-content: flex-start !important;
+            }
+            .erecaid-prostate-main-card__btn {
+                width: auto !important;
+                padding: 10px 20px !important;
+                display: inline-flex !important;
+            }
+        }
+
+        /* Mobile Screens (<= 600px): Stack Image on Top, Text on Bottom */
+        @media (max-width: 600px) {
+            .erecaid-prostate-main-card {
+                flex-direction: column !important;
+                text-align: center !important;
+            }
+            .erecaid-prostate-main-card__media {
+                width: 100% !important;
+                max-width: 240px !important;
+                margin: 0 auto !important;
+                padding: 16px 12px 6px !important;
+            }
+            .erecaid-prostate-main-card__image {
+                max-height: 160px !important;
+            }
+            .erecaid-prostate-main-card__content {
+                align-items: center !important;
+                padding: 10px 16px 20px !important;
+                text-align: center !important;
+            }
+            .erecaid-prostate-main-card__title {
+                font-size: 18px !important;
+                text-align: center !important;
+            }
+            .erecaid-prostate-main-card__desc {
+                font-size: 12.5px !important;
+                text-align: center !important;
+            }
+            .erecaid-prostate-main-card__action {
+                width: 100% !important;
+            }
+            .erecaid-prostate-main-card__btn {
+                width: 100% !important;
+                justify-content: center !important;
+            }
+        }
+    </style>
     <div class="container">
         <div class="erecaid-prostate-row">
             {{!-- Left: Main Prostate Surgery Feature Card --}}
@@ -63,7 +152,7 @@
                 </h3>
                 <ul class="erecaid-prostate-articles-list">
                     <li class="erecaid-prostate-articles-list__item">
-                        <a href="{{#if theme_settings.custom_article1_url}}{{theme_settings.custom_article1_url}}{{else}}/blog/{{/if}}" class="erecaid-prostate-articles-list__link">
+                        <a href="{{#if theme_settings.custom_article1_url}}{{theme_settings.custom_article1_url}}{{else}}#{{/if}}" class="erecaid-prostate-articles-list__link">
                             <span class="erecaid-prostate-articles-list__chevron" aria-hidden="true">&rsaquo;</span>
                             <span class="erecaid-prostate-articles-list__text">
                                 {{#if theme_settings.custom_article1_text}}
@@ -75,7 +164,7 @@
                         </a>
                     </li>
                     <li class="erecaid-prostate-articles-list__item">
-                        <a href="{{#if theme_settings.custom_article2_url}}{{theme_settings.custom_article2_url}}{{else}}/blog/{{/if}}" class="erecaid-prostate-articles-list__link">
+                        <a href="{{#if theme_settings.custom_article2_url}}{{theme_settings.custom_article2_url}}{{else}}#{{/if}}" class="erecaid-prostate-articles-list__link">
                             <span class="erecaid-prostate-articles-list__chevron" aria-hidden="true">&rsaquo;</span>
                             <span class="erecaid-prostate-articles-list__text">
                                 {{#if theme_settings.custom_article2_text}}
@@ -87,7 +176,7 @@
                         </a>
                     </li>
                     <li class="erecaid-prostate-articles-list__item">
-                        <a href="{{#if theme_settings.custom_article3_url}}{{theme_settings.custom_article3_url}}{{else}}/blog/{{/if}}" class="erecaid-prostate-articles-list__link">
+                        <a href="{{#if theme_settings.custom_article3_url}}{{theme_settings.custom_article3_url}}{{else}}#{{/if}}" class="erecaid-prostate-articles-list__link">
                             <span class="erecaid-prostate-articles-list__chevron" aria-hidden="true">&rsaquo;</span>
                             <span class="erecaid-prostate-articles-list__text">
                                 {{#if theme_settings.custom_article3_text}}
@@ -99,7 +188,7 @@
                         </a>
                     </li>
                     <li class="erecaid-prostate-articles-list__item">
-                        <a href="{{#if theme_settings.custom_article4_url}}{{theme_settings.custom_article4_url}}{{else}}/blog/{{/if}}" class="erecaid-prostate-articles-list__link">
+                        <a href="{{#if theme_settings.custom_article4_url}}{{theme_settings.custom_article4_url}}{{else}}#{{/if}}" class="erecaid-prostate-articles-list__link">
                             <span class="erecaid-prostate-articles-list__chevron" aria-hidden="true">&rsaquo;</span>
                             <span class="erecaid-prostate-articles-list__text">
                                 {{#if theme_settings.custom_article4_text}}
@@ -112,7 +201,7 @@
                     </li>
                 </ul>
                 <div class="erecaid-prostate-articles-card__footer">
-                    <a href="{{#if theme_settings.custom_articles_all_url}}{{theme_settings.custom_articles_all_url}}{{else}}/blog/{{/if}}" class="erecaid-prostate-articles-card__all-link">
+                    <a href="{{#if theme_settings.custom_articles_all_url}}{{theme_settings.custom_articles_all_url}}{{else}}#{{/if}}" class="erecaid-prostate-articles-card__all-link">
                         {{#if theme_settings.custom_articles_all_text}}
                             {{theme_settings.custom_articles_all_text}}
                         {{else}}

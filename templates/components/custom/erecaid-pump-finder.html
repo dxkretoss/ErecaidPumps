@@ -9,81 +9,182 @@
 --}}
 <section class="erecaid-finder-section" aria-label="Pump Finder Questionnaire">
     <style>
-        /* Instant Cache-Safe 3-Sets-Per-Line Grid */
+        /* Responsive Grid: 3 per row on Desktop (>991px), 2 per row on Tablet (<=991px), 1 per row on Mobile (<=600px) */
         .erecaid-finder-card__form {
             display: flex !important;
             flex-direction: column !important;
-            gap: 12px !important;
+            gap: 14px !important;
             width: 100% !important;
         }
-        .erecaid-finder-card__row {
+        .erecaid-finder-card__grid {
+            display: grid !important;
+            grid-template-columns: repeat(3, 1fr) !important;
+            gap: 14px 16px !important;
+            width: 100% !important;
+        }
+        .erecaid-finder-card__grid .erecaid-finder-card__step-box,
+        .erecaid-finder-card__step-box {
+            width: 100% !important;
+            background-color: #ffffff !important;
+            border: 1px solid #dce8f4 !important;
+            border-radius: 8px !important;
+            padding: 10px 12px 12px !important;
+            box-sizing: border-box !important;
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.02) !important;
             display: flex !important;
-            flex-direction: row !important;
-            flex-wrap: nowrap !important;
-            align-items: stretch !important;
+            flex-direction: column !important;
             justify-content: space-between !important;
-            gap: 10px !important;
-            width: 100% !important;
+            min-height: 86px !important;
         }
-        .erecaid-finder-card__row .erecaid-finder-card__step-box {
-            flex: 1 1 0 !important;
-            min-width: 0 !important;
-            background-color: #ffffff;
-            border: 1px solid #dce8f4;
-            border-radius: 6px;
-            padding: 9px 12px 10px;
-            box-sizing: border-box;
+        .erecaid-finder-card__step-header {
+            display: flex !important;
+            align-items: flex-start !important;
+            gap: 8px !important;
+            margin-bottom: 7px !important;
         }
-        .erecaid-finder-card__row .erecaid-finder-card__separator {
+        .erecaid-finder-card__step-num {
+            width: 24px !important;
+            height: 24px !important;
+            min-width: 24px !important;
+            border-radius: 50% !important;
+            background-color: #0055ad !important;
+            color: #ffffff !important;
+            font-size: 13px !important;
+            font-weight: 800 !important;
             display: flex !important;
             align-items: center !important;
             justify-content: center !important;
             flex-shrink: 0 !important;
-            width: 12px !important;
+            line-height: 1 !important;
+            margin-top: 1px !important;
         }
+        .erecaid-finder-card__step-label {
+            font-size: 13.5px !important;
+            font-weight: 700 !important;
+            color: #002d62 !important;
+            line-height: 1.25 !important;
+            margin: 0 !important;
+        }
+        .erecaid-finder-card__select-wrap {
+            position: relative !important;
+            width: 100% !important;
+        }
+        .erecaid-finder-card__select {
+            width: 100% !important;
+            height: 36px !important;
+            border-radius: 6px !important;
+            border: 1px solid #c5d7e8 !important;
+            padding: 0 28px 0 10px !important;
+            font-size: 13px !important;
+            color: #1e293b !important;
+            background-color: #ffffff !important;
+        }
+        .erecaid-finder-card__separator {
+            display: none !important;
+        }
+
+        /* Footer & Status Text: 100% Clear, High-Contrast & Visible */
         .erecaid-finder-card__footer {
             display: flex !important;
             flex-direction: row !important;
             align-items: center !important;
             justify-content: space-between !important;
-            gap: 16px !important;
+            gap: 20px !important;
             width: 100% !important;
-            margin-top: 4px !important;
-            padding-top: 4px !important;
+            margin-top: 12px !important;
+            padding-top: 6px !important;
         }
-        @media (max-width: 991px) and (min-width: 601px) {
-            .erecaid-finder-card__row {
-                flex-wrap: wrap !important;
-                gap: 10px !important;
-            }
-            .erecaid-finder-card__row .erecaid-finder-card__step-box {
-                flex: 1 1 calc(50% - 6px) !important;
-                min-width: 220px !important;
-            }
-            .erecaid-finder-card__row .erecaid-finder-card__separator {
-                display: none !important;
-            }
+        .erecaid-finder-card__status {
+            display: flex !important;
+            align-items: center !important;
+            flex-wrap: wrap !important;
+            gap: 6px 10px !important;
+            color: #1e293b !important;
+            font-size: 13.5px !important;
+            font-weight: 500 !important;
+            line-height: 1.4 !important;
+            flex: 1 1 auto !important;
+            min-width: 0 !important;
         }
-        @media (max-width: 600px) {
-            .erecaid-finder-card__row {
-                flex-direction: column !important;
-                gap: 8px !important;
-            }
-            .erecaid-finder-card__row .erecaid-finder-card__step-box {
-                width: 100% !important;
-                flex: none !important;
-            }
-            .erecaid-finder-card__row .erecaid-finder-card__separator {
-                display: none !important;
+        .erecaid-finder-card__status-dot {
+            width: 8px !important;
+            height: 8px !important;
+            border-radius: 50% !important;
+            background-color: #0055ad !important;
+            display: inline-block !important;
+            flex-shrink: 0 !important;
+        }
+        .erecaid-finder-card__status-text {
+            color: #1e293b !important;
+            font-weight: 500 !important;
+        }
+        .erecaid-finder-card__status-count {
+            color: #004c88 !important;
+            font-weight: 700 !important;
+            white-space: nowrap !important;
+        }
+        .erecaid-finder-card__action {
+            flex-shrink: 0 !important;
+        }
+        .erecaid-finder-card__btn {
+            white-space: nowrap !important;
+            display: inline-flex !important;
+            align-items: center !important;
+            justify-content: center !important;
+            background-color: #0055ad !important;
+            color: #ffffff !important;
+            font-size: 14.5px !important;
+            font-weight: 700 !important;
+            padding: 10px 24px !important;
+            border-radius: 6px !important;
+            border: none !important;
+            cursor: pointer !important;
+            text-decoration: none !important;
+            transition: background-color 0.2s ease !important;
+        }
+        .erecaid-finder-card__btn:hover {
+            background-color: #004085 !important;
+            color: #ffffff !important;
+        }
+
+        /* Tablet Screens (<= 991px): 2 dropdowns per row + Stack footer vertically */
+        @media (max-width: 991px) {
+            .erecaid-finder-card__grid {
+                grid-template-columns: repeat(2, 1fr) !important;
+                gap: 12px 14px !important;
             }
             .erecaid-finder-card__footer {
                 flex-direction: column !important;
                 align-items: stretch !important;
-                gap: 10px !important;
+                gap: 12px !important;
+                margin-top: 10px !important;
             }
-            .erecaid-finder-card__action,
+            .erecaid-finder-card__status {
+                width: 100% !important;
+                justify-content: center !important;
+                text-align: center !important;
+                font-size: 13.5px !important;
+            }
+            .erecaid-finder-card__action {
+                width: 100% !important;
+            }
             .erecaid-finder-card__btn {
                 width: 100% !important;
+                height: 44px !important;
+                font-size: 15px !important;
+                justify-content: center !important;
+            }
+        }
+
+        /* Mobile Screens (<= 600px): Stack questions 1 per column */
+        @media (max-width: 600px) {
+            .erecaid-finder-card__grid {
+                grid-template-columns: 1fr !important;
+                gap: 10px !important;
+            }
+            .erecaid-finder-card__step-box {
+                min-height: auto !important;
+                padding: 10px 12px !important;
             }
         }
     </style>
@@ -112,10 +213,9 @@
                 </div>
             </div>
 
-            {{!-- 6-Question Interactive Form --}}
+            {{!-- 6-Question Interactive Form: 2 in Each Row --}}
             <form class="erecaid-finder-card__form" action="{{#if theme_settings.custom_finder_btn_url}}{{theme_settings.custom_finder_btn_url}}{{else}}/categories{{/if}}" method="GET" data-erecaid-finder-form>
-                {{!-- Row 1: Questions 1, 2, 3 --}}
-                <div class="erecaid-finder-card__row">
+                <div class="erecaid-finder-card__grid">
                     {{!-- Question 1 Box --}}
                     <div class="erecaid-finder-card__step-box" data-step="1">
                         <div class="erecaid-finder-card__step-header">
@@ -133,13 +233,6 @@
                                 <option value="not_sure">Not sure</option>
                             </select>
                         </div>
-                    </div>
-
-                    {{!-- Chevron Separator --}}
-                    <div class="erecaid-finder-card__separator" aria-hidden="true">
-                        <svg width="7" height="12" viewBox="0 0 7 12" fill="none">
-                            <path d="M1 1L6 6L1 11" stroke="#002d62" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
-                        </svg>
                     </div>
 
                     {{!-- Question 2 Box --}}
@@ -161,13 +254,6 @@
                         </div>
                     </div>
 
-                    {{!-- Chevron Separator --}}
-                    <div class="erecaid-finder-card__separator" aria-hidden="true">
-                        <svg width="7" height="12" viewBox="0 0 7 12" fill="none">
-                            <path d="M1 1L6 6L1 11" stroke="#002d62" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
-                        </svg>
-                    </div>
-
                     {{!-- Question 3 Box --}}
                     <div class="erecaid-finder-card__step-box" data-step="3">
                         <div class="erecaid-finder-card__step-header">
@@ -186,10 +272,7 @@
                             </select>
                         </div>
                     </div>
-                </div>
 
-                {{!-- Row 2: Questions 4, 5, 6 --}}
-                <div class="erecaid-finder-card__row">
                     {{!-- Question 4 Box --}}
                     <div class="erecaid-finder-card__step-box" data-step="4">
                         <div class="erecaid-finder-card__step-header">
@@ -206,13 +289,6 @@
                                 <option value="not_sure">Not sure</option>
                             </select>
                         </div>
-                    </div>
-
-                    {{!-- Chevron Separator --}}
-                    <div class="erecaid-finder-card__separator" aria-hidden="true">
-                        <svg width="7" height="12" viewBox="0 0 7 12" fill="none">
-                            <path d="M1 1L6 6L1 11" stroke="#002d62" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
-                        </svg>
                     </div>
 
                     {{!-- Question 5 Box --}}
@@ -232,13 +308,6 @@
                                 <option value="flexible">Flexible</option>
                             </select>
                         </div>
-                    </div>
-
-                    {{!-- Chevron Separator --}}
-                    <div class="erecaid-finder-card__separator" aria-hidden="true">
-                        <svg width="7" height="12" viewBox="0 0 7 12" fill="none">
-                            <path d="M1 1L6 6L1 11" stroke="#002d62" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
-                        </svg>
                     </div>
 
                     {{!-- Question 6 Box --}}
@@ -261,7 +330,7 @@
                     </div>
                 </div>
 
-                {{!-- Footer Action Bar: Status / Counter (Left) + Submit Button (Right) --}}
+                {{!-- Footer Action Bar: Status / Counter (Top on tablet/mobile, Left on desktop) + Submit Button --}}
                 <div class="erecaid-finder-card__footer">
                     <div class="erecaid-finder-card__status" data-finder-status>
                         <span class="erecaid-finder-card__status-dot" aria-hidden="true"></span>

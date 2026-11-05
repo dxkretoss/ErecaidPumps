@@ -115,3 +115,10 @@
         }
     }
 }
+
+// Remove default theme mobile fixed header padding-top (55px) from body
+body,
+body#topOfPage,
+html body {
+    padding-top: 0 !important;
+}

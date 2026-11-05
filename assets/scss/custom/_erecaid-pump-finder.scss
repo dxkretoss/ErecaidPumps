@@ -34,7 +34,7 @@
         gap: 16px;
         margin-bottom: 14px;
 
-        @media (max-width: 768px) {
+        @media (max-width: 750px) {
             flex-direction: column;
             gap: 10px;
             margin-bottom: 12px;
@@ -128,46 +128,50 @@
         width: 100% !important;
     }
 
-    // 2 Balanced Rows on Desktop (Exactly 3 questions + 2 chevrons per row)
+    // Responsive Grid: 3 in Each Row on Desktop (>991px), 2 on Tablet (<=991px), 1 on Mobile (<=600px)
+    &__grid {
+        display: grid !important;
+        grid-template-columns: repeat(3, 1fr) !important;
+        gap: 14px 16px !important;
+        width: 100% !important;
+
+        @media (max-width: 991px) {
+            grid-template-columns: repeat(2, 1fr) !important;
+            gap: 12px 14px !important;
+        }
+
+        @media (max-width: 600px) {
+            grid-template-columns: 1fr !important;
+            gap: 10px !important;
+        }
+    }
+
+    // Backwards-compatible Row styling
     &__row {
         display: flex !important;
         flex-direction: row !important;
-        flex-wrap: nowrap !important;
+        flex-wrap: wrap !important;
         align-items: stretch !important;
         justify-content: space-between !important;
-        gap: 10px !important;
+        gap: 14px 16px !important;
         width: 100% !important;
 
         .erecaid-finder-card__step-box {
-            flex: 1 1 0 !important;
-            min-width: 0 !important;
+            flex: 1 1 calc(50% - 8px) !important;
+            min-width: 240px !important;
         }
 
-        @media (max-width: 991px) and (min-width: 601px) {
-            flex-wrap: wrap !important;
-            gap: 10px !important;
-
-            .erecaid-finder-card__step-box {
-                flex: 1 1 calc(50% - 6px) !important;
-                min-width: 220px !important;
-            }
-
-            .erecaid-finder-card__separator {
-                display: none !important;
-            }
+        .erecaid-finder-card__separator {
+            display: none !important;
         }
 
         @media (max-width: 600px) {
             flex-direction: column !important;
-            gap: 8px !important;
+            gap: 10px !important;
 
             .erecaid-finder-card__step-box {
                 width: 100% !important;
                 flex: none !important;
-            }
-
-            .erecaid-finder-card__separator {
-                display: none !important;
             }
         }
     }
@@ -322,41 +326,47 @@
         }
     }
 
-    // Bottom Action / Status Bar
+    // Bottom Action / Status Bar: 100% Clear & Visible
     &__footer {
         display: flex !important;
         flex-direction: row !important;
         align-items: center !important;
         justify-content: space-between !important;
-        gap: 16px !important;
+        gap: 20px !important;
         width: 100% !important;
-        margin-top: 4px !important;
-        padding-top: 4px !important;
+        margin-top: 12px !important;
+        padding-top: 6px !important;
 
-        @media (max-width: 768px) {
+        @media (max-width: 991px) {
             flex-direction: column !important;
             align-items: stretch !important;
-            gap: 10px !important;
-            margin-top: 6px !important;
+            gap: 12px !important;
+            margin-top: 10px !important;
         }
     }
 
     &__status {
         display: flex;
         align-items: center;
-        gap: 7px;
-        font-size: 12.5px;
-        color: #475569;
+        flex-wrap: wrap;
+        gap: 6px 10px;
+        font-size: 13.5px;
+        color: #1e293b;
+        font-weight: 500;
+        line-height: 1.4;
         min-width: 0;
+        flex: 1 1 auto;
 
-        @media (max-width: 768px) {
+        @media (max-width: 991px) {
+            width: 100%;
             justify-content: center;
-            font-size: 12px;
+            text-align: center;
+            font-size: 13.5px;
         }
 
         &-dot {
-            width: 7px;
-            height: 7px;
+            width: 8px;
+            height: 8px;
             border-radius: 50%;
             background-color: #0055ad;
             display: inline-block;
@@ -364,13 +374,13 @@
         }
 
         &-text {
-            color: #475569;
+            color: #1e293b;
             font-weight: 500;
         }
 
         &-count {
-            color: #64748b;
-            font-weight: 500;
+            color: #004c88;
+            font-weight: 700;
             white-space: nowrap;
 
             strong {

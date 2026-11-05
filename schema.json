@@ -606,63 +606,72 @@
         "type": "text",
         "id": "custom_review1_quote",
         "label": "Review 1 Quote",
-        "default": "Well made and easy to use. Discreet shipping.",
         "force_reload": true
       },
       {
         "type": "text",
         "id": "custom_review1_author",
         "label": "Review 1 Author",
-        "default": "Mark T.",
         "force_reload": true
       },
       {
         "type": "text",
         "id": "custom_review1_badge",
         "label": "Review 1 Badge",
-        "default": "Verified Purchase",
         "force_reload": true
       },
       {
         "type": "text",
         "id": "custom_review2_quote",
         "label": "Review 2 Quote",
-        "default": "Using my ErecAid for several years. Highly recommended.",
         "force_reload": true
       },
       {
         "type": "text",
         "id": "custom_review2_author",
         "label": "Review 2 Author",
-        "default": "Robert L.",
         "force_reload": true
       },
       {
         "type": "text",
         "id": "custom_review2_badge",
         "label": "Review 2 Badge",
-        "default": "Verified Purchase",
         "force_reload": true
       },
       {
         "type": "text",
         "id": "custom_review3_quote",
         "label": "Review 3 Quote",
-        "default": "After prostate surgery, an important part of my recovery.",
         "force_reload": true
       },
       {
         "type": "text",
         "id": "custom_review3_author",
         "label": "Review 3 Author",
-        "default": "James P.",
         "force_reload": true
       },
       {
         "type": "text",
         "id": "custom_review3_badge",
         "label": "Review 3 Badge",
-        "default": "Verified Purchase",
+        "force_reload": true
+      },
+      {
+        "type": "text",
+        "id": "custom_review4_quote",
+        "label": "Review 4 Quote",
+        "force_reload": true
+      },
+      {
+        "type": "text",
+        "id": "custom_review4_author",
+        "label": "Review 4 Author",
+        "force_reload": true
+      },
+      {
+        "type": "text",
+        "id": "custom_review4_badge",
+        "label": "Review 4 Badge",
         "force_reload": true
       },
       {

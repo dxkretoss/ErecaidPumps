@@ -15,6 +15,7 @@ temp/
 
 # BigCommerce Stencil generated files
 config.stencil.json
+secrets.stencil.json
 stencil-cli.log
 *.zip
 

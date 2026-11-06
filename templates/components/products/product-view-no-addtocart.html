@@ -168,14 +168,20 @@
                                 {{#each product.custom_fields}}
                                     {{#startsWith '__' name}}
                                     {{else}}
-                                        <dt class="productView-info-name productView-info-name--cf{{pascalcase name}}">{{name}}:</dt>
-                                        <dd class="productView-info-value productView-info-value--cf{{pascalcase name}}">{{{value}}}</dd>
+                                        {{#startsWith 'finder_' name}}
+                                        {{else}}
+                                            <dt class="productView-info-name productView-info-name--cf{{pascalcase name}}">{{name}}:</dt>
+                                            <dd class="productView-info-value productView-info-value--cf{{pascalcase name}}">{{{value}}}</dd>
+                                        {{/startsWith}}
                                     {{/startsWith}}
                                 {{/each}}
                             {{else}}
                                 {{#each product.custom_fields}}
-                                    <dt class="productView-info-name productView-info-name--cf{{pascalcase name}}">{{name}}:</dt>
-                                    <dd class="productView-info-value productView-info-value--cf{{pascalcase name}}">{{{value}}}</dd>
+                                    {{#startsWith 'finder_' name}}
+                                    {{else}}
+                                        <dt class="productView-info-name productView-info-name--cf{{pascalcase name}}">{{name}}:</dt>
+                                        <dd class="productView-info-value productView-info-value--cf{{pascalcase name}}">{{{value}}}</dd>
+                                    {{/startsWith}}
                                 {{/each}}
                             {{/if}}
                         {{/unless}}
@@ -428,20 +434,21 @@
                 {{/if}}
 
                 {{#if (merge this specialCustomFields=0)}}{{/if}}
-                {{#if theme_settings.productpage_custom_fields_hide_special}}
-                    {{#each product.custom_fields}}
-                        {{#startsWith '__' name}}
-                            {{#if (merge ../../this specialCustomFields=(add ../../specialCustomFields 1))}}{{/if}}
-                        {{/startsWith}}
-                    {{/each}}
-                {{/if}}
+                {{#each product.custom_fields}}
+                    {{#startsWith '__' name}}
+                        {{#if (merge ../../this specialCustomFields=(add ../../specialCustomFields 1))}}{{/if}}
+                    {{/startsWith}}
+                    {{#startsWith 'finder_' name}}
+                        {{#if (merge ../../this specialCustomFields=(add ../../specialCustomFields 1))}}{{/if}}
+                    {{/startsWith}}
+                {{/each}}
 
                 {{#all product.custom_fields.length theme_settings.productpage_custom_fields_tab}}
-                {{#any (unless theme_settings.productpage_custom_fields_hide_special) (if product.custom_fields.length '>' specialCustomFields )}}
+                {{#if product.custom_fields.length '>' specialCustomFields}}
                     <li class="tab tab--addition">
                         <a class="tab-title" href="#tab-addition">{{lang 'products.addition'}}</a>
                     </li>
-                {{/any}}
+                {{/if}}
                 {{/all}}
                 {{#all settings.show_product_reviews theme_settings.show_product_reviews_tabs}}
                 <li class="tab tab--reviews">
@@ -510,7 +517,7 @@
                     </div>
                 {{/if}}
                 {{#all product.custom_fields.length theme_settings.productpage_custom_fields_tab}}
-                {{#any (unless theme_settings.productpage_custom_fields_hide_special) (if product.custom_fields.length '>' specialCustomFields )}}
+                {{#if product.custom_fields.length '>' specialCustomFields}}
                     <div class="tab-content" id="tab-addition" data-emthemesmodez-mobile-collapse>
                         <h2 class="page-heading">{{lang 'products.addition'}}</h2>
                         <div class="productView-addition-tabContent emthemesModez-mobile-collapse-content" data-emthemesmodez-mobile-collapse-content>
@@ -520,18 +527,24 @@
                                         {{#each product.custom_fields}}
                                             {{#startsWith '__' name}}
                                             {{else}}
+                                                {{#startsWith 'finder_' name}}
+                                                {{else}}
+                                                    <tr class="productView-info-row--cf{{pascalcase name}}">
+                                                        <td><div class="productView-info-name productView-info-name--cf{{pascalcase name}}">{{name}}:</div></td>
+                                                        <td><div class="productView-info-value productView-info-value--cf{{pascalcase name}}">{{{value}}}</div></td>
+                                                    </tr>
+                                                {{/startsWith}}
+                                            {{/startsWith}}
+                                        {{/each}}
+                                    {{else}}
+                                        {{#each product.custom_fields}}
+                                            {{#startsWith 'finder_' name}}
+                                            {{else}}
                                                 <tr class="productView-info-row--cf{{pascalcase name}}">
                                                     <td><div class="productView-info-name productView-info-name--cf{{pascalcase name}}">{{name}}:</div></td>
                                                     <td><div class="productView-info-value productView-info-value--cf{{pascalcase name}}">{{{value}}}</div></td>
                                                 </tr>
                                             {{/startsWith}}
-                                        {{/each}}
-                                    {{else}}
-                                        {{#each product.custom_fields}}
-                                            <tr class="productView-info-row--cf{{pascalcase name}}">
-                                                <td><div class="productView-info-name productView-info-name--cf{{pascalcase name}}">{{name}}:</div></td>
-                                                <td><div class="productView-info-value productView-info-value--cf{{pascalcase name}}">{{{value}}}</div></td>
-                                            </tr>
                                         {{/each}}
                                     {{/if}}
                                 </tbody>
@@ -539,7 +552,7 @@
                         </div>
                         <a href="#" class="emthemesModez-mobile-collapse-handle" data-emthemesmodez-mobile-collapse-handle><span class="on">{{lang 'common.view_all'}}</span><span class="off">{{lang 'common.close'}}</span></a>
                     </div>
-                {{/any}}
+                {{/if}}
                 {{/all}}
                 {{#all settings.show_product_reviews theme_settings.show_product_reviews_tabs}}
                 <div class="tab-content" id="tab-reviews" data-emthemesmodez-mobile-collapse>

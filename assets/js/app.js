@@ -3,6 +3,7 @@ __webpack_nonce__ = window.__webpack_nonce__; // eslint-disable-line
 
 import 'regenerator-runtime/runtime';
 import Global from './theme/global';
+import './theme/custom/pump-finder-test';
 
 const getAccount = () => import('./theme/account');
 const getLogin = () => import('./theme/auth');
@@ -67,6 +68,7 @@ window.jQuerySupermarket = $;
  */
 window.stencilBootstrap = function stencilBootstrap(pageType, contextJSON = null, loadGlobal = true) {
     const context = JSON.parse(contextJSON || '{}');
+    window.jsContext = context;
 
     return {
         load() {

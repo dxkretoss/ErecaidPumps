@@ -1,5 +1,9 @@
 .pagination {
-    @include clearfix;
+    &::before,
+    &::after {
+        content: none !important;
+        display: none !important;
+    }
 }
 
 .pagination-info {

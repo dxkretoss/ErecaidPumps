@@ -2,9 +2,10 @@
     ErecAid Interactive Pump Finder Section (6-Question Comprehensive Edition)
     100% matches reference screenshot & user requirements:
     - Top Row: Headline & Subtitle (Left), Phone Support Hotline with Chat Bubble (Right)
-    - 6 Comprehensive Questions in 2 balanced rows on desktop (3 items per row)
-    - Chevron separators between cards
+    - 6 Comprehensive Questions in responsive CSS Grid (3 per row Desktop, 2 per row Tablet, 1 per row Mobile)
     - Fully responsive across desktop, tablet, and mobile
+    - 100% FULLY DYNAMIC: Live BigCommerce Store Data Binding (Prices, Images, Stock, URLs, Ratings)
+    - Intelligent Recommendation Engine with instant on-page personalized match, runner-ups & smooth scroll
     - 100% dynamic and editable via Theme Settings (schema.json & config.json)
 --}}
 <section class="erecaid-finder-section" aria-label="Pump Finder Questionnaire">
@@ -35,6 +36,11 @@
             flex-direction: column !important;
             justify-content: space-between !important;
             min-height: 86px !important;
+            transition: border-color 0.2s ease, box-shadow 0.2s ease, background-color 0.2s ease;
+        }
+        .erecaid-finder-card__step-box.is-answered {
+            border-color: #93c5fd !important;
+            background-color: #f8fbff !important;
         }
         .erecaid-finder-card__step-header {
             display: flex !important;
@@ -78,6 +84,12 @@
             font-size: 13px !important;
             color: #1e293b !important;
             background-color: #ffffff !important;
+            cursor: pointer !important;
+        }
+        .erecaid-finder-card__select:focus {
+            outline: none !important;
+            border-color: #0055ad !important;
+            box-shadow: 0 0 0 2px rgba(0, 85, 173, 0.15) !important;
         }
         .erecaid-finder-card__separator {
             display: none !important;
@@ -131,6 +143,7 @@
             display: inline-flex !important;
             align-items: center !important;
             justify-content: center !important;
+            gap: 8px !important;
             background-color: #0055ad !important;
             color: #ffffff !important;
             font-size: 14.5px !important;
@@ -140,11 +153,15 @@
             border: none !important;
             cursor: pointer !important;
             text-decoration: none !important;
-            transition: background-color 0.2s ease !important;
+            transition: background-color 0.2s ease, transform 0.15s ease !important;
         }
         .erecaid-finder-card__btn:hover {
             background-color: #004085 !important;
             color: #ffffff !important;
+        }
+        .erecaid-finder-card__btn:disabled {
+            opacity: 0.7 !important;
+            cursor: not-allowed !important;
         }
 
         /* Tablet Screens (<= 991px): 2 dropdowns per row + Stack footer vertically */
@@ -187,6 +204,775 @@
                 padding: 10px 12px !important;
             }
         }
+
+        /* -------------------------------------------------------------
+           PERSONALIZED RECOMMENDATION RESULTS STYLES
+           ------------------------------------------------------------- */
+        .erecaid-finder-results {
+            margin-top: 22px;
+            background-color: #ffffff;
+            border: 1px solid #dce8f4;
+            border-radius: 10px;
+            padding: 24px 26px 22px;
+            box-shadow: 0 4px 18px rgba(0, 45, 98, 0.08);
+            box-sizing: border-box;
+            animation: erecaidFadeIn 0.35s ease-out;
+        }
+
+        @keyframes erecaidFadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(12px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @media (max-width: 768px) {
+            .erecaid-finder-results {
+                padding: 16px 14px;
+            }
+        }
+
+        .erecaid-finder-results__header {
+            display: flex;
+            align-items: flex-start;
+            justify-content: space-between;
+            gap: 16px;
+            padding-bottom: 16px;
+            border-bottom: 1px solid #e2ecf6;
+            margin-bottom: 20px;
+        }
+
+        @media (max-width: 768px) {
+            .erecaid-finder-results__header {
+                flex-direction: column;
+                align-items: stretch;
+                gap: 12px;
+            }
+        }
+
+        .erecaid-finder-results__kicker {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            font-size: 11.5px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.6px;
+            color: #0055ad;
+            margin-bottom: 4px;
+        }
+
+        .erecaid-finder-results__title {
+            font-family: 'Roboto', 'Karla', sans-serif;
+            font-size: 22px;
+            font-weight: 800;
+            color: #002d62;
+            margin: 0 0 4px;
+            line-height: 1.25;
+        }
+
+        .erecaid-finder-results__sub {
+            font-size: 13.5px;
+            color: #475569;
+            margin: 0;
+            line-height: 1.4;
+        }
+
+        .erecaid-finder-results__reset-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            background: transparent;
+            border: 1px solid #cbd5e1;
+            border-radius: 5px;
+            padding: 7px 12px;
+            font-size: 12px;
+            font-weight: 600;
+            color: #475569;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            white-space: nowrap;
+            flex-shrink: 0;
+        }
+
+        .erecaid-finder-results__reset-btn:hover {
+            border-color: #0055ad;
+            color: #0055ad;
+            background-color: #f0f7fe;
+        }
+
+        /* Hero Card Styles */
+        .erecaid-hero-card {
+            background-color: #fbfdff;
+            border: 2px solid #0055ad;
+            border-radius: 8px;
+            padding: 20px 22px;
+            margin-bottom: 24px;
+            position: relative;
+            box-shadow: 0 3px 12px rgba(0, 85, 173, 0.08);
+        }
+
+        .erecaid-hero-card__badge-bar {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 10px;
+            margin-bottom: 16px;
+            flex-wrap: wrap;
+        }
+
+        .erecaid-hero-card__badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            background: linear-gradient(135deg, #0055ad 0%, #002d62 100%);
+            color: #ffffff;
+            font-size: 11.5px;
+            font-weight: 800;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            padding: 5px 12px;
+            border-radius: 20px;
+        }
+
+        .erecaid-hero-card__match-label {
+            font-size: 12.5px;
+            font-weight: 700;
+            color: #059669;
+            background-color: #ecfdf5;
+            padding: 4px 10px;
+            border-radius: 4px;
+            border: 1px solid #a7f3d0;
+        }
+
+        .erecaid-hero-card__content {
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            gap: 24px;
+        }
+
+        @media (max-width: 768px) {
+            .erecaid-hero-card__content {
+                flex-direction: column;
+                align-items: center;
+                text-align: center;
+                gap: 16px;
+            }
+        }
+
+        .erecaid-hero-card__media {
+            width: 220px;
+            height: 220px;
+            min-width: 220px;
+            max-width: 220px;
+            background-color: #ffffff;
+            border: 1px solid #e2ecf6;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 12px;
+            box-sizing: border-box;
+            flex-shrink: 0;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .erecaid-hero-card__media a {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 100%;
+            height: 100%;
+            max-width: 100%;
+            max-height: 100%;
+            overflow: hidden;
+            text-decoration: none;
+        }
+
+        .erecaid-hero-card__media img {
+            max-width: 100% !important;
+            max-height: 100% !important;
+            width: auto !important;
+            height: auto !important;
+            object-fit: contain !important;
+            display: block !important;
+            margin: 0 auto !important;
+        }
+
+        @media (max-width: 768px) {
+            .erecaid-hero-card__media {
+                width: 180px;
+                height: 180px;
+                min-width: 180px;
+                max-width: 180px;
+                margin: 0 auto;
+                padding: 10px;
+            }
+            .erecaid-hero-card__meta {
+                justify-content: center;
+            }
+            .erecaid-hero-card__reasons-wrap {
+                text-align: left;
+            }
+            .erecaid-hero-card__actions {
+                flex-direction: column;
+                width: 100%;
+                gap: 10px;
+            }
+            .erecaid-hero-card__btn {
+                width: 100%;
+                text-align: center;
+                justify-content: center;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .erecaid-hero-card {
+                padding: 16px 12px;
+            }
+            .erecaid-hero-card__header {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 8px;
+            }
+            .erecaid-hero-card__media {
+                width: 150px;
+                height: 150px;
+                min-width: 150px;
+                max-width: 150px;
+                padding: 8px;
+            }
+            .erecaid-hero-card__title {
+                font-size: 17px;
+            }
+        }
+
+        .erecaid-hero-card__info {
+            flex: 1;
+            min-width: 0;
+        }
+
+        .erecaid-hero-card__title {
+            font-family: 'Roboto', 'Karla', sans-serif;
+            font-size: 19px;
+            font-weight: 800;
+            line-height: 1.3;
+            margin: 0 0 8px;
+        }
+
+        .erecaid-hero-card__title a {
+            color: #002d62;
+            text-decoration: none;
+        }
+
+        .erecaid-hero-card__title a:hover {
+            color: #0055ad;
+        }
+
+        .erecaid-hero-card__meta {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            margin-bottom: 12px;
+            flex-wrap: wrap;
+        }
+
+        .erecaid-hero-card__rating {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .erecaid-hero-card__stars {
+            color: #f59e0b;
+            font-size: 14px;
+            letter-spacing: 1px;
+        }
+
+        .erecaid-hero-card__reviews {
+            font-size: 12.5px;
+            color: #64748b;
+        }
+
+        .erecaid-hero-card__price {
+            font-size: 20px;
+            font-weight: 800;
+            color: #002d62;
+        }
+
+        .erecaid-hero-card__reasons-wrap {
+            background-color: #ffffff;
+            border: 1px solid #e2ecf6;
+            border-radius: 6px;
+            padding: 12px 14px;
+            margin-bottom: 16px;
+        }
+
+        .erecaid-hero-card__reasons-heading {
+            font-size: 12px;
+            font-weight: 800;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            color: #0055ad;
+            margin-bottom: 8px;
+        }
+
+        .erecaid-hero-card__reasons-list {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            display: flex;
+            flex-direction: column;
+            gap: 6px;
+        }
+
+        .erecaid-hero-card__reason-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 8px;
+            font-size: 13px;
+            color: #334155;
+            line-height: 1.4;
+        }
+
+        .erecaid-hero-card__reason-item svg {
+            flex-shrink: 0;
+            margin-top: 2px;
+        }
+
+        .erecaid-hero-card__actions {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            flex-wrap: wrap;
+        }
+
+        .erecaid-hero-card__btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            padding: 10px 18px;
+            border-radius: 5px;
+            font-size: 13.5px;
+            font-weight: 700;
+            text-decoration: none;
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+
+        .erecaid-hero-card__btn--primary {
+            background-color: #0055ad;
+            color: #ffffff !important;
+            box-shadow: 0 2px 6px rgba(0, 85, 173, 0.25);
+        }
+
+        .erecaid-hero-card__btn--primary:hover {
+            background-color: #00438c;
+            box-shadow: 0 4px 10px rgba(0, 85, 173, 0.35);
+            transform: translateY(-1px);
+        }
+
+        .erecaid-hero-card__btn--secondary {
+            background-color: #f0f7fe;
+            color: #002d62 !important;
+            border: 1px solid #b6d4f4;
+        }
+
+        .erecaid-hero-card__btn--secondary:hover {
+            background-color: #e0effe;
+            border-color: #0055ad;
+            color: #0055ad !important;
+        }
+
+        /* Alternatives */
+        .erecaid-finder-alternatives {
+            margin-top: 22px;
+            padding-top: 20px;
+            border-top: 1px solid #e2ecf6;
+        }
+
+        .erecaid-finder-alternatives__title {
+            font-family: 'Roboto', 'Karla', sans-serif;
+            font-size: 16px;
+            font-weight: 800;
+            color: #002d62;
+            margin: 0 0 14px;
+        }
+
+        .erecaid-finder-alternatives__grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 14px;
+        }
+
+        @media (max-width: 768px) {
+            .erecaid-finder-alternatives__grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .erecaid-alt-card {
+            background-color: #ffffff;
+            border: 1px solid #dce8f4;
+            border-radius: 8px;
+            padding: 14px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            transition: border-color 0.2s, box-shadow 0.2s;
+        }
+
+        .erecaid-alt-card:hover {
+            border-color: #93c5fd;
+            box-shadow: 0 3px 10px rgba(0, 45, 98, 0.06);
+        }
+
+        .erecaid-alt-card__top {
+            display: flex;
+            gap: 12px;
+            margin-bottom: 12px;
+            align-items: center;
+        }
+
+        .erecaid-alt-card__media {
+            width: 80px;
+            height: 80px;
+            min-width: 80px;
+            max-width: 80px;
+            background: #ffffff;
+            border: 1px solid #eef3f8;
+            border-radius: 6px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 6px;
+            box-sizing: border-box;
+            flex-shrink: 0;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .erecaid-alt-card__media a {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 100%;
+            height: 100%;
+            max-width: 100%;
+            max-height: 100%;
+            overflow: hidden;
+            text-decoration: none;
+        }
+
+        .erecaid-alt-card__media img {
+            max-width: 100% !important;
+            max-height: 100% !important;
+            width: auto !important;
+            height: auto !important;
+            object-fit: contain !important;
+            display: block !important;
+            margin: 0 auto !important;
+        }
+
+        @media (max-width: 480px) {
+            .erecaid-alt-card {
+                padding: 12px;
+            }
+            .erecaid-alt-card__media {
+                width: 70px;
+                height: 70px;
+                min-width: 70px;
+                max-width: 70px;
+                padding: 4px;
+            }
+            .erecaid-alt-card__title {
+                font-size: 13.5px;
+            }
+        }
+
+        .erecaid-alt-card__heading-wrap {
+            flex: 1;
+            min-width: 0;
+            display: flex;
+            flex-direction: column;
+            gap: 3px;
+        }
+
+        .erecaid-alt-card__badge {
+            display: inline-block;
+            align-self: flex-start;
+            font-size: 10.5px;
+            font-weight: 700;
+            color: #0055ad;
+            background-color: #f0f7fe;
+            border: 1px solid #d0deec;
+            padding: 2px 8px;
+            border-radius: 3px;
+            margin-bottom: 2px;
+            text-transform: uppercase;
+            letter-spacing: 0.3px;
+            line-height: 1.3;
+        }
+
+        .erecaid-alt-card__title {
+            font-size: 14.5px;
+            font-weight: 700;
+            line-height: 1.25;
+            margin: 0 0 2px;
+        }
+
+        .erecaid-alt-card__title a {
+            color: #002d62;
+            text-decoration: none;
+        }
+
+        .erecaid-alt-card__title a:hover {
+            color: #0055ad;
+        }
+
+        .erecaid-alt-card__meta {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-top: 3px;
+            gap: 8px;
+        }
+
+        .erecaid-alt-card__stars {
+            color: #f59e0b;
+            font-size: 12px;
+            letter-spacing: 0.5px;
+        }
+
+        .erecaid-alt-card__price {
+            font-size: 15px;
+            font-weight: 800;
+            color: #002d62;
+        }
+
+        .erecaid-alt-card__bullets {
+            list-style: none;
+            padding: 0;
+            margin: 0 0 12px;
+            display: flex;
+            flex-direction: column;
+            gap: 4px;
+        }
+
+        .erecaid-alt-card__bullet {
+            display: flex;
+            align-items: flex-start;
+            gap: 6px;
+            font-size: 12px;
+            color: #475569;
+            line-height: 1.3;
+        }
+
+        .erecaid-alt-card__bullet svg {
+            flex-shrink: 0;
+            width: 13px;
+            height: 13px;
+            margin-top: 1px;
+            color: #059669;
+        }
+
+        .erecaid-alt-card__btn {
+            background-color: #f8fafc;
+            border: 1px solid #cbd5e1;
+            color: #002d62 !important;
+            font-size: 13px;
+            font-weight: 700;
+            height: 34px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 4px;
+            text-decoration: none;
+            transition: all 0.2s ease;
+        }
+
+        .erecaid-alt-card__btn:hover {
+            background-color: #0055ad;
+            border-color: #0055ad;
+            color: #ffffff !important;
+        }
+
+        .erecaid-finder-results__footer {
+            margin-top: 20px;
+            padding-top: 14px;
+            border-top: 1px solid #e2ecf6;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 12px;
+        }
+
+        @media (max-width: 768px) {
+            .erecaid-finder-results__footer {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+        }
+
+        .erecaid-finder-results__footer-text {
+            font-size: 13px;
+            color: #64748b;
+        }
+
+        .erecaid-finder-results__footer-link {
+            font-size: 13px;
+            font-weight: 700;
+            color: #0055ad;
+            text-decoration: none;
+        }
+
+        .erecaid-finder-results__footer-link:hover {
+            text-decoration: underline;
+        }
+
+        /* No Match Found Card */
+        .erecaid-no-match-card {
+            background-color: #ffffff;
+            border: 2px dashed #b6d4f4;
+            border-radius: 8px;
+            padding: 24px;
+            margin-bottom: 24px;
+            box-shadow: 0 2px 8px rgba(0, 85, 173, 0.04);
+        }
+
+        .erecaid-no-match-card__header {
+            display: flex;
+            align-items: flex-start;
+            gap: 16px;
+            margin-bottom: 16px;
+        }
+
+        .erecaid-no-match-card__icon {
+            width: 48px;
+            height: 48px;
+            min-width: 48px;
+            border-radius: 50%;
+            background-color: #f0f7fe;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #0055ad;
+        }
+
+        .erecaid-no-match-card__heading-text {
+            flex: 1;
+            min-width: 0;
+        }
+
+        .erecaid-no-match-card__title {
+            font-family: 'Roboto', 'Karla', sans-serif;
+            font-size: 18px;
+            font-weight: 800;
+            color: #002d62;
+            margin: 0 0 4px;
+            line-height: 1.3;
+        }
+
+        .erecaid-no-match-card__subtitle {
+            font-size: 13.5px;
+            color: #64748b;
+            margin: 0;
+            line-height: 1.4;
+        }
+
+        .erecaid-no-match-card__body {
+            background-color: #f8fbff;
+            border: 1px solid #e2ecf6;
+            border-radius: 6px;
+            padding: 14px 16px;
+            margin-bottom: 18px;
+        }
+
+        .erecaid-no-match-card__tips-title {
+            font-size: 13px;
+            font-weight: 700;
+            color: #002d62;
+            margin-bottom: 8px;
+        }
+
+        .erecaid-no-match-card__tips-list {
+            margin: 0;
+            padding-left: 20px;
+            font-size: 13px;
+            color: #334155;
+            line-height: 1.5;
+        }
+
+        .erecaid-no-match-card__tips-list li {
+            margin-bottom: 4px;
+        }
+
+        .erecaid-no-match-card__actions {
+            display: flex;
+            gap: 12px;
+            flex-wrap: wrap;
+        }
+
+        .erecaid-no-match-card__btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            padding: 10px 18px;
+            border-radius: 6px;
+            font-size: 13px;
+            font-weight: 700;
+            cursor: pointer;
+            text-decoration: none !important;
+            transition: all 0.2s ease;
+        }
+
+        .erecaid-no-match-card__btn--reset {
+            background-color: #0055ad;
+            color: #ffffff !important;
+            border: 1px solid #0055ad;
+        }
+
+        .erecaid-no-match-card__btn--reset:hover {
+            background-color: #00438c;
+        }
+
+        .erecaid-no-match-card__btn--phone {
+            background-color: #f0f7fe;
+            color: #002d62 !important;
+            border: 1px solid #b6d4f4;
+        }
+
+        .erecaid-no-match-card__btn--phone:hover {
+            background-color: #e0effe;
+            color: #0055ad !important;
+        }
+
+        @media (max-width: 600px) {
+            .erecaid-no-match-card {
+                padding: 16px;
+            }
+            .erecaid-no-match-card__header {
+                flex-direction: column;
+                align-items: center;
+                text-align: center;
+            }
+            .erecaid-no-match-card__actions {
+                flex-direction: column;
+            }
+            .erecaid-no-match-card__btn {
+                width: 100%;
+                text-align: center;
+            }
+        }
     </style>
     <div class="container">
         <div class="erecaid-finder-card">
@@ -213,8 +999,8 @@
                 </div>
             </div>
 
-            {{!-- 6-Question Interactive Form: 2 in Each Row --}}
-            <form class="erecaid-finder-card__form" action="{{#if theme_settings.custom_finder_btn_url}}{{theme_settings.custom_finder_btn_url}}{{else}}/categories{{/if}}" method="GET" data-erecaid-finder-form>
+            {{!-- 6-Question Interactive Form: Responsive CSS Grid --}}
+            <form class="erecaid-finder-card__form" action="#" method="GET" data-erecaid-finder-form>
                 <div class="erecaid-finder-card__grid">
                     {{!-- Question 1 Box --}}
                     <div class="erecaid-finder-card__step-box" data-step="1">
@@ -340,11 +1126,63 @@
 
                     <div class="erecaid-finder-card__action">
                         <button type="submit" class="erecaid-finder-card__btn" data-finder-submit>
-                            {{#if theme_settings.custom_finder_btn_text}}{{theme_settings.custom_finder_btn_text}}{{else}}Find My Pump{{/if}} <span class="erecaid-finder-card__btn-arrow">&rarr;</span>
+                            <span data-finder-btn-text>{{#if theme_settings.custom_finder_btn_text}}{{theme_settings.custom_finder_btn_text}}{{else}}Find My Pump{{/if}}</span>
+                            <span class="erecaid-finder-card__btn-arrow">&rarr;</span>
                         </button>
                     </div>
                 </div>
             </form>
+
+            {{!-- =============================================================
+            DYNAMIC RECOMMENDATION RESULTS PANEL
+            Revealed smoothly on click of "Find My Pump"
+            ============================================================= --}}
+            <div class="erecaid-finder-results" data-finder-results style="display: none;" aria-live="polite">
+                <div class="erecaid-finder-results__header">
+                    <div class="erecaid-finder-results__title-wrap">
+                        <span class="erecaid-finder-results__kicker">
+                            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path>
+                                <polyline points="22 4 12 14.01 9 11.01"></polyline>
+                            </svg>
+                            Personalized Clinical Recommendation
+                        </span>
+                        <h3 class="erecaid-finder-results__title">Your Recommended System</h3>
+                        <p class="erecaid-finder-results__sub">Based on your answers, here is the best vacuum erection
+                            device for your specific requirements:</p>
+                    </div>
+
+                    <button type="button" class="erecaid-finder-results__reset-btn" data-finder-reset
+                        title="Clear selections and retake quiz">
+                        <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"
+                            stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M3 12a9 9 0 1 0 9-9 9.75 9.75 0 0 0-6.74 2.74L3 8" />
+                            <path d="M3 3v5h5" />
+                        </svg>
+                        <span>Retake Quiz</span>
+                    </button>
+                </div>
+
+                {{!-- Hero Match Display (Populated dynamically) --}}
+                <div class="erecaid-hero-match-wrap" data-finder-hero-target></div>
+
+                {{!-- Alternative Matches (Populated dynamically) --}}
+                <div class="erecaid-finder-alternatives" data-finder-alt-section style="display: none;">
+                    <h4 class="erecaid-finder-alternatives__title">Other Great Options to Compare</h4>
+                    <div class="erecaid-finder-alternatives__grid" data-finder-alt-grid></div>
+                </div>
+
+                {{!-- Footer Explore Link --}}
+                <div class="erecaid-finder-results__footer">
+                    <span class="erecaid-finder-results__footer-text">Want to compare all systems and replacement
+                        parts?</span>
+                    <a href="{{#if theme_settings.custom_finder_btn_url}}{{theme_settings.custom_finder_btn_url}}{{else}}/erectile-dysfunction-vacuum-erection-pumps/{{/if}}"
+                        class="erecaid-finder-results__footer-link">
+                        Browse All ED Pumps &amp; Systems &rarr;
+                    </a>
+                </div>
+            </div>
         </div>
     </div>
 </section>
@@ -357,7 +1195,16 @@
     var selects = form.querySelectorAll('.erecaid-finder-card__select');
     var statusText = form.querySelector('[data-finder-status-text]');
     var statusCount = form.querySelector('[data-finder-status-count] strong');
-    var defaultUrl = form.getAttribute('action') || '/categories';
+    var submitBtn = form.querySelector('[data-finder-submit]');
+    var btnTextSpan = form.querySelector('[data-finder-btn-text]');
+
+    var resultsContainer = document.querySelector('[data-finder-results]');
+    var heroTarget = document.querySelector('[data-finder-hero-target]');
+    var altSection = document.querySelector('[data-finder-alt-section]');
+    var altGrid = document.querySelector('[data-finder-alt-grid]');
+    var resetBtn = document.querySelector('[data-finder-reset]');
+
+    var checkSvg = '<svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#2e7d32" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>';
 
     function updateProgress() {
         var answeredCount = 0;
@@ -376,21 +1223,39 @@
         }
 
         if (statusText) {
-            if (answeredCount === 6) {
-                statusText.textContent = 'All questions answered! Ready to view your best match.';
-            } else if (answeredCount > 0) {
-                statusText.textContent = answeredCount + ' preference' + (answeredCount > 1 ? 's' : '') + ' selected.';
-            } else {
+            if (answeredCount === 0) {
                 statusText.textContent = 'Select your preferences above for personalized recommendations.';
+            } else if (answeredCount < 6) {
+                statusText.textContent = answeredCount + ' preference' + (answeredCount > 1 ? 's' : '') + ' selected. Ready to find your pump!';
+            } else {
+                statusText.textContent = 'All questions answered! Ready to view your personalized recommendation.';
             }
         }
     }
 
-    selects.forEach(function(sel) {
-        sel.addEventListener('change', updateProgress);
-    });
+    function formatPrice(priceObj) {
+        if (!priceObj) return '';
+        var num = priceObj.salePrice || priceObj.price;
+        if (num !== null && num !== undefined) {
+            return '$' + Number(num).toFixed(2);
+        }
+        return '';
+    }
 
-    form.addEventListener('submit', function(e) {
+    async function ensureProductsLoaded() {
+        if (window.pumpFinderProducts && window.pumpFinderProducts.length > 0) {
+            return window.pumpFinderProducts;
+        }
+        if (typeof window.initPumpFinderCatalog === 'function') {
+            var res = await window.initPumpFinderCatalog();
+            return (res && res.eligibleProducts) || window.pumpFinderProducts || [];
+        }
+        return [];
+    }
+
+    async function handleFinderSubmit(e) {
+        if (e && e.preventDefault) e.preventDefault();
+
         var params = {};
         selects.forEach(function(sel) {
             if (sel.value) {
@@ -398,35 +1263,472 @@
             }
         });
 
-        // Store selected preferences for persistence across pages
+        // Persist preferences in sessionStorage
         try {
             if (typeof sessionStorage !== 'undefined') {
                 sessionStorage.setItem('erecaid_pump_finder_prefs', JSON.stringify(params));
             }
         } catch (err) {}
 
-        // Smart routing if user wants specific category directly
-        var pumpType = params['pump_type'];
-        var primaryReason = params['primary_reason'];
-        var targetUrl = defaultUrl;
+        // Show brief loading state
+        if (btnTextSpan) {
+            btnTextSpan.textContent = 'Finding Best Match...';
+        }
+        if (submitBtn) {
+            submitBtn.disabled = true;
+        }
 
-        // If categories URL is provided, append query params
-        var queryString = [];
-        for (var key in params) {
-            if (params.hasOwnProperty(key)) {
-                queryString.push(encodeURIComponent(key) + '=' + encodeURIComponent(params[key]));
+        var products = await ensureProductsLoaded();
+
+        if (submitBtn) {
+            submitBtn.disabled = false;
+        }
+
+        if (!products || products.length === 0) {
+            if (heroTarget) {
+                heroTarget.innerHTML = '<div style="padding: 24px; text-align: center; background: #fff; border-radius: 8px; border: 1px solid #dce8f4;"><p style="font-size: 16px; color: #1c2530; margin-bottom: 8px;"><strong>Catalogue Loading</strong></p><p style="color: #666;">Eligible products are currently loading from Storefront GraphQL. Please try again in a moment.</p></div>';
+            }
+            if (resultsContainer) {
+                resultsContainer.style.display = 'block';
+                resultsContainer.scrollIntoView({ behavior: 'smooth', block: 'start' });
+            }
+            if (btnTextSpan) btnTextSpan.textContent = 'Find My Pump';
+            return;
+        }
+
+        // Run clinical matching engine
+        var scoredList = [];
+        if (typeof window.calculateClinicalMatches === 'function') {
+            scoredList = window.calculateClinicalMatches(params, products);
+        } else {
+            scoredList = matchProductsClinically(params, products);
+        }
+
+        renderResults(scoredList, params);
+    }
+
+    function matchProductsClinically(answers, list) {
+        if (!Array.isArray(list) || list.length === 0) return [];
+
+        var primaryReason = answers.primary_reason || '';
+        var edSeverity = answers.ed_severity || '';
+        var pumpType = answers.pump_type || '';
+        var handStrength = answers.hand_strength || '';
+        var budget = answers.budget || '';
+        var priority = answers.priority || '';
+
+        var scored = [];
+
+        list.forEach(function(product) {
+            var score = 0;
+            var reasons = [];
+            var badge = 'Personalized Best Match';
+            var attr = product.attributes || {};
+
+            var pReasons = attr.primaryReason || [];
+            var pSeverities = attr.edSeverity || [];
+            var pTypes = attr.pumpType || [];
+            var pHand = attr.handFriendly || [];
+            var pBudget = attr.budget || [];
+            var pPriority = attr.priority || [];
+
+            // 1. HARD CRITERIA - Preferred Pump Type (Question 3)
+            // If the customer specifically chose rechargeable, battery_operated, or manual, the product MUST support it.
+            if (pumpType && pumpType !== 'no_preference' && pumpType !== 'not_sure') {
+                if (pTypes.indexOf(pumpType) === -1) {
+                    return; // Disqualified: mechanism does not match user's explicit preference
+                }
+                score += 30;
+                if (pumpType === 'battery_operated') reasons.push('Convenient push-button motorized battery vacuum for effortless operation');
+                if (pumpType === 'manual') reasons.push('Ergonomic manual squeeze lever gives you complete control over vacuum pressure');
+                if (pumpType === 'rechargeable') reasons.push('Modern USB-rechargeable electric motor — zero replacement batteries required');
+                if (badge === 'Personalized Best Match') {
+                    if (pumpType === 'battery_operated') badge = 'Top Motorized System';
+                    if (pumpType === 'manual') badge = 'Top Manual System';
+                    if (pumpType === 'rechargeable') badge = 'Top Rechargeable System';
+                }
+            } else {
+                score += 5;
+            }
+
+            // 2. HARD CRITERIA - Hand Strength / Arthritis (Question 4)
+            // Essential medical suitability: arthritis patients cannot use manual squeeze pumps.
+            if (handStrength === 'yes') {
+                if (pHand.indexOf('yes') === -1) {
+                    return; // Disqualified: essential medical suitability safety guard
+                }
+                score += 25;
+                reasons.push('Effortless motorized operation eliminates hand fatigue — ideal for arthritis or limited grip');
+                badge = 'Best for Limited Hand Strength';
+            } else if (handStrength === 'no') {
+                score += 5;
+            }
+
+            // 3. HARD CRITERIA - Preferred Budget (Question 5)
+            // If a customer chooses a strict budget of under $150, an over-$300 model must not be forced.
+            if (budget === 'under_150') {
+                if (pBudget.indexOf('under_150') === -1) {
+                    return; // Disqualified: exceeds selected budget ceiling
+                }
+                score += 20;
+                reasons.push('Starter system fitting comfortably within your under-$150 budget');
+                if (badge === 'Personalized Best Match') badge = 'Best Value Selection';
+            } else if (budget === '150_300') {
+                if (pBudget.indexOf('150_300') === -1 && pBudget.indexOf('under_150') === -1) {
+                    return; // Disqualified: exceeds selected budget ceiling
+                }
+                score += 15;
+                reasons.push('Mid-range system fitting within your preferred $150–$300 budget');
+            } else if (budget === 'over_300') {
+                if (pBudget.indexOf('over_300') !== -1) {
+                    score += 15;
+                    reasons.push('Premium clinical-grade system with maximum features and durability');
+                    if (badge === 'Personalized Best Match') badge = 'Premium Clinical Grade';
+                }
+            } else if (budget === 'flexible') {
+                score += 10;
+            }
+
+            // 4. Primary Reason (Question 1)
+            if (primaryReason === 'erectile_dysfunction') {
+                if (pReasons.indexOf('erectile_dysfunction') !== -1 || pReasons.indexOf('both') !== -1) {
+                    score += 20;
+                    reasons.push('Clinically proven medical vacuum therapy engineered specifically for erectile dysfunction');
+                }
+            } else if (primaryReason === 'prostate_therapy') {
+                if (pReasons.indexOf('prostate_therapy') !== -1 || pReasons.indexOf('both') !== -1) {
+                    score += 20;
+                    reasons.push('Doctor-recommended protocol for penile rehabilitation following prostate surgery');
+                    badge = 'Top Urology Recommendation';
+                } else {
+                    return; // Disqualified: patient specifically needs prostate rehabilitation therapy
+                }
+            } else if (primaryReason === 'both') {
+                if (pReasons.length > 0) {
+                    score += 20;
+                    reasons.push('Dual-purpose system suitable for both ED treatment and post-prostate recovery');
+                }
+            }
+
+            // 5. ED Severity (Question 2)
+            if (edSeverity === 'mild') {
+                if (pSeverities.indexOf('mild') !== -1) {
+                    score += 15;
+                    reasons.push('Gentle, easy-to-control suction calibrated for mild ED symptoms');
+                }
+            } else if (edSeverity === 'moderate') {
+                if (pSeverities.indexOf('moderate') !== -1) {
+                    score += 15;
+                    reasons.push('Consistent medical-grade vacuum strength suited for moderate ED');
+                }
+            } else if (edSeverity === 'severe') {
+                if (pSeverities.indexOf('severe') !== -1) {
+                    score += 15;
+                    reasons.push('High-efficiency medical vacuum power engineered for severe erectile dysfunction');
+                }
+            } else if (edSeverity === 'none') {
+                score += 10;
+            }
+
+            // 6. Priority / Feature (Question 6)
+            if (priority === 'ease_of_use') {
+                if (pPriority.indexOf('ease_of_use') !== -1 || pHand.indexOf('yes') !== -1) {
+                    score += 20;
+                    reasons.push('Engineered for maximum simplicity with intuitive, comfortable operation');
+                }
+            } else if (priority === 'warranty_support') {
+                if (pPriority.indexOf('warranty_support') !== -1) {
+                    score += 20;
+                    reasons.push('Industry-leading manufacturer warranty backed by dedicated urology product specialists');
+                }
+            } else if (priority === 'lowest_price') {
+                if (pPriority.indexOf('lowest_price') !== -1 || pBudget.indexOf('under_150') !== -1) {
+                    score += 20;
+                    reasons.push('Complete system offering full clinical functionality at the lowest available price');
+                }
+            } else if (priority === 'manual_and_powered') {
+                if (pPriority.indexOf('manual_and_powered') !== -1) {
+                    score += 25;
+                    reasons.push('Versatile kit including both manual pump handle and battery-powered motor');
+                    badge = 'Dual-Power Combo System';
+                }
+            }
+
+            if (reasons.length < 2) {
+                reasons.push('Doctor & urologist recommended vacuum erection device');
+                reasons.push('Complete medical kit with sizing rings, cylinder, and accessories');
+                reasons.push('Backed by manufacturer warranty & dedicated clinical support');
+            }
+
+            scored.push({
+                product: product,
+                score: score,
+                reasons: reasons.slice(0, 4),
+                badge: badge
+            });
+        });
+
+        scored.sort(function(a, b) {
+            return b.score - a.score;
+        });
+
+        return scored;
+    }
+
+    function renderResults(scoredList, answers) {
+        if (!resultsContainer || !heroTarget) return;
+
+        // If no products match the criteria, show the friendly No Product Available Card
+        if (!scoredList || scoredList.length === 0) {
+            var selectedPumpType = (answers && answers.pump_type) ? answers.pump_type.replace(/_/g, ' ') : '';
+            var selectedBudget = (answers && answers.budget) ? answers.budget.replace(/_/g, ' ') : '';
+            var contextNote = '';
+            if (selectedPumpType || selectedBudget) {
+                var parts = [];
+                if (selectedPumpType && selectedPumpType !== 'no preference' && selectedPumpType !== 'not sure') {
+                    parts.push('<strong>' + selectedPumpType + '</strong>');
+                }
+                if (selectedBudget && selectedBudget !== 'flexible' && selectedBudget !== 'not sure') {
+                    parts.push('budget <strong>' + selectedBudget + '</strong>');
+                }
+                if (parts.length > 0) {
+                    contextNote = ' (such as ' + parts.join(' with ') + ')';
+                }
+            }
+
+            var noMatchHtml = [
+                '<div class="erecaid-no-match-card">',
+                '    <div class="erecaid-no-match-card__header">',
+                '        <div class="erecaid-no-match-card__icon">',
+                '            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#0055ad" stroke-width="2"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line><line x1="8" y1="11" x2="14" y2="11"></line></svg>',
+                '        </div>',
+                '        <div class="erecaid-no-match-card__heading-text">',
+                '            <h3 class="erecaid-no-match-card__title">No Direct Match Found For Your Exact Selections</h3>',
+                '            <p class="erecaid-no-match-card__subtitle">We currently do not have a system in our catalogue that meets all of your selected criteria' + contextNote + '.</p>',
+                '        </div>',
+                '    </div>',
+                '    <div class="erecaid-no-match-card__body">',
+                '        <div class="erecaid-no-match-card__tips-title">Helpful Options to Consider:</div>',
+                '        <ul class="erecaid-no-match-card__tips-list">',
+                '            <li>Try selecting <strong>Battery Operated</strong> or a <strong>Flexible Budget</strong> to view available medical systems in stock.</li>',
+                '            <li>Our urology product specialists are available by phone to help configure a custom kit for your specific medical needs.</li>',
+                '        </ul>',
+                '    </div>',
+                '    <div class="erecaid-no-match-card__actions">',
+                '        <button type="button" class="erecaid-no-match-card__btn erecaid-no-match-card__btn--reset" data-finder-reset-answers>',
+                '            &#8634; Adjust Answers / Retake Quiz',
+                '        </button>',
+                '        <a href="tel:866-496-7359" class="erecaid-no-match-card__btn erecaid-no-match-card__btn--phone">',
+                '            <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor"><path d="M6.62 10.79a15.053 15.053 0 006.59 6.59l2.2-2.2a1 1 0 011.01-.24c1.12.37 2.33.57 3.58.57a1 1 0 011 1V20a1 1 0 01-1 1A17 17 0 013 4a1 1 0 011-1h3.5a1 1 0 011 1c0 1.25.2 2.45.57 3.58a1 1 0 01-.25 1.01l-2.2 2.2z"/></svg>',
+                '            Speak to a Specialist: 866-496-7359',
+                '        </a>',
+                '    </div>',
+                '</div>'
+            ].join('\n');
+
+            heroTarget.innerHTML = noMatchHtml;
+
+            var resetAnswerBtn = heroTarget.querySelector('[data-finder-reset-answers]');
+            if (resetAnswerBtn) {
+                resetAnswerBtn.addEventListener('click', resetQuiz);
+            }
+
+            if (altSection) {
+                altSection.style.display = 'none';
+            }
+
+            resultsContainer.style.display = 'block';
+            resultsContainer.scrollIntoView({ behavior: 'smooth', block: 'start' });
+            return;
+        }
+
+        var winnerItem = scoredList[0];
+        var winner = winnerItem.product;
+        var winnerReasons = winnerItem.reasons || [];
+        var winnerBadge = winnerItem.badge || 'Personalized Best Match';
+
+        var reasonsHtml = winnerReasons.map(function(r) {
+            return '<li class="erecaid-hero-card__reason-item">' + checkSvg + '<span>' + r + '</span></li>';
+        }).join('');
+
+        var priceStr = formatPrice(winner.price);
+        var imgUrl = (winner.image && winner.image.url) ? winner.image.url : '/assets/img/ProductDefault.gif';
+        var imgAlt = (winner.image && winner.image.altText) ? winner.image.altText : winner.name;
+
+        var heroHtml = [
+            '<div class="erecaid-hero-card">',
+            '    <div class="erecaid-hero-card__badge-bar">',
+            '        <span class="erecaid-hero-card__badge">',
+            '            <svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>',
+            '            ' + winnerBadge,
+            '        </span>',
+            '        <span class="erecaid-hero-card__match-label">&#10003; #1 Personalized Best Match</span>',
+            '    </div>',
+            '    <div class="erecaid-hero-card__content">',
+            '        <div class="erecaid-hero-card__media">',
+            '            <a href="' + winner.url + '" title="' + winner.name + '">',
+            '                <img src="' + imgUrl + '" alt="' + imgAlt + '" loading="lazy">',
+            '            </a>',
+            '        </div>',
+            '        <div class="erecaid-hero-card__info">',
+            '            <h4 class="erecaid-hero-card__title">',
+            '                <a href="' + winner.url + '">' + winner.name + '</a>',
+            '            </h4>',
+            '            <div class="erecaid-hero-card__meta">',
+            '                <div class="erecaid-hero-card__rating">',
+            '                    <span class="erecaid-hero-card__stars">&#9733;&#9733;&#9733;&#9733;&#9733;</span>',
+            '                    <span class="erecaid-hero-card__reviews">Verified Medical Device</span>',
+            '                </div>',
+            (priceStr ? '                <div class="erecaid-hero-card__price">' + priceStr + '</div>' : ''),
+            '            </div>',
+            '            <div class="erecaid-hero-card__reasons-wrap">',
+            '                <div class="erecaid-hero-card__reasons-heading">Why this is your best match:</div>',
+            '                <ul class="erecaid-hero-card__reasons-list">',
+            '                    ' + reasonsHtml,
+            '                </ul>',
+            '            </div>',
+            '            <div class="erecaid-hero-card__actions">',
+            '                <a href="' + winner.url + '" class="erecaid-hero-card__btn erecaid-hero-card__btn--primary">',
+            '                    View Recommended Pump &rarr;',
+            '                </a>',
+            '                <a href="tel:866-496-7359" class="erecaid-hero-card__btn erecaid-hero-card__btn--secondary">',
+            '                    <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor"><path d="M6.62 10.79a15.053 15.053 0 006.59 6.59l2.2-2.2a1 1 0 011.01-.24c1.12.37 2.33.57 3.58.57a1 1 0 011 1V20a1 1 0 01-1 1A17 17 0 013 4a1 1 0 011-1h3.5a1 1 0 011 1c0 1.25.2 2.45.57 3.58a1 1 0 01-.25 1.01l-2.2 2.2z"/></svg>',
+            '                    Speak to a Specialist: 866-496-7359',
+            '                </a>',
+            '            </div>',
+            '        </div>',
+            '    </div>',
+            '</div>'
+        ].join('\n');
+
+        heroTarget.innerHTML = heroHtml;
+
+        // Render Alternative Matches if available
+        var alternatives = scoredList.slice(1, 3);
+        if (altSection && altGrid) {
+            if (alternatives.length > 0) {
+                var altsHtml = alternatives.map(function(item) {
+                    var p = item.product;
+                    var pPrice = formatPrice(p.price);
+                    var pImg = (p.image && p.image.url) ? p.image.url : '/assets/img/ProductDefault.gif';
+                    var pBadge = item.badge || 'Great Alternative';
+                    var bullets = (item.reasons && item.reasons.length) ? item.reasons.slice(0, 2) : ['Doctor & urologist recommended system'];
+                    var bulletsHtml = bullets.map(function(b) {
+                        return '<li class="erecaid-alt-card__bullet">' + checkSvg + '<span>' + b + '</span></li>';
+                    }).join('');
+
+                    return [
+                        '<div class="erecaid-alt-card">',
+                        '    <div>',
+                        '        <div class="erecaid-alt-card__top">',
+                        '            <div class="erecaid-alt-card__media">',
+                        '                <a href="' + p.url + '" title="' + p.name + '"><img src="' + pImg + '" alt="' + p.name + '" loading="lazy"></a>',
+                        '            </div>',
+                        '            <div class="erecaid-alt-card__heading-wrap">',
+                        '                <span class="erecaid-alt-card__badge">' + pBadge + '</span>',
+                        '                <h5 class="erecaid-alt-card__title"><a href="' + p.url + '">' + p.name + '</a></h5>',
+                        '                <div class="erecaid-alt-card__meta">',
+                        '                    <span class="erecaid-alt-card__stars">&#9733;&#9733;&#9733;&#9733;&#9733;</span>',
+                        (pPrice ? '                    <span class="erecaid-alt-card__price">' + pPrice + '</span>' : ''),
+                        '                </div>',
+                        '            </div>',
+                        '        </div>',
+                        '        <ul class="erecaid-alt-card__bullets">',
+                        '            ' + bulletsHtml,
+                        '        </ul>',
+                        '    </div>',
+                        '    <a href="' + p.url + '" class="erecaid-alt-card__btn">View Product &rarr;</a>',
+                        '</div>'
+                    ].join('\n');
+                }).join('');
+
+                altGrid.innerHTML = altsHtml;
+                altSection.style.display = 'block';
+            } else {
+                altSection.style.display = 'none';
             }
         }
 
-        if (queryString.length > 0) {
-            var separator = targetUrl.indexOf('?') !== -1 ? '&' : '?';
-            form.action = targetUrl + separator + queryString.join('&');
-        } else {
-            form.action = targetUrl;
+        // Reveal the results panel
+        resultsContainer.style.display = 'block';
+
+        // Smooth scroll to results
+        setTimeout(function() {
+            resultsContainer.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }, 80);
+
+        if (btnTextSpan) {
+            btnTextSpan.textContent = 'Update My Recommendation';
         }
+    }
+
+    function resetQuiz() {
+        if (resultsContainer) {
+            resultsContainer.style.display = 'none';
+        }
+        if (heroTarget) {
+            heroTarget.innerHTML = '';
+        }
+        if (altGrid) {
+            altGrid.innerHTML = '';
+        }
+
+        selects.forEach(function(sel) {
+            sel.value = '';
+        });
+
+        try {
+            if (typeof sessionStorage !== 'undefined') {
+                sessionStorage.removeItem('erecaid_pump_finder_prefs');
+            }
+        } catch (e) {}
+
+        updateProgress();
+
+        if (btnTextSpan) {
+            btnTextSpan.textContent = 'Find My Pump';
+        }
+
+        form.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
+
+    form.addEventListener('submit', handleFinderSubmit);
+
+    if (resetBtn) {
+        resetBtn.addEventListener('click', resetQuiz);
+    }
+
+    selects.forEach(function(sel) {
+        sel.addEventListener('change', updateProgress);
     });
 
-    // Run initial progress check
-    updateProgress();
+    (function restoreState() {
+        var params = {};
+        try {
+            var urlParams = new URLSearchParams(window.location.search);
+            urlParams.forEach(function(val, key) {
+                params[key] = val;
+            });
+        } catch (e) {}
+
+        if (Object.keys(params).length === 0) {
+            try {
+                if (typeof sessionStorage !== 'undefined') {
+                    var stored = sessionStorage.getItem('erecaid_pump_finder_prefs');
+                    if (stored) {
+                        params = JSON.parse(stored);
+                    }
+                }
+            } catch (e) {}
+        }
+
+        selects.forEach(function(sel) {
+            if (params[sel.name]) {
+                sel.value = params[sel.name];
+            }
+        });
+
+        updateProgress();
+    })();
 })();
 </script>

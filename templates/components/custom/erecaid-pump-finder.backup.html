@@ -1,0 +1,1580 @@
+{{!--
+ErecAid Interactive Pump Finder Section (6-Question Comprehensive Edition)
+100% matches reference screenshot & user requirements:
+- Top Row: Headline & Subtitle (Left), Phone Support Hotline with Chat Bubble (Right)
+- 6 Comprehensive Questions in 2 balanced rows on desktop (3 items per row)
+- Chevron separators between cards
+- Fully responsive across desktop, tablet, and mobile
+- 100% FULLY DYNAMIC: Live BigCommerce Store Data Binding (Prices, Images, Stock, URLs, Ratings)
+- Intelligent Recommendation Engine with instant on-page personalized match, runner-ups & smooth scroll
+- 100% dynamic and editable via Theme Settings (schema.json & config.json)
+--}}
+<section class="erecaid-finder-section" aria-label="Pump Finder Questionnaire">
+    <style>
+        /* Instant Cache-Safe 3-Sets-Per-Line Grid */
+        .erecaid-finder-card__form {
+            display: flex !important;
+            flex-direction: column !important;
+            gap: 12px !important;
+            width: 100% !important;
+        }
+
+        .erecaid-finder-card__row {
+            display: flex !important;
+            flex-direction: row !important;
+            flex-wrap: nowrap !important;
+            align-items: stretch !important;
+            justify-content: space-between !important;
+            gap: 10px !important;
+            width: 100% !important;
+        }
+
+        .erecaid-finder-card__row .erecaid-finder-card__step-box {
+            flex: 1 1 0 !important;
+            min-width: 0 !important;
+            background-color: #ffffff;
+            border: 1px solid #dce8f4;
+            border-radius: 6px;
+            padding: 9px 12px 10px;
+            box-sizing: border-box;
+            transition: border-color 0.2s ease, box-shadow 0.2s ease, background-color 0.2s ease;
+        }
+
+        .erecaid-finder-card__row .erecaid-finder-card__separator {
+            display: flex !important;
+            align-items: center !important;
+            justify-content: center !important;
+            flex-shrink: 0 !important;
+            width: 12px !important;
+        }
+
+        .erecaid-finder-card__footer {
+            display: flex !important;
+            flex-direction: row !important;
+            align-items: center !important;
+            justify-content: space-between !important;
+            gap: 16px !important;
+            width: 100% !important;
+            margin-top: 4px !important;
+            padding-top: 4px !important;
+        }
+
+        @media (max-width: 991px) and (min-width: 601px) {
+            .erecaid-finder-card__row {
+                flex-wrap: wrap !important;
+                gap: 10px !important;
+            }
+
+            .erecaid-finder-card__row .erecaid-finder-card__step-box {
+                flex: 1 1 calc(50% - 6px) !important;
+                min-width: 220px !important;
+            }
+
+            .erecaid-finder-card__row .erecaid-finder-card__separator {
+                display: none !important;
+            }
+        }
+
+        @media (max-width: 600px) {
+            .erecaid-finder-card__row {
+                flex-direction: column !important;
+                gap: 8px !important;
+            }
+
+            .erecaid-finder-card__row .erecaid-finder-card__step-box {
+                width: 100% !important;
+                flex: none !important;
+            }
+
+            .erecaid-finder-card__row .erecaid-finder-card__separator {
+                display: none !important;
+            }
+
+            .erecaid-finder-card__footer {
+                flex-direction: column !important;
+                align-items: stretch !important;
+                gap: 10px !important;
+            }
+
+            .erecaid-finder-card__action,
+            .erecaid-finder-card__btn {
+                width: 100% !important;
+            }
+        }
+
+        /* -------------------------------------------------------------
+           PERSONALIZED RECOMMENDATION RESULTS STYLES
+           ------------------------------------------------------------- */
+        .erecaid-finder-results {
+            margin-top: 22px;
+            background-color: #ffffff;
+            border: 1px solid #dce8f4;
+            border-radius: 10px;
+            padding: 24px 26px 22px;
+            box-shadow: 0 4px 18px rgba(0, 45, 98, 0.08);
+            box-sizing: border-box;
+            animation: erecaidFadeIn 0.35s ease-out;
+        }
+
+        @keyframes erecaidFadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(12px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .erecaid-finder-results__header {
+            display: flex;
+            align-items: flex-start;
+            justify-content: space-between;
+            gap: 16px;
+            padding-bottom: 16px;
+            border-bottom: 1px solid #e2ecf6;
+            margin-bottom: 20px;
+        }
+
+        .erecaid-finder-results__kicker {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            font-size: 11.5px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.6px;
+            color: #0055ad;
+            margin-bottom: 4px;
+        }
+
+        .erecaid-finder-results__title {
+            font-family: 'Roboto', 'Karla', sans-serif;
+            font-size: 22px;
+            font-weight: 800;
+            color: #002d62;
+            margin: 0 0 4px;
+            line-height: 1.25;
+        }
+
+        .erecaid-finder-results__sub {
+            font-size: 13.5px;
+            color: #475569;
+            margin: 0;
+            line-height: 1.4;
+        }
+
+        .erecaid-finder-results__reset-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            background: transparent;
+            border: 1px solid #cbd5e1;
+            border-radius: 5px;
+            padding: 7px 12px;
+            font-size: 12px;
+            font-weight: 600;
+            color: #475569;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            white-space: nowrap;
+            flex-shrink: 0;
+        }
+
+        .erecaid-finder-results__reset-btn:hover {
+            border-color: #0055ad;
+            color: #0055ad;
+            background-color: #f0f7fe;
+        }
+
+        /* Hero / Best Match Card */
+        .erecaid-hero-card {
+            background-color: #fbfdff;
+            border: 2px solid #0055ad;
+            border-radius: 8px;
+            padding: 20px 22px;
+            margin-bottom: 24px;
+            position: relative;
+            box-shadow: 0 3px 12px rgba(0, 85, 173, 0.08);
+        }
+
+        .erecaid-hero-card__badge-bar {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 10px;
+            margin-bottom: 16px;
+            flex-wrap: wrap;
+        }
+
+        .erecaid-hero-card__badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            background: linear-gradient(135deg, #0055ad 0%, #002d62 100%);
+            color: #ffffff;
+            font-size: 11.5px;
+            font-weight: 800;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            padding: 5px 12px;
+            border-radius: 20px;
+        }
+
+        .erecaid-hero-card__match-label {
+            font-size: 12.5px;
+            font-weight: 700;
+            color: #059669;
+            background-color: #ecfdf5;
+            padding: 4px 10px;
+            border-radius: 4px;
+            border: 1px solid #a7f3d0;
+        }
+
+        .erecaid-hero-card__content {
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            gap: 24px;
+        }
+
+        .erecaid-hero-card__media {
+            width: 220px;
+            min-width: 220px;
+            height: 220px;
+            background-color: #ffffff;
+            border: 1px solid #e2ecf6;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 12px;
+            box-sizing: border-box;
+            flex-shrink: 0;
+        }
+
+        .erecaid-hero-card__media img {
+            max-width: 100%;
+            max-height: 100%;
+            object-fit: contain;
+            display: block;
+        }
+
+        .erecaid-hero-card__info {
+            flex: 1;
+            min-width: 0;
+        }
+
+        .erecaid-hero-card__title {
+            font-family: 'Roboto', 'Karla', sans-serif;
+            font-size: 20px;
+            font-weight: 800;
+            line-height: 1.3;
+            margin: 0 0 8px;
+        }
+
+        .erecaid-hero-card__title a {
+            color: #002d62;
+            text-decoration: none;
+            transition: color 0.15s;
+        }
+
+        .erecaid-hero-card__title a:hover {
+            color: #0055ad;
+        }
+
+        .erecaid-hero-card__meta {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            margin-bottom: 12px;
+            flex-wrap: wrap;
+        }
+
+        .erecaid-hero-card__rating {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .erecaid-hero-card__stars {
+            color: #f59e0b;
+            font-size: 15px;
+            letter-spacing: 1px;
+        }
+
+        .erecaid-hero-card__reviews {
+            font-size: 12px;
+            color: #64748b;
+            font-weight: 600;
+        }
+
+        .erecaid-hero-card__price {
+            font-size: 24px;
+            font-weight: 800;
+            color: #002d62;
+            letter-spacing: -0.3px;
+        }
+
+        .erecaid-hero-card__reasons-wrap {
+            background-color: #ffffff;
+            border: 1px solid #e2ecf6;
+            border-radius: 6px;
+            padding: 12px 14px;
+            margin-bottom: 16px;
+        }
+
+        .erecaid-hero-card__reasons-heading {
+            font-size: 12.5px;
+            font-weight: 700;
+            color: #002d62;
+            margin: 0 0 6px;
+            text-transform: uppercase;
+            letter-spacing: 0.3px;
+        }
+
+        .erecaid-hero-card__reasons-list {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            display: flex;
+            flex-direction: column;
+            gap: 6px;
+        }
+
+        .erecaid-hero-card__reason-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 8px;
+            font-size: 13px;
+            color: #1e293b;
+            line-height: 1.35;
+        }
+
+        .erecaid-hero-card__reason-item svg {
+            flex-shrink: 0;
+            width: 15px;
+            height: 15px;
+            margin-top: 1px;
+            color: #059669;
+        }
+
+        .erecaid-hero-card__actions {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            flex-wrap: wrap;
+        }
+
+        .erecaid-hero-card__btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            font-size: 14px;
+            font-weight: 700;
+            height: 42px;
+            padding: 0 24px;
+            border-radius: 5px;
+            text-decoration: none;
+            transition: all 0.2s ease;
+            white-space: nowrap;
+        }
+
+        .erecaid-hero-card__btn--primary {
+            background-color: #0055ad;
+            color: #ffffff !important;
+            box-shadow: 0 2px 6px rgba(0, 85, 173, 0.25);
+        }
+
+        .erecaid-hero-card__btn--primary:hover {
+            background-color: #00438c;
+            box-shadow: 0 4px 10px rgba(0, 85, 173, 0.35);
+            transform: translateY(-1px);
+        }
+
+        .erecaid-hero-card__btn--secondary {
+            background-color: #f0f7fe;
+            color: #002d62 !important;
+            border: 1px solid #b6d4f4;
+        }
+
+        .erecaid-hero-card__btn--secondary:hover {
+            background-color: #e0effe;
+            border-color: #0055ad;
+            color: #0055ad !important;
+        }
+
+        /* Alternatives Section */
+        .erecaid-finder-alternatives {
+            margin-top: 22px;
+            padding-top: 20px;
+            border-top: 1px solid #e2ecf6;
+        }
+
+        .erecaid-finder-alternatives__title {
+            font-family: 'Roboto', 'Karla', sans-serif;
+            font-size: 16px;
+            font-weight: 800;
+            color: #002d62;
+            margin: 0 0 14px;
+        }
+
+        .erecaid-finder-alternatives__grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 14px;
+        }
+
+        .erecaid-alt-card {
+            background-color: #ffffff;
+            border: 1px solid #dce8f4;
+            border-radius: 8px;
+            padding: 14px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            transition: border-color 0.2s, box-shadow 0.2s;
+        }
+
+        .erecaid-alt-card:hover {
+            border-color: #93c5fd;
+            box-shadow: 0 3px 10px rgba(0, 45, 98, 0.06);
+        }
+
+        .erecaid-alt-card__top {
+            display: flex;
+            gap: 12px;
+            margin-bottom: 10px;
+            align-items: center;
+        }
+
+        .erecaid-alt-card__media {
+            width: 80px;
+            height: 80px;
+            min-width: 80px;
+            background: #ffffff;
+            border: 1px solid #eef3f8;
+            border-radius: 6px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 6px;
+            box-sizing: border-box;
+            flex-shrink: 0;
+        }
+
+        .erecaid-alt-card__media img {
+            max-width: 100%;
+            max-height: 100%;
+            object-fit: contain;
+        }
+
+        .erecaid-alt-card__heading-wrap {
+            flex: 1;
+            min-width: 0;
+        }
+
+        .erecaid-alt-card__badge {
+            display: inline-block;
+            font-size: 10.5px;
+            font-weight: 700;
+            color: #0055ad;
+            background-color: #f0f7fe;
+            border: 1px solid #d0deec;
+            padding: 2px 8px;
+            border-radius: 3px;
+            margin-bottom: 4px;
+            text-transform: uppercase;
+        }
+
+        .erecaid-alt-card__title {
+            font-size: 14.5px;
+            font-weight: 700;
+            line-height: 1.25;
+            margin: 0;
+        }
+
+        .erecaid-alt-card__title a {
+            color: #002d62;
+            text-decoration: none;
+        }
+
+        .erecaid-alt-card__title a:hover {
+            color: #0055ad;
+        }
+
+        .erecaid-alt-card__meta {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin: 8px 0;
+            padding-bottom: 8px;
+            border-bottom: 1px solid #f1f5f9;
+        }
+
+        .erecaid-alt-card__stars {
+            color: #f59e0b;
+            font-size: 12px;
+        }
+
+        .erecaid-alt-card__price {
+            font-size: 16px;
+            font-weight: 800;
+            color: #002d62;
+        }
+
+        .erecaid-alt-card__bullets {
+            list-style: none;
+            padding: 0;
+            margin: 0 0 12px;
+            display: flex;
+            flex-direction: column;
+            gap: 4px;
+        }
+
+        .erecaid-alt-card__bullet {
+            display: flex;
+            align-items: flex-start;
+            gap: 6px;
+            font-size: 12px;
+            color: #475569;
+            line-height: 1.3;
+        }
+
+        .erecaid-alt-card__bullet svg {
+            flex-shrink: 0;
+            width: 13px;
+            height: 13px;
+            margin-top: 1px;
+            color: #059669;
+        }
+
+        .erecaid-alt-card__btn {
+            background-color: #f8fafc;
+            border: 1px solid #cbd5e1;
+            color: #002d62 !important;
+            font-size: 13px;
+            font-weight: 700;
+            height: 34px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 4px;
+            text-decoration: none;
+            transition: all 0.2s ease;
+        }
+
+        .erecaid-alt-card__btn:hover {
+            background-color: #0055ad;
+            border-color: #0055ad;
+            color: #ffffff !important;
+        }
+
+        /* Results Footer */
+        .erecaid-finder-results__footer {
+            margin-top: 20px;
+            padding-top: 14px;
+            border-top: 1px solid #e2ecf6;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 12px;
+        }
+
+        .erecaid-finder-results__footer-text {
+            font-size: 13px;
+            color: #64748b;
+        }
+
+        .erecaid-finder-results__footer-link {
+            font-size: 13px;
+            font-weight: 700;
+            color: #0055ad;
+            text-decoration: none;
+        }
+
+        .erecaid-finder-results__footer-link:hover {
+            text-decoration: underline;
+        }
+
+        @media (max-width: 768px) {
+            .erecaid-finder-results {
+                padding: 16px 14px;
+            }
+
+            .erecaid-finder-results__header {
+                flex-direction: column;
+                align-items: stretch;
+                gap: 12px;
+            }
+
+            .erecaid-hero-card {
+                padding: 16px 14px;
+            }
+
+            .erecaid-hero-card__content {
+                flex-direction: column;
+                align-items: center;
+                gap: 16px;
+            }
+
+            .erecaid-hero-card__media {
+                width: 100%;
+                min-width: 0;
+                height: 180px;
+            }
+
+            .erecaid-hero-card__info {
+                width: 100%;
+            }
+
+            .erecaid-hero-card__actions {
+                flex-direction: column;
+                width: 100%;
+            }
+
+            .erecaid-hero-card__btn {
+                width: 100%;
+            }
+
+            .erecaid-finder-alternatives__grid {
+                grid-template-columns: 1fr;
+            }
+
+            .erecaid-finder-results__footer {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+        }
+    </style>
+
+    {{!-- =========================================================================
+    LIVE BIGCOMMERCE STORE DATA ISLAND (100% Dynamic Store Hydration)
+    Pulls real-time prices, names, images, URLs, and ratings from BigCommerce!
+    ========================================================================= --}}
+    <div class="erecaid-finder-store-data" style="display: none;" data-erecaid-live-store-data aria-hidden="true">
+        {{#if products.featured}}
+        {{#each products.featured}}
+        <div data-live-prod data-id="{{id}}" data-name="{{name}}" data-url="{{url}}"
+            data-price="{{#if price.without_tax}}{{price.without_tax.formatted}}{{else if price.with_tax}}{{price.with_tax.formatted}}{{/if}}"
+            data-image="{{getImage image 'productgallery_size' (cdn theme_settings.default_image_product)}}"
+            data-rating="{{#if rating}}{{rating}}{{else}}5{{/if}}"
+            data-reviews="{{#if num_reviews}}{{num_reviews}}{{else}}0{{/if}}"></div>
+        {{/each}}
+        {{/if}}
+        {{#if products.new}}
+        {{#each products.new}}
+        <div data-live-prod data-id="{{id}}" data-name="{{name}}" data-url="{{url}}"
+            data-price="{{#if price.without_tax}}{{price.without_tax.formatted}}{{else if price.with_tax}}{{price.with_tax.formatted}}{{/if}}"
+            data-image="{{getImage image 'productgallery_size' (cdn theme_settings.default_image_product)}}"
+            data-rating="{{#if rating}}{{rating}}{{else}}5{{/if}}"
+            data-reviews="{{#if num_reviews}}{{num_reviews}}{{else}}0{{/if}}"></div>
+        {{/each}}
+        {{/if}}
+        {{#if products.top_sellers}}
+        {{#each products.top_sellers}}
+        <div data-live-prod data-id="{{id}}" data-name="{{name}}" data-url="{{url}}"
+            data-price="{{#if price.without_tax}}{{price.without_tax.formatted}}{{else if price.with_tax}}{{price.with_tax.formatted}}{{/if}}"
+            data-image="{{getImage image 'productgallery_size' (cdn theme_settings.default_image_product)}}"
+            data-rating="{{#if rating}}{{rating}}{{else}}5{{/if}}"
+            data-reviews="{{#if num_reviews}}{{num_reviews}}{{else}}0{{/if}}"></div>
+        {{/each}}
+        {{/if}}
+    </div>
+
+    <div class="container">
+        <div class="erecaid-finder-card">
+            {{!-- Top Row: Headline + Call Support --}}
+            <div class="erecaid-finder-card__top">
+                <div class="erecaid-finder-card__heading-wrap">
+                    <h2 class="erecaid-finder-card__title">{{#if
+                        theme_settings.custom_finder_title}}{{theme_settings.custom_finder_title}}{{else}}Find the Right
+                        Pump for You{{/if}}</h2>
+                    <p class="erecaid-finder-card__sub">{{#if
+                        theme_settings.custom_finder_sub}}{{theme_settings.custom_finder_sub}}{{else}}Answer simple
+                        questions to find the best options.{{/if}}</p>
+                </div>
+
+                <div class="erecaid-finder-card__support">
+                    <div class="erecaid-finder-card__support-icon" aria-hidden="true">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#0055ad" stroke-width="2"
+                            stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M14 9a2 2 0 0 1-2 2H6l-4 4V4c0-1.1.9-2 2-2h8a2 2 0 0 1 2 2v5Z" />
+                            <path d="M18 9h2a2 2 0 0 1 2 2v11l-4-4h-6a2 2 0 0 1-2-2v-1" />
+                        </svg>
+                    </div>
+                    <div class="erecaid-finder-card__support-text">
+                        <span class="erecaid-finder-card__support-label">{{#if
+                            theme_settings.custom_finder_support_label}}{{theme_settings.custom_finder_support_label}}{{else}}Prefer
+                            to talk to someone?{{/if}}</span>
+                        <a href="tel:{{#if theme_settings.custom_header_phone}}{{theme_settings.custom_header_phone}}{{else}}866-496-7359{{/if}}"
+                            class="erecaid-finder-card__support-phone">
+                            Call <strong>{{#if
+                                theme_settings.custom_header_phone}}{{theme_settings.custom_header_phone}}{{else}}866-496-7359{{/if}}</strong>
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            {{!-- 6-Question Interactive Form --}}
+            <form class="erecaid-finder-card__form"
+                action="{{#if theme_settings.custom_finder_btn_url}}{{theme_settings.custom_finder_btn_url}}{{else}}/erectile-dysfunction-vacuum-erection-pumps/{{/if}}"
+                method="GET" data-erecaid-finder-form>
+                {{!-- Row 1: Questions 1, 2, 3 --}}
+                <div class="erecaid-finder-card__row">
+                    {{!-- Question 1 Box --}}
+                    <div class="erecaid-finder-card__step-box" data-step="1">
+                        <div class="erecaid-finder-card__step-header">
+                            <span class="erecaid-finder-card__step-num">1</span>
+                            <label class="erecaid-finder-card__step-label" for="finder-q1">
+                                {{#if
+                                theme_settings.custom_finder_step1_label}}{{theme_settings.custom_finder_step1_label}}{{else}}What
+                                is your primary reason for using a pump?{{/if}}
+                            </label>
+                        </div>
+                        <div class="erecaid-finder-card__select-wrap">
+                            <select id="finder-q1" name="primary_reason" class="erecaid-finder-card__select"
+                                aria-label="Primary Reason">
+                                <option value="" selected disabled>Select an option</option>
+                                <option value="erectile_dysfunction">Erectile dysfunction</option>
+                                <option value="prostate_therapy">For therapy like after prostate surgery</option>
+                                <option value="both">Both</option>
+                                <option value="not_sure">Not sure</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    {{!-- Chevron Separator --}}
+                    <div class="erecaid-finder-card__separator" aria-hidden="true">
+                        <svg width="7" height="12" viewBox="0 0 7 12" fill="none">
+                            <path d="M1 1L6 6L1 11" stroke="#002d62" stroke-width="1.8" stroke-linecap="round"
+                                stroke-linejoin="round" />
+                        </svg>
+                    </div>
+
+                    {{!-- Question 2 Box --}}
+                    <div class="erecaid-finder-card__step-box" data-step="2">
+                        <div class="erecaid-finder-card__step-header">
+                            <span class="erecaid-finder-card__step-num">2</span>
+                            <label class="erecaid-finder-card__step-label" for="finder-q2">
+                                {{#if
+                                theme_settings.custom_finder_step2_label}}{{theme_settings.custom_finder_step2_label}}{{else}}What
+                                best describes your erectile dysfunction?{{/if}}
+                            </label>
+                        </div>
+                        <div class="erecaid-finder-card__select-wrap">
+                            <select id="finder-q2" name="ed_severity" class="erecaid-finder-card__select"
+                                aria-label="ED Severity">
+                                <option value="" selected disabled>Select an option</option>
+                                <option value="none">None</option>
+                                <option value="mild">Mild</option>
+                                <option value="moderate">Moderate</option>
+                                <option value="severe">Severe</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    {{!-- Chevron Separator --}}
+                    <div class="erecaid-finder-card__separator" aria-hidden="true">
+                        <svg width="7" height="12" viewBox="0 0 7 12" fill="none">
+                            <path d="M1 1L6 6L1 11" stroke="#002d62" stroke-width="1.8" stroke-linecap="round"
+                                stroke-linejoin="round" />
+                        </svg>
+                    </div>
+
+                    {{!-- Question 3 Box --}}
+                    <div class="erecaid-finder-card__step-box" data-step="3">
+                        <div class="erecaid-finder-card__step-header">
+                            <span class="erecaid-finder-card__step-num">3</span>
+                            <label class="erecaid-finder-card__step-label" for="finder-q3">
+                                {{#if
+                                theme_settings.custom_finder_step3_label}}{{theme_settings.custom_finder_step3_label}}{{else}}Which
+                                type of pump would you prefer?{{/if}}
+                            </label>
+                        </div>
+                        <div class="erecaid-finder-card__select-wrap">
+                            <select id="finder-q3" name="pump_type" class="erecaid-finder-card__select"
+                                aria-label="Pump Type">
+                                <option value="" selected disabled>Select an option</option>
+                                <option value="manual">Manual</option>
+                                <option value="battery_operated">Battery operated</option>
+                                <option value="rechargeable">Rechargeable</option>
+                                <option value="not_sure">Not sure</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+
+                {{!-- Row 2: Questions 4, 5, 6 --}}
+                <div class="erecaid-finder-card__row">
+                    {{!-- Question 4 Box --}}
+                    <div class="erecaid-finder-card__step-box" data-step="4">
+                        <div class="erecaid-finder-card__step-header">
+                            <span class="erecaid-finder-card__step-num">4</span>
+                            <label class="erecaid-finder-card__step-label" for="finder-q4">
+                                {{#if
+                                theme_settings.custom_finder_step4_label}}{{theme_settings.custom_finder_step4_label}}{{else}}Is
+                                hand strength or dexterity a concern?{{/if}}
+                            </label>
+                        </div>
+                        <div class="erecaid-finder-card__select-wrap">
+                            <select id="finder-q4" name="hand_strength" class="erecaid-finder-card__select"
+                                aria-label="Hand Strength">
+                                <option value="" selected disabled>Select an option</option>
+                                <option value="yes">Yes</option>
+                                <option value="no">No</option>
+                                <option value="not_sure">Not sure</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    {{!-- Chevron Separator --}}
+                    <div class="erecaid-finder-card__separator" aria-hidden="true">
+                        <svg width="7" height="12" viewBox="0 0 7 12" fill="none">
+                            <path d="M1 1L6 6L1 11" stroke="#002d62" stroke-width="1.8" stroke-linecap="round"
+                                stroke-linejoin="round" />
+                        </svg>
+                    </div>
+
+                    {{!-- Question 5 Box --}}
+                    <div class="erecaid-finder-card__step-box" data-step="5">
+                        <div class="erecaid-finder-card__step-header">
+                            <span class="erecaid-finder-card__step-num">5</span>
+                            <label class="erecaid-finder-card__step-label" for="finder-q5">
+                                {{#if
+                                theme_settings.custom_finder_step5_label}}{{theme_settings.custom_finder_step5_label}}{{else}}What
+                                is your preferred budget?{{/if}}
+                            </label>
+                        </div>
+                        <div class="erecaid-finder-card__select-wrap">
+                            <select id="finder-q5" name="budget" class="erecaid-finder-card__select"
+                                aria-label="Budget">
+                                <option value="" selected disabled>Select an option</option>
+                                <option value="under_150">Under $150</option>
+                                <option value="150_300">$150–$300</option>
+                                <option value="over_300">Over $300</option>
+                                <option value="flexible">Flexible</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    {{!-- Chevron Separator --}}
+                    <div class="erecaid-finder-card__separator" aria-hidden="true">
+                        <svg width="7" height="12" viewBox="0 0 7 12" fill="none">
+                            <path d="M1 1L6 6L1 11" stroke="#002d62" stroke-width="1.8" stroke-linecap="round"
+                                stroke-linejoin="round" />
+                        </svg>
+                    </div>
+
+                    {{!-- Question 6 Box --}}
+                    <div class="erecaid-finder-card__step-box" data-step="6">
+                        <div class="erecaid-finder-card__step-header">
+                            <span class="erecaid-finder-card__step-num">6</span>
+                            <label class="erecaid-finder-card__step-label" for="finder-q6">
+                                {{#if
+                                theme_settings.custom_finder_step6_label}}{{theme_settings.custom_finder_step6_label}}{{else}}What
+                                matters most to you?{{/if}}
+                            </label>
+                        </div>
+                        <div class="erecaid-finder-card__select-wrap">
+                            <select id="finder-q6" name="priority" class="erecaid-finder-card__select"
+                                aria-label="Priority">
+                                <option value="" selected disabled>Select an option</option>
+                                <option value="ease_of_use">Ease of use</option>
+                                <option value="lowest_price">Lowest price</option>
+                                <option value="warranty_support">Warranty and support</option>
+                                <option value="manual_and_powered">Manual and powered options</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+
+                {{!-- Footer Action Bar: Status / Counter (Left) + Submit Button (Right) --}}
+                <div class="erecaid-finder-card__footer">
+                    <div class="erecaid-finder-card__status" data-finder-status>
+                        <span class="erecaid-finder-card__status-dot" aria-hidden="true"></span>
+                        <span class="erecaid-finder-card__status-text" data-finder-status-text>Select your preferences
+                            above for personalized recommendations.</span>
+                        <span class="erecaid-finder-card__status-count" data-finder-status-count>(<strong>0</strong> of
+                            6 answered)</span>
+                    </div>
+
+                    <div class="erecaid-finder-card__action">
+                        <button type="submit" class="erecaid-finder-card__btn" data-finder-submit>
+                            <span data-finder-btn-text>{{#if
+                                theme_settings.custom_finder_btn_text}}{{theme_settings.custom_finder_btn_text}}{{else}}Find
+                                My Pump{{/if}}</span>
+                            <span class="erecaid-finder-card__btn-arrow">&rarr;</span>
+                        </button>
+                    </div>
+                </div>
+            </form>
+        </div>
+
+        {{!-- =============================================================
+        DYNAMIC RECOMMENDATION RESULTS PANEL
+        Revealed smoothly on click of "Find My Pump"
+        ============================================================= --}}
+        <div class="erecaid-finder-results" data-finder-results style="display: none;" aria-live="polite">
+            <div class="erecaid-finder-results__header">
+                <div class="erecaid-finder-results__title-wrap">
+                    <span class="erecaid-finder-results__kicker">
+                        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                            stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path>
+                            <polyline points="22 4 12 14.01 9 11.01"></polyline>
+                        </svg>
+                        Personalized Clinical Recommendation
+                    </span>
+                    <h3 class="erecaid-finder-results__title">Your Recommended System</h3>
+                    <p class="erecaid-finder-results__sub">Based on your answers, here is the best vacuum erection
+                        device for your specific requirements:</p>
+                </div>
+
+                <button type="button" class="erecaid-finder-results__reset-btn" data-finder-reset
+                    title="Clear selections and retake quiz">
+                    <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"
+                        stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M3 12a9 9 0 1 0 9-9 9.75 9.75 0 0 0-6.74 2.74L3 8" />
+                        <path d="M3 3v5h5" />
+                    </svg>
+                    <span>Retake Quiz</span>
+                </button>
+            </div>
+
+            {{!-- Hero Match Display (Populated by JavaScript) --}}
+            <div class="erecaid-hero-match-wrap" data-finder-hero-target></div>
+
+            {{!-- Alternative Matches (Populated by JavaScript) --}}
+            <div class="erecaid-finder-alternatives" data-finder-alt-section>
+                <h4 class="erecaid-finder-alternatives__title">Other Great Options to Compare</h4>
+                <div class="erecaid-finder-alternatives__grid" data-finder-alt-grid></div>
+            </div>
+
+            {{!-- Footer Explore Link --}}
+            <div class="erecaid-finder-results__footer">
+                <span class="erecaid-finder-results__footer-text">Want to compare all systems and replacement
+                    parts?</span>
+                <a href="{{#if theme_settings.custom_finder_btn_url}}{{theme_settings.custom_finder_btn_url}}{{else}}/erectile-dysfunction-vacuum-erection-pumps/{{/if}}"
+                    class="erecaid-finder-results__footer-link">
+                    Browse All ED Pumps &amp; Systems &rarr;
+                </a>
+            </div>
+        </div>
+    </div>
+</section>
+
+<script>
+    (function () {
+        // -------------------------------------------------------------------------
+        // BASE PRODUCT CATALOG & CLINICAL MATRIX
+        // -------------------------------------------------------------------------
+        var PUMP_CATALOG = [
+            {
+                id: 'osbon-esteem-manual',
+                name: 'Timm Medical Osbon ErecAid Esteem Manual Vacuum Erection Pump',
+                shortName: 'Osbon ErecAid Esteem Manual',
+                url: '/timm-medical-osbon-erecaid-esteem-manual-vacuum-erection-pump/',
+                image: 'https://cdn11.bigcommerce.com/s-xm5229z/images/stencil/608x608/products/29/433/Timm_OsbonEsteemManual_03__63146.1775801724.jpg',
+                price: '$274.00',
+                rating: 5,
+                reviewCount: 48,
+                pumpType: 'manual',
+                isAutomatic: false,
+                isRechargeable: false,
+                handFriendly: false,
+                budget: '150_300',
+                prostate: true,
+                warrantyYears: 5,
+                hasCombo: false,
+                badge: 'Top Urology Recommendation',
+                defaultBullets: [
+                    '#1 Doctor & urologist recommended system for penile rehabilitation',
+                    'Clinically proven 90%+ success rate for erectile dysfunction',
+                    'Ergonomic manual lever action with safety release valve',
+                    'Backed by 5-year full manufacturer warranty & 90-day return policy'
+                ]
+            },
+            {
+                id: 'osbon-esteem-battery',
+                name: 'Timm Medical Osbon ErecAid Esteem Battery Vacuum Erection Pump',
+                shortName: 'Osbon ErecAid Esteem Battery',
+                url: '/timm-medical-osbon-erecaid-esteem-battery-vacuum-erection-pump/',
+                image: 'https://cdn11.bigcommerce.com/s-xm5229z/images/stencil/608x608/products/31/431/Timm_OsbonEsteemAuto_03__10544.1770188774.jpg',
+                price: '$329.00',
+                rating: 5,
+                reviewCount: 30,
+                pumpType: 'battery_operated',
+                isAutomatic: true,
+                isRechargeable: false,
+                handFriendly: true,
+                budget: 'over_300',
+                prostate: true,
+                warrantyYears: 5,
+                hasCombo: false,
+                badge: 'Best for Hand Strength & Ease of Use',
+                defaultBullets: [
+                    'Effortless motorized push-button operation — zero manual pumping',
+                    'Ideal for arthritis, hand weakness, or limited dexterity',
+                    'Complete medical-grade system with multiple ring sizes & carrying case',
+                    'Backed by 5-year full manufacturer warranty & clinical support'
+                ]
+            },
+            {
+                id: 'edp-max-rc',
+                name: 'EDP MAX Rc Rechargeable Automatic Pump',
+                shortName: 'EDP MAX Rc Rechargeable',
+                url: '/edp-max-rc-rechargeable-automatic-pump/',
+                image: 'https://cdn11.bigcommerce.com/s-xm5229z/images/stencil/608x608/products/166/483/MaxComponents__55550.1712590042.png',
+                price: '$295.00',
+                rating: 5,
+                reviewCount: 26,
+                pumpType: 'rechargeable',
+                isAutomatic: true,
+                isRechargeable: true,
+                handFriendly: true,
+                budget: '150_300',
+                prostate: true,
+                warrantyYears: 1,
+                hasCombo: false,
+                badge: 'Most Modern Rechargeable System',
+                defaultBullets: [
+                    'Modern USB-rechargeable electric motor — no batteries to replace',
+                    'Smooth motorized vacuum with instant one-touch safety release',
+                    'Effortless automatic operation, ideal for limited hand strength',
+                    'Complete kit with durable cylinder, comfortable sizing rings & charger'
+                ]
+            },
+            {
+                id: 'edp-combo',
+                name: 'EDP Deluxe Manual & Battery Combo Erection Pump',
+                shortName: 'EDP Deluxe Manual & Battery Combo',
+                url: '/edp-deluxe-manual-battery-combo-erection-pump/',
+                image: 'https://cdn11.bigcommerce.com/s-xm5229z/images/stencil/608x608/products/127/400/EDP_Deluxe___58087.1593196143.jpg',
+                price: '$199.00',
+                rating: 5,
+                reviewCount: 34,
+                pumpType: 'battery_operated',
+                isAutomatic: true,
+                isRechargeable: false,
+                handFriendly: true,
+                budget: '150_300',
+                prostate: true,
+                warrantyYears: 1,
+                hasCombo: true,
+                badge: 'Best Value 2-in-1 Dual Power Combo',
+                defaultBullets: [
+                    'Includes BOTH battery-powered AND manual pump heads in one kit',
+                    'Total versatility: motorized ease at home, manual control for travel',
+                    'Outstanding $199 value — two complete systems in one',
+                    'Includes sizing rings, loading cone, medical lube & discreet case'
+                ]
+            },
+            {
+                id: 'edp-manual',
+                name: 'EDP Manual Pump System Erection Pump Device',
+                shortName: 'EDP Manual Pump System',
+                url: '/edp-manual-pump-system-erection-pump-device/',
+                image: 'https://cdn11.bigcommerce.com/s-xm5229z/images/stencil/608x608/products/128/390/EDP_Manual__61795.1712694947.jpg',
+                price: '$149.99',
+                rating: 5,
+                reviewCount: 22,
+                pumpType: 'manual',
+                isAutomatic: false,
+                isRechargeable: false,
+                handFriendly: false,
+                budget: 'under_150',
+                prostate: false,
+                warrantyYears: 1,
+                hasCombo: false,
+                badge: 'Top Value Manual System',
+                defaultBullets: [
+                    'High-grade manual pump system under $150',
+                    'Easy-squeeze trigger handle with quick-release vacuum lock',
+                    'Includes custom penile tension rings and medical lubricant',
+                    'Straightforward, dependable, and 100% user-controlled'
+                ]
+            },
+            {
+                id: 'edp-mos100',
+                name: 'EDP MOS100 Manual Erection Pump',
+                shortName: 'EDP MOS100 Starter Pump',
+                url: '/edp-mos100/',
+                image: 'https://cdn11.bigcommerce.com/s-xm5229z/images/stencil/608x608/products/171/477/MOS100__43027.1709666410.jpg',
+                price: '$99.00',
+                rating: 5,
+                reviewCount: 19,
+                pumpType: 'manual',
+                isAutomatic: false,
+                isRechargeable: false,
+                handFriendly: false,
+                budget: 'under_150',
+                prostate: false,
+                warrantyYears: 1,
+                hasCombo: false,
+                badge: 'Most Affordable Starter System',
+                defaultBullets: [
+                    'Best entry-level price at only $99.00',
+                    'Ergonomic squeeze bulb manual pump with safety relief',
+                    'Includes tension rings and clear measurement cylinder',
+                    'Affordable, simple, and effective for starter ED therapy'
+                ]
+            }
+        ];
+
+        // -------------------------------------------------------------------------
+        // 100% DYNAMIC STORE HYDRATION (Pulls Live Prices & Images from BigCommerce)
+        // -------------------------------------------------------------------------
+        function hydrateFromLiveStore() {
+            var liveElements = document.querySelectorAll('[data-live-prod]');
+            if (!liveElements || liveElements.length === 0) return;
+
+            liveElements.forEach(function (el) {
+                var name = el.getAttribute('data-name') || '';
+                var price = el.getAttribute('data-price') || '';
+                var image = el.getAttribute('data-image') || '';
+                var url = el.getAttribute('data-url') || '';
+                var rating = el.getAttribute('data-rating');
+                var reviews = el.getAttribute('data-reviews');
+
+                PUMP_CATALOG.forEach(function (item) {
+                    var isMatch = false;
+                    if (item.id === 'osbon-esteem-manual' && name.indexOf('Esteem Manual') !== -1) isMatch = true;
+                    else if (item.id === 'osbon-esteem-battery' && (name.indexOf('Esteem Battery') !== -1 || name.indexOf('Esteem Auto') !== -1)) isMatch = true;
+                    else if (item.id === 'edp-max-rc' && (name.indexOf('MAX Rc') !== -1 || name.indexOf('Max Rc') !== -1)) isMatch = true;
+                    else if (item.id === 'edp-combo' && name.indexOf('Combo') !== -1) isMatch = true;
+                    else if (item.id === 'edp-mos100' && name.indexOf('MOS100') !== -1) isMatch = true;
+                    else if (item.id === 'edp-manual' && (name.indexOf('EDP Manual') !== -1 || name.indexOf('Manual Pump System') !== -1)) isMatch = true;
+
+                    if (isMatch) {
+                        if (price && price.trim() !== '') item.price = price;
+                        if (image && image.trim() !== '' && image.indexOf('ProductDefault') === -1) item.image = image;
+                        if (url && url.trim() !== '') item.url = url;
+                        if (name && name.trim() !== '') item.name = name;
+                        if (rating && Number(rating) > 0) item.rating = Number(rating);
+                        if (reviews && Number(reviews) > 0) item.reviewCount = Number(reviews);
+                    }
+                });
+            });
+        }
+
+        // Run dynamic hydration immediately on DOM ready
+        hydrateFromLiveStore();
+
+        var form = document.querySelector('[data-erecaid-finder-form]');
+        if (!form) return;
+
+        var selects = form.querySelectorAll('.erecaid-finder-card__select');
+        var statusText = form.querySelector('[data-finder-status-text]');
+        var statusCount = form.querySelector('[data-finder-status-count] strong');
+        var btnTextSpan = form.querySelector('[data-finder-btn-text]');
+        var resultsContainer = document.querySelector('[data-finder-results]');
+        var heroTarget = document.querySelector('[data-finder-hero-target]');
+        var altGrid = document.querySelector('[data-finder-alt-grid]');
+        var resetBtn = document.querySelector('[data-finder-reset]');
+
+        // Checkmark SVG helper
+        var checkSvg = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>';
+
+        // Update answered indicators & progress counter
+        function updateProgress() {
+            var answeredCount = 0;
+            selects.forEach(function (sel) {
+                var stepBox = sel.closest('.erecaid-finder-card__step-box');
+                if (sel.value && sel.value !== '') {
+                    answeredCount++;
+                    if (stepBox) stepBox.classList.add('is-answered');
+                } else {
+                    if (stepBox) stepBox.classList.remove('is-answered');
+                }
+            });
+
+            if (statusCount) {
+                statusCount.textContent = answeredCount;
+            }
+
+            if (statusText) {
+                if (answeredCount === 6) {
+                    statusText.textContent = 'All 6 preferences selected! Ready to view your match.';
+                } else if (answeredCount > 0) {
+                    statusText.textContent = answeredCount + ' preference' + (answeredCount > 1 ? 's' : '') + ' selected.';
+                } else {
+                    statusText.textContent = 'Select your preferences above for personalized recommendations.';
+                }
+            }
+
+            if (btnTextSpan) {
+                if (resultsContainer && resultsContainer.style.display !== 'none') {
+                    btnTextSpan.textContent = 'Update My Recommendation';
+                } else {
+                    btnTextSpan.textContent = 'Find My Pump';
+                }
+            }
+        }
+
+        // Recommendation Engine: Scores pumps dynamically according to user preferences
+        function calculateRecommendations(answers) {
+            var primary_reason = answers.primary_reason || '';
+            var ed_severity = answers.ed_severity || '';
+            var pump_type = answers.pump_type || '';
+            var hand_strength = answers.hand_strength || '';
+            var budget = answers.budget || '';
+            var priority = answers.priority || '';
+
+            var scored = PUMP_CATALOG.map(function (pump) {
+                var score = 10; // base score
+                var reasons = [];
+
+                // 1. Primary Reason
+                if (primary_reason === 'prostate_therapy') {
+                    if (pump.prostate) {
+                        score += pump.id.indexOf('osbon') !== -1 ? 14 : 8;
+                        reasons.push('Urologist recommended for penile rehabilitation & post-prostate recovery');
+                    }
+                } else if (primary_reason === 'both') {
+                    if (pump.prostate) {
+                        score += 10;
+                        reasons.push('Clinically proven for both ED management and post-prostate therapy');
+                    }
+                } else if (primary_reason === 'erectile_dysfunction') {
+                    score += 5;
+                    reasons.push('Engineered for dependable, high-efficiency erectile dysfunction therapy');
+                }
+
+                // 2. ED Severity
+                if (ed_severity === 'severe') {
+                    if (pump.id.indexOf('osbon') !== -1 || pump.id === 'edp-max-rc') {
+                        score += 8;
+                        reasons.push('Medical-grade vacuum power suitable for moderate-to-severe ED');
+                    }
+                } else if (ed_severity === 'mild' || ed_severity === 'none') {
+                    if (pump.budget === 'under_150' || pump.id === 'edp-combo') {
+                        score += 6;
+                        reasons.push('Gentle, easy-to-control suction ideal for mild ED symptoms');
+                    }
+                }
+
+                // 3. Pump Type
+                if (pump_type === 'manual') {
+                    if (pump.pumpType === 'manual' || pump.hasCombo) {
+                        score += pump.pumpType === 'manual' ? 14 : 10;
+                        reasons.push('Full manual squeeze control for personalized pressure at your own pace');
+                    }
+                } else if (pump_type === 'battery_operated') {
+                    if (pump.pumpType === 'battery_operated' || pump.hasCombo) {
+                        score += 14;
+                        reasons.push('Motorized battery operation — convenient, fast, and effortless');
+                    }
+                } else if (pump_type === 'rechargeable') {
+                    if (pump.isRechargeable) {
+                        score += 18;
+                        reasons.push('USB rechargeable motor — convenient with no replacement batteries needed');
+                    }
+                }
+
+                // 4. Hand Strength Concern
+                if (hand_strength === 'yes') {
+                    if (pump.handFriendly) {
+                        score += 16;
+                        reasons.push('Push-button motorized operation eliminates hand fatigue — ideal for arthritis or limited grip');
+                    } else {
+                        score -= 10;
+                    }
+                } else if (hand_strength === 'no') {
+                    if (pump.pumpType === 'manual') {
+                        score += 5;
+                    }
+                }
+
+                // 5. Budget
+                if (budget === 'under_150') {
+                    if (pump.budget === 'under_150') {
+                        score += 18;
+                        reasons.push('Budget-friendly starter system under $150 with complete accessories');
+                    } else {
+                        score -= 8;
+                    }
+                } else if (budget === '150_300') {
+                    if (pump.budget === '150_300') {
+                        score += 14;
+                        reasons.push('Fits within your preferred $150–$300 budget range');
+                    }
+                } else if (budget === 'over_300') {
+                    if (pump.budget === 'over_300') {
+                        score += 14;
+                        reasons.push('Premium medical-grade system with maximum features & clinical warranty');
+                    }
+                }
+
+                // 6. What Matters Most
+                if (priority === 'lowest_price') {
+                    if (pump.id === 'edp-mos100') {
+                        score += 18;
+                        reasons.push('Lowest price complete system in our collection at only ' + pump.price);
+                    } else if (pump.id === 'edp-manual') {
+                        score += 10;
+                    }
+                } else if (priority === 'ease_of_use') {
+                    if (pump.handFriendly) {
+                        score += 14;
+                        reasons.push('Maximum ease of use with effortless one-touch motorized vacuum');
+                    }
+                } else if (priority === 'warranty_support') {
+                    if (pump.warrantyYears >= 5) {
+                        score += 16;
+                        reasons.push('Industry-leading 5-year manufacturer warranty & dedicated urology support');
+                    }
+                } else if (priority === 'manual_and_powered') {
+                    if (pump.hasCombo) {
+                        score += 20;
+                        reasons.push('Includes BOTH manual and powered battery heads in a single versatile kit');
+                    }
+                }
+
+                // Fallback to default bullets if reasons are few
+                if (reasons.length < 3) {
+                    pump.defaultBullets.forEach(function (b) {
+                        if (reasons.indexOf(b) === -1 && reasons.length < 4) {
+                            reasons.push(b);
+                        }
+                    });
+                }
+
+                return {
+                    pump: pump,
+                    score: score,
+                    reasons: reasons.slice(0, 4)
+                };
+            });
+
+            scored.sort(function (a, b) {
+                return b.score - a.score;
+            });
+
+            return scored;
+        }
+
+        // Render the Top Match & Runner-Up Cards into the DOM
+        function renderResults(scoredList) {
+            if (!resultsContainer || !heroTarget) return;
+
+            // Re-hydrate latest store data before rendering
+            hydrateFromLiveStore();
+
+            var winnerObj = scoredList[0];
+            var winner = winnerObj.pump;
+            var winnerReasons = winnerObj.reasons;
+
+            var reasonsHtml = winnerReasons.map(function (r) {
+                return '<li class="erecaid-hero-card__reason-item">' + checkSvg + '<span>' + r + '</span></li>';
+            }).join('');
+
+            var heroHtml = [
+                '<div class="erecaid-hero-card">',
+                '    <div class="erecaid-hero-card__badge-bar">',
+                '        <span class="erecaid-hero-card__badge">',
+                '            <svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>',
+                '            ' + winner.badge,
+                '        </span>',
+                '        <span class="erecaid-hero-card__match-label">&#10003; #1 Personalized Best Match</span>',
+                '    </div>',
+                '    <div class="erecaid-hero-card__content">',
+                '        <div class="erecaid-hero-card__media">',
+                '            <a href="' + winner.url + '" title="' + winner.name + '">',
+                '                <img src="' + winner.image + '" alt="' + winner.name + '" loading="lazy">',
+                '            </a>',
+                '        </div>',
+                '        <div class="erecaid-hero-card__info">',
+                '            <h4 class="erecaid-hero-card__title">',
+                '                <a href="' + winner.url + '">' + winner.name + '</a>',
+                '            </h4>',
+                '            <div class="erecaid-hero-card__meta">',
+                '                <div class="erecaid-hero-card__rating">',
+                '                    <span class="erecaid-hero-card__stars">&#9733;&#9733;&#9733;&#9733;&#9733;</span>',
+                '                    <span class="erecaid-hero-card__reviews">' + winner.reviewCount + ' Reviews (Verified)</span>',
+                '                </div>',
+                '                <div class="erecaid-hero-card__price">' + winner.price + '</div>',
+                '            </div>',
+                '            <div class="erecaid-hero-card__reasons-wrap">',
+                '                <div class="erecaid-hero-card__reasons-heading">Why this is your best match:</div>',
+                '                <ul class="erecaid-hero-card__reasons-list">',
+                '                    ' + reasonsHtml,
+                '                </ul>',
+                '            </div>',
+                '            <div class="erecaid-hero-card__actions">',
+                '                <a href="' + winner.url + '" class="erecaid-hero-card__btn erecaid-hero-card__btn--primary">',
+                '                    View Recommended Pump &rarr;',
+                '                </a>',
+                '                <a href="tel:866-496-7359" class="erecaid-hero-card__btn erecaid-hero-card__btn--secondary">',
+                '                    <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor"><path d="M6.62 10.79a15.053 15.053 0 006.59 6.59l2.2-2.2a1 1 0 011.01-.24c1.12.37 2.33.57 3.58.57a1 1 0 011 1V20a1 1 0 01-1 1A17 17 0 013 4a1 1 0 011-1h3.5a1 1 0 011 1c0 1.25.2 2.45.57 3.58a1 1 0 01-.25 1.01l-2.2 2.2z"/></svg>',
+                '                    Speak to a Specialist: 866-496-7359',
+                '                </a>',
+                '            </div>',
+                '        </div>',
+                '    </div>',
+                '</div>'
+            ].join('\n');
+
+            heroTarget.innerHTML = heroHtml;
+
+            // Render Runner-Ups (2 alternatives)
+            if (altGrid) {
+                var alts = scoredList.slice(1, 3);
+                var altsHtml = alts.map(function (item) {
+                    var p = item.pump;
+                    var bulletsHtml = p.defaultBullets.slice(0, 2).map(function (b) {
+                        return '<li class="erecaid-alt-card__bullet">' + checkSvg + '<span>' + b + '</span></li>';
+                    }).join('');
+
+                    return [
+                        '<div class="erecaid-alt-card">',
+                        '    <div>',
+                        '        <div class="erecaid-alt-card__top">',
+                        '            <div class="erecaid-alt-card__media">',
+                        '                <a href="' + p.url + '"><img src="' + p.image + '" alt="' + p.name + '" loading="lazy"></a>',
+                        '            </div>',
+                        '            <div class="erecaid-alt-card__heading-wrap">',
+                        '                <span class="erecaid-alt-card__badge">' + p.badge + '</span>',
+                        '                <h5 class="erecaid-alt-card__title"><a href="' + p.url + '">' + p.shortName + '</a></h5>',
+                        '            </div>',
+                        '        </div>',
+                        '        <div class="erecaid-alt-card__meta">',
+                        '            <span class="erecaid-alt-card__stars">&#9733;&#9733;&#9733;&#9733;&#9733;</span>',
+                        '            <span class="erecaid-alt-card__price">' + p.price + '</span>',
+                        '        </div>',
+                        '        <ul class="erecaid-alt-card__bullets">',
+                        '            ' + bulletsHtml,
+                        '        </ul>',
+                        '    </div>',
+                        '    <a href="' + p.url + '" class="erecaid-alt-card__btn">View Product &rarr;</a>',
+                        '</div>'
+                    ].join('\n');
+                }).join('');
+
+                altGrid.innerHTML = altsHtml;
+            }
+
+            // Reveal results container
+            resultsContainer.style.display = 'block';
+
+            // Smooth scroll to results
+            setTimeout(function () {
+                resultsContainer.scrollIntoView({ behavior: 'smooth', block: 'start' });
+            }, 80);
+
+            if (btnTextSpan) {
+                btnTextSpan.textContent = 'Update My Recommendation';
+            }
+        }
+
+        // Submit handler: Run recommendation engine in-place
+        form.addEventListener('submit', function (e) {
+            e.preventDefault();
+
+            var params = {};
+            selects.forEach(function (sel) {
+                if (sel.value) {
+                    params[sel.name] = sel.value;
+                }
+            });
+
+            // Save selected preferences to sessionStorage
+            try {
+                if (typeof sessionStorage !== 'undefined') {
+                    sessionStorage.setItem('erecaid_pump_finder_prefs', JSON.stringify(params));
+                }
+            } catch (err) { }
+
+            // Calculate and display recommendations
+            var scoredList = calculateRecommendations(params);
+            renderResults(scoredList);
+        });
+
+        // Reset handler: Clear selections and hide results
+        if (resetBtn) {
+            resetBtn.addEventListener('click', function (e) {
+                e.preventDefault();
+                selects.forEach(function (sel) {
+                    sel.selectedIndex = 0;
+                });
+                try {
+                    if (typeof sessionStorage !== 'undefined') {
+                        sessionStorage.removeItem('erecaid_pump_finder_prefs');
+                    }
+                } catch (err) { }
+
+                updateProgress();
+                if (resultsContainer) {
+                    resultsContainer.style.display = 'none';
+                }
+                if (btnTextSpan) {
+                    btnTextSpan.textContent = 'Find My Pump';
+                }
+
+                // Scroll back to questionnaire
+                form.scrollIntoView({ behavior: 'smooth', block: 'start' });
+            });
+        }
+
+        // Live update when selects change
+        selects.forEach(function (sel) {
+            sel.addEventListener('change', function () {
+                updateProgress();
+                // If results are already showing, auto-update them for live responsiveness
+                if (resultsContainer && resultsContainer.style.display !== 'none') {
+                    var params = {};
+                    selects.forEach(function (s) {
+                        if (s.value) params[s.name] = s.value;
+                    });
+                    var scoredList = calculateRecommendations(params);
+                    renderResults(scoredList);
+                }
+            });
+        });
+
+        // Restore saved preferences from sessionStorage or URL query params on page load
+        (function restoreState() {
+            var params = {};
+
+            // 1. Check URL query params first
+            try {
+                var urlParams = new URLSearchParams(window.location.search);
+                urlParams.forEach(function (val, key) {
+                    params[key] = val;
+                });
+            } catch (e) { }
+
+            // 2. Check sessionStorage if no URL params
+            if (Object.keys(params).length === 0) {
+                try {
+                    if (typeof sessionStorage !== 'undefined') {
+                        var stored = sessionStorage.getItem('erecaid_pump_finder_prefs');
+                        if (stored) {
+                            params = JSON.parse(stored);
+                        }
+                    }
+                } catch (e) { }
+            }
+
+            var hasAnyValue = false;
+            selects.forEach(function (sel) {
+                if (params[sel.name]) {
+                    sel.value = params[sel.name];
+                    hasAnyValue = true;
+                }
+            });
+
+            updateProgress();
+
+            // If URL explicitly had filter params, auto-calculate and show match
+            if (hasAnyValue && window.location.search.indexOf('primary_reason') !== -1) {
+                var scoredList = calculateRecommendations(params);
+                renderResults(scoredList);
+            }
+        })();
+    })();
+</script>

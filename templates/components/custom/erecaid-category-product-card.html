@@ -1,0 +1,120 @@
+<article class="card erecaid-cat-card {{#if alternate}}card--alternate{{/if}}"
+    {{#if settings.data_tag_enabled}}
+        data-event-type="{{event}}"
+        data-entity-id="{{id}}"
+        data-position="{{position}}"
+        data-name="{{name}}"
+        data-product-category="{{#each category}}{{#if @last}}{{this}}{{else}}{{this}}, {{/if}}{{/each}}"
+        data-product-brand="{{brand.name}}"
+        data-product-price="
+            {{#or customer (unless settings.hide_price_from_guests)}}
+                {{#if price.with_tax}}
+                    {{price.with_tax.value}}
+                {{else}}
+                    {{price.without_tax.value}}
+                {{/if}}
+            {{else}}
+                {{lang 'common.login_for_pricing'}}
+            {{/or}}"
+    {{/if}}
+>
+    <figure class="card-figure erecaid-cat-card__figure">
+        {{!-- Top Left: Royal Blue On Sale Badge --}}
+        {{#or price.non_sale_price_with_tax price.non_sale_price_without_tax}}
+            <div class="erecaid-cat-card__badge-sale">On sale</div>
+        {{/or}}
+
+        {{!-- Top Right: Blue QuickView / Expand Button (4 Corner Brackets) --}}
+        <a class="erecaid-cat-card__quickview quickview" data-product-id="{{id}}" title="{{lang 'products.quick_view'}}" aria-label="{{lang 'products.quick_view'}}">
+            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="#0055ad" stroke-width="2.3" stroke-linecap="round" stroke-linejoin="round">
+                <polyline points="15 3 21 3 21 9"></polyline>
+                <polyline points="9 21 3 21 3 15"></polyline>
+                <polyline points="21 15 21 21 15 21"></polyline>
+                <polyline points="3 9 3 3 9 3"></polyline>
+            </svg>
+        </a>
+
+        {{!-- Product Image --}}
+        <a href="{{url}}" class="erecaid-cat-card__img-link" {{#if settings.data_tag_enabled}} data-event-type="product-click" {{/if}} data-instantload>
+            <div class="card-img-container erecaid-cat-card__img-container">
+                {{> components/common/responsive-img
+                    image=image
+                    class="card-image erecaid-cat-card__img"
+                    fallback_size='600x600'
+                    lazyload=theme_settings.lazyload_mode
+                    default_image=theme_settings.default_image_product
+                    default_alt=name
+                    sizes="(min-width: 1200px) 380px, (min-width: 801px) 33vw, 50vw"
+                }}
+            </div>
+        </a>
+    </figure>
+
+    <div class="card-body erecaid-cat-card__body">
+        {{!-- Top Meta Row: Brand on Left, 5 Gold Stars on Right --}}
+        <div class="erecaid-cat-card__meta-row">
+            <span class="erecaid-cat-card__brand">{{#if brand.name}}{{brand.name}}{{else}}EDP{{/if}}</span>
+            <div class="erecaid-cat-card__stars" aria-label="5 out of 5 stars">
+                <svg class="erecaid-cat-card__star" width="12" height="12" viewBox="0 0 20 20" fill="#f59e0b"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+                <svg class="erecaid-cat-card__star" width="12" height="12" viewBox="0 0 20 20" fill="#f59e0b"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+                <svg class="erecaid-cat-card__star" width="12" height="12" viewBox="0 0 20 20" fill="#f59e0b"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+                <svg class="erecaid-cat-card__star" width="12" height="12" viewBox="0 0 20 20" fill="#f59e0b"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+                <svg class="erecaid-cat-card__star" width="12" height="12" viewBox="0 0 20 20" fill="#f59e0b"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+            </div>
+        </div>
+
+        {{!-- Middle: Product Title in Deep Navy --}}
+        <h3 class="erecaid-cat-card__title">
+            <a href="{{url}}" data-instantload {{#if settings.data_tag_enabled}} data-event-type="product-click" {{/if}}>{{name}}</a>
+        </h3>
+
+        {{!-- Bottom Row: Price on Left, Circular Blue Cart Button on Right --}}
+        <div class="erecaid-cat-card__bottom-row">
+            <div class="erecaid-cat-card__price-wrap">
+                {{#if price.rrp_without_tax}}
+                    <div class="erecaid-cat-card__msrp">MSRP: <span class="erecaid-cat-card__strikethrough">{{price.rrp_without_tax.formatted}}</span></div>
+                {{else if price.rrp_with_tax}}
+                    <div class="erecaid-cat-card__msrp">MSRP: <span class="erecaid-cat-card__strikethrough">{{price.rrp_with_tax.formatted}}</span></div>
+                {{/if}}
+
+                <div class="erecaid-cat-card__price-line">
+                    {{#or price.non_sale_price_without_tax price.non_sale_price_with_tax}}
+                        <span class="erecaid-cat-card__now">Now: <strong>{{#if price.without_tax}}{{price.without_tax.formatted}}{{else}}{{price.with_tax.formatted}}{{/if}}</strong></span>
+                        <span class="erecaid-cat-card__was">Was: <span class="erecaid-cat-card__strikethrough">{{#if price.non_sale_price_without_tax}}{{price.non_sale_price_without_tax.formatted}}{{else}}{{price.non_sale_price_with_tax.formatted}}{{/if}}</span></span>
+                    {{else}}
+                        <span class="erecaid-cat-card__now">Now: <strong>{{#if price.without_tax}}{{price.without_tax.formatted}}{{else if price.with_tax}}{{price.with_tax.formatted}}{{else}}{{> components/products/price price=price customer=customer}}{{/if}}</strong></span>
+                    {{/or}}
+                </div>
+            </div>
+
+            {{!-- Circular Blue Cart Action Button --}}
+            <div class="erecaid-cat-card__action">
+                {{#if has_options}}
+                    <a href="{{url}}" class="erecaid-cat-card__cart-btn" aria-label="Choose options for {{name}}" title="Choose options">
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#ffffff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <circle cx="9" cy="21" r="1.5"></circle>
+                            <circle cx="19" cy="21" r="1.5"></circle>
+                            <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path>
+                        </svg>
+                    </a>
+                {{else if add_to_cart_url}}
+                    <a href="{{add_to_cart_url}}" class="erecaid-cat-card__cart-btn" aria-label="Add {{name}} to cart" title="Add to cart" data-emthemesmodez-cart-item-add>
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#ffffff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <circle cx="9" cy="21" r="1.5"></circle>
+                            <circle cx="19" cy="21" r="1.5"></circle>
+                            <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path>
+                        </svg>
+                    </a>
+                {{else}}
+                    <a href="{{url}}" class="erecaid-cat-card__cart-btn" aria-label="View {{name}}" title="View product">
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#ffffff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <circle cx="9" cy="21" r="1.5"></circle>
+                            <circle cx="19" cy="21" r="1.5"></circle>
+                            <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path>
+                        </svg>
+                    </a>
+                {{/if}}
+            </div>
+        </div>
+    </div>
+</article>

@@ -122,6 +122,11 @@ export default function (context) {
                 product = new ProductDetails($quickView, newContext);
             }
 
+            modal.$content.find('.productView-imageCarousel-main').css('height', '');
+            setTimeout(() => {
+                modal.$content.find('.productView-imageCarousel-main').css('height', '');
+            }, 100);
+
             $('body').trigger('loaded.quickview', [product]);
 
             // Supermarket: Track recently viewed products

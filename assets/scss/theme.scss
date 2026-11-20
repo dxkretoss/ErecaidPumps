@@ -102,6 +102,7 @@
 @import "custom/erecaid-pump-finder";
 @import "custom/erecaid-cta-banner";
 @import "custom/erecaid-footer";
+@import "custom/erecaid-category";
 
 // Remove default 3rem body bottom margin/padding and unused container on ErecAid homepage
 .papaSupermarket-page--pages-home,
@@ -110,7 +111,7 @@
         margin-bottom: 0 !important;
         padding-bottom: 0 !important;
 
-        > .container {
+        >.container {
             display: none !important;
         }
     }

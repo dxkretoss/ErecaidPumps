@@ -126,12 +126,18 @@
                                     {{#each custom_fields}}
                                         {{#startsWith '__' name}}
                                         {{else}}
-                                            <li>{{name}}: {{{value}}}</li>
+                                            {{#startsWith 'finder_' name}}
+                                            {{else}}
+                                                <li>{{name}}: {{{value}}}</li>
+                                            {{/startsWith}}
                                         {{/startsWith}}
                                     {{/each}}
                                 {{else}}
                                     {{#each custom_fields}}
-                                        <li>{{name}}: {{{value}}}</li>
+                                        {{#startsWith 'finder_' name}}
+                                        {{else}}
+                                            <li>{{name}}: {{{value}}}</li>
+                                        {{/startsWith}}
                                     {{/each}}
                                 {{/if}}
                             </ul>

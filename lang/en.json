@@ -186,7 +186,7 @@
         "next": "Next",
         "sorter": {
             "relevance": "Relevance",
-            "sort_by": "Sort By:",
+            "sort_by": "Sort by:",
             "featured": "Featured Items",
             "top_sellers": "Best Selling",
             "newest": "Newest Items",
@@ -195,7 +195,7 @@
             "reviews": "By Review",
             "price_asc": "Price: Ascending",
             "price_desc": "Price: Descending",
-            "products_per_page": "Products Per Page",
+            "products_per_page": "Products per page",
             "columns": "Columns"
         },
         "loading": "Loading",

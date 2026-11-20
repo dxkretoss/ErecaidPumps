@@ -226,7 +226,9 @@
                 padding: 0 !important;
             }
             .erecaid-header__dropdown-link {
-                display: block !important;
+                display: flex !important;
+                align-items: center !important;
+                justify-content: space-between !important;
                 padding: 10px 24px 10px 32px !important;
                 color: #e2e8f0 !important;
                 font-size: 13.5px !important;
@@ -237,6 +239,36 @@
             .erecaid-header__dropdown-link:hover {
                 color: #ffffff !important;
                 background-color: rgba(255, 255, 255, 0.08) !important;
+            }
+            .erecaid-header__dropdown-sub-arrow {
+                display: inline-block !important;
+                color: #94a3b8 !important;
+                transition: transform 0.2s ease !important;
+                margin-left: 8px !important;
+            }
+            .erecaid-header__dropdown-sub {
+                display: none !important;
+                position: static !important;
+                width: 100% !important;
+                background-color: #04294b !important;
+                box-shadow: none !important;
+                border: none !important;
+                border-radius: 0 !important;
+                padding: 2px 0 6px !important;
+                margin: 0 !important;
+                list-style: none !important;
+            }
+            .erecaid-header__dropdown-sub.is-open {
+                display: block !important;
+            }
+            .erecaid-header__dropdown-sub .erecaid-header__dropdown-link {
+                padding-left: 48px !important;
+                font-size: 13px !important;
+                color: #cbd5e1 !important;
+            }
+            .erecaid-header__dropdown-item.is-sub-open > .erecaid-header__dropdown-link .erecaid-header__dropdown-sub-arrow {
+                transform: rotate(90deg) !important;
+                color: #ffffff !important;
             }
         }
 
@@ -521,29 +553,68 @@
         <div class="container erecaid-header__nav-inner">
 
             {{!-- =========================================================================
-                 DYNAMIC BIGCOMMERCE NAVIGATION (COMMENTED OUT AS REQUESTED)
-                 Uncomment this block below if you ever wish to revert to dynamic BigCommerce categories/pages.
-                 -------------------------------------------------------------------------
-            {{#if categories}}
-                <div class="erecaid-header__cat-dropdown-wrap has-dropdown">
-                    <a class="erecaid-header__cat-dropdown-btn" href="/categories" aria-label="Browse All Categories">
-                        <svg class="erecaid-header__nav-cats-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
-                            <line x1="3" y1="12" x2="21" y2="12"></line>
-                            <line x1="3" y1="6" x2="21" y2="6"></line>
-                            <line x1="3" y1="18" x2="21" y2="18"></line>
-                        </svg>
-                        <span>Categories</span>
-                        <span class="erecaid-header__nav-arrow" aria-hidden="true">⌵</span>
-                    </a>
-                    <ul class="erecaid-header__dropdown erecaid-header__dropdown--catalog">
-                        {{#each categories}}
-                            <li class="erecaid-header__dropdown-item {{#if children}}has-sub{{/if}}">
-                                <a class="erecaid-header__dropdown-link" href="{{url}}">
+                 DYNAMIC BIGCOMMERCE NAVIGATION
+                 Renders store categories and active pages dynamically with full hierarchy.
+                 Falls back to preset medical navigation if context is empty.
+                 ========================================================================= --}}
+            <ul class="erecaid-header__nav-list">
+                {{#if categories}}
+                    {{#each categories}}
+                        <li class="erecaid-header__nav-item {{#if children}}has-dropdown{{/if}}">
+                            <a class="erecaid-header__nav-link" href="{{url}}">
+                                <span>{{name}}</span>
+                                {{#if children}}
+                                    <svg class="erecaid-header__nav-chevron" width="9" height="5" viewBox="0 0 10 6" fill="none" aria-hidden="true">
+                                        <path d="M1 1L5 5L9 1" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+                                    </svg>
+                                {{/if}}
+                            </a>
+                            {{#if children}}
+                                <ul class="erecaid-header__dropdown">
+                                    <li class="erecaid-header__dropdown-item">
+                                        <a class="erecaid-header__dropdown-link" href="{{url}}">All {{name}}</a>
+                                    </li>
+                                    {{#each children}}
+                                        <li class="erecaid-header__dropdown-item {{#if children}}has-sub{{/if}}">
+                                            <a class="erecaid-header__dropdown-link" href="{{url}}">
+                                                <span>{{name}}</span>
+                                                {{#if children}}<span class="erecaid-header__dropdown-sub-arrow">&rsaquo;</span>{{/if}}
+                                            </a>
+                                            {{#if children}}
+                                                <ul class="erecaid-header__dropdown-sub">
+                                                    <li class="erecaid-header__dropdown-item">
+                                                        <a class="erecaid-header__dropdown-link" href="{{url}}">All {{name}}</a>
+                                                    </li>
+                                                    {{#each children}}
+                                                        <li class="erecaid-header__dropdown-item">
+                                                            <a class="erecaid-header__dropdown-link" href="{{url}}">{{name}}</a>
+                                                        </li>
+                                                    {{/each}}
+                                                </ul>
+                                            {{/if}}
+                                        </li>
+                                    {{/each}}
+                                </ul>
+                            {{/if}}
+                        </li>
+                    {{/each}}
+
+                    {{#unless theme_settings.hide_content_navigation}}
+                        {{#each pages}}
+                            <li class="erecaid-header__nav-item {{#if children}}has-dropdown{{/if}}">
+                                <a class="erecaid-header__nav-link" href="{{url}}">
                                     <span>{{name}}</span>
-                                    {{#if children}}<span class="erecaid-header__dropdown-sub-arrow">&rsaquo;</span>{{/if}}
+                                    {{#if children}}
+                                        <svg class="erecaid-header__nav-chevron" width="9" height="5" viewBox="0 0 10 6" fill="none" aria-hidden="true">
+                                            <path d="M1 1L5 5L9 1" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+                                        </svg>
+                                    {{/if}}
                                 </a>
                                 {{#if children}}
-                                    <ul class="erecaid-header__dropdown-sub">
+                                    <ul class="erecaid-header__dropdown">
+                                        <li class="erecaid-header__dropdown-item">
+                                            <a class="erecaid-header__dropdown-link" href="{{url}}">All {{name}}</a>
+                                        </li>
                                         {{#each children}}
                                             <li class="erecaid-header__dropdown-item">
                                                 <a class="erecaid-header__dropdown-link" href="{{url}}">{{name}}</a>
@@ -553,142 +624,139 @@
                                 {{/if}}
                             </li>
                         {{/each}}
-                    </ul>
-                </div>
-            {{/if}}
+                    {{/unless}}
 
-            <ul class="erecaid-header__nav-list">
-                {{#if pages}}
-                    {{#each pages}}
-                        <li class="erecaid-header__nav-item">
-                            <a class="erecaid-header__nav-link" href="{{url}}">{{name}}</a>
-                        </li>
-                    {{/each}}
+                {{else if pages}}
+                    {{#unless theme_settings.hide_content_navigation}}
+                        {{#each pages}}
+                            <li class="erecaid-header__nav-item {{#if children}}has-dropdown{{/if}}">
+                                <a class="erecaid-header__nav-link" href="{{url}}">
+                                    <span>{{name}}</span>
+                                    {{#if children}}
+                                        <svg class="erecaid-header__nav-chevron" width="9" height="5" viewBox="0 0 10 6" fill="none" aria-hidden="true">
+                                            <path d="M1 1L5 5L9 1" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+                                        </svg>
+                                    {{/if}}
+                                </a>
+                                {{#if children}}
+                                    <ul class="erecaid-header__dropdown">
+                                        <li class="erecaid-header__dropdown-item">
+                                            <a class="erecaid-header__dropdown-link" href="{{url}}">All {{name}}</a>
+                                        </li>
+                                        {{#each children}}
+                                            <li class="erecaid-header__dropdown-item">
+                                                <a class="erecaid-header__dropdown-link" href="{{url}}">{{name}}</a>
+                                            </li>
+                                        {{/each}}
+                                    </ul>
+                                {{/if}}
+                            </li>
+                        {{/each}}
+                    {{/unless}}
+
                 {{else}}
-                    <li class="erecaid-header__nav-item"><a class="erecaid-header__nav-link" href="/ed-treatment-guide/">ED Treatment Guide</a></li>
-                    <li class="erecaid-header__nav-item"><a class="erecaid-header__nav-link" href="/prostate-cancer-ed/">Prostate Cancer ED</a></li>
-                    <li class="erecaid-header__nav-item"><a class="erecaid-header__nav-link" href="/diabetes-ed/">Diabetes ED</a></li>
-                    <li class="erecaid-header__nav-item"><a class="erecaid-header__nav-link" href="/contact-us-privacy-policy/">Contact Us/ Privacy Policy</a></li>
-                    <li class="erecaid-header__nav-item"><a class="erecaid-header__nav-link" href="/video-instructions-on-how-to-use-erection-pumps/">Video Instructions On How To Use Erection Pumps</a></li>
-                    <li class="erecaid-header__nav-item"><a class="erecaid-header__nav-link" href="/ed-assist-faq/">ED Assist FAQ</a></li>
-                    <li class="erecaid-header__nav-item"><a class="erecaid-header__nav-link" href="/blogs-about-ed/">Blog's About ED</a></li>
-                    <li class="erecaid-header__nav-item"><a class="erecaid-header__nav-link" href="/shipping-returns/">Shipping &amp; Returns</a></li>
+                    {{!-- Fallback to static items if categories and pages are empty in sandbox/offline --}}
+                    {{!-- 1. ED Pumps --}}
+                    <li class="erecaid-header__nav-item has-dropdown">
+                        <a class="erecaid-header__nav-link" href="/categories">
+                            <span>ED Pumps</span>
+                            <svg class="erecaid-header__nav-chevron" width="9" height="5" viewBox="0 0 10 6" fill="none" aria-hidden="true">
+                                <path d="M1 1L5 5L9 1" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+                            </svg>
+                        </a>
+                        <ul class="erecaid-header__dropdown">
+                            <li class="erecaid-header__dropdown-item"><a class="erecaid-header__dropdown-link" href="/categories">All ED Vacuum Pumps</a></li>
+                            <li class="erecaid-header__dropdown-item"><a class="erecaid-header__dropdown-link" href="/categories">Osbon ErecAid Esteem Manual Pump</a></li>
+                            <li class="erecaid-header__dropdown-item"><a class="erecaid-header__dropdown-link" href="/categories">Automatic &amp; Rechargeable Pumps</a></li>
+                            <li class="erecaid-header__dropdown-item"><a class="erecaid-header__dropdown-link" href="/categories">Medical Vacuum Therapy Starter Kits</a></li>
+                        </ul>
+                    </li>
+
+                    {{!-- 2. After Prostate Surgery --}}
+                    <li class="erecaid-header__nav-item has-dropdown">
+                        <a class="erecaid-header__nav-link" href="/categories">
+                            <span>After Prostate Surgery</span>
+                            <svg class="erecaid-header__nav-chevron" width="9" height="5" viewBox="0 0 10 6" fill="none" aria-hidden="true">
+                                <path d="M1 1L5 5L9 1" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+                            </svg>
+                        </a>
+                        <ul class="erecaid-header__dropdown">
+                            <li class="erecaid-header__dropdown-item"><a class="erecaid-header__dropdown-link" href="/categories">Post-Prostatectomy Penile Rehabilitation</a></li>
+                            <li class="erecaid-header__dropdown-item"><a class="erecaid-header__dropdown-link" href="/categories">Recovery Vacuum Pump Systems</a></li>
+                            <li class="erecaid-header__dropdown-item"><a class="erecaid-header__dropdown-link" href="/categories">Doctor &amp; Urologist Recommended Protocols</a></li>
+                        </ul>
+                    </li>
+
+                    {{!-- 3. Tension Rings --}}
+                    <li class="erecaid-header__nav-item has-dropdown">
+                        <a class="erecaid-header__nav-link" href="/categories">
+                            <span>Tension Rings</span>
+                            <svg class="erecaid-header__nav-chevron" width="9" height="5" viewBox="0 0 10 6" fill="none" aria-hidden="true">
+                                <path d="M1 1L5 5L9 1" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+                            </svg>
+                        </a>
+                        <ul class="erecaid-header__dropdown">
+                            <li class="erecaid-header__dropdown-item"><a class="erecaid-header__dropdown-link" href="/categories">All Tension Rings</a></li>
+                            <li class="erecaid-header__dropdown-item"><a class="erecaid-header__dropdown-link" href="/categories">Standard Tension Rings (A, B, C, D)</a></li>
+                            <li class="erecaid-header__dropdown-item"><a class="erecaid-header__dropdown-link" href="/categories">Ultimate Tension Rings</a></li>
+                            <li class="erecaid-header__dropdown-item"><a class="erecaid-header__dropdown-link" href="/categories">Ring Sizing &amp; Fitting Guide</a></li>
+                        </ul>
+                    </li>
+
+                    {{!-- 4. Parts & Accessories --}}
+                    <li class="erecaid-header__nav-item has-dropdown">
+                        <a class="erecaid-header__nav-link" href="/categories">
+                            <span>Parts &amp; Accessories</span>
+                            <svg class="erecaid-header__nav-chevron" width="9" height="5" viewBox="0 0 10 6" fill="none" aria-hidden="true">
+                                <path d="M1 1L5 5L9 1" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+                            </svg>
+                        </a>
+                        <ul class="erecaid-header__dropdown">
+                            <li class="erecaid-header__dropdown-item"><a class="erecaid-header__dropdown-link" href="/categories">All Parts &amp; Accessories</a></li>
+                            <li class="erecaid-header__dropdown-item"><a class="erecaid-header__dropdown-link" href="/categories">Replacement Cylinders &amp; Sizing Inserts</a></li>
+                            <li class="erecaid-header__dropdown-item"><a class="erecaid-header__dropdown-link" href="/categories">Hoses, Adapters &amp; Pressure Release Valves</a></li>
+                            <li class="erecaid-header__dropdown-item"><a class="erecaid-header__dropdown-link" href="/categories">Medical-Grade Lubricating Jelly</a></li>
+                        </ul>
+                    </li>
+
+                    {{!-- 5. Compare Pumps (Direct link - no chevron) --}}
+                    <li class="erecaid-header__nav-item">
+                        <a class="erecaid-header__nav-link" href="/categories">
+                            <span>Compare Pumps</span>
+                        </a>
+                    </li>
+
+                    {{!-- 6. How to Use --}}
+                    <li class="erecaid-header__nav-item has-dropdown">
+                        <a class="erecaid-header__nav-link" href="/video-instructions-on-how-to-use-erection-pumps/">
+                            <span>How to Use</span>
+                            <svg class="erecaid-header__nav-chevron" width="9" height="5" viewBox="0 0 10 6" fill="none" aria-hidden="true">
+                                <path d="M1 1L5 5L9 1" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+                            </svg>
+                        </a>
+                        <ul class="erecaid-header__dropdown">
+                            <li class="erecaid-header__dropdown-item"><a class="erecaid-header__dropdown-link" href="/video-instructions-on-how-to-use-erection-pumps/">Video Instructions on How to Use Pumps</a></li>
+                            <li class="erecaid-header__dropdown-item"><a class="erecaid-header__dropdown-link" href="/ed-treatment-guide/">ED Treatment &amp; Usage Guide</a></li>
+                            <li class="erecaid-header__dropdown-item"><a class="erecaid-header__dropdown-link" href="/categories">User Manuals &amp; PDF Downloads</a></li>
+                        </ul>
+                    </li>
+
+                    {{!-- 7. Help --}}
+                    <li class="erecaid-header__nav-item has-dropdown">
+                        <a class="erecaid-header__nav-link" href="/contact-us-privacy-policy/">
+                            <span>Help</span>
+                            <svg class="erecaid-header__nav-chevron" width="9" height="5" viewBox="0 0 10 6" fill="none" aria-hidden="true">
+                                <path d="M1 1L5 5L9 1" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+                            </svg>
+                        </a>
+                        <ul class="erecaid-header__dropdown">
+                            <li class="erecaid-header__dropdown-item"><a class="erecaid-header__dropdown-link" href="/ed-assist-faq/">ED Assist &amp; FAQs</a></li>
+                            <li class="erecaid-header__dropdown-item"><a class="erecaid-header__dropdown-link" href="/contact-us-privacy-policy/">Contact Us / Privacy Policy</a></li>
+                            <li class="erecaid-header__dropdown-item"><a class="erecaid-header__dropdown-link" href="/shipping-returns/">Shipping &amp; Returns</a></li>
+                            <li class="erecaid-header__dropdown-item"><a class="erecaid-header__dropdown-link" href="tel:{{#if theme_settings.custom_header_phone}}{{theme_settings.custom_header_phone}}{{else}}866-496-7359{{/if}}">Call Specialist: {{#if theme_settings.custom_header_phone}}{{theme_settings.custom_header_phone}}{{else}}866-496-7359{{/if}}</a></li>
+                        </ul>
+                    </li>
                 {{/if}}
-            </ul>
-                 ========================================================================= --}}
-
-            {{!-- =========================================================================
-                 STATIC HEADER NAVIGATION (100% Screenshot 2 Reference Match)
-                 Items:
-                 1. ED Pumps ⌵
-                 2. After Prostate Surgery ⌵
-                 3. Tension Rings ⌵
-                 4. Parts & Accessories ⌵
-                 5. Compare Pumps
-                 6. How to Use ⌵
-                 7. Help ⌵
-                 ========================================================================= --}}
-            <ul class="erecaid-header__nav-list erecaid-header__nav-list--static">
-                {{!-- 1. ED Pumps --}}
-                <li class="erecaid-header__nav-item has-dropdown">
-                    <a class="erecaid-header__nav-link" href="/categories">
-                        <span>ED Pumps</span>
-                        <svg class="erecaid-header__nav-chevron" width="9" height="5" viewBox="0 0 10 6" fill="none" aria-hidden="true">
-                            <path d="M1 1L5 5L9 1" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
-                        </svg>
-                    </a>
-                    <ul class="erecaid-header__dropdown">
-                        <li class="erecaid-header__dropdown-item"><a class="erecaid-header__dropdown-link" href="/categories">All ED Vacuum Pumps</a></li>
-                        <li class="erecaid-header__dropdown-item"><a class="erecaid-header__dropdown-link" href="/categories">Osbon ErecAid Esteem Manual Pump</a></li>
-                        <li class="erecaid-header__dropdown-item"><a class="erecaid-header__dropdown-link" href="/categories">Automatic &amp; Rechargeable Pumps</a></li>
-                        <li class="erecaid-header__dropdown-item"><a class="erecaid-header__dropdown-link" href="/categories">Medical Vacuum Therapy Starter Kits</a></li>
-                    </ul>
-                </li>
-
-                {{!-- 2. After Prostate Surgery --}}
-                <li class="erecaid-header__nav-item has-dropdown">
-                    <a class="erecaid-header__nav-link" href="/categories">
-                        <span>After Prostate Surgery</span>
-                        <svg class="erecaid-header__nav-chevron" width="9" height="5" viewBox="0 0 10 6" fill="none" aria-hidden="true">
-                            <path d="M1 1L5 5L9 1" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
-                        </svg>
-                    </a>
-                    <ul class="erecaid-header__dropdown">
-                        <li class="erecaid-header__dropdown-item"><a class="erecaid-header__dropdown-link" href="/categories">Post-Prostatectomy Penile Rehabilitation</a></li>
-                        <li class="erecaid-header__dropdown-item"><a class="erecaid-header__dropdown-link" href="/categories">Recovery Vacuum Pump Systems</a></li>
-                        <li class="erecaid-header__dropdown-item"><a class="erecaid-header__dropdown-link" href="/categories">Doctor &amp; Urologist Recommended Protocols</a></li>
-                    </ul>
-                </li>
-
-                {{!-- 3. Tension Rings --}}
-                <li class="erecaid-header__nav-item has-dropdown">
-                    <a class="erecaid-header__nav-link" href="/categories">
-                        <span>Tension Rings</span>
-                        <svg class="erecaid-header__nav-chevron" width="9" height="5" viewBox="0 0 10 6" fill="none" aria-hidden="true">
-                            <path d="M1 1L5 5L9 1" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
-                        </svg>
-                    </a>
-                    <ul class="erecaid-header__dropdown">
-                        <li class="erecaid-header__dropdown-item"><a class="erecaid-header__dropdown-link" href="/categories">All Tension Rings</a></li>
-                        <li class="erecaid-header__dropdown-item"><a class="erecaid-header__dropdown-link" href="/categories">Standard Tension Rings (A, B, C, D)</a></li>
-                        <li class="erecaid-header__dropdown-item"><a class="erecaid-header__dropdown-link" href="/categories">Ultimate Tension Rings</a></li>
-                        <li class="erecaid-header__dropdown-item"><a class="erecaid-header__dropdown-link" href="/categories">Ring Sizing &amp; Fitting Guide</a></li>
-                    </ul>
-                </li>
-
-                {{!-- 4. Parts & Accessories --}}
-                <li class="erecaid-header__nav-item has-dropdown">
-                    <a class="erecaid-header__nav-link" href="/categories">
-                        <span>Parts &amp; Accessories</span>
-                        <svg class="erecaid-header__nav-chevron" width="9" height="5" viewBox="0 0 10 6" fill="none" aria-hidden="true">
-                            <path d="M1 1L5 5L9 1" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
-                        </svg>
-                    </a>
-                    <ul class="erecaid-header__dropdown">
-                        <li class="erecaid-header__dropdown-item"><a class="erecaid-header__dropdown-link" href="/categories">All Parts &amp; Accessories</a></li>
-                        <li class="erecaid-header__dropdown-item"><a class="erecaid-header__dropdown-link" href="/categories">Replacement Cylinders &amp; Sizing Inserts</a></li>
-                        <li class="erecaid-header__dropdown-item"><a class="erecaid-header__dropdown-link" href="/categories">Hoses, Adapters &amp; Pressure Release Valves</a></li>
-                        <li class="erecaid-header__dropdown-item"><a class="erecaid-header__dropdown-link" href="/categories">Medical-Grade Lubricating Jelly</a></li>
-                    </ul>
-                </li>
-
-                {{!-- 5. Compare Pumps (Direct link - no chevron) --}}
-                <li class="erecaid-header__nav-item">
-                    <a class="erecaid-header__nav-link" href="/categories">
-                        <span>Compare Pumps</span>
-                    </a>
-                </li>
-
-                {{!-- 6. How to Use --}}
-                <li class="erecaid-header__nav-item has-dropdown">
-                    <a class="erecaid-header__nav-link" href="/video-instructions-on-how-to-use-erection-pumps/">
-                        <span>How to Use</span>
-                        <svg class="erecaid-header__nav-chevron" width="9" height="5" viewBox="0 0 10 6" fill="none" aria-hidden="true">
-                            <path d="M1 1L5 5L9 1" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
-                        </svg>
-                    </a>
-                    <ul class="erecaid-header__dropdown">
-                        <li class="erecaid-header__dropdown-item"><a class="erecaid-header__dropdown-link" href="/video-instructions-on-how-to-use-erection-pumps/">Video Instructions on How to Use Pumps</a></li>
-                        <li class="erecaid-header__dropdown-item"><a class="erecaid-header__dropdown-link" href="/ed-treatment-guide/">ED Treatment &amp; Usage Guide</a></li>
-                        <li class="erecaid-header__dropdown-item"><a class="erecaid-header__dropdown-link" href="/categories">User Manuals &amp; PDF Downloads</a></li>
-                    </ul>
-                </li>
-
-                {{!-- 7. Help --}}
-                <li class="erecaid-header__nav-item has-dropdown">
-                    <a class="erecaid-header__nav-link" href="/contact-us-privacy-policy/">
-                        <span>Help</span>
-                        <svg class="erecaid-header__nav-chevron" width="9" height="5" viewBox="0 0 10 6" fill="none" aria-hidden="true">
-                            <path d="M1 1L5 5L9 1" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
-                        </svg>
-                    </a>
-                    <ul class="erecaid-header__dropdown">
-                        <li class="erecaid-header__dropdown-item"><a class="erecaid-header__dropdown-link" href="/ed-assist-faq/">ED Assist &amp; FAQs</a></li>
-                        <li class="erecaid-header__dropdown-item"><a class="erecaid-header__dropdown-link" href="/contact-us-privacy-policy/">Contact Us / Privacy Policy</a></li>
-                        <li class="erecaid-header__dropdown-item"><a class="erecaid-header__dropdown-link" href="/shipping-returns/">Shipping &amp; Returns</a></li>
-                        <li class="erecaid-header__dropdown-item"><a class="erecaid-header__dropdown-link" href="tel:{{#if theme_settings.custom_header_phone}}{{theme_settings.custom_header_phone}}{{else}}866-496-7359{{/if}}">Call Specialist: {{#if theme_settings.custom_header_phone}}{{theme_settings.custom_header_phone}}{{else}}866-496-7359{{/if}}</a></li>
-                    </ul>
-                </li>
             </ul>
         </div>
     </nav>
@@ -709,7 +777,7 @@
         });
     }
 
-    // On mobile screens, toggle dropdown when chevron/link tapped
+    // On mobile screens, toggle Level 2 dropdown when chevron/link tapped
     var dropdownItems = document.querySelectorAll('.erecaid-header__nav-item.has-dropdown');
     dropdownItems.forEach(function(item) {
         var link = item.querySelector('.erecaid-header__nav-link');
@@ -721,6 +789,23 @@
                     e.stopPropagation();
                     var isDdOpen = dropdown.classList.toggle('is-open');
                     item.classList.toggle('is-dropdown-open', isDdOpen);
+                }
+            });
+        }
+    });
+
+    // On mobile screens, toggle Level 3 sub-dropdown when sub-category link tapped
+    var subDropdownItems = document.querySelectorAll('.erecaid-header__dropdown-item.has-sub');
+    subDropdownItems.forEach(function(subItem) {
+        var subLink = subItem.querySelector('.erecaid-header__dropdown-link');
+        var subMenu = subItem.querySelector('.erecaid-header__dropdown-sub');
+        if (subLink && subMenu) {
+            subLink.addEventListener('click', function(e) {
+                if (window.innerWidth <= 900) {
+                    e.preventDefault();
+                    e.stopPropagation();
+                    var isSubOpen = subMenu.classList.toggle('is-open');
+                    subItem.classList.toggle('is-sub-open', isSubOpen);
                 }
             });
         }

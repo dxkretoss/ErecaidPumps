@@ -250,14 +250,20 @@
                     {{#each custom_fields}}
                         {{#startsWith '__' name}}
                         {{else}}
-                            <dt class="card-info-name card-info-name--cf{{pascalcase name}}">{{name}}:</dt>
-                            <dd class="card-info-value card-info-value--cf{{pascalcase name}}">{{{value}}}</dd>
+                            {{#startsWith 'finder_' name}}
+                            {{else}}
+                                <dt class="card-info-name card-info-name--cf{{pascalcase name}}">{{name}}:</dt>
+                                <dd class="card-info-value card-info-value--cf{{pascalcase name}}">{{{value}}}</dd>
+                            {{/startsWith}}
                         {{/startsWith}}
                     {{/each}}
                 {{else}}
                     {{#each custom_fields}}
-                        <dt class="card-info-name card-info-name--cf{{pascalcase name}}">{{name}}:</dt>
-                        <dd class="card-info-value card-info-value--cf{{pascalcase name}}">{{{value}}}</dd>
+                        {{#startsWith 'finder_' name}}
+                        {{else}}
+                            <dt class="card-info-name card-info-name--cf{{pascalcase name}}">{{name}}:</dt>
+                            <dd class="card-info-value card-info-value--cf{{pascalcase name}}">{{{value}}}</dd>
+                        {{/startsWith}}
                     {{/each}}
                 {{/if}}
             </dl>

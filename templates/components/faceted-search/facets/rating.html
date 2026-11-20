@@ -6,7 +6,7 @@
         tabindex="0"
         data-collapsible="#facetedSearch-content--{{dashcase facet }}">
         <h4 class="accordion-title">
-            {{ title }} <span class="_clear-placeholder" aria-hidden="true">{{lang 'search.faceted.clear'}}</span>
+            {{#if title '===' 'Rating'}}Ratings{{else}}{{ title }}{{/if}} <span class="_clear-placeholder" aria-hidden="true">{{lang 'search.faceted.clear'}}</span>
         </h4>
 
         <div class="accordion-navigation-actions">

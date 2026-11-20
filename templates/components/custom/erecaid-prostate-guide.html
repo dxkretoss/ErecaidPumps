@@ -15,6 +15,16 @@
 --}}
 <section class="erecaid-prostate-section" aria-label="Prostate Surgery Guide & Helpful Articles">
     <style>
+        .erecaid-prostate-main-card__media-link {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 100%;
+            height: 100%;
+            text-decoration: none;
+            cursor: pointer;
+        }
+
         /* Tablet View (e.g. 768px): Image on Left Side, Text on Right Side */
         @media (min-width: 601px) and (max-width: 1024px) {
             .erecaid-prostate-main-card {
@@ -108,10 +118,14 @@
             {{!-- Left: Main Prostate Surgery Feature Card --}}
             <div class="erecaid-prostate-main-card">
                 <div class="erecaid-prostate-main-card__media">
-                    <img class="erecaid-prostate-main-card__image" 
-                         src="{{#if theme_settings.custom_prostate_img}}{{#startsWith 'http' theme_settings.custom_prostate_img}}{{theme_settings.custom_prostate_img}}{{else}}{{#startsWith '/' theme_settings.custom_prostate_img}}{{theme_settings.custom_prostate_img}}{{else}}/images/stencil/original/image-manager/{{theme_settings.custom_prostate_img}}{{/startsWith}}{{/startsWith}}{{else}}/images/stencil/original/image-manager/penile-adjustable-loop-medical-device-banner.png{{/if}}" 
-                         alt="{{#if theme_settings.custom_prostate_title}}{{theme_settings.custom_prostate_title}}{{else}}Vacuum Erection Devices After Prostate Surgery{{/if}}" 
-                         loading="lazy">
+                    <a href="{{#if theme_settings.custom_prostate_img_url}}{{theme_settings.custom_prostate_img_url}}{{else if theme_settings.custom_prostate_btn_url}}{{theme_settings.custom_prostate_btn_url}}{{else}}/after-prostate-surgery/{{/if}}" 
+                       class="erecaid-prostate-main-card__media-link" 
+                       aria-label="{{#if theme_settings.custom_prostate_title}}{{theme_settings.custom_prostate_title}}{{else}}Vacuum Erection Devices After Prostate Surgery{{/if}}">
+                        <img class="erecaid-prostate-main-card__image" 
+                             src="{{#if theme_settings.custom_prostate_img}}{{#startsWith 'http' theme_settings.custom_prostate_img}}{{theme_settings.custom_prostate_img}}{{else}}{{#startsWith '/' theme_settings.custom_prostate_img}}{{theme_settings.custom_prostate_img}}{{else}}/images/stencil/original/image-manager/{{theme_settings.custom_prostate_img}}{{/startsWith}}{{/startsWith}}{{else}}/images/stencil/original/image-manager/penile-adjustable-loop-medical-device-banner.png{{/if}}" 
+                             alt="{{#if theme_settings.custom_prostate_title}}{{theme_settings.custom_prostate_title}}{{else}}Vacuum Erection Devices After Prostate Surgery{{/if}}" 
+                             loading="lazy">
+                    </a>
                 </div>
                 <div class="erecaid-prostate-main-card__content">
                     <h2 class="erecaid-prostate-main-card__title">

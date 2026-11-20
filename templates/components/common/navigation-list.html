@@ -6,7 +6,7 @@
     {{#if menu_type '!=' 'vertical'}}data-collapsible-disabled-breakpoint="medium"{{/if}}
     data-collapsible-disabled-state="open"
     data-collapsible-enabled-state="closed">
-    {{name}} <i class="icon navPages-action-moreIcon" aria-hidden="true"><svg><use href="#icon-caret-down" /></svg></i>
+    {{#if name '===' 'ERECTILE DYSFUNCTION VACUUM ERECTION PUMPS'}}Erectile dysfunction vacuum erection pumps{{else if name '===' 'NEWEST - EDP Systems / ERECTILE DYSFUNCTION PUMPS'}}NEWEST - EDP Systems / erectile dysfunction pumps{{else if name '===' 'ERECTION TENSION RINGS / BANDS'}}Erection tension rings / Bands{{else}}{{name}}{{/if}} <i class="icon navPages-action-moreIcon" aria-hidden="true"><svg><use href="#icon-caret-down" /></svg></i>
 </a>
 <div class="navPage-subMenu
         {{#if menu_type '==' 'vertical'}}
@@ -36,7 +36,7 @@
                         {{#if ../../menu_type '!=' 'vertical'}}data-collapsible-disabled-breakpoint="medium"{{/if}}
                         data-collapsible-disabled-state="open"
                         data-collapsible-enabled-state="closed">
-                        {{name}} <i class="icon navPages-action-moreIcon" aria-hidden="true"><svg><use href="#icon-caret-down" /></svg></i>
+                        {{#if name '===' 'ERECTILE DYSFUNCTION VACUUM ERECTION PUMPS'}}Erectile dysfunction vacuum erection pumps{{else if name '===' 'NEWEST - EDP Systems / ERECTILE DYSFUNCTION PUMPS'}}NEWEST - EDP Systems / erectile dysfunction pumps{{else if name '===' 'ERECTION TENSION RINGS / BANDS'}}Erection tension rings / Bands{{else}}{{name}}{{/if}} <i class="icon navPages-action-moreIcon" aria-hidden="true"><svg><use href="#icon-caret-down" /></svg></i>
                     </a>
                     <ul class="navPage-childList" id="navPages-{{id}}{{../../idSuffix}}">
                         <li class="navPage-childList-item">
@@ -53,7 +53,7 @@
                         {{/each}}
                     </ul>
                 {{else}}
-                    <a class="navPage-subMenu-action navPages-action" href="{{url}}" data-instantload {{#if id '==' ../../category.id}}data-current-category{{/if}}>{{name}}</a>
+                    <a class="navPage-subMenu-action navPages-action" href="{{url}}" data-instantload {{#if id '==' ../../category.id}}data-current-category{{/if}}>{{#if name '===' 'ERECTILE DYSFUNCTION VACUUM ERECTION PUMPS'}}Erectile dysfunction vacuum erection pumps{{else if name '===' 'NEWEST - EDP Systems / ERECTILE DYSFUNCTION PUMPS'}}NEWEST - EDP Systems / erectile dysfunction pumps{{else if name '===' 'ERECTION TENSION RINGS / BANDS'}}Erection tension rings / Bands{{else}}{{name}}{{/if}}</a>
                 {{/if}}
             </li>
         {{/each}}
@@ -65,5 +65,5 @@
     {{/if}}
 </div>
 {{else}}
-<a class="navPages-action" href="{{url}}" data-instantload {{#if id '==' category.id}}data-current-category{{/if}}>{{name}}</a>
+<a class="navPages-action" href="{{url}}" data-instantload {{#if id '==' category.id}}data-current-category{{/if}}>{{#if name '===' 'ERECTILE DYSFUNCTION VACUUM ERECTION PUMPS'}}Erectile dysfunction vacuum erection pumps{{else if name '===' 'NEWEST - EDP Systems / ERECTILE DYSFUNCTION PUMPS'}}NEWEST - EDP Systems / erectile dysfunction pumps{{else if name '===' 'ERECTION TENSION RINGS / BANDS'}}Erection tension rings / Bands{{else}}{{name}}{{/if}}</a>
 {{/if}}

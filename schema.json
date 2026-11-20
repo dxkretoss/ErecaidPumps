@@ -942,9 +942,16 @@
       },
       {
         "type": "text",
-        "label": "Main Card Image URL",
+        "label": "Main Card Image Source / File",
         "id": "custom_prostate_img",
         "default": "penile-adjustable-loop-medical-device-banner.png",
+        "force_reload": true
+      },
+      {
+        "type": "text",
+        "label": "Main Card Image Link URL",
+        "id": "custom_prostate_img_url",
+        "default": "/after-prostate-surgery/",
         "force_reload": true
       },
       {

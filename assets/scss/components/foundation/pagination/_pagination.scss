@@ -18,7 +18,8 @@
     margin-bottom: spacing("single");
     text-align: center;
 
-    .pagination-item { // 2
+    .pagination-item {
+        // 2
         display: inline-block;
     }
 }
@@ -45,23 +46,26 @@
         }
     }
 
-    &.pagination-item--current { // 1
-        border-color: $pagination-link-current-borderColor;
+    &.pagination-item--current {
+        // 1
+        // border-color: $pagination-link-current-borderColor;
         border-radius: $pagination-link-current-borderRadius;
         margin: $pagination-link-current-margin;
     }
 
-    &.pagination-item--previous, // 1
-    &.pagination-item--next { // 1
+    &.pagination-item--previous,
+    // 1
+    &.pagination-item--next {
+        // 1
 
         // scss-lint:disable NestingDepth, SelectorDepth
-        > a {
+        >a {
             color: $pagination-item-previousNext-color;
 
             &:hover {
                 color: $pagination-item-previousNext-color-hover;
 
-                .icon > svg {
+                .icon>svg {
                     fill: $pagination-item-previousNext-color-hover;
                 }
             }

@@ -18,7 +18,17 @@ shop_by_brand:
 
 {{#partial "page"}}
 
-<h1 class="page-heading page-heading--mobileOnly">{{category.name}}</h1>
+<div class="category-header-top">
+    {{> components/common/breadcrumbs breadcrumbs=breadcrumbs}}
+
+    {{#if theme_settings.bannerBeforeCategory '===' 'all'}}
+        <div data-emthemesmodez-remote-banner="emthemesModezBannersBlockBeforeCategory"></div>
+    {{/if}}
+
+    <h1 class="page-heading category-title-top">{{category.name}}</h1>
+    {{{region name="category_below_header--global"}}}
+    {{{region name="category_below_header"}}}
+</div>
 
 <div class="page">
     <aside class="page-sidebar page-sidebar--top" id="faceted-search-container">
@@ -26,12 +36,6 @@ shop_by_brand:
     </aside>
 
     <main class="page-content">
-        {{> components/common/breadcrumbs breadcrumbs=breadcrumbs}}
-
-        {{#if theme_settings.bannerBeforeCategory '===' 'all'}}
-            <div data-emthemesmodez-remote-banner="emthemesModezBannersBlockBeforeCategory"></div>
-        {{/if}}
-
         {{#if category.image}}
             <div class="emthemesModez-categoryPage-mainImage">
                 <img alt="{{category.name}}" title="{{category.name}}"
@@ -41,16 +45,44 @@ shop_by_brand:
                 />
             </div>
         {{/if}}
-        <p class="h1 page-heading page-heading--desktopOnly">{{category.name}}</p>
-        {{{region name="category_below_header--global"}}}
-        {{{region name="category_below_header"}}}
-        
         
         {{#if category.description}}
             <div class="papaSupermarket-categoryPage-description">
                 {{{category.description}}}
                 {{{snippet 'categories'}}}
             </div>
+            <script>
+                (function() {
+                    function applyCategoryTitleStyle() {
+                        var desc = document.querySelector('.papaSupermarket-categoryPage-description');
+                        if (!desc) return;
+                        
+                        var first = desc.firstElementChild;
+                        if (first) {
+                            first.classList.add('erecaid-cat-title-wrap');
+                            var firstEls = first.querySelectorAll('*');
+                            firstEls.forEach(function(el) {
+                                el.classList.add('erecaid-cat-title');
+                            });
+                        }
+
+                        var all = desc.querySelectorAll('h1, h2, h3, h4, p, span, div, strong, b');
+                        all.forEach(function(el) {
+                            if (el.textContent && el.textContent.trim().indexOf('Vacuum Erection Pumps') === 0) {
+                                el.classList.add('erecaid-cat-title');
+                                if (el.parentElement && el.parentElement !== desc) {
+                                    el.parentElement.classList.add('erecaid-cat-title-wrap');
+                                }
+                            }
+                        });
+                    }
+                    applyCategoryTitleStyle();
+                    if (document.readyState === 'loading') {
+                        document.addEventListener('DOMContentLoaded', applyCategoryTitleStyle);
+                    }
+                    setTimeout(applyCategoryTitleStyle, 100);
+                })();
+            </script>
         {{/if}}
 
         {{#if theme_settings.show_subcategories_grid}}
@@ -74,6 +106,8 @@ shop_by_brand:
             {{/if}}
         {{/if}}
 
+        {{!-- Standalone search box hidden; search is integrated directly into the filter action bar --}}
+        {{#if false}}
         {{#if theme_settings.categorypage_search '===' 'show'}}
             <form class="categoryPage-searchInCategory-form {{#unless category.faceted_search_enabled}}noFaceted{{/unless}} {{#unless category.description}}noDesc{{/unless}}">
                 <fieldset class="form-fieldset">
@@ -84,13 +118,15 @@ shop_by_brand:
                 </fieldset>
             </form>
         {{/if}}
+        {{/if}}
 
         <div id="product-listing-container" class="
             {{#if theme_settings.product_list_display_mode '===' 'grid2'}}mode-2
             {{else if theme_settings.product_list_display_mode '===' 'grid3'}}mode-3
             {{else if theme_settings.product_list_display_mode '===' 'grid6'}}mode-6
             {{else if theme_settings.product_list_display_mode '===' 'list'}}mode-1
-            {{else if theme_settings.product_list_display_mode '===' 'listbo'}}mode-bo{{/if}}
+            {{else if theme_settings.product_list_display_mode '===' 'listbo'}}mode-bo
+            {{else}}mode-3{{/if}}
         ">
             {{#if category.products}}
                 {{> components/category/product-listing}}
@@ -113,6 +149,103 @@ shop_by_brand:
         {{{region name="category_sidebar2_bottom--global"}}}
     </aside>
 </div>
+
+<script>
+(function() {
+    var categoryMap = {
+        'ERECTILE DYSFUNCTION VACUUM ERECTION PUMPS': 'Erectile dysfunction vacuum erection pumps',
+        'NEWEST - EDP SYSTEMS / ERECTILE DYSFUNCTION PUMPS': 'NEWEST - EDP Systems / erectile dysfunction pumps',
+        'NEWEST - EDP Systems / ERECTILE DYSFUNCTION PUMPS': 'NEWEST - EDP Systems / erectile dysfunction pumps',
+        'ERECTION TENSION RINGS / BANDS': 'Erection tension rings / Bands',
+        'ERECTION TENSION RINGS/BANDS': 'Erection tension rings / Bands'
+    };
+
+    function formatText(str) {
+        if (!str) return str;
+        var s = str.trim();
+        for (var key in categoryMap) {
+            if (s.toUpperCase() === key.toUpperCase()) {
+                return categoryMap[key];
+            }
+        }
+        if (s.indexOf('ERECTILE DYSFUNCTION VACUUM ERECTION PUMPS') !== -1) {
+            return s.replace(/ERECTILE DYSFUNCTION VACUUM ERECTION PUMPS/gi, 'Erectile dysfunction vacuum erection pumps');
+        }
+        if (s.indexOf('/ ERECTILE DYSFUNCTION PUMPS') !== -1) {
+            return s.replace(/\/ ERECTILE DYSFUNCTION PUMPS/gi, '/ erectile dysfunction pumps');
+        }
+        if (s.indexOf('ERECTION TENSION RINGS') !== -1) {
+            return 'Erection tension rings / Bands';
+        }
+        if (s === s.toUpperCase() && s.length > 3 && /[A-Z]/.test(s)) {
+            var lower = s.toLowerCase();
+            return lower.charAt(0).toUpperCase() + lower.slice(1);
+        }
+        return s;
+    }
+
+    function runFormat() {
+        var targets = document.querySelectorAll(
+            '.sidebarBlock--verticalCategories .navPages-action, ' +
+            '.sidebarBlock--verticalAllCategories .navPages-action, ' +
+            '.emthemesModez-verticalCategories .navPages-action, ' +
+            '#categories-navList .navList-action, ' +
+            '.page-sidebar .navPages-action'
+        );
+        var currentPath = window.location.pathname.replace(/\/+$/, '');
+
+        targets.forEach(function(el) {
+            var childNodes = el.childNodes;
+            for (var i = 0; i < childNodes.length; i++) {
+                if (childNodes[i].nodeType === 3) {
+                    var orig = childNodes[i].nodeValue;
+                    var formatted = formatText(orig);
+                    if (orig !== formatted) {
+                        childNodes[i].nodeValue = formatted;
+                    }
+                }
+            }
+
+            var href = el.getAttribute('href');
+            if (href) {
+                var cleanHref = href.replace(/\/+$/, '');
+                if (cleanHref && (cleanHref === currentPath || (currentPath && currentPath.indexOf(cleanHref) !== -1 && cleanHref !== ''))) {
+                    el.classList.add('is-current');
+                }
+            }
+        });
+
+        var accTitles = document.querySelectorAll('.accordion-title');
+        accTitles.forEach(function(el) {
+            var childNodes = el.childNodes;
+            for (var j = 0; j < childNodes.length; j++) {
+                if (childNodes[j].nodeType === 3) {
+                    var t = childNodes[j].nodeValue.trim();
+                    if (t === 'Rating') {
+                        childNodes[j].nodeValue = 'Ratings ';
+                    } else if (t === 'Refine By') {
+                        childNodes[j].nodeValue = 'Refine by ';
+                    }
+                }
+            }
+        });
+    }
+
+    if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', runFormat);
+    } else {
+        runFormat();
+    }
+    window.addEventListener('load', runFormat);
+    setInterval(runFormat, 300);
+
+    var observer = new MutationObserver(runFormat);
+    var targetNode = document.getElementById('faceted-search-container') || document.querySelector('.page-sidebar');
+    if (targetNode) {
+        observer.observe(targetNode, { childList: true, subtree: true });
+    }
+})();
+</script>
 
 {{/partial}}
 {{#and theme_settings.instantload is_ajax}}

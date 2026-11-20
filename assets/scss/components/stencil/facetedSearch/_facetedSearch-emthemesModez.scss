@@ -1,5 +1,3 @@
-
-
 // Faceted search toggle
 // -----------------------------------------------------------------------------
 //
@@ -25,11 +23,11 @@
         display: block;
     }
 
-    + .facetedSearch-navList.is-open {
+    +.facetedSearch-navList.is-open {
         clear: both;
         top: spacing("half");
 
-        @if $theme-style == "modern" {
+        @if $theme-style =="modern" {
             @media (max-width: (screenSize("medium") - 1px)) {
                 top: 0;
             }
@@ -122,16 +120,17 @@
     }
 
     @media (max-width: screenSize("medium") - 1px) {
-        @if $theme-style == "modern" {
+        @if $theme-style =="modern" {
             margin-top: 0;
         }
+
         @else {
             margin: 0;
             padding: 0;
             border: 0;
         }
 
-        .sidebarBlock ~ & {
+        .sidebarBlock~& {
             margin-top: 0;
         }
     }
@@ -149,7 +148,7 @@
     }
 
     .facetedSearch-refineFilters {
-        margin: (-(container("padding"))) (-(container("padding"))) 0;
+        // margin: (-(container("padding"))) (-(container("padding"))) 0;
         border-top: 0;
         border-left: 0;
         border-right: 0;
@@ -169,7 +168,7 @@
         border: 0;
         padding: spacing("quarter") 0;
 
-        + .navList-item {
+        +.navList-item {
             border: 0;
         }
     }
@@ -179,11 +178,11 @@
 // ============================================================================
 .papaSupermarket-style--modern {
     @media (max-width: screenSize("medium") - 1px) {
-        .sidebarBlock ~ .facetedSearch.sidebarBlock {
+        .sidebarBlock~.facetedSearch.sidebarBlock {
             margin-top: 0;
         }
 
-        .emthemesModez-productsFilter--faceted ~ .facetedSearch .facetedSearch-toggle-indicator {
+        .emthemesModez-productsFilter--faceted~.facetedSearch .facetedSearch-toggle-indicator {
             border-right: container("border");
         }
     }

@@ -277,10 +277,21 @@ export default class ImageGallery {
     }
 
     fixLayoutShift() {
+        if (this.$gallery.closest('.modal, .quickView, [data-reveal]').length > 0 || this.$mainCarousel.closest('.modal, .quickView, [data-reveal]').length > 0) {
+            this.$mainCarousel.css('height', '');
+            this.$navCarousel.css('height', '');
+            return;
+        }
+
         const mainCarouselInitHeight = this.$mainCarousel.height();
+        if (mainCarouselInitHeight > 800) {
+            this.$mainCarousel.css('height', '');
+            return;
+        }
+
         this.$mainCarousel
             .one('init', () => {
-                this.$mainCarousel.css('height', mainCarouselInitHeight);
+                this.$mainCarousel.css('height', '');
             })
             .one('breakpoint destroy', () => {
                 this.$navCarousel.css('height', '');

@@ -564,6 +564,7 @@
             padding: 0;
             gap: 26px;
             width: 100%;
+            flex-wrap: wrap;
 
             @media (max-width: 1200px) {
                 gap: 16px;
@@ -573,6 +574,7 @@
                 flex-direction: column;
                 align-items: flex-start;
                 gap: 0;
+                flex-wrap: nowrap;
             }
         }
 
@@ -778,6 +780,11 @@
             visibility: visible;
             opacity: 1;
         }
+
+        &.is-sub-open > .erecaid-header__dropdown-link .erecaid-header__dropdown-sub-arrow {
+            transform: rotate(90deg);
+            color: #ffffff;
+        }
     }
 
     &__dropdown-link {
@@ -814,6 +821,8 @@
         font-size: 15px;
         font-weight: bold;
         margin-left: 8px;
+        display: inline-block;
+        transition: transform 0.2s ease;
     }
 
     // Subcategory Flyout
@@ -840,6 +849,10 @@
             border: none;
             background: #04294b;
             padding-left: 14px !important;
+
+            &.is-open {
+                display: block !important;
+            }
         }
     }
 }

@@ -76,19 +76,19 @@
         // }
     }
 
-    .facetedSearch-toggle + &,
-    .sidebarBlock + & {
+    .facetedSearch-toggle+&,
+    .sidebarBlock+& {
         margin-top: $facetedSearch-toggle-verticalSpacing;
     }
 
 
-    .facetedSearch-toggle + &.is-open,
-    .sidebarBlock + &.is-open {
+    .facetedSearch-toggle+&.is-open,
+    .sidebarBlock+&.is-open {
         margin-top: -1px;
 
-        @include breakpoint("medium") {
-            margin-top: $facetedSearch-toggle-verticalSpacing;
-        }
+        // @include breakpoint("medium") {
+        //     margin-top: $facetedSearch-toggle-verticalSpacing;
+        // }
     }
 
     .navList--inner {

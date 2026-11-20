@@ -1,25 +1,6 @@
 <nav>
     <h2 class="is-srOnly">{{lang 'common.sidebar'}}</h2>
-    {{#if theme_settings.show_subcategories_menu}}
-        {{> components/papa-supermarket/sidebar/subcategories-menu}}
-    {{else}}
-        {{#if theme_settings.show_allcategories_menu}}
-            {{> components/papa-supermarket/sidebar/categories-menu}}
-        {{/if}}
-        
-        {{#if category.subcategories}}
-        <div class="sidebarBlock sidebarBlock--mobileCollapsible">
-            <h3 class="sidebarBlock-heading is-open" data-collapsible="#categories-navList" data-collapsible-disabled-breakpoint="medium" aria-expanded="true">{{category.name}}</h3>
-            <ul id="categories-navList" class="navList is-open" aria-hidden="false">
-                {{#each category.subcategories}}
-                <li class="navList-item">
-                    <a class="navList-action" data-instantload href="{{url}}" title="{{name}}">{{name}}</a>
-                </li>
-                {{/each}}
-            </ul>
-        </div>
-        {{/if}}
-    {{/if}}
+    {{> components/papa-supermarket/sidebar/categories-menu}}
 
     {{#if category.faceted_search_enabled}}
         {{> components/products/filter 

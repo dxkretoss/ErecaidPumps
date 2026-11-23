@@ -8,6 +8,7 @@ import actionBarFactory from '../emthemes-modez/action-bar'; // Papathemes - Sup
 import { autoExpandCategoryMenu } from '../emthemes-modez/theme-utils'; // Supermarket
 import bulkOrderFactory from '../emthemes-modez/bulk-order';
 import SearchInCategory from '../emthemes-modez/search-in-category';
+import collapsibleFactory from './common/collapsible';
 
 export default class Category extends CatalogPage {
     constructor(context) {
@@ -17,6 +18,7 @@ export default class Category extends CatalogPage {
 
     onReady() {
         // console.log('category onReady');
+        collapsibleFactory();
         autoExpandCategoryMenu(this.context); // Supermarket
 
         // Papathemes - Bulk Order

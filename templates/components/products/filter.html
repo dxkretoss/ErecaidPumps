@@ -5,26 +5,30 @@
         data-collapsible-disabled-breakpoint="medium" data-collapsible-disabled-state="open"
         data-collapsible-enabled-state="closed"><i class="fa fa-cog" aria-hidden="true"></i></a>
     <form class="actionBar" id="emthemesModez-productsFilter-form{{id_prefix}}" method="get" data-sort-by>
-        {{> components/category/sort-box sort=sort id_prefix=id_prefix}}
-        {{> components/category/products-per-page products_per_page=products_per_page id_prefix=id_prefix}}
-
-        {{!-- Integrated Search Input matching Screenshot 1 --}}
-        <div class="actionBar-section actionBar-section--search">
-            <div class="actionBar-search-inner">
-                <svg class="actionBar-search-icon" width="16" height="16" viewBox="0 0 24 24" fill="none"
-                    stroke="#002D62" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"
-                    aria-hidden="true">
-                    <circle cx="11" cy="11" r="8"></circle>
-                    <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
-                </svg>
-                <input class="actionBar-search-input" type="text" name="q"
-                    placeholder="{{#if forms.search.query}}{{forms.search.query}}{{else}}Filter product by name, SKU...{{/if}}"
-                    value="{{forms.search.query}}" data-search-in-category aria-label="Filter products">
-                <button class="button button--small actionBar-search-clear" type="button" data-clear
-                    aria-label="Clear search" style="display: none;">&times;</button>
-            </div>
+        <div class="actionBar-left">
+            {{> components/category/sort-box sort=sort id_prefix=id_prefix}}
+            {{> components/category/products-per-page products_per_page=products_per_page id_prefix=id_prefix}}
         </div>
 
-        {{> components/category/grid-list id_suffix=id_prefix}}
+        <div class="actionBar-right">
+            {{!-- Integrated Search Input matching Screenshot 1 --}}
+            <div class="actionBar-section actionBar-section--search">
+                <div class="actionBar-search-inner">
+                    <svg class="actionBar-search-icon" width="16" height="16" viewBox="0 0 24 24" fill="none"
+                        stroke="#002D62" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"
+                        aria-hidden="true">
+                        <circle cx="11" cy="11" r="8"></circle>
+                        <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+                    </svg>
+                    <input class="actionBar-search-input" type="text" name="q"
+                        placeholder="{{#if forms.search.query}}{{forms.search.query}}{{else}}Filter product by name, SKU...{{/if}}"
+                        value="{{forms.search.query}}" data-search-in-category aria-label="Filter products">
+                    <button class="button button--small actionBar-search-clear" type="button" data-clear
+                        aria-label="Clear search" style="display: none;">&times;</button>
+                </div>
+            </div>
+
+            {{> components/category/grid-list id_suffix=id_prefix}}
+        </div>
     </form>
 </div>

@@ -135,6 +135,9 @@ class InstantQuickView {
                     } else {
                         product = new ProductDetails($quickView, newContext);
                     }
+                    try {
+                        this.modal.$content.find('.slick-initialized').slick('setPosition');
+                    } catch (e) { /* ignore */ }
                     $('body').trigger('loaded.quickview', [product]);
                     return product;
                 }, 200);

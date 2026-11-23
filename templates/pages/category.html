@@ -244,6 +244,54 @@ shop_by_brand:
     if (targetNode) {
         observer.observe(targetNode, { childList: true, subtree: true });
     }
+
+    // Setting button dropdown open/close logic for Mobile & Tablet
+    if (typeof jQuery !== 'undefined') {
+        jQuery(document).on('click', '.emthemesModez-productsFilter-toggle', function(e) {
+            var $toggle = jQuery(this);
+            var collapsible = $toggle.data('collapsibleInstance');
+            if (!collapsible || collapsible.disabled) {
+                e.preventDefault();
+                e.stopPropagation();
+                var targetId = $toggle.attr('href') || $toggle.data('collapsibleTarget');
+                var $target = targetId ? jQuery(targetId) : jQuery();
+                if (!$target.length) {
+                    $target = $toggle.siblings('.actionBar');
+                }
+                var isOpen = $target.hasClass('is-open');
+                if (isOpen) {
+                    $target.removeClass('is-open').attr('aria-hidden', 'true');
+                    $toggle.removeClass('is-open').attr('aria-expanded', 'false');
+                } else {
+                    $target.addClass('is-open').attr('aria-hidden', 'false');
+                    $toggle.addClass('is-open').attr('aria-expanded', 'true');
+                }
+            }
+        });
+
+        // Close setting dropdown when clicking outside
+        jQuery(document).on('click', function(e) {
+            if (!jQuery(e.target).closest('.emthemesModez-productsFilter').length) {
+                jQuery('.emthemesModez-productsFilter .actionBar.is-open').each(function() {
+                    var $form = jQuery(this);
+                    var $toggle = $form.siblings('.emthemesModez-productsFilter-toggle');
+                    var collapsible = $toggle.data('collapsibleInstance');
+                    if (collapsible && !collapsible.disabled && !collapsible.isCollapsed) {
+                        collapsible.close();
+                    } else {
+                        $form.removeClass('is-open').attr('aria-hidden', 'true');
+                        $toggle.removeClass('is-open').attr('aria-expanded', 'false');
+                    }
+                });
+            }
+        });
+
+        // Close setting dropdown when filter toggle is clicked
+        jQuery(document).on('click', '.facetedSearch-toggle', function() {
+            jQuery('.emthemesModez-productsFilter .actionBar.is-open').removeClass('is-open').attr('aria-hidden', 'true');
+            jQuery('.emthemesModez-productsFilter-toggle.is-open').removeClass('is-open').attr('aria-expanded', 'false');
+        });
+    }
 })();
 </script>
 

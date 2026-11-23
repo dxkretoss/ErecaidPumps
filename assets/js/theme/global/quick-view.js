@@ -125,7 +125,10 @@ export default function (context) {
             modal.$content.find('.productView-imageCarousel-main').css('height', '');
             setTimeout(() => {
                 modal.$content.find('.productView-imageCarousel-main').css('height', '');
-            }, 100);
+                try {
+                    modal.$content.find('.slick-initialized').slick('setPosition');
+                } catch (e) { /* ignore */ }
+            }, 120);
 
             $('body').trigger('loaded.quickview', [product]);
 

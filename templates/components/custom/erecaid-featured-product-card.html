@@ -83,10 +83,6 @@
                     <svg class="erecaid-prod-card__check-icon" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="#059669" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
                     <span>5-year warranty</span>
                 </li>
-                <li class="erecaid-prod-card__check-item">
-                    <svg class="erecaid-prod-card__check-icon" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="#059669" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
-                    <span>90-day return policy</span>
-                </li>
             {{else if (occurrences name 'Battery')}}
                 <li class="erecaid-prod-card__check-item">
                     <svg class="erecaid-prod-card__check-icon" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="#059669" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
@@ -117,10 +113,6 @@
                     <svg class="erecaid-prod-card__check-icon" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="#059669" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
                     <span>Easy to use</span>
                 </li>
-                <li class="erecaid-prod-card__check-item">
-                    <svg class="erecaid-prod-card__check-icon" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="#059669" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
-                    <span>90-day return policy</span>
-                </li>
             {{else if (occurrences name 'Automatic')}}
                 <li class="erecaid-prod-card__check-item">
                     <svg class="erecaid-prod-card__check-icon" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="#059669" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
@@ -133,10 +125,6 @@
                 <li class="erecaid-prod-card__check-item">
                     <svg class="erecaid-prod-card__check-icon" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="#059669" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
                     <span>Easy to use</span>
-                </li>
-                <li class="erecaid-prod-card__check-item">
-                    <svg class="erecaid-prod-card__check-icon" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="#059669" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
-                    <span>90-day return policy</span>
                 </li>
             {{else if (occurrences name 'MOS100')}}
                 <li class="erecaid-prod-card__check-item">
@@ -168,10 +156,14 @@
                     <svg class="erecaid-prod-card__check-icon" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="#059669" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
                     <span>{{#if theme_settings.custom_products_check3}}{{theme_settings.custom_products_check3}}{{else}}5-year warranty{{/if}}</span>
                 </li>
-                <li class="erecaid-prod-card__check-item">
-                    <svg class="erecaid-prod-card__check-icon" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="#059669" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
-                    <span>{{#if theme_settings.custom_products_check4}}{{theme_settings.custom_products_check4}}{{else}}90-day return policy{{/if}}</span>
-                </li>
+                {{#if theme_settings.custom_products_check4}}
+                    {{#unless (occurrences theme_settings.custom_products_check4 '90-day')}}
+                        <li class="erecaid-prod-card__check-item">
+                            <svg class="erecaid-prod-card__check-icon" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="#059669" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                            <span>{{theme_settings.custom_products_check4}}</span>
+                        </li>
+                    {{/unless}}
+                {{/if}}
             {{/if}}
         </ul>
 
